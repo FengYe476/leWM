@@ -5,3 +5,4 @@ __pycache__/
 *.py[cod]
 *.h5
 *.h5.zst
+docs/phase1/*.docx
