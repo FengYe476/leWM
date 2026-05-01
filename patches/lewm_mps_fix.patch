@@ -1,0 +1,17 @@
+diff --git a/jepa.py b/jepa.py
+index 486fe93..bd298a3 100644
+--- a/jepa.py
++++ b/jepa.py
+@@ -133,7 +133,11 @@ class JEPA(nn.Module):
+         device = next(self.parameters()).device
+         for k in list(info_dict.keys()):
+             if torch.is_tensor(info_dict[k]):
+-                info_dict[k] = info_dict[k].to(device)
++                tensor = info_dict[k]
++                if device.type == "mps" and tensor.is_floating_point():
++                    info_dict[k] = tensor.to(device=device, dtype=torch.float32)
++                else:
++                    info_dict[k] = tensor.to(device)
+ 
+         goal = {k: v[:, 0] for k, v in info_dict.items() if torch.is_tensor(v)}
+         goal["pixels"] = goal["goal"]

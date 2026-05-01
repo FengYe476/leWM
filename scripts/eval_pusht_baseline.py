@@ -64,7 +64,11 @@ def parse_args() -> argparse.Namespace:
         help="Where to save the evaluation JSON report.",
     )
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--device", default="cpu")
+    parser.add_argument(
+        "--device",
+        default="auto",
+        help="Device to run on. Defaults to MPS when available, otherwise CPU.",
+    )
     parser.add_argument("--num-eval", type=int, default=50)
     parser.add_argument(
         "--num-envs",
@@ -102,6 +106,12 @@ def img_transform(img_size: int):
             transforms.Resize(size=img_size),
         ]
     )
+
+
+def resolve_device(device: str) -> str:
+    if device != "auto":
+        return device
+    return "mps" if torch.backends.mps.is_available() else "cpu"
 
 
 def get_episodes_length(dataset, episodes: np.ndarray) -> np.ndarray:
@@ -283,6 +293,7 @@ def main() -> int:
     args.cache_dir = args.cache_dir.expanduser().resolve()
     args.checkpoint_dir = args.checkpoint_dir.expanduser().resolve()
     args.results_path = args.results_path.expanduser().resolve()
+    args.device = resolve_device(args.device)
 
     args.cache_dir.mkdir(parents=True, exist_ok=True)
     args.results_path.parent.mkdir(parents=True, exist_ok=True)
