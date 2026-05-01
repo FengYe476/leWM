@@ -7,3 +7,4 @@ __pycache__/
 *.h5.zst
 docs/phase1/*.docx
 *.egg-info/
+results/phase1/*_smoke.json
