@@ -110,6 +110,43 @@
 - Offset `50` selected as primary diagnostic setting because `58%` falls in the `40-70%` target range.
 - Total sweep time was about `1 hour` on MPS.
 
+## 2026-05-01 — Day 1: Three-cost attribution analysis
+
+- Completed the offset-`50` three-cost attribution run on PushT.
+- Evaluated `30` initial-goal pairs with `40` fixed action sequences per pair, for `1200` total action records.
+- Compared `C_model`, `C_real_z`, and `C_real_state` across data actions, smooth random actions, early CEM candidates, and converged CEM candidates.
+- Found strong model-to-real-latent agreement: `corr(C_model, C_real_z) = 0.864`, indicating that predictor rollout is not the dominant failure source.
+- Found globally moderate encoder-to-physics agreement: `corr(C_real_z, C_real_state) = 0.669`.
+- Found weak and highly variable per-pair encoder-to-physics agreement: mean per-pair correlation `0.353 +/- 0.486`.
+- Found that `23/30` pairs had at least one successful action, which argues against planner/action-parameterization failure as the primary explanation.
+- Found that `CEM_late` actions succeeded at `52.7%`, compared with `15.7%` for random actions.
+- Saved detailed output to `results/three_cost_analysis.json` and figures under `results/figures/`.
+
+## 2026-05-01 — Day 1: Per-pair failure characterization
+
+- Completed per-pair failure characterization at offset `50`.
+- Categorized pairs into `Easy`, `Hard`, and `Impossible` using the number of successful actions out of `40`.
+- Category counts: `8` Easy, `15` Hard, `7` Impossible.
+- Easy pairs averaged `2.6` px block displacement and `0.082` rad required rotation.
+- Hard pairs averaged `66.0` px block displacement and `0.809` rad required rotation.
+- Impossible pairs averaged `123.3` px block displacement and `1.145` rad required rotation.
+- Impossible pairs had mean encoder-to-physics correlation `-0.046`, indicating near-zero or inverted latent-to-physical ranking on the hardest configurations.
+- Physical pose distance correlated strongly with success count: Spearman `rho = -0.751`.
+- Block displacement correlated strongly with success count: Spearman `rho = -0.741`.
+- Required rotation correlated strongly with success count: Spearman `rho = -0.627`.
+- Confirmed PushT state layout as `[agent_x, agent_y, block_x, block_y, block_angle, agent_vx, agent_vy]`; the goal is represented by a second future state row, not by fields inside the same 7-D state.
+- Saved detailed output to `results/per_pair_analysis.json`.
+
+## 2026-05-01 — Day 1: Binding Phase 0 decision memo and failure atlas
+
+- Wrote the binding decision memo at `results/decision_memo.md`.
+- Classified the primary failure as a `Case B/E` hybrid under the current analysis protocol: encoder goal geometry fails under large physical displacements, with event-localized characteristics.
+- Bound the next action to representation and SIGReg-style geometry research rather than planner redesign or rollout-loss work.
+- Started the failure atlas in `results/failure_atlas/`.
+- Added atlas pages for large-displacement encoder geometry failure, rotation-dependent encoding failure, and easy baseline controls.
+- Representative failure pairs include pair `21` for large displacement, pair `2` for rotation-sensitive impossible behavior, and pairs `25`, `26`, `28`, and `29` as easy controls.
+- The current Phase 0 interpretation is that LeWM's predictor is faithful and CEM improves over random search, but encoder goal geometry compresses or misorders physically meaningful differences when displacement and rotation grow.
+
 ## Update policy
 
 This file is intended to be append-only. Future entries should:
