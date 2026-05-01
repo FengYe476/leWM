@@ -159,6 +159,12 @@
 - OGBench-Cube smoke test completed with `2/3` success on CPU.
 - Full OGBench-Cube baseline evaluation is pending.
 
+## 2026-05-01 — Day 1: Cube baseline and aggregate diagnostics finalization
+
+- OGBench-Cube baseline reproduced: `66%` success (`33/50`) at offset=`25`. Paper reports `74%`.
+- Aggregate latent diagnostics complete on PushT: predictor faithfully preserves encoder geometry. Straightness real=`0.516` imagined=`0.531`, effective rank real=`107.3` imagined=`106.1`, SIGReg normality real=`0.0016` imagined=`0.0017`. Step-10 prediction error L2=`5.83`.
+- Added resumable OGBench-Cube offset-sweep infrastructure for offsets `25`, `50`, `75`, and `100`, with budget set to `2x` offset and per-offset JSON outputs.
+
 ## Update policy
 
 This file is intended to be append-only. Future entries should:
