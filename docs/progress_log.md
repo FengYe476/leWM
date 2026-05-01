@@ -147,6 +147,18 @@
 - Representative failure pairs include pair `21` for large displacement, pair `2` for rotation-sensitive impossible behavior, and pairs `25`, `26`, `28`, and `29` as easy controls.
 - The current Phase 0 interpretation is that LeWM's predictor is faithful and CEM improves over random search, but encoder goal geometry compresses or misorders physically meaningful differences when displacement and rotation grow.
 
+## 2026-05-01 — Day 1: Aggregate latent diagnostics and Cube pipeline
+
+- Aggregate latent diagnostics complete on PushT: predictor faithfully preserves encoder geometry.
+- Temporal straightness, effective rank, covariance spectrum, and SIGReg-style normality are all near-identical between real encoder latents and imagined predictor latents.
+- Prediction error grows with horizon, with step-10 mean latent L2 error `5.83`, but aggregate latent structure is maintained.
+- Saved aggregate diagnostics to `results/aggregate_latent_diagnostics.json`.
+- Saved covariance spectrum and horizon-metric plots to `results/figures/`.
+- OGBench-Cube evaluation pipeline created in `scripts/eval_cube_baseline.py`.
+- Cube dataset downloaded and extracted to `stablewm_cache/ogbench/cube_single_expert.h5`; extracted HDF5 size is `95GB`.
+- OGBench-Cube smoke test completed with `2/3` success on CPU.
+- Full OGBench-Cube baseline evaluation is pending.
+
 ## Update policy
 
 This file is intended to be append-only. Future entries should:

@@ -1,0 +1,100 @@
+{
+  "checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-cube",
+  "cache_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache",
+  "dataset_name": "ogbench/cube_single_expert",
+  "dataset_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache/ogbench/cube_single_expert.h5",
+  "dataset_stats": {
+    "valid_start_points": 1760000,
+    "total_rows": 2010000,
+    "total_episodes": 10000,
+    "mean_episode_length": 201.0,
+    "median_episode_length": 201.0,
+    "min_episode_length": 201,
+    "max_episode_length": 201
+  },
+  "env_name": "swm/OGBCube-v0",
+  "env_kwargs": {
+    "env_type": "single",
+    "ob_type": "states",
+    "multiview": false,
+    "width": 224,
+    "height": 224,
+    "visualize_info": false,
+    "terminate_at_goal": true
+  },
+  "success_criterion": {
+    "source": "stable_worldmodel.envs.ogbench.cube_env.CubeEnv._compute_successes",
+    "criterion": "cube position distance to target <= 0.04m",
+    "note": "The eval callable also sets target_quat, but this wrapper's success check is position-only."
+  },
+  "seed": 42,
+  "device": "cpu",
+  "num_eval": 3,
+  "num_envs": 1,
+  "goal_offset_steps": 25,
+  "eval_budget": 50,
+  "plan_config": {
+    "horizon": 5,
+    "receding_horizon": 5,
+    "action_block": 5,
+    "warm_start": true
+  },
+  "solver": {
+    "type": "CEMSolver",
+    "num_samples": 300,
+    "n_steps": 30,
+    "topk": 30,
+    "var_scale": 1.0,
+    "batch_size": 1
+  },
+  "success_rate": 66.66666666666666,
+  "episode_successes": [
+    true,
+    true,
+    false
+  ],
+  "episodes": [
+    {
+      "eval_index": 0,
+      "dataset_row": 179381,
+      "episode_idx": 892,
+      "start_step": 89,
+      "goal_step": 114,
+      "success": true
+    },
+    {
+      "eval_index": 1,
+      "dataset_row": 1315670,
+      "episode_idx": 6545,
+      "start_step": 125,
+      "goal_step": 150,
+      "success": true
+    },
+    {
+      "eval_index": 2,
+      "dataset_row": 1555636,
+      "episode_idx": 7739,
+      "start_step": 97,
+      "goal_step": 122,
+      "success": false
+    }
+  ],
+  "chunk_metrics": [
+    {
+      "chunk_start": 0,
+      "chunk_end": 1,
+      "success_rate": 100.0
+    },
+    {
+      "chunk_start": 1,
+      "chunk_end": 2,
+      "success_rate": 100.0
+    },
+    {
+      "chunk_start": 2,
+      "chunk_end": 3,
+      "success_rate": 0.0
+    }
+  ],
+  "elapsed_seconds": 37.1832320690155
+}
