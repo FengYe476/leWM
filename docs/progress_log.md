@@ -103,6 +103,13 @@
 - Offset `50` already lands in the intended diagnostic regime at about `58%` success.
 - Pending confirmation from offsets `75` and `100`, offset `50` is the leading candidate for the first aggregate and per-trajectory failure analysis pass.
 
+## 2026-05-01 — Day 1: PushT long-goal sweep completion
+
+- Long-goal offset sweep complete on PushT.
+- Results: offset `25` -> `96%`, offset `50` -> `58%`, offset `75` -> `16%`, offset `100` -> `10%`.
+- Offset `50` selected as primary diagnostic setting because `58%` falls in the `40-70%` target range.
+- Total sweep time was about `1 hour` on MPS.
+
 ## Update policy
 
 This file is intended to be append-only. Future entries should:
