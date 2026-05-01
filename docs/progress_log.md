@@ -165,6 +165,10 @@
 - Aggregate latent diagnostics complete on PushT: predictor faithfully preserves encoder geometry. Straightness real=`0.516` imagined=`0.531`, effective rank real=`107.3` imagined=`106.1`, SIGReg normality real=`0.0016` imagined=`0.0017`. Step-10 prediction error L2=`5.83`.
 - Added resumable OGBench-Cube offset-sweep infrastructure for offsets `25`, `50`, `75`, and `100`, with budget set to `2x` offset and per-offset JSON outputs.
 
+## 2026-05-01 — Day 1: OGBench-Cube offset sweep completion
+
+- OGBench-Cube offset sweep complete. Results: offset 25→68%, 50→50%, 75→58%, 100→50%. Unlike PushT's steep degradation (96→58→16→10%), Cube shows no horizon-dependent failure — success rate is essentially flat across offsets. This indicates Cube failures originate from 3D visual encoding difficulty rather than long-horizon planning breakdown, consistent with the paper's own observation that encoder training is more challenging in visually complex 3D environments.
+
 ## Update policy
 
 This file is intended to be append-only. Future entries should:

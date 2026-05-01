@@ -1,0 +1,515 @@
+{
+  "checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-cube",
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-cube/lewm_object.ckpt",
+  "cache_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache",
+  "dataset_name": "ogbench/cube_single_expert",
+  "dataset_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache/ogbench/cube_single_expert.h5",
+  "env_name": "swm/OGBCube-v0",
+  "seed": 42,
+  "device": "mps",
+  "num_eval": 50,
+  "num_envs": 50,
+  "goal_offset_steps": 75,
+  "goal_offset_model_steps": 15.0,
+  "eval_budget": 150,
+  "plan_config": {
+    "horizon": 5,
+    "receding_horizon": 5,
+    "action_block": 5,
+    "warm_start": true
+  },
+  "solver": {
+    "type": "CEMSolver",
+    "num_samples": 300,
+    "n_steps": 30,
+    "topk": 30,
+    "var_scale": 1.0,
+    "batch_size": 1
+  },
+  "dataset_stats": {
+    "total_rows": 2010000,
+    "total_episodes": 10000,
+    "fixed_episode_length_rows": 201,
+    "valid_start_formula": "total_episodes * (201 - offset - 1)",
+    "valid_start_points": 1250000,
+    "expected_fixed_length_valid_start_points": 1250000,
+    "fixed_length_assumption_holds": true,
+    "eligible_episodes": 10000,
+    "ineligible_episodes": 0,
+    "eligible_episode_fraction": 1.0,
+    "episode_length_rows": {
+      "min": 201,
+      "mean": 201.0,
+      "median": 201.0,
+      "max": 201
+    }
+  },
+  "success_rate": 57.99999999999999,
+  "num_successes": 29,
+  "success_criterion": {
+    "source": "stable_worldmodel.envs.ogbench.cube_env.CubeEnv._compute_successes",
+    "criterion": "cube position distance to target <= 0.04m"
+  },
+  "episode_successes": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    false,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true
+  ],
+  "episodes": [
+    {
+      "eval_index": 0,
+      "dataset_row": 128258,
+      "episode_idx": 638,
+      "start_step": 20,
+      "goal_step": 95,
+      "success": false
+    },
+    {
+      "eval_index": 1,
+      "dataset_row": 136503,
+      "episode_idx": 679,
+      "start_step": 24,
+      "goal_step": 99,
+      "success": false
+    },
+    {
+      "eval_index": 2,
+      "dataset_row": 172712,
+      "episode_idx": 859,
+      "start_step": 53,
+      "goal_step": 128,
+      "success": true
+    },
+    {
+      "eval_index": 3,
+      "dataset_row": 179351,
+      "episode_idx": 892,
+      "start_step": 59,
+      "goal_step": 134,
+      "success": true
+    },
+    {
+      "eval_index": 4,
+      "dataset_row": 185164,
+      "episode_idx": 921,
+      "start_step": 43,
+      "goal_step": 118,
+      "success": false
+    },
+    {
+      "eval_index": 5,
+      "dataset_row": 189233,
+      "episode_idx": 941,
+      "start_step": 92,
+      "goal_step": 167,
+      "success": true
+    },
+    {
+      "eval_index": 6,
+      "dataset_row": 257493,
+      "episode_idx": 1281,
+      "start_step": 12,
+      "goal_step": 87,
+      "success": false
+    },
+    {
+      "eval_index": 7,
+      "dataset_row": 332086,
+      "episode_idx": 1652,
+      "start_step": 34,
+      "goal_step": 109,
+      "success": true
+    },
+    {
+      "eval_index": 8,
+      "dataset_row": 366882,
+      "episode_idx": 1825,
+      "start_step": 57,
+      "goal_step": 132,
+      "success": true
+    },
+    {
+      "eval_index": 9,
+      "dataset_row": 404892,
+      "episode_idx": 2014,
+      "start_step": 78,
+      "goal_step": 153,
+      "success": false
+    },
+    {
+      "eval_index": 10,
+      "dataset_row": 456716,
+      "episode_idx": 2272,
+      "start_step": 44,
+      "goal_step": 119,
+      "success": true
+    },
+    {
+      "eval_index": 11,
+      "dataset_row": 556238,
+      "episode_idx": 2767,
+      "start_step": 71,
+      "goal_step": 146,
+      "success": false
+    },
+    {
+      "eval_index": 12,
+      "dataset_row": 712575,
+      "episode_idx": 3545,
+      "start_step": 30,
+      "goal_step": 105,
+      "success": false
+    },
+    {
+      "eval_index": 13,
+      "dataset_row": 745219,
+      "episode_idx": 3707,
+      "start_step": 112,
+      "goal_step": 187,
+      "success": true
+    },
+    {
+      "eval_index": 14,
+      "dataset_row": 808832,
+      "episode_idx": 4024,
+      "start_step": 8,
+      "goal_step": 83,
+      "success": false
+    },
+    {
+      "eval_index": 15,
+      "dataset_row": 870253,
+      "episode_idx": 4329,
+      "start_step": 124,
+      "goal_step": 199,
+      "success": true
+    },
+    {
+      "eval_index": 16,
+      "dataset_row": 882065,
+      "episode_idx": 4388,
+      "start_step": 77,
+      "goal_step": 152,
+      "success": true
+    },
+    {
+      "eval_index": 17,
+      "dataset_row": 891242,
+      "episode_idx": 4434,
+      "start_step": 8,
+      "goal_step": 83,
+      "success": false
+    },
+    {
+      "eval_index": 18,
+      "dataset_row": 895764,
+      "episode_idx": 4456,
+      "start_step": 108,
+      "goal_step": 183,
+      "success": true
+    },
+    {
+      "eval_index": 19,
+      "dataset_row": 905196,
+      "episode_idx": 4503,
+      "start_step": 93,
+      "goal_step": 168,
+      "success": true
+    },
+    {
+      "eval_index": 20,
+      "dataset_row": 905369,
+      "episode_idx": 4504,
+      "start_step": 65,
+      "goal_step": 140,
+      "success": true
+    },
+    {
+      "eval_index": 21,
+      "dataset_row": 1005653,
+      "episode_idx": 5003,
+      "start_step": 50,
+      "goal_step": 125,
+      "success": false
+    },
+    {
+      "eval_index": 22,
+      "dataset_row": 1031548,
+      "episode_idx": 5132,
+      "start_step": 16,
+      "goal_step": 91,
+      "success": false
+    },
+    {
+      "eval_index": 23,
+      "dataset_row": 1058142,
+      "episode_idx": 5264,
+      "start_step": 78,
+      "goal_step": 153,
+      "success": true
+    },
+    {
+      "eval_index": 24,
+      "dataset_row": 1096278,
+      "episode_idx": 5454,
+      "start_step": 24,
+      "goal_step": 99,
+      "success": false
+    },
+    {
+      "eval_index": 25,
+      "dataset_row": 1114642,
+      "episode_idx": 5545,
+      "start_step": 97,
+      "goal_step": 172,
+      "success": true
+    },
+    {
+      "eval_index": 26,
+      "dataset_row": 1269590,
+      "episode_idx": 6316,
+      "start_step": 74,
+      "goal_step": 149,
+      "success": true
+    },
+    {
+      "eval_index": 27,
+      "dataset_row": 1294103,
+      "episode_idx": 6438,
+      "start_step": 65,
+      "goal_step": 140,
+      "success": false
+    },
+    {
+      "eval_index": 28,
+      "dataset_row": 1315603,
+      "episode_idx": 6545,
+      "start_step": 58,
+      "goal_step": 133,
+      "success": true
+    },
+    {
+      "eval_index": 29,
+      "dataset_row": 1362602,
+      "episode_idx": 6779,
+      "start_step": 23,
+      "goal_step": 98,
+      "success": true
+    },
+    {
+      "eval_index": 30,
+      "dataset_row": 1401628,
+      "episode_idx": 6973,
+      "start_step": 55,
+      "goal_step": 130,
+      "success": true
+    },
+    {
+      "eval_index": 31,
+      "dataset_row": 1408028,
+      "episode_idx": 7005,
+      "start_step": 23,
+      "goal_step": 98,
+      "success": false
+    },
+    {
+      "eval_index": 32,
+      "dataset_row": 1442045,
+      "episode_idx": 7174,
+      "start_step": 71,
+      "goal_step": 146,
+      "success": false
+    },
+    {
+      "eval_index": 33,
+      "dataset_row": 1478795,
+      "episode_idx": 7357,
+      "start_step": 38,
+      "goal_step": 113,
+      "success": false
+    },
+    {
+      "eval_index": 34,
+      "dataset_row": 1523683,
+      "episode_idx": 7580,
+      "start_step": 103,
+      "goal_step": 178,
+      "success": true
+    },
+    {
+      "eval_index": 35,
+      "dataset_row": 1529833,
+      "episode_idx": 7611,
+      "start_step": 22,
+      "goal_step": 97,
+      "success": true
+    },
+    {
+      "eval_index": 36,
+      "dataset_row": 1555571,
+      "episode_idx": 7739,
+      "start_step": 32,
+      "goal_step": 107,
+      "success": false
+    },
+    {
+      "eval_index": 37,
+      "dataset_row": 1564487,
+      "episode_idx": 7783,
+      "start_step": 104,
+      "goal_step": 179,
+      "success": true
+    },
+    {
+      "eval_index": 38,
+      "dataset_row": 1570879,
+      "episode_idx": 7815,
+      "start_step": 64,
+      "goal_step": 139,
+      "success": true
+    },
+    {
+      "eval_index": 39,
+      "dataset_row": 1579913,
+      "episode_idx": 7860,
+      "start_step": 53,
+      "goal_step": 128,
+      "success": true
+    },
+    {
+      "eval_index": 40,
+      "dataset_row": 1653685,
+      "episode_idx": 8227,
+      "start_step": 58,
+      "goal_step": 133,
+      "success": false
+    },
+    {
+      "eval_index": 41,
+      "dataset_row": 1663505,
+      "episode_idx": 8276,
+      "start_step": 29,
+      "goal_step": 104,
+      "success": false
+    },
+    {
+      "eval_index": 42,
+      "dataset_row": 1687831,
+      "episode_idx": 8397,
+      "start_step": 34,
+      "goal_step": 109,
+      "success": false
+    },
+    {
+      "eval_index": 43,
+      "dataset_row": 1725084,
+      "episode_idx": 8582,
+      "start_step": 102,
+      "goal_step": 177,
+      "success": true
+    },
+    {
+      "eval_index": 44,
+      "dataset_row": 1725669,
+      "episode_idx": 8585,
+      "start_step": 84,
+      "goal_step": 159,
+      "success": true
+    },
+    {
+      "eval_index": 45,
+      "dataset_row": 1784576,
+      "episode_idx": 8878,
+      "start_step": 98,
+      "goal_step": 173,
+      "success": true
+    },
+    {
+      "eval_index": 46,
+      "dataset_row": 1795155,
+      "episode_idx": 8931,
+      "start_step": 24,
+      "goal_step": 99,
+      "success": false
+    },
+    {
+      "eval_index": 47,
+      "dataset_row": 1862724,
+      "episode_idx": 9267,
+      "start_step": 57,
+      "goal_step": 132,
+      "success": true
+    },
+    {
+      "eval_index": 48,
+      "dataset_row": 1951024,
+      "episode_idx": 9706,
+      "start_step": 118,
+      "goal_step": 193,
+      "success": true
+    },
+    {
+      "eval_index": 49,
+      "dataset_row": 1960870,
+      "episode_idx": 9755,
+      "start_step": 115,
+      "goal_step": 190,
+      "success": true
+    }
+  ],
+  "chunk_metrics": [
+    {
+      "chunk_start": 0,
+      "chunk_end": 50,
+      "success_rate": 57.99999999999999
+    }
+  ],
+  "elapsed_seconds": 1285.009272813797
+}

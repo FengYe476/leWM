@@ -28,8 +28,11 @@ lewm-failure-audit/
 │   ├── verify_checkpoint.py
 │   ├── eval_pusht_baseline.py
 │   ├── eval_pusht_sweep.py
+│   ├── eval_cube_baseline.py
+│   ├── eval_cube_sweep.py
 │   ├── run_pusht_full_eval.sh
-│   └── run_pusht_sweep.sh
+│   ├── run_pusht_sweep.sh
+│   └── run_cube_sweep.sh
 ├── third_party/
 │   ├── le-wm/
 │   └── stable-pretraining/
@@ -197,6 +200,8 @@ Sweep runner features:
 - Dataset: `stablewm_cache/pusht_expert_train.h5`
 - Dataset size: 18,685 episodes, 2,336,736 rows
 - Mean episode length: `125.06` rows
+- Cube dataset: `stablewm_cache/ogbench/cube_single_expert.h5`
+- Cube dataset size: 10,000 episodes, 2,010,000 rows, fixed length 201 rows
 - Model size: `18.0M` parameters, not `15M`
 - Encoder size: `5.5M`
 - Predictor stack size: `12.5M`
@@ -207,6 +212,8 @@ Sweep runner features:
 - PushT raw action dimension: `2`
 - PushT effective action dimension in the checkpoint: `10`
 - This comes from raw action dimension times `action_block=5`
+- Cube raw action dimension: `5`
+- Cube effective action dimension in the checkpoint: `25`
 
 ### PushT baseline
 
@@ -216,37 +223,55 @@ Sweep runner features:
 - MPS wall-clock for 50 episodes: about `295s`
 - First batched CEM solve pays a large one-time shader warmup cost
 
-### Long-goal sweep status
+### PushT long-goal sweep
 
 - Offset `25`: `96%` success (`48/50`) in [results/pusht_sweep_offset25.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/pusht_sweep_offset25.json:1)
 - Offset `50`: `58%` success (`29/50`) in [results/pusht_sweep_offset50.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/pusht_sweep_offset50.json:1)
-- Offset `75`: pending
-- Offset `100`: pending
+- Offset `75`: `16%` success (`8/50`) in [results/pusht_sweep_offset75.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/pusht_sweep_offset75.json:1)
+- Offset `100`: `10%` success (`5/50`) in [results/pusht_sweep_offset100.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/pusht_sweep_offset100.json:1)
 
-Current valid starting points by offset:
+PushT valid starting points by offset:
 
 - `25 -> 1,869,611`
 - `50 -> 1,402,587`
 - `75 -> 950,309`
 - `100 -> 559,843`
 
-The offset-50 result already lands in the target diagnostic band of roughly `40-70%` success.
+PushT shows steep horizon-dependent degradation: `96 -> 58 -> 16 -> 10%`. The offset-50 setting lands in the target diagnostic band of roughly `40-70%` success and was used for the three-cost attribution pass.
+
+### OGBench-Cube baseline and sweep
+
+- Baseline offset `25`: `66%` success (`33/50`) in [results/cube_baseline_eval_mps.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/cube_baseline_eval_mps.json:1)
+- Paper reference point: `74%`
+- Sweep offset `25`: `68%` success (`34/50`) in [results/cube_sweep_offset25.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/cube_sweep_offset25.json:1)
+- Sweep offset `50`: `50%` success (`25/50`) in [results/cube_sweep_offset50.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/cube_sweep_offset50.json:1)
+- Sweep offset `75`: `58%` success (`29/50`) in [results/cube_sweep_offset75.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/cube_sweep_offset75.json:1)
+- Sweep offset `100`: `50%` success (`25/50`) in [results/cube_sweep_offset100.json](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/cube_sweep_offset100.json:1)
+
+Cube does not show PushT's horizon-dependent degradation. Success stays essentially flat across offsets, indicating a baseline 3D visual encoding limitation rather than a long-horizon planning breakdown.
+
+### Phase 0 diagnosis
+
+- Three-cost attribution at PushT offset `50`: `corr(C_model, C_real_z) = 0.864`, showing the predictor faithfully preserves encoder geometry.
+- Per-pair encoder-to-physics alignment is weak and heterogeneous: mean `corr(C_real_z, C_real_state) = 0.353 +/- 0.486`.
+- Failure correlates with large physical displacement and rotation: block displacement Spearman `rho = -0.741`, physical pose distance `rho = -0.751`, required rotation `rho = -0.627`.
+- Binding classification: Case B/E hybrid. PushT failures are encoder-goal-geometry failures under large physical displacement, not planner or predictor failures.
 
 ## Status Tracker
 
 | Day | Status | Planned deliverable |
 | --- | --- | --- |
 | Day 0 | ✅ Complete | Environment verification, checkpoint verification, MPS setup notes |
-| Day 1 | 🟡 In progress | Baseline reproduction, long-goal sweep infrastructure, first sweep outputs |
-| Day 2 | ⬜ Pending | Finish PushT offset sweep and summarize offset-dependent failure onset |
-| Day 3 | ⬜ Pending | Freeze the diagnostic offset and prepare aggregate trajectory slices |
-| Day 4 | ⬜ Pending | Implement aggregate encoder / predictor / planner attribution metrics |
-| Day 5 | ⬜ Pending | Run aggregate diagnostics on PushT at the selected stress offset |
-| Day 6 | ⬜ Pending | Add per-trajectory logging and event-localized failure traces |
-| Day 7 | ⬜ Pending | Build decision-tree labeling pass for Cases A-F |
-| Day 8 | ⬜ Pending | Review whether failures cluster in encoder geometry, rollout drift, or planner misspecification |
-| Day 9 | ⬜ Pending | Extend the same audit protocol to OGBench-Cube |
-| Day 10 | ⬜ Pending | Compare PushT and Cube failure signatures |
+| Day 1 | ✅ Complete | Baseline reproduction, long-goal sweep infrastructure, first sweep outputs |
+| Day 2 | ✅ Complete | Finish PushT offset sweep and summarize offset-dependent failure onset |
+| Day 3 | ✅ Complete | Freeze the diagnostic offset and prepare aggregate trajectory slices |
+| Day 4 | ✅ Complete | Implement aggregate encoder / predictor / planner attribution metrics |
+| Day 5 | ✅ Complete | Run aggregate diagnostics on PushT at the selected stress offset |
+| Day 6 | ✅ Complete | Add per-trajectory logging and event-localized failure traces |
+| Day 7 | ✅ Complete | Build decision-tree labeling pass for Cases A-F |
+| Day 8 | ✅ Complete | Review whether failures cluster in encoder geometry, rollout drift, or planner misspecification |
+| Day 9 | ✅ Complete | Extend the same audit protocol to OGBench-Cube |
+| Day 10 | ✅ Complete | Compare PushT and Cube failure signatures |
 | Day 11 | ⬜ Pending | Consolidate frozen exclusions and guard against scope drift |
 | Day 12 | ⬜ Pending | Produce final tables, plots, and representative trajectories |
 | Day 13 | ⬜ Pending | Draft interpretation of failure origin and residual ambiguity |

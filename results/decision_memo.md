@@ -16,6 +16,16 @@ The binding Phase 0 conclusion is that PushT long-horizon degradation is not pri
 - Failure correlates strongly with physical difficulty: physical pose distance versus success has Spearman `rho = -0.751`; block displacement versus success has `rho = -0.741`; required rotation versus success has `rho = -0.627`.
 - Latent endpoint distance compresses large physical changes: Easy pairs average `2.6` px block displacement and latent distance `12.5`; Impossible pairs average `123.3` px block displacement but only latent distance `19.4`.
 
+## Cross-Environment Validation (OGBench-Cube)
+
+The OGBench-Cube offset sweep completed with success rates of `68%`, `50%`, `58%`, and `50%` at offsets `25`, `50`, `75`, and `100`, respectively. In episode counts, this is `34/50`, `25/50`, `29/50`, and `25/50`.
+
+This pattern is qualitatively different from PushT, where the same offset sweep falls steeply from `96%` to `58%`, then `16%` and `10%`. Cube starts from a lower baseline and then stays essentially flat as the goal offset increases.
+
+Interpretation: PushT exhibits genuine long-horizon encoder-geometry failure, matching the Case B/E diagnosis above. Cube instead exhibits a baseline encoder capacity limitation that is horizon-independent, likely reflecting the harder 3D visual encoding problem rather than a planning-horizon breakdown.
+
+This cross-environment contrast validates that the PushT finding is not just a generic model weakness. The failure mode is specifically about how the SIGReg-trained encoder geometry handles large goal displacements in PushT, not a universal inability of the LeWM planner or predictor to operate over longer offsets.
+
 ## Binding Next Action
 
 Case B applies: pivot to representation and SIGReg-style geometry research. Do not spend Phase 1 effort on planner redesign, CEM budget sweeps, or rollout-loss work as the primary intervention.
