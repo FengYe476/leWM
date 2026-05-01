@@ -84,6 +84,21 @@ def parse_action_counts(raw: str) -> dict[str, int]:
     return dict(zip(ACTION_SOURCE_ORDER, values, strict=True))
 
 
+def parse_pair_ids(raw: str) -> list[int]:
+    values = []
+    for chunk in raw.split(","):
+        value = chunk.strip()
+        if not value:
+            continue
+        pair_id = int(value)
+        if pair_id < 0:
+            raise argparse.ArgumentTypeError("--pair-ids must be nonnegative integers")
+        values.append(pair_id)
+    if not values:
+        raise argparse.ArgumentTypeError("--pair-ids must include at least one integer")
+    return list(dict.fromkeys(values))
+
+
 def iso_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -100,10 +115,21 @@ def get_git_commit() -> str:
         return "unknown"
 
 
-def load_pairs(path: Path, max_pairs: int | None) -> tuple[dict, list[dict]]:
+def load_pairs(
+    path: Path,
+    *,
+    max_pairs: int | None,
+    pair_ids: list[int] | None,
+) -> tuple[dict, list[dict]]:
     data = json.loads(path.read_text())
     pairs = sorted(data["pairs"], key=lambda pair: int(pair["pair_id"]))
-    if max_pairs is not None:
+    if pair_ids is not None:
+        by_id = {int(pair["pair_id"]): pair for pair in pairs}
+        missing = sorted(set(pair_ids) - set(by_id))
+        if missing:
+            raise ValueError(f"Requested pair_ids not found in pairs file: {missing}")
+        pairs = [by_id[pair_id] for pair_id in sorted(pair_ids)]
+    elif max_pairs is not None:
         pairs = pairs[:max_pairs]
     return data, pairs
 
@@ -179,8 +205,16 @@ def build_output(
     device: str,
     seed: int,
     action_counts: dict[str, int],
+    fixed_sequence_length_raw_steps: int,
+    fixed_sequence_length_action_blocks: int,
+    offset_steps_at_runtime: int,
     existing: dict | None,
 ) -> dict:
+    sequence_metadata = {
+        "fixed_sequence_length_raw_steps": fixed_sequence_length_raw_steps,
+        "fixed_sequence_length_action_blocks": fixed_sequence_length_action_blocks,
+        "offset_steps_at_runtime": offset_steps_at_runtime,
+    }
     if existing is not None:
         existing["metadata"].update(
             {
@@ -192,6 +226,7 @@ def build_output(
                 "cem_config": cem_config_json(),
                 "git_commit": get_git_commit(),
                 "timestamp_finished": None,
+                **sequence_metadata,
             }
         )
         return existing
@@ -207,9 +242,28 @@ def build_output(
             "git_commit": get_git_commit(),
             "timestamp_started": iso_now(),
             "timestamp_finished": None,
+            **sequence_metadata,
         },
         "pairs": [],
     }
+
+
+def validate_requested_pair_offsets(pairs: list[dict], *, offset: int) -> None:
+    mismatches = [
+        {
+            "pair_id": int(pair["pair_id"]),
+            "start_row": int(pair["start_row"]),
+            "goal_row": int(pair["goal_row"]),
+            "delta": int(pair["goal_row"]) - int(pair["start_row"]),
+        }
+        for pair in pairs
+        if int(pair["goal_row"]) - int(pair["start_row"]) != offset
+    ]
+    if mismatches:
+        raise ValueError(
+            "Pair file offset mismatch at runtime. "
+            f"Expected offset={offset}; examples={mismatches[:5]}"
+        )
 
 
 def write_output(path: Path, output: dict, *, finished: bool = False) -> None:
@@ -364,6 +418,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device", default="mps")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--max-pairs", type=int, default=None)
+    parser.add_argument("--pair-ids", type=parse_pair_ids, default=None)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument(
         "--action-counts",
@@ -383,11 +438,18 @@ def main() -> int:
     if args.action_counts["CEM_early"] > TOPK or args.action_counts["CEM_late"] > TOPK:
         raise ValueError("CEM action counts must be <= TOPK=30")
 
-    pairs_data, requested_pairs = load_pairs(args.pairs_path, args.max_pairs)
+    pairs_data, requested_pairs = load_pairs(
+        args.pairs_path,
+        max_pairs=args.max_pairs,
+        pair_ids=args.pair_ids,
+    )
     pair_metadata = pairs_data["metadata"]
     offset = int(pair_metadata["offset"])
     if offset % ACTION_BLOCK != 0:
         raise ValueError("Track A offset must be divisible by action_block=5")
+    validate_requested_pair_offsets(requested_pairs, offset=offset)
+    fixed_sequence_length_raw_steps = offset
+    fixed_sequence_length_action_blocks = fixed_sequence_length_raw_steps // ACTION_BLOCK
     dataset_path = Path(pair_metadata["dataset_path"])
     cache_dir = dataset_path.parent
     dataset_name = dataset_path.stem
@@ -400,6 +462,9 @@ def main() -> int:
         device=args.device,
         seed=args.seed,
         action_counts=args.action_counts,
+        fixed_sequence_length_raw_steps=fixed_sequence_length_raw_steps,
+        fixed_sequence_length_action_blocks=fixed_sequence_length_action_blocks,
+        offset_steps_at_runtime=offset,
         existing=existing,
     )
     completed = {int(pair["pair_id"]) for pair in output["pairs"]}
@@ -412,6 +477,8 @@ def main() -> int:
     print(f"checkpoint_dir: {checkpoint_dir}")
     print(f"device: {args.device}")
     print(f"offset: {offset}")
+    print(f"fixed_sequence_length_raw_steps: {fixed_sequence_length_raw_steps}")
+    print(f"fixed_sequence_length_action_blocks: {fixed_sequence_length_action_blocks}")
     print(f"action_counts: {args.action_counts}")
     print(f"resume_completed: {len(completed)}")
 
