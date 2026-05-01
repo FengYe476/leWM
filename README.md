@@ -2,6 +2,12 @@
 
 This repository tracks a focused Phase 0 audit of LeWorldModel (LeWM), a lightweight JEPA world model for goal-conditioned planning from pixels. The project goal is not to improve the model yet, but to localize where long-horizon failures originate once the task moves beyond the near-ceiling PushT baseline regime. The audit starts from a faithful reproduction of the published evaluation pipeline, then applies controlled long-goal stress tests and structured diagnostics to separate failures caused by encoder geometry, predictor rollout quality, planner behavior, and event-localized breakdowns along individual trajectories.
 
+## Phase 0 Conclusion
+
+Phase 0 is complete. The binding conclusion is that PushT long-horizon degradation is a Case B/E hybrid: encoder goal geometry fails under large physical displacements, while the predictor faithfully preserves that flawed geometry and the planner is not the dominant bottleneck. OGBench-Cube shows a separate horizon-independent baseline 3D encoding difficulty rather than PushT-like long-horizon collapse.
+
+The final synthesis is [results/phase0_report.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase0_report.md:1). The shorter binding memo is [results/decision_memo.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/decision_memo.md:1), and the failure atlas is under [results/failure_atlas/](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/failure_atlas/01_large_displacement_encoder_geometry_failure.md:1).
+
 ## Research Question
 
 Where does LeWM's long-horizon goal-conditioned planning failure originate?
@@ -272,10 +278,10 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 | Day 8 | ✅ Complete | Review whether failures cluster in encoder geometry, rollout drift, or planner misspecification |
 | Day 9 | ✅ Complete | Extend the same audit protocol to OGBench-Cube |
 | Day 10 | ✅ Complete | Compare PushT and Cube failure signatures |
-| Day 11 | ⬜ Pending | Consolidate frozen exclusions and guard against scope drift |
-| Day 12 | ⬜ Pending | Produce final tables, plots, and representative trajectories |
-| Day 13 | ⬜ Pending | Draft interpretation of failure origin and residual ambiguity |
-| Day 14 | ⬜ Pending | Final Phase 0 writeup and handoff package |
+| Day 11 | ✅ Complete | Consolidate frozen exclusions and guard against scope drift |
+| Day 12 | ✅ Complete | Produce final tables, plots, and representative trajectories |
+| Day 13 | ✅ Complete | Draft interpretation of failure origin and residual ambiguity |
+| Day 14 | ✅ Complete | Final Phase 0 writeup and handoff package |
 
 ## Additional Docs
 
@@ -283,3 +289,5 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 - [docs/progress_log.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/progress_log.md:1)
 - [docs/day0_status_table.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/day0_status_table.md:1)
 - [docs/mps_setup.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/mps_setup.md:1)
+- [results/phase0_report.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase0_report.md:1)
+- [results/decision_memo.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/decision_memo.md:1)
