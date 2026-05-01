@@ -1,0 +1,76 @@
+{
+  "checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-pusht",
+  "cache_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache",
+  "dataset_name": "pusht_expert_train",
+  "env_name": "swm/PushT-v1",
+  "seed": 42,
+  "device": "cpu",
+  "num_eval": 3,
+  "num_envs": 1,
+  "goal_offset_steps": 25,
+  "eval_budget": 50,
+  "plan_config": {
+    "horizon": 5,
+    "receding_horizon": 5,
+    "action_block": 5,
+    "warm_start": true
+  },
+  "solver": {
+    "type": "CEMSolver",
+    "num_samples": 300,
+    "n_steps": 30,
+    "topk": 30,
+    "var_scale": 1.0,
+    "batch_size": 1
+  },
+  "success_rate": 100.0,
+  "episode_successes": [
+    true,
+    true,
+    true
+  ],
+  "episodes": [
+    {
+      "eval_index": 0,
+      "dataset_row": 209214,
+      "episode_idx": 1694,
+      "start_step": 63,
+      "goal_step": 88,
+      "success": true
+    },
+    {
+      "eval_index": 1,
+      "dataset_row": 1529318,
+      "episode_idx": 12221,
+      "start_step": 77,
+      "goal_step": 102,
+      "success": true
+    },
+    {
+      "eval_index": 2,
+      "dataset_row": 1805170,
+      "episode_idx": 14327,
+      "start_step": 64,
+      "goal_step": 89,
+      "success": true
+    }
+  ],
+  "chunk_metrics": [
+    {
+      "chunk_start": 0,
+      "chunk_end": 1,
+      "success_rate": 100.0
+    },
+    {
+      "chunk_start": 1,
+      "chunk_end": 2,
+      "success_rate": 100.0
+    },
+    {
+      "chunk_start": 2,
+      "chunk_end": 3,
+      "success_rate": 100.0
+    }
+  ],
+  "elapsed_seconds": 34.55806589126587
+}

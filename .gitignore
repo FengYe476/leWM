@@ -1,0 +1,7 @@
+third_party/
+checkpoints/
+stablewm_cache/
+__pycache__/
+*.py[cod]
+*.h5
+*.h5.zst
