@@ -33,7 +33,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 DEFAULT_PAIRS_PATH = PROJECT_ROOT / "results" / "phase1" / "track_a_pairs.json"
 DEFAULT_TRACK_A_THREE_COST_PATH = PROJECT_ROOT / "results" / "phase1" / "track_a_three_cost.json"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "results" / "phase1" / "d3_oracle_ablation"
-REPORT_PATH = PROJECT_ROOT / "docs" / "phase1" / "d3_oracle_ablation_report.md"
+DEFAULT_REPORT_PATH = PROJECT_ROOT / "docs" / "phase1" / "d3_oracle_ablation_report.md"
 DEFAULT_CELL_FILTER = "D3xR0,D3xR1,D3xR2,D3xR3"
 DEFAULT_VARIANTS = "V3,V1,V2"
 ACTION_SOURCE_ORDER = ("data", "smooth_random", "CEM_early", "CEM_late")
@@ -102,6 +102,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--max-pairs-per-cell", type=int, default=None)
     parser.add_argument("--track-a-three-cost-path", type=Path, default=DEFAULT_TRACK_A_THREE_COST_PATH)
+    parser.add_argument("--report-path", type=Path, default=DEFAULT_REPORT_PATH)
+    parser.add_argument("--output-prefix", default="d3_oracle")
     return parser.parse_args()
 
 
@@ -177,8 +179,8 @@ def cem_config_json() -> dict:
     }
 
 
-def output_path_for_variant(output_dir: Path, variant: str) -> Path:
-    return output_dir / f"d3_oracle_{variant}.json"
+def output_path_for_variant(output_dir: Path, variant: str, output_prefix: str = "d3_oracle") -> Path:
+    return output_dir / f"{output_prefix}_{variant}.json"
 
 
 def build_variant_output(
@@ -478,7 +480,7 @@ def evaluate_variant(
 ) -> dict:
     import gymnasium as gym
 
-    output_path = output_path_for_variant(args.output_dir, variant)
+    output_path = output_path_for_variant(args.output_dir, variant, args.output_prefix)
     existing = json.loads(output_path.read_text()) if args.resume and output_path.exists() else None
     output = build_variant_output(
         variant=variant,
@@ -566,7 +568,16 @@ def success_rate_for_actions(actions: list[dict]) -> float | None:
     return float(sum(bool(action["success"]) for action in actions) / len(actions))
 
 
-def variant_success_tables(outputs: dict[str, dict], cells: list[str]) -> dict:
+def infer_overall_label(cells: list[str]) -> str:
+    rows = {cell.split("x")[0] for cell in cells}
+    if len(rows) == 1:
+        return f"{next(iter(rows))}_overall"
+    return "overall"
+
+
+def variant_success_tables(outputs: dict[str, dict], cells: list[str], overall_label: str | None = None) -> dict:
+    if overall_label is None:
+        overall_label = infer_overall_label(cells)
     tables = {}
     for variant, output in outputs.items():
         per_cell = {}
@@ -584,7 +595,7 @@ def variant_success_tables(outputs: dict[str, dict], cells: list[str]) -> dict:
                 "cem_late_success_rate": success_rate_for_actions(late),
                 "cem_late_records": len(late),
             }
-        per_cell["D3_overall"] = {
+        per_cell[overall_label] = {
             "success_rate": success_rate_for_actions(all_actions),
             "n_records": len(all_actions),
             "cem_late_success_rate": success_rate_for_actions(all_late),
@@ -657,6 +668,22 @@ def sanity_gate(v3_output: dict, refs: dict, cells: list[str], tolerance_pp: flo
     return {"passed": passed, "tolerance_pp": tolerance_pp, "per_cell": per_cell}
 
 
+def relative_failure_reduction(latent_success: float, oracle_success: float) -> float | None:
+    """Return (1 - oracle_success) / (1 - latent_success).
+
+    When latent success is already 1.0, the denominator is zero. If oracle is
+    also 1.0, there are no latent failures to reduce, so the value is undefined
+    and represented as None. If oracle is worse than 1.0, return infinity.
+    """
+    latent_success = float(latent_success)
+    oracle_success = float(oracle_success)
+    denom = 1.0 - latent_success
+    numerator = 1.0 - oracle_success
+    if denom == 0.0:
+        return None if numerator == 0.0 else math.inf
+    return float(numerator / denom)
+
+
 def fmt(value: float | None, digits: int = 3) -> str:
     if value is None or not np.isfinite(value):
         return "NA"
@@ -679,7 +706,8 @@ def write_report(
     cells: list[str],
     args: argparse.Namespace,
 ) -> None:
-    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    report_path = args.report_path
+    report_path.parent.mkdir(parents=True, exist_ok=True)
     lines = []
     lines.append("# D3 Oracle Cost-Criterion Ablation Report")
     lines.append("")
@@ -712,7 +740,8 @@ def write_report(
     present = [variant for variant in ("V3", "V1", "V2") if variant in success_tables]
     lines.append("| Cell | " + " | ".join(f"{variant} success" for variant in present) + " |")
     lines.append("|---" + "|---:" * len(present) + "|")
-    for cell in [*cells, "D3_overall"]:
+    overall_label = infer_overall_label(cells)
+    for cell in [*cells, overall_label]:
         lines.append(
             f"| {cell} | "
             + " | ".join(pct(success_tables[variant][cell]["success_rate"]) for variant in present)
@@ -721,7 +750,7 @@ def write_report(
     lines.append("")
     lines.append("| Cell | " + " | ".join(f"{variant} CEM_late success" for variant in present) + " |")
     lines.append("|---" + "|---:" * len(present) + "|")
-    for cell in [*cells, "D3_overall"]:
+    for cell in [*cells, overall_label]:
         lines.append(
             f"| {cell} | "
             + " | ".join(pct(success_tables[variant][cell]["cem_late_success_rate"]) for variant in present)
@@ -749,7 +778,7 @@ def write_report(
     if all(variant in success_tables for variant in ("V3", "V1", "V2")):
         lines.append("| Cell | V1 - V3 pp | V2 - V3 pp | V2 - V1 pp |")
         lines.append("|---|---:|---:|---:|")
-        for cell in [*cells, "D3_overall"]:
+        for cell in [*cells, overall_label]:
             v3 = success_tables["V3"][cell]["success_rate"]
             v1 = success_tables["V1"][cell]["success_rate"]
             v2 = success_tables["V2"][cell]["success_rate"]
@@ -769,7 +798,7 @@ def write_report(
     lines.append("- V2 indicator cost has zero gradient inside the success region, so CEM may behave qualitatively differently.")
     lines.append("- Data and smooth_random records are duplicated per variant for easy per-variant aggregation.")
     lines.append("")
-    REPORT_PATH.write_text("\n".join(lines))
+    report_path.write_text("\n".join(lines))
 
 
 def main() -> int:
@@ -777,6 +806,7 @@ def main() -> int:
     args.pairs_path = args.pairs_path.expanduser().resolve()
     args.output_dir = args.output_dir.expanduser().resolve()
     args.track_a_three_cost_path = args.track_a_three_cost_path.expanduser().resolve()
+    args.report_path = args.report_path.expanduser().resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     cells = parse_csv(args.cell_filter)
     variants = parse_csv(args.variants)
@@ -869,7 +899,7 @@ def main() -> int:
             cells=cells,
             args=args,
         )
-        print(json.dumps({"v3_sanity_gate": gate, "report": str(REPORT_PATH)}, indent=2))
+        print(json.dumps({"v3_sanity_gate": gate, "report": str(args.report_path)}, indent=2))
         return 2
 
     for variant in variants:
@@ -906,7 +936,7 @@ def main() -> int:
                 "v3_sanity_gate": gate,
                 "success_tables": success_tables,
                 "cost_shape": shape_table,
-                "report": str(REPORT_PATH),
+                "report": str(args.report_path),
             },
             indent=2,
         )
