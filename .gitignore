@@ -6,3 +6,4 @@ __pycache__/
 *.h5
 *.h5.zst
 docs/phase1/*.docx
+*.egg-info/
