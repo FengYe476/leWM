@@ -15,44 +15,42 @@ Track A set out to turn the Phase 0 PushT offset-50 diagnosis from a 30-pair ran
 
 3. [results/phase1/track_a_three_cost.json](../../results/phase1/track_a_three_cost.json): full Track A latent-CEM three-cost run, 100 pairs x 80 actions.
 4. [docs/phase1/track_a_three_cost_run_report.md](track_a_three_cost_run_report.md): run provenance, per-cell success/correlation table, and global source success rates.
-5. [results/phase1/track_a_three_cost_smoke.json](../../results/phase1/track_a_three_cost_smoke.json): initial smoke run.
-6. [results/phase1/track_a_three_cost_smoke_hard.json](../../results/phase1/track_a_three_cost_smoke_hard.json): hard-cell smoke run.
-7. [results/phase1/track_a_analysis/track_a_analysis.json](../../results/phase1/track_a_analysis/track_a_analysis.json): DP1 statistics, per-cell tables, and figure paths.
-8. [docs/phase1/track_a_analysis_report.md](track_a_analysis_report.md): DP1 result, heatmaps, and sign-reversal summary.
+5. [results/phase1/track_a_analysis/track_a_analysis.json](../../results/phase1/track_a_analysis/track_a_analysis.json): DP1 statistics, per-cell tables, and figure paths.
+6. [docs/phase1/track_a_analysis_report.md](track_a_analysis_report.md): DP1 result, heatmaps, and sign-reversal summary.
 
 ### Aggregate Analyses
 
-9. [results/phase1/track_a_analysis/track_a_sign_reversal_pairs.json](../../results/phase1/track_a_analysis/track_a_sign_reversal_pairs.json): pairs with negative per-pair Spearman rho.
-10. [results/phase1/track_a_analysis/failure_mode_decomposition.json](../../results/phase1/track_a_analysis/failure_mode_decomposition.json): all_fail/some_succ by encoder-rho quadrant.
-11. [results/phase1/track_a_analysis/d_row_cost_diagnosis.json](../../results/phase1/track_a_analysis/d_row_cost_diagnosis.json): D-row cost magnitudes and row-wise Pearson correlations.
-12. [docs/phase1/track_a_supplementary_findings.md](track_a_supplementary_findings.md): failure-mode decomposition and D-row cost-magnitude fact sheet.
-13. [results/phase1/figures/track_a/success_rate_heatmap.png](../../results/phase1/figures/track_a/success_rate_heatmap.png): success-rate heatmap.
-14. [results/phase1/figures/track_a/mean_pair_spearman_heatmap.png](../../results/phase1/figures/track_a/mean_pair_spearman_heatmap.png): mean per-pair Spearman heatmap.
-15. [results/phase1/figures/track_a/std_pair_spearman_heatmap.png](../../results/phase1/figures/track_a/std_pair_spearman_heatmap.png): per-cell Spearman standard-deviation heatmap.
-16. [results/phase1/figures/track_a/cell_model_realz_pearson_heatmap.png](../../results/phase1/figures/track_a/cell_model_realz_pearson_heatmap.png): model-vs-real-latent Pearson heatmap.
-17. [results/phase1/figures/track_a/sign_reversal_distribution.png](../../results/phase1/figures/track_a/sign_reversal_distribution.png): sign-reversal distribution plot.
-18. [results/phase1/figures/track_a/per_cell_rho_distribution.png](../../results/phase1/figures/track_a/per_cell_rho_distribution.png): per-cell rho distribution.
-19. [results/phase1/figures/track_a/failure_mode_quadrants.png](../../results/phase1/figures/track_a/failure_mode_quadrants.png): failure quadrant plot.
-20. [results/phase1/figures/track_a/failure_mode_counts_grid.png](../../results/phase1/figures/track_a/failure_mode_counts_grid.png): failure mode counts over the 4x4 grid.
-21. [results/phase1/figures/track_a/cost_magnitude_by_row.png](../../results/phase1/figures/track_a/cost_magnitude_by_row.png): row-wise cost magnitude distributions.
-22. [results/phase1/figures/track_a/best_cost_per_pair_by_row.png](../../results/phase1/figures/track_a/best_cost_per_pair_by_row.png): best observed physical-state cost per pair by D row.
-23. [results/phase1/figures/track_a/row_pearson_correlations.png](../../results/phase1/figures/track_a/row_pearson_correlations.png): row-wise Pearson correlations among costs.
+7. [results/phase1/track_a_analysis/track_a_sign_reversal_pairs.json](../../results/phase1/track_a_analysis/track_a_sign_reversal_pairs.json): pairs with negative per-pair Spearman rho.
+8. [results/phase1/track_a_analysis/failure_mode_decomposition.json](../../results/phase1/track_a_analysis/failure_mode_decomposition.json): all_fail/some_succ by encoder-rho quadrant.
+9. [results/phase1/track_a_analysis/d_row_cost_diagnosis.json](../../results/phase1/track_a_analysis/d_row_cost_diagnosis.json): D-row cost magnitudes and row-wise Pearson correlations.
+10. [docs/phase1/track_a_supplementary_findings.md](track_a_supplementary_findings.md): failure-mode decomposition and D-row cost-magnitude fact sheet.
+11. [results/phase1/figures/track_a/success_rate_heatmap.png](../../results/phase1/figures/track_a/success_rate_heatmap.png): success-rate heatmap.
+12. [results/phase1/figures/track_a/mean_pair_spearman_heatmap.png](../../results/phase1/figures/track_a/mean_pair_spearman_heatmap.png): mean per-pair Spearman heatmap.
+13. [results/phase1/figures/track_a/std_pair_spearman_heatmap.png](../../results/phase1/figures/track_a/std_pair_spearman_heatmap.png): per-cell Spearman standard-deviation heatmap.
+14. [results/phase1/figures/track_a/cell_model_realz_pearson_heatmap.png](../../results/phase1/figures/track_a/cell_model_realz_pearson_heatmap.png): model-vs-real-latent Pearson heatmap.
+15. [results/phase1/figures/track_a/sign_reversal_distribution.png](../../results/phase1/figures/track_a/sign_reversal_distribution.png): sign-reversal distribution plot.
+16. [results/phase1/figures/track_a/per_cell_rho_distribution.png](../../results/phase1/figures/track_a/per_cell_rho_distribution.png): per-cell rho distribution.
+17. [results/phase1/figures/track_a/failure_mode_quadrants.png](../../results/phase1/figures/track_a/failure_mode_quadrants.png): failure quadrant plot.
+18. [results/phase1/figures/track_a/failure_mode_counts_grid.png](../../results/phase1/figures/track_a/failure_mode_counts_grid.png): failure mode counts over the 4x4 grid.
+19. [results/phase1/figures/track_a/cost_magnitude_by_row.png](../../results/phase1/figures/track_a/cost_magnitude_by_row.png): row-wise cost magnitude distributions.
+20. [results/phase1/figures/track_a/best_cost_per_pair_by_row.png](../../results/phase1/figures/track_a/best_cost_per_pair_by_row.png): best observed physical-state cost per pair by D row.
+21. [results/phase1/figures/track_a/row_pearson_correlations.png](../../results/phase1/figures/track_a/row_pearson_correlations.png): row-wise Pearson correlations among costs.
 
 ### Oracle CEM Ablation
 
-24. [results/phase1/d0_oracle_ablation/d0_oracle_V3.json](../../results/phase1/d0_oracle_ablation/d0_oracle_V3.json): D0 oracle CEM with V3 cost.
-25. [results/phase1/d1_oracle_ablation/d1_oracle_V3.json](../../results/phase1/d1_oracle_ablation/d1_oracle_V3.json): D1 oracle CEM with V3 cost.
-26. [results/phase1/d2_oracle_ablation/d2_oracle_V3.json](../../results/phase1/d2_oracle_ablation/d2_oracle_V3.json): D2 oracle CEM with V3 cost.
-27. [results/phase1/d3_oracle_ablation/d3_oracle_V3.json](../../results/phase1/d3_oracle_ablation/d3_oracle_V3.json): D3 oracle CEM with V3 cost.
-28. [docs/phase1/oracle_v3_row_comparison.md](oracle_v3_row_comparison.md): latent vs V3 oracle row comparison and heatmaps.
-29. [results/phase1/v1_oracle_ablation/v1_d0.json](../../results/phase1/v1_oracle_ablation/v1_d0.json) through [results/phase1/v1_oracle_ablation/v1_d3.json](../../results/phase1/v1_oracle_ablation/v1_d3.json): V1 hinge oracle CEM, CEM-only outputs for all rows.
-30. [results/phase1/v2_oracle_ablation/v2_d0.json](../../results/phase1/v2_oracle_ablation/v2_d0.json) through [results/phase1/v2_oracle_ablation/v2_d3.json](../../results/phase1/v2_oracle_ablation/v2_d3.json): V2 indicator oracle CEM, CEM-only outputs for all rows.
-31. [docs/phase1/oracle_full_variant_comparison.md](oracle_full_variant_comparison.md): latent/V3/V1/V2 matrix, sanity checks, and cost-shape sensitivity.
-32. [results/phase1/figures/track_a/oracle_vs_latent_delta_heatmap.png](../../results/phase1/figures/track_a/oracle_vs_latent_delta_heatmap.png): V3-minus-latent CEM_late delta heatmap.
-33. [results/phase1/figures/track_a/v3_vs_v1_delta_heatmap.png](../../results/phase1/figures/track_a/v3_vs_v1_delta_heatmap.png): V1-minus-V3 CEM_late delta heatmap.
-34. [results/phase1/figures/track_a/v3_vs_v2_delta_heatmap.png](../../results/phase1/figures/track_a/v3_vs_v2_delta_heatmap.png): V2-minus-V3 CEM_late delta heatmap.
-35. [results/phase1/figures/track_a/v1_vs_v2_delta_heatmap.png](../../results/phase1/figures/track_a/v1_vs_v2_delta_heatmap.png): V2-minus-V1 CEM_late delta heatmap.
-36. [results/phase1/figures/track_a/full_variant_success_grid.png](../../results/phase1/figures/track_a/full_variant_success_grid.png): four-variant success grid.
+22. [results/phase1/d0_oracle_ablation/d0_oracle_V3.json](../../results/phase1/d0_oracle_ablation/d0_oracle_V3.json): D0 oracle CEM with V3 cost.
+23. [results/phase1/d1_oracle_ablation/d1_oracle_V3.json](../../results/phase1/d1_oracle_ablation/d1_oracle_V3.json): D1 oracle CEM with V3 cost.
+24. [results/phase1/d2_oracle_ablation/d2_oracle_V3.json](../../results/phase1/d2_oracle_ablation/d2_oracle_V3.json): D2 oracle CEM with V3 cost.
+25. [results/phase1/d3_oracle_ablation/d3_oracle_V3.json](../../results/phase1/d3_oracle_ablation/d3_oracle_V3.json): D3 oracle CEM with V3 cost.
+26. [docs/phase1/oracle_v3_row_comparison.md](oracle_v3_row_comparison.md): latent vs V3 oracle row comparison and heatmaps.
+27. [results/phase1/v1_oracle_ablation/v1_d0.json](../../results/phase1/v1_oracle_ablation/v1_d0.json) through [results/phase1/v1_oracle_ablation/v1_d3.json](../../results/phase1/v1_oracle_ablation/v1_d3.json): V1 hinge oracle CEM, CEM-only outputs for all rows.
+28. [results/phase1/v2_oracle_ablation/v2_d0.json](../../results/phase1/v2_oracle_ablation/v2_d0.json) through [results/phase1/v2_oracle_ablation/v2_d3.json](../../results/phase1/v2_oracle_ablation/v2_d3.json): V2 indicator oracle CEM, CEM-only outputs for all rows.
+29. [docs/phase1/oracle_full_variant_comparison.md](oracle_full_variant_comparison.md): latent/V3/V1/V2 matrix, sanity checks, and cost-shape sensitivity.
+30. [results/phase1/figures/track_a/oracle_vs_latent_delta_heatmap.png](../../results/phase1/figures/track_a/oracle_vs_latent_delta_heatmap.png): V3-minus-latent CEM_late delta heatmap.
+31. [results/phase1/figures/track_a/v3_vs_v1_delta_heatmap.png](../../results/phase1/figures/track_a/v3_vs_v1_delta_heatmap.png): V1-minus-V3 CEM_late delta heatmap.
+32. [results/phase1/figures/track_a/v3_vs_v2_delta_heatmap.png](../../results/phase1/figures/track_a/v3_vs_v2_delta_heatmap.png): V2-minus-V3 CEM_late delta heatmap.
+33. [results/phase1/figures/track_a/v1_vs_v2_delta_heatmap.png](../../results/phase1/figures/track_a/v1_vs_v2_delta_heatmap.png): V2-minus-V1 CEM_late delta heatmap.
+34. [results/phase1/figures/track_a/full_variant_success_grid.png](../../results/phase1/figures/track_a/full_variant_success_grid.png): four-variant success grid.
 
 ## 3. Headline Findings
 
@@ -91,8 +89,10 @@ This map is an evidence-based inference, not a causal proof. Labels summarize th
 |---|---|---|---|---|
 | D0 | easy / no bottleneck | cost misalignment | both | cost misalignment |
 | D1 | cost misalignment | both | both | cost misalignment |
-| D2 | both | predictor sharpness | predictor sharpness | cost misalignment |
+| D2 | cost misalignment | predictor sharpness | predictor sharpness | cost misalignment |
 | D3 | predictor sharpness | predictor sharpness | predictor sharpness | both |
+
+Note: D2xR0 was previously labeled "both" in an earlier draft; corrected to "cost misalignment" on review because the V3-vs-latent gap is exactly 0.00pp.
 
 The labels mean: predictor sharpness when switching from latent CEM to oracle state-cost CEM yields clear gains; cost misalignment when V3's scalar cost underperforms the conjunctive success criterion and V1 repairs much of the gap; both when both axes move the numbers materially; easy / no bottleneck when latent CEM already saturates. No final cell is labeled task infeasible because V1's high success in multiple R3 cells, including D3xR3, falsifies a blanket infeasibility reading for offset 50.
 
