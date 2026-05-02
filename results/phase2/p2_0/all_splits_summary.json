@@ -1,0 +1,1332 @@
+{
+  "split1": {
+    "test_pair_ids": [
+      7,
+      29,
+      33,
+      41,
+      48,
+      54,
+      56,
+      59,
+      63,
+      69,
+      76,
+      77,
+      78,
+      79,
+      95
+    ],
+    "n_test_pairs": 15,
+    "n_test_records": 1200,
+    "euclidean": {
+      "global_spearman": 0.5993085807861925,
+      "pairwise_accuracy": 0.6809094290496559,
+      "per_pair_spearman_mean": 0.4465325942346147,
+      "per_pair_spearman_std": 0.4496433488160481,
+      "per_pair_spearman": {
+        "7": {
+          "spearman": 0.6463345875018186,
+          "n_records": 80
+        },
+        "29": {
+          "spearman": -0.11438352420174266,
+          "n_records": 80
+        },
+        "33": {
+          "spearman": -0.35554617871195493,
+          "n_records": 80
+        },
+        "41": {
+          "spearman": 0.7866504124759586,
+          "n_records": 80
+        },
+        "48": {
+          "spearman": 0.8385411339385042,
+          "n_records": 80
+        },
+        "54": {
+          "spearman": 0.7325768481694803,
+          "n_records": 80
+        },
+        "56": {
+          "spearman": -0.13320127312248364,
+          "n_records": 80
+        },
+        "59": {
+          "spearman": 0.47654505277316783,
+          "n_records": 80
+        },
+        "63": {
+          "spearman": 0.4370543037146692,
+          "n_records": 80
+        },
+        "69": {
+          "spearman": -0.44336653052638814,
+          "n_records": 80
+        },
+        "76": {
+          "spearman": 0.7498066059259966,
+          "n_records": 80
+        },
+        "77": {
+          "spearman": 0.8471494573770605,
+          "n_records": 80
+        },
+        "78": {
+          "spearman": 0.6270785157937082,
+          "n_records": 80
+        },
+        "79": {
+          "spearman": 0.8955627421730142,
+          "n_records": 80
+        },
+        "95": {
+          "spearman": 0.7071867602384119,
+          "n_records": 80
+        }
+      }
+    },
+    "models": {
+      "small": {
+        "global_spearman": 0.4422086509507407,
+        "pairwise_accuracy": 0.7773154175190626,
+        "per_pair_spearman_mean": 0.6509587494563449,
+        "per_pair_spearman_std": 0.3358641632316912,
+        "best_epoch": 7,
+        "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_small/split1_random_70_15_15_small_seed0_test_metrics.json",
+        "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_small/split1_random_70_15_15_small_seed0_best.pt",
+        "delta_global_spearman": -0.15709992983545185,
+        "delta_pairwise_accuracy": 0.09640598846940673,
+        "delta_per_pair_spearman_mean": 0.2044261552217302
+      },
+      "large": {
+        "global_spearman": 0.5121358195582277,
+        "pairwise_accuracy": 0.8122326576157709,
+        "per_pair_spearman_mean": 0.7213255749108156,
+        "per_pair_spearman_std": 0.28952834787856124,
+        "best_epoch": 2,
+        "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_large/split1_random_70_15_15_large_seed0_test_metrics.json",
+        "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_large/split1_random_70_15_15_large_seed0_best.pt",
+        "delta_global_spearman": -0.0871727612279648,
+        "delta_pairwise_accuracy": 0.131323228566115,
+        "delta_per_pair_spearman_mean": 0.2747929806762009
+      }
+    }
+  },
+  "split3": {
+    "test_pair_ids": [
+      25,
+      46,
+      60,
+      61,
+      67,
+      70,
+      71,
+      73,
+      78,
+      86,
+      87,
+      93,
+      94,
+      96,
+      97,
+      99
+    ],
+    "n_test_pairs": 16,
+    "n_test_records": 1280,
+    "euclidean": {
+      "global_spearman": 0.268765022591765,
+      "pairwise_accuracy": 0.6298144895248704,
+      "per_pair_spearman_mean": 0.35831668558210805,
+      "per_pair_spearman_std": 0.34579002948236554,
+      "per_pair_spearman": {
+        "25": {
+          "spearman": 0.3443049090437514,
+          "n_records": 80
+        },
+        "46": {
+          "spearman": -0.5536889636723299,
+          "n_records": 80
+        },
+        "60": {
+          "spearman": -0.018796022701915913,
+          "n_records": 80
+        },
+        "61": {
+          "spearman": -0.27119459089056375,
+          "n_records": 80
+        },
+        "67": {
+          "spearman": 0.348853279518201,
+          "n_records": 80
+        },
+        "70": {
+          "spearman": 0.4653035391636683,
+          "n_records": 80
+        },
+        "71": {
+          "spearman": 0.40522505622080546,
+          "n_records": 80
+        },
+        "73": {
+          "spearman": 0.5719379245470325,
+          "n_records": 80
+        },
+        "78": {
+          "spearman": 0.6270785157937082,
+          "n_records": 80
+        },
+        "86": {
+          "spearman": 0.7667398853734861,
+          "n_records": 80
+        },
+        "87": {
+          "spearman": 0.7132282713339192,
+          "n_records": 80
+        },
+        "93": {
+          "spearman": 0.4193941270301333,
+          "n_records": 80
+        },
+        "94": {
+          "spearman": 0.4405988899876937,
+          "n_records": 80
+        },
+        "96": {
+          "spearman": 0.6663796740015608,
+          "n_records": 80
+        },
+        "97": {
+          "spearman": 0.47002369379083936,
+          "n_records": 80
+        },
+        "99": {
+          "spearman": 0.3376787807737397,
+          "n_records": 80
+        }
+      }
+    },
+    "models": {
+      "small": {
+        "global_spearman": 0.3961780192808168,
+        "pairwise_accuracy": 0.6669594276166403,
+        "per_pair_spearman_mean": 0.44543962191333647,
+        "per_pair_spearman_std": 0.29396509368535817,
+        "best_epoch": 6,
+        "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_small/split3_all_fail_strong_rho_small_seed0_test_metrics.json",
+        "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_small/split3_all_fail_strong_rho_small_seed0_best.pt",
+        "delta_global_spearman": 0.12741299668905182,
+        "delta_pairwise_accuracy": 0.037144938091769886,
+        "delta_per_pair_spearman_mean": 0.08712293633122842
+      },
+      "large": {
+        "global_spearman": 0.4789984375708682,
+        "pairwise_accuracy": 0.6738357396855319,
+        "per_pair_spearman_mean": 0.46040952234185867,
+        "per_pair_spearman_std": 0.3217829395180612,
+        "best_epoch": 8,
+        "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_large/split3_all_fail_strong_rho_large_seed0_test_metrics.json",
+        "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_large/split3_all_fail_strong_rho_large_seed0_best.pt",
+        "delta_global_spearman": 0.2102334149791032,
+        "delta_pairwise_accuracy": 0.044021250160661496,
+        "delta_per_pair_spearman_mean": 0.10209283675975062
+      }
+    },
+    "per_pair_breakdown": [
+      {
+        "pair_id": 25,
+        "cell": "D1xR0",
+        "euclidean_pairwise_accuracy": 0.6567901234567901,
+        "small_pairwise_accuracy": 0.8074074074074075,
+        "large_pairwise_accuracy": 0.8092592592592592,
+        "small_delta": 0.15061728395061735,
+        "large_delta": 0.15246913580246912,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 46,
+        "cell": "D1xR3",
+        "euclidean_pairwise_accuracy": 0.2838057999348322,
+        "small_pairwise_accuracy": 0.7246660149885956,
+        "large_pairwise_accuracy": 0.4395568589116976,
+        "small_delta": 0.44086021505376344,
+        "large_delta": 0.15575105897686542,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 60,
+        "cell": "D2xR2",
+        "euclidean_pairwise_accuracy": 0.49348171701112875,
+        "small_pairwise_accuracy": 0.5577106518282989,
+        "large_pairwise_accuracy": 0.6572337042925278,
+        "small_delta": 0.06422893481717018,
+        "large_delta": 0.16375198728139906,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 61,
+        "cell": "D2xR2",
+        "euclidean_pairwise_accuracy": 0.4316661357120102,
+        "small_pairwise_accuracy": 0.775087607518318,
+        "large_pairwise_accuracy": 0.768079006052883,
+        "small_delta": 0.3434214718063078,
+        "large_delta": 0.33641287034087286,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 67,
+        "cell": "D2xR3",
+        "euclidean_pairwise_accuracy": 0.6308411214953271,
+        "small_pairwise_accuracy": 0.6498921639108555,
+        "large_pairwise_accuracy": 0.7753414809489576,
+        "small_delta": 0.019051042415528352,
+        "large_delta": 0.1445003594536305,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 70,
+        "cell": "D2xR3",
+        "euclidean_pairwise_accuracy": 0.6379746835443038,
+        "small_pairwise_accuracy": 0.5794303797468354,
+        "large_pairwise_accuracy": 0.6661392405063291,
+        "small_delta": -0.05854430379746833,
+        "large_delta": 0.028164556962025356,
+        "small_improved": false,
+        "large_improved": true
+      },
+      {
+        "pair_id": 71,
+        "cell": "D2xR3",
+        "euclidean_pairwise_accuracy": 0.661186848436247,
+        "small_pairwise_accuracy": 0.6230954290296712,
+        "large_pairwise_accuracy": 0.6435445068163592,
+        "small_delta": -0.03809141940657579,
+        "large_delta": -0.017642341619887758,
+        "small_improved": false,
+        "large_improved": false
+      },
+      {
+        "pair_id": 73,
+        "cell": "D2xR3",
+        "euclidean_pairwise_accuracy": 0.6969486823855756,
+        "small_pairwise_accuracy": 0.7260748959778086,
+        "large_pairwise_accuracy": 0.7215672676837726,
+        "small_delta": 0.029126213592232997,
+        "large_delta": 0.024618585298196938,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 78,
+        "cell": "D3xR0",
+        "euclidean_pairwise_accuracy": 0.746122190566635,
+        "small_pairwise_accuracy": 0.8344412788857233,
+        "large_pairwise_accuracy": 0.8711617600506489,
+        "small_delta": 0.0883190883190883,
+        "large_delta": 0.12503956948401396,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 86,
+        "cell": "D3xR1",
+        "euclidean_pairwise_accuracy": 0.7967105263157894,
+        "small_pairwise_accuracy": 0.6855263157894737,
+        "large_pairwise_accuracy": 0.6828947368421052,
+        "small_delta": -0.11118421052631577,
+        "large_delta": -0.1138157894736842,
+        "small_improved": false,
+        "large_improved": false
+      },
+      {
+        "pair_id": 87,
+        "cell": "D3xR2",
+        "euclidean_pairwise_accuracy": 0.7581513137068693,
+        "small_pairwise_accuracy": 0.8160810383032605,
+        "large_pairwise_accuracy": 0.8208293763849319,
+        "small_delta": 0.05792972459639123,
+        "large_delta": 0.06267806267806264,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 93,
+        "cell": "D3xR3",
+        "euclidean_pairwise_accuracy": 0.6135593220338983,
+        "small_pairwise_accuracy": 0.5074576271186441,
+        "large_pairwise_accuracy": 0.3840677966101695,
+        "small_delta": -0.10610169491525423,
+        "large_delta": -0.2294915254237288,
+        "small_improved": false,
+        "large_improved": false
+      },
+      {
+        "pair_id": 94,
+        "cell": "D3xR3",
+        "euclidean_pairwise_accuracy": 0.6558031260392417,
+        "small_pairwise_accuracy": 0.5823079481210509,
+        "large_pairwise_accuracy": 0.6577984702361157,
+        "small_delta": -0.07349517791819082,
+        "large_delta": 0.0019953441968739716,
+        "small_improved": false,
+        "large_improved": true
+      },
+      {
+        "pair_id": 96,
+        "cell": "D3xR3",
+        "euclidean_pairwise_accuracy": 0.7583217753120666,
+        "small_pairwise_accuracy": 0.4722607489597781,
+        "large_pairwise_accuracy": 0.6151178918169209,
+        "small_delta": -0.28606102635228847,
+        "large_delta": -0.14320388349514568,
+        "small_improved": false,
+        "large_improved": false
+      },
+      {
+        "pair_id": 97,
+        "cell": "D3xR3",
+        "euclidean_pairwise_accuracy": 0.65,
+        "small_pairwise_accuracy": 0.8424342105263158,
+        "large_pairwise_accuracy": 0.7259868421052632,
+        "small_delta": 0.19243421052631582,
+        "large_delta": 0.07598684210526319,
+        "small_improved": true,
+        "large_improved": true
+      },
+      {
+        "pair_id": 99,
+        "cell": "D3xR3",
+        "euclidean_pairwise_accuracy": 0.638095238095238,
+        "small_pairwise_accuracy": 0.5314285714285715,
+        "large_pairwise_accuracy": 0.5939682539682539,
+        "small_delta": -0.10666666666666658,
+        "large_delta": -0.044126984126984126,
+        "small_improved": false,
+        "large_improved": false
+      }
+    ]
+  },
+  "split2": {
+    "folds": [
+      {
+        "cell": "D0xR0",
+        "test_pair_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "euclidean": {
+          "global_spearman": 0.46108246818338877,
+          "pairwise_accuracy": 0.8115773115773116,
+          "per_pair_spearman_mean": 0.498563986834764,
+          "per_pair_spearman_std": 0.09463865322232423,
+          "per_pair_spearman": {
+            "0": {
+              "spearman": 0.6276110552763022,
+              "n_records": 80
+            },
+            "1": {
+              "spearman": 0.40652852804546274,
+              "n_records": 80
+            },
+            "2": {
+              "spearman": 0.5855212987096029,
+              "n_records": 80
+            },
+            "3": {
+              "spearman": 0.4204413078255682,
+              "n_records": 80
+            },
+            "4": {
+              "spearman": 0.39227567345727876,
+              "n_records": 80
+            },
+            "5": {
+              "spearman": 0.5590060576943686,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.4639983155123406,
+          "pairwise_accuracy": 0.7922817922817923,
+          "per_pair_spearman_mean": 0.4561446103138569,
+          "per_pair_spearman_std": 0.23903876261922455,
+          "best_epoch": 28,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR0_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR0_small_seed0_best.pt",
+          "delta_global_spearman": 0.002915847328951837,
+          "delta_pairwise_accuracy": -0.019295519295519314,
+          "delta_per_pair_spearman_mean": -0.042419376520907104
+        }
+      },
+      {
+        "cell": "D0xR1",
+        "test_pair_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "euclidean": {
+          "global_spearman": 0.6602820585,
+          "pairwise_accuracy": 0.8299034913426058,
+          "per_pair_spearman_mean": 0.7251761921709458,
+          "per_pair_spearman_std": 0.13255869814970792,
+          "per_pair_spearman": {
+            "6": {
+              "spearman": 0.8034097356701515,
+              "n_records": 80
+            },
+            "7": {
+              "spearman": 0.6463345875018186,
+              "n_records": 80
+            },
+            "8": {
+              "spearman": 0.8028682251458381,
+              "n_records": 80
+            },
+            "9": {
+              "spearman": 0.7744718385006383,
+              "n_records": 80
+            },
+            "10": {
+              "spearman": 0.8577443307083816,
+              "n_records": 80
+            },
+            "11": {
+              "spearman": 0.4662284354988469,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.616626909666946,
+          "pairwise_accuracy": 0.856656258870281,
+          "per_pair_spearman_mean": 0.7409069644404176,
+          "per_pair_spearman_std": 0.20744761856160251,
+          "best_epoch": 12,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR1_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR1_small_seed0_best.pt",
+          "delta_global_spearman": -0.04365514883305399,
+          "delta_pairwise_accuracy": 0.026752767527675192,
+          "delta_per_pair_spearman_mean": 0.015730772269471838
+        }
+      },
+      {
+        "cell": "D0xR2",
+        "test_pair_ids": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "euclidean": {
+          "global_spearman": 0.6863999223635141,
+          "pairwise_accuracy": 0.7457839633878753,
+          "per_pair_spearman_mean": 0.5773305403507693,
+          "per_pair_spearman_std": 0.4708747286014469,
+          "per_pair_spearman": {
+            "12": {
+              "spearman": 0.5847480434980123,
+              "n_records": 80
+            },
+            "13": {
+              "spearman": 0.9012654431782579,
+              "n_records": 80
+            },
+            "14": {
+              "spearman": 0.8548877296048718,
+              "n_records": 80
+            },
+            "15": {
+              "spearman": 0.6689022495996177,
+              "n_records": 80
+            },
+            "16": {
+              "spearman": 0.8958906130619512,
+              "n_records": 80
+            },
+            "17": {
+              "spearman": -0.44171083683809503,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.8479469132214396,
+          "pairwise_accuracy": 0.863644912544668,
+          "per_pair_spearman_mean": 0.8323572694167235,
+          "per_pair_spearman_std": 0.0753374951375293,
+          "best_epoch": 3,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR2_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR2_small_seed0_best.pt",
+          "delta_global_spearman": 0.16154699085792545,
+          "delta_pairwise_accuracy": 0.11786094915679268,
+          "delta_per_pair_spearman_mean": 0.25502672906595425
+        }
+      },
+      {
+        "cell": "D0xR3",
+        "test_pair_ids": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "euclidean": {
+          "global_spearman": -0.13840780540852476,
+          "pairwise_accuracy": 0.46287418147801684,
+          "per_pair_spearman_mean": -0.12322565091023086,
+          "per_pair_spearman_std": 0.44807066449663463,
+          "per_pair_spearman": {
+            "18": {
+              "spearman": -0.235947746896469,
+              "n_records": 80
+            },
+            "19": {
+              "spearman": 0.7925967079678566,
+              "n_records": 80
+            },
+            "20": {
+              "spearman": -0.6287199126348837,
+              "n_records": 80
+            },
+            "21": {
+              "spearman": -0.021672923675268168,
+              "n_records": 80
+            },
+            "22": {
+              "spearman": -0.2608945633484848,
+              "n_records": 80
+            },
+            "23": {
+              "spearman": -0.384715466874136,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.16886830624879737,
+          "pairwise_accuracy": 0.6123129092609916,
+          "per_pair_spearman_mean": 0.26004313030795956,
+          "per_pair_spearman_std": 0.4838909139264105,
+          "best_epoch": 1,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR3_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR3_small_seed0_best.pt",
+          "delta_global_spearman": 0.30727611165732216,
+          "delta_pairwise_accuracy": 0.14943872778297473,
+          "delta_per_pair_spearman_mean": 0.3832687812181904
+        }
+      },
+      {
+        "cell": "D1xR0",
+        "test_pair_ids": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "euclidean": {
+          "global_spearman": 0.8120524540456281,
+          "pairwise_accuracy": 0.728455545739298,
+          "per_pair_spearman_mean": 0.49108408719421776,
+          "per_pair_spearman_std": 0.3121221866013918,
+          "per_pair_spearman": {
+            "24": {
+              "spearman": 0.5668506638071863,
+              "n_records": 80
+            },
+            "25": {
+              "spearman": 0.3443049090437514,
+              "n_records": 80
+            },
+            "26": {
+              "spearman": 0.7466253685285987,
+              "n_records": 80
+            },
+            "27": {
+              "spearman": 0.8371073946202403,
+              "n_records": 80
+            },
+            "28": {
+              "spearman": 0.5659997113672722,
+              "n_records": 80
+            },
+            "29": {
+              "spearman": -0.11438352420174266,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.448701863310403,
+          "pairwise_accuracy": 0.7962412657617862,
+          "per_pair_spearman_mean": 0.5796424285254449,
+          "per_pair_spearman_std": 0.21847837220952798,
+          "best_epoch": 7,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR0_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR0_small_seed0_best.pt",
+          "delta_global_spearman": -0.3633505907352251,
+          "delta_pairwise_accuracy": 0.06778572002248817,
+          "delta_per_pair_spearman_mean": 0.08855834133122714
+        }
+      },
+      {
+        "cell": "D1xR1",
+        "test_pair_ids": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "euclidean": {
+          "global_spearman": 0.3410545869593695,
+          "pairwise_accuracy": 0.5755304491595481,
+          "per_pair_spearman_mean": 0.1684162721505672,
+          "per_pair_spearman_std": 0.432663755653162,
+          "per_pair_spearman": {
+            "30": {
+              "spearman": 0.055648978066119424,
+              "n_records": 80
+            },
+            "31": {
+              "spearman": 0.18448943133026402,
+              "n_records": 80
+            },
+            "32": {
+              "spearman": -0.3000492365820275,
+              "n_records": 80
+            },
+            "33": {
+              "spearman": -0.35554617871195493,
+              "n_records": 80
+            },
+            "34": {
+              "spearman": 0.6054536184680763,
+              "n_records": 80
+            },
+            "35": {
+              "spearman": 0.8205010203329258,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.6347070204552102,
+          "pairwise_accuracy": 0.8255717828602921,
+          "per_pair_spearman_mean": 0.7796581677831272,
+          "per_pair_spearman_std": 0.21055229092742145,
+          "best_epoch": 3,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR1_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR1_small_seed0_best.pt",
+          "delta_global_spearman": 0.2936524334958407,
+          "delta_pairwise_accuracy": 0.250041333700744,
+          "delta_per_pair_spearman_mean": 0.61124189563256
+        }
+      },
+      {
+        "cell": "D1xR2",
+        "test_pair_ids": [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "euclidean": {
+          "global_spearman": 0.38028440595819585,
+          "pairwise_accuracy": 0.6427840327533265,
+          "per_pair_spearman_mean": 0.3534724214932135,
+          "per_pair_spearman_std": 0.6250191578374065,
+          "per_pair_spearman": {
+            "36": {
+              "spearman": 0.7859880679551589,
+              "n_records": 80
+            },
+            "37": {
+              "spearman": -0.47165277758098717,
+              "n_records": 80
+            },
+            "38": {
+              "spearman": 0.7213335790505006,
+              "n_records": 80
+            },
+            "39": {
+              "spearman": 0.8805646510064832,
+              "n_records": 80
+            },
+            "40": {
+              "spearman": -0.582049403947833,
+              "n_records": 80
+            },
+            "41": {
+              "spearman": 0.7866504124759586,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.8853107194201664,
+          "pairwise_accuracy": 0.8706925963834868,
+          "per_pair_spearman_mean": 0.8821477524360309,
+          "per_pair_spearman_std": 0.01572893708531612,
+          "best_epoch": 2,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR2_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR2_small_seed0_best.pt",
+          "delta_global_spearman": 0.5050263134619706,
+          "delta_pairwise_accuracy": 0.22790856363016032,
+          "delta_per_pair_spearman_mean": 0.5286753309428174
+        }
+      },
+      {
+        "cell": "D1xR3",
+        "test_pair_ids": [
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "euclidean": {
+          "global_spearman": -0.14861505751162143,
+          "pairwise_accuracy": 0.33444087992667276,
+          "per_pair_spearman_mean": -0.4546713158525921,
+          "per_pair_spearman_std": 0.25647447899719494,
+          "per_pair_spearman": {
+            "42": {
+              "spearman": -0.6050821388050772,
+              "n_records": 80
+            },
+            "43": {
+              "spearman": 0.09827195747071432,
+              "n_records": 80
+            },
+            "44": {
+              "spearman": -0.6710528123760054,
+              "n_records": 80
+            },
+            "45": {
+              "spearman": -0.44399906235349273,
+              "n_records": 80
+            },
+            "46": {
+              "spearman": -0.5536889636723299,
+              "n_records": 80
+            },
+            "47": {
+              "spearman": -0.5524768753793613,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.2385563206327987,
+          "pairwise_accuracy": 0.6479720439963337,
+          "per_pair_spearman_mean": 0.35273126321683956,
+          "per_pair_spearman_std": 0.43757273778029476,
+          "best_epoch": 6,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR3_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D1xR3_small_seed0_best.pt",
+          "delta_global_spearman": 0.38717137814442015,
+          "delta_pairwise_accuracy": 0.3135311640696609,
+          "delta_per_pair_spearman_mean": 0.8074025790694317
+        }
+      },
+      {
+        "cell": "D2xR0",
+        "test_pair_ids": [
+          48,
+          49,
+          50,
+          51,
+          52,
+          53
+        ],
+        "euclidean": {
+          "global_spearman": 0.5040147320265812,
+          "pairwise_accuracy": 0.6214225470902446,
+          "per_pair_spearman_mean": 0.3077030955546337,
+          "per_pair_spearman_std": 0.6659382871521289,
+          "per_pair_spearman": {
+            "48": {
+              "spearman": 0.8385411339385042,
+              "n_records": 80
+            },
+            "49": {
+              "spearman": -0.657052095134209,
+              "n_records": 80
+            },
+            "50": {
+              "spearman": 0.7686591371065293,
+              "n_records": 80
+            },
+            "51": {
+              "spearman": 0.8466463824079362,
+              "n_records": 80
+            },
+            "52": {
+              "spearman": 0.6512872074188483,
+              "n_records": 80
+            },
+            "53": {
+              "spearman": -0.6018631924098068,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.7443201466495596,
+          "pairwise_accuracy": 0.8050604441945459,
+          "per_pair_spearman_mean": 0.7553792481143343,
+          "per_pair_spearman_std": 0.15759971151112823,
+          "best_epoch": 2,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR0_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR0_small_seed0_best.pt",
+          "delta_global_spearman": 0.24030541462297839,
+          "delta_pairwise_accuracy": 0.18363789710430134,
+          "delta_per_pair_spearman_mean": 0.4476761525597006
+        }
+      },
+      {
+        "cell": "D2xR1",
+        "test_pair_ids": [
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ],
+        "euclidean": {
+          "global_spearman": 0.4808225870083262,
+          "pairwise_accuracy": 0.7142217996756334,
+          "per_pair_spearman_mean": 0.5459220340514812,
+          "per_pair_spearman_std": 0.3401680835714862,
+          "per_pair_spearman": {
+            "54": {
+              "spearman": 0.7325768481694803,
+              "n_records": 80
+            },
+            "55": {
+              "spearman": 0.49080205542162386,
+              "n_records": 80
+            },
+            "56": {
+              "spearman": -0.13320127312248364,
+              "n_records": 80
+            },
+            "57": {
+              "spearman": 0.8600128730854396,
+              "n_records": 80
+            },
+            "58": {
+              "spearman": 0.8487966479816589,
+              "n_records": 80
+            },
+            "59": {
+              "spearman": 0.47654505277316783,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.632008122071716,
+          "pairwise_accuracy": 0.7602483082601644,
+          "per_pair_spearman_mean": 0.6404911782284841,
+          "per_pair_spearman_std": 0.232242139377296,
+          "best_epoch": 6,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR1_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR1_small_seed0_best.pt",
+          "delta_global_spearman": 0.15118553506338978,
+          "delta_pairwise_accuracy": 0.046026508584531056,
+          "delta_per_pair_spearman_mean": 0.0945691441770029
+        }
+      },
+      {
+        "cell": "D2xR2",
+        "test_pair_ids": [
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66
+        ],
+        "euclidean": {
+          "global_spearman": 0.029592264452923712,
+          "pairwise_accuracy": 0.4658987716866606,
+          "per_pair_spearman_mean": -0.10884470888701979,
+          "per_pair_spearman_std": 0.3880621544719234,
+          "per_pair_spearman": {
+            "60": {
+              "spearman": -0.018796022701915913,
+              "n_records": 80
+            },
+            "61": {
+              "spearman": -0.27119459089056375,
+              "n_records": 80
+            },
+            "62": {
+              "spearman": -0.6575323199270195,
+              "n_records": 80
+            },
+            "63": {
+              "spearman": 0.4370543037146692,
+              "n_records": 80
+            },
+            "64": {
+              "spearman": 0.4342495741158995,
+              "n_records": 80
+            },
+            "65": {
+              "spearman": -0.2529857474438802,
+              "n_records": 80
+            },
+            "66": {
+              "spearman": -0.43270815907632776,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.7342845955968297,
+          "pairwise_accuracy": 0.7464034794245568,
+          "per_pair_spearman_mean": 0.6435098882905441,
+          "per_pair_spearman_std": 0.21768869425872953,
+          "best_epoch": 3,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR2_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR2_small_seed0_best.pt",
+          "delta_global_spearman": 0.704692331143906,
+          "delta_pairwise_accuracy": 0.28050470773789615,
+          "delta_per_pair_spearman_mean": 0.7523545971775639
+        }
+      },
+      {
+        "cell": "D2xR3",
+        "test_pair_ids": [
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73
+        ],
+        "euclidean": {
+          "global_spearman": 0.4704845483460254,
+          "pairwise_accuracy": 0.6296095444685467,
+          "per_pair_spearman_mean": 0.3434615867256815,
+          "per_pair_spearman_std": 0.3803313962501378,
+          "per_pair_spearman": {
+            "67": {
+              "spearman": 0.348853279518201,
+              "n_records": 80
+            },
+            "68": {
+              "spearman": 0.8847641998096354,
+              "n_records": 80
+            },
+            "69": {
+              "spearman": -0.44336653052638814,
+              "n_records": 80
+            },
+            "70": {
+              "spearman": 0.4653035391636683,
+              "n_records": 80
+            },
+            "71": {
+              "spearman": 0.40522505622080546,
+              "n_records": 80
+            },
+            "72": {
+              "spearman": 0.17151363834681607,
+              "n_records": 80
+            },
+            "73": {
+              "spearman": 0.5719379245470325,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.7094188873250769,
+          "pairwise_accuracy": 0.6911358706369553,
+          "per_pair_spearman_mean": 0.4916531032837784,
+          "per_pair_spearman_std": 0.3074817244797978,
+          "best_epoch": 1,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR3_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D2xR3_small_seed0_best.pt",
+          "delta_global_spearman": 0.23893433897905147,
+          "delta_pairwise_accuracy": 0.061526326168408585,
+          "delta_per_pair_spearman_mean": 0.14819151655809693
+        }
+      },
+      {
+        "cell": "D3xR0",
+        "test_pair_ids": [
+          74,
+          75,
+          76,
+          77,
+          78,
+          79
+        ],
+        "euclidean": {
+          "global_spearman": 0.626409339668275,
+          "pairwise_accuracy": 0.7606668096054888,
+          "per_pair_spearman_mean": 0.653269609153287,
+          "per_pair_spearman_std": 0.34107078780944483,
+          "per_pair_spearman": {
+            "74": {
+              "spearman": -0.08133912451749037,
+              "n_records": 80
+            },
+            "75": {
+              "spearman": 0.8813594581674329,
+              "n_records": 80
+            },
+            "76": {
+              "spearman": 0.7498066059259966,
+              "n_records": 80
+            },
+            "77": {
+              "spearman": 0.8471494573770605,
+              "n_records": 80
+            },
+            "78": {
+              "spearman": 0.6270785157937082,
+              "n_records": 80
+            },
+            "79": {
+              "spearman": 0.8955627421730142,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.3501191252462099,
+          "pairwise_accuracy": 0.7323113207547169,
+          "per_pair_spearman_mean": 0.5661537379255395,
+          "per_pair_spearman_std": 0.4254664450759941,
+          "best_epoch": 2,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR0_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR0_small_seed0_best.pt",
+          "delta_global_spearman": -0.27629021442206503,
+          "delta_pairwise_accuracy": -0.02835548885077188,
+          "delta_per_pair_spearman_mean": -0.08711587122774755
+        }
+      },
+      {
+        "cell": "D3xR1",
+        "test_pair_ids": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86
+        ],
+        "euclidean": {
+          "global_spearman": 0.5933479998069201,
+          "pairwise_accuracy": 0.7742503546446217,
+          "per_pair_spearman_mean": 0.6948282611005254,
+          "per_pair_spearman_std": 0.20119571474821546,
+          "per_pair_spearman": {
+            "80": {
+              "spearman": 0.5504442953566114,
+              "n_records": 80
+            },
+            "81": {
+              "spearman": 0.8439203167328055,
+              "n_records": 80
+            },
+            "82": {
+              "spearman": 0.27080189661936815,
+              "n_records": 80
+            },
+            "83": {
+              "spearman": 0.714793065909362,
+              "n_records": 80
+            },
+            "84": {
+              "spearman": 0.832999968533845,
+              "n_records": 80
+            },
+            "85": {
+              "spearman": 0.8840983991781997,
+              "n_records": 80
+            },
+            "86": {
+              "spearman": 0.7667398853734861,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.6145629445114467,
+          "pairwise_accuracy": 0.7694565376901629,
+          "per_pair_spearman_mean": 0.6679533207495927,
+          "per_pair_spearman_std": 0.23366278306989913,
+          "best_epoch": 10,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR1_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR1_small_seed0_best.pt",
+          "delta_global_spearman": 0.02121494470452656,
+          "delta_pairwise_accuracy": -0.004793816954458796,
+          "delta_per_pair_spearman_mean": -0.02687494035093274
+        }
+      },
+      {
+        "cell": "D3xR2",
+        "test_pair_ids": [
+          87,
+          88,
+          89,
+          90,
+          91,
+          92
+        ],
+        "euclidean": {
+          "global_spearman": 0.7398882466598543,
+          "pairwise_accuracy": 0.7642857142857142,
+          "per_pair_spearman_mean": 0.5826456004238038,
+          "per_pair_spearman_std": 0.4136969447561131,
+          "per_pair_spearman": {
+            "87": {
+              "spearman": 0.7132282713339192,
+              "n_records": 80
+            },
+            "88": {
+              "spearman": -0.2892733359494156,
+              "n_records": 80
+            },
+            "89": {
+              "spearman": 0.8648155180015117,
+              "n_records": 80
+            },
+            "90": {
+              "spearman": 0.8639747711388307,
+              "n_records": 80
+            },
+            "91": {
+              "spearman": 0.4779182342590225,
+              "n_records": 80
+            },
+            "92": {
+              "spearman": 0.8652101437589538,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.7139279590133983,
+          "pairwise_accuracy": 0.7068376068376069,
+          "per_pair_spearman_mean": 0.44608399890174666,
+          "per_pair_spearman_std": 0.5691143491258404,
+          "best_epoch": 4,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR2_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR2_small_seed0_best.pt",
+          "delta_global_spearman": -0.02596028764645597,
+          "delta_pairwise_accuracy": -0.057448107448107355,
+          "delta_per_pair_spearman_mean": -0.1365616015220571
+        }
+      },
+      {
+        "cell": "D3xR3",
+        "test_pair_ids": [
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99
+        ],
+        "euclidean": {
+          "global_spearman": 0.2094891603164652,
+          "pairwise_accuracy": 0.6610713404097753,
+          "per_pair_spearman_mean": 0.4334256345039855,
+          "per_pair_spearman_std": 0.2184986437341134,
+          "per_pair_spearman": {
+            "93": {
+              "spearman": 0.4193941270301333,
+              "n_records": 80
+            },
+            "94": {
+              "spearman": 0.4405988899876937,
+              "n_records": 80
+            },
+            "95": {
+              "spearman": 0.7071867602384119,
+              "n_records": 80
+            },
+            "96": {
+              "spearman": 0.6663796740015608,
+              "n_records": 80
+            },
+            "97": {
+              "spearman": 0.47002369379083936,
+              "n_records": 80
+            },
+            "98": {
+              "spearman": -0.007282484294479952,
+              "n_records": 80
+            },
+            "99": {
+              "spearman": 0.3376787807737397,
+              "n_records": 80
+            }
+          }
+        },
+        "small": {
+          "global_spearman": 0.10143768803341657,
+          "pairwise_accuracy": 0.6032584547025426,
+          "per_pair_spearman_mean": 0.26262974411081735,
+          "per_pair_spearman_std": 0.4625491684134804,
+          "best_epoch": 27,
+          "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR3_small_seed0_test_metrics.json",
+          "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D3xR3_small_seed0_best.pt",
+          "delta_global_spearman": -0.10805147228304862,
+          "delta_pairwise_accuracy": -0.05781288570723275,
+          "delta_per_pair_spearman_mean": -0.17079589039316817
+        }
+      }
+    ],
+    "mean_pairwise_accuracy": {
+      "euclidean": 0.6576735460769587,
+      "small": 0.7550053490288052,
+      "delta": 0.09733180295184651
+    },
+    "worst_pairwise_accuracy": {
+      "euclidean": 0.33444087992667276,
+      "small": 0.6032584547025426
+    },
+    "best_pairwise_accuracy": {
+      "euclidean": 0.8299034913426058,
+      "small": 0.8706925963834868
+    }
+  }
+}

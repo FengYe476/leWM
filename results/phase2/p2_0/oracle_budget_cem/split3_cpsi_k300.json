@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "split": 3,
+    "k": 300,
+    "prefilter": "cpsi",
+    "seed": 0,
+    "device": "mps",
+    "pairs": [
+      46
+    ],
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem/split3_cpsi_k300.json",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    }
+  },
+  "records": [
+    {
+      "pair_id": 46,
+      "cell": "D1xR3",
+      "episode_id": 3363,
+      "start_row": 410963,
+      "goal_row": 411013,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 19.71015167236328,
+        "angle_dist": 0.3734058439731598,
+        "c_real_state": 20.08355751633644,
+        "oracle_rollouts": 36000,
+        "oracle_env_steps": 900000,
+        "cem_solves": 4,
+        "elapsed_seconds": 102.83369708061218
+      }
+    }
+  ],
+  "aggregate": {
+    "k": 300,
+    "n_pairs": 1,
+    "success_count": 0,
+    "success_rate": 0.0,
+    "oracle_rollouts": 36000,
+    "oracle_env_steps": 900000,
+    "elapsed_seconds": 102.85337710380554
+  }
+}

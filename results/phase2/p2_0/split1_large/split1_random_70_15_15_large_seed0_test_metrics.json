@@ -1,0 +1,81 @@
+{
+  "split": 1,
+  "fold": "random_70_15_15",
+  "variant": "large",
+  "seed": 0,
+  "best_epoch": 2,
+  "train_examples": 5600,
+  "val_examples": 1200,
+  "test_examples": 1200,
+  "train_triples": 187394,
+  "val_triples": 42704,
+  "test_triples": 43016,
+  "test_loss": 0.057101149048939585,
+  "test_pairwise_accuracy": 0.8122326576157709,
+  "test_spearman_C_psi_vs_C_v1": 0.5121358195582277,
+  "test_per_pair_spearman_mean": 0.7213255749108156,
+  "test_per_pair_spearman_std": 0.28952834787856124,
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_large/split1_random_70_15_15_large_seed0_best.pt",
+  "test_per_pair_spearman": {
+    "7": {
+      "spearman": 0.5427441709395099,
+      "n_records": 80
+    },
+    "29": {
+      "spearman": 0.517793917672538,
+      "n_records": 80
+    },
+    "33": {
+      "spearman": 0.9094255152706157,
+      "n_records": 80
+    },
+    "41": {
+      "spearman": 0.937861982098101,
+      "n_records": 80
+    },
+    "48": {
+      "spearman": 0.8268478079630525,
+      "n_records": 80
+    },
+    "54": {
+      "spearman": 0.8719390604470412,
+      "n_records": 80
+    },
+    "56": {
+      "spearman": 0.9172649445154066,
+      "n_records": 80
+    },
+    "59": {
+      "spearman": 0.7823786346549519,
+      "n_records": 80
+    },
+    "63": {
+      "spearman": 0.8434669171333073,
+      "n_records": 80
+    },
+    "69": {
+      "spearman": 0.4775871514710424,
+      "n_records": 80
+    },
+    "76": {
+      "spearman": -0.2151480344272118,
+      "n_records": 80
+    },
+    "77": {
+      "spearman": 0.8925928070781871,
+      "n_records": 80
+    },
+    "78": {
+      "spearman": 0.7859859989947758,
+      "n_records": 80
+    },
+    "79": {
+      "spearman": 0.8671139375047973,
+      "n_records": 80
+    },
+    "95": {
+      "spearman": 0.8620288123461193,
+      "n_records": 80
+    }
+  }
+}

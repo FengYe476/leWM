@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "seed": 0,
+    "device": "mps",
+    "split": 3,
+    "k_values": [
+      0,
+      300
+    ],
+    "pairs": [
+      46
+    ],
+    "pairs_subset_override": true,
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem/smoke_pair46.json",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    }
+  },
+  "phase1_validation": {
+    "n_pairs": 1,
+    "n_mismatches": 0,
+    "matches_phase1": true,
+    "records": [
+      {
+        "pair_id": 46,
+        "cell": "D1xR3",
+        "late20_success_count": 1,
+        "late20_min_v1": 0.0,
+        "late20_reexec_costs": [
+          0.9643350440797253,
+          0.21239781080572903,
+          0.0,
+          0.9935324419139704,
+          0.1348682948692037,
+          0.14148749605247057,
+          0.15463663763743768,
+          0.1622815552524557,
+          0.166838083121295,
+          1.990939797089322,
+          0.18834020016738307,
+          0.19111808780202102,
+          0.3278290164566524,
+          0.23331196618983105,
+          0.24196842731893958,
+          0.2532939849761878,
+          0.2533263492703064,
+          0.2642250963780306,
+          6.375128942293786,
+          0.33528991764782745
+        ],
+        "late20_planner_success_count": 3,
+        "late20_planner_min_v1": 0.0,
+        "late20_planner_costs": [
+          0.0,
+          0.0,
+          0.0,
+          0.12345592124600557,
+          0.1348682948692037,
+          0.14148749605247057,
+          0.15463663763743768,
+          0.1622815552524557,
+          0.166838083121295,
+          0.18654585853166336,
+          0.18834020016738307,
+          0.19111808780202102,
+          0.23159661741707402,
+          0.23331196618983105,
+          0.24196842731893958,
+          0.2532939849761878,
+          0.2533263492703064,
+          0.2642250963780306,
+          0.29197362702336915,
+          0.33528991764782745
+        ],
+        "phase1_late20_success_count": 1,
+        "phase1_late20_min_v1": 0.0,
+        "success_count_diff": 0,
+        "min_v1_abs_diff": 0.0,
+        "matches_phase1": true
+      }
+    ],
+    "elapsed_seconds": 33.942222118377686
+  },
+  "sweep": {
+    "rows": [
+      {
+        "k": 0,
+        "n_pairs": 1,
+        "success_count": 0,
+        "success_rate": 0.0,
+        "oracle_rollouts": 0,
+        "oracle_env_steps": 0,
+        "elapsed_seconds": 11.655350923538208
+      },
+      {
+        "k": 300,
+        "n_pairs": 1,
+        "success_count": 1,
+        "success_rate": 1.0,
+        "oracle_rollouts": 36000,
+        "oracle_env_steps": 900000,
+        "elapsed_seconds": 101.30143308639526
+      }
+    ],
+    "baseline_k0_success_count": 0,
+    "knee_k": 0
+  },
+  "split1_followup": null,
+  "per_k_paths": [
+    "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem/split3_k0.json",
+    "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem/split3_k300.json"
+  ]
+}

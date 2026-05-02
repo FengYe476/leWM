@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "seed": 0,
+    "device": "mps",
+    "split": 1,
+    "k_values": [
+      150
+    ],
+    "prefilter": "cpsi",
+    "cpsi_checkpoint": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_small_mixed/split3_all_fail_strong_rho_small_seed0_best.pt",
+    "pairs": [
+      7,
+      29,
+      33,
+      41,
+      48,
+      54,
+      56,
+      59,
+      63,
+      69,
+      76,
+      77,
+      78,
+      79,
+      95
+    ],
+    "pairs_subset_override": false,
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem_corrected/split1_cpsi_prefilter_k150.json",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    }
+  },
+  "phase1_validation": null,
+  "sweep": {
+    "rows": [
+      {
+        "k": 150,
+        "n_pairs": 15,
+        "success_count": 11,
+        "success_rate": 0.7333333333333333,
+        "oracle_rollouts": 270000,
+        "oracle_env_steps": 6750000,
+        "elapsed_seconds": 895.6575961112976
+      }
+    ],
+    "baseline_k0_success_count": 11,
+    "knee_k": 150
+  },
+  "split1_followup": null,
+  "per_k_paths": [
+    "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem_corrected/split1_cpsi_k150.json"
+  ]
+}

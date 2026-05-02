@@ -1,0 +1,102 @@
+{
+  "args": {
+    "variant": "lowrank",
+    "seed": 0,
+    "epochs": 200,
+    "lr": 0.001,
+    "margin": 1.0,
+    "batch_size": 256,
+    "patience": 10,
+    "artifact": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/track_a_latents.pt",
+    "predicted_artifact": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/track_a_predicted_latents.pt",
+    "output_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_lowrank",
+    "device": "mps",
+    "max_triples_per_pair": null
+  },
+  "metrics": {
+    "variant": "lowrank",
+    "seed": 0,
+    "best_epoch": 28,
+    "train_examples": 12160,
+    "val_examples": 1280,
+    "test_predicted_examples": 1280,
+    "train_triples": 412708,
+    "val_triples": 40156,
+    "test_predicted_triples": 46682,
+    "test_predicted_loss": 1.665803058105244,
+    "test_predicted_pairwise_accuracy": 0.6139839766933721,
+    "test_predicted_spearman": 0.3011834832917582,
+    "test_predicted_per_pair_spearman_mean": 0.31256000933361083,
+    "test_predicted_per_pair_spearman_std": 0.30680683291403116,
+    "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_lowrank/split3_lowrank_mahalanobis_seed0_best.pt",
+    "test_predicted_per_pair_spearman": {
+      "25": {
+        "spearman": 0.258605033875255,
+        "n_records": 80
+      },
+      "46": {
+        "spearman": -0.05132080509547649,
+        "n_records": 80
+      },
+      "60": {
+        "spearman": -0.19818880285765597,
+        "n_records": 80
+      },
+      "61": {
+        "spearman": 0.16099986798236154,
+        "n_records": 80
+      },
+      "67": {
+        "spearman": 0.49988614084711386,
+        "n_records": 80
+      },
+      "70": {
+        "spearman": 0.32873886544772624,
+        "n_records": 80
+      },
+      "71": {
+        "spearman": 0.2975840662096349,
+        "n_records": 80
+      },
+      "73": {
+        "spearman": 0.6274792655971589,
+        "n_records": 80
+      },
+      "78": {
+        "spearman": 0.5863372382733025,
+        "n_records": 80
+      },
+      "86": {
+        "spearman": 0.6364960334302021,
+        "n_records": 80
+      },
+      "87": {
+        "spearman": 0.42993688430698596,
+        "n_records": 80
+      },
+      "93": {
+        "spearman": -0.39034143876024385,
+        "n_records": 80
+      },
+      "94": {
+        "spearman": 0.17467029319984054,
+        "n_records": 80
+      },
+      "96": {
+        "spearman": 0.7592368413632428,
+        "n_records": 80
+      },
+      "97": {
+        "spearman": 0.5217033989553251,
+        "n_records": 80
+      },
+      "99": {
+        "spearman": 0.35913726656300016,
+        "n_records": 80
+      }
+    }
+  },
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_lowrank/split3_lowrank_mahalanobis_seed0_best.pt",
+  "train_log_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_lowrank/split3_lowrank_mahalanobis_seed0_train_log.json",
+  "test_metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_lowrank/split3_lowrank_mahalanobis_seed0_test_metrics.json"
+}

@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "split": 3,
+    "k": 60,
+    "prefilter": "euclidean",
+    "oracle_iters": "first-only",
+    "oracle_iterations": [
+      0
+    ],
+    "seed": 0,
+    "device": "mps",
+    "pairs": [
+      25,
+      46,
+      60,
+      61,
+      67,
+      70,
+      71,
+      73,
+      78,
+      86,
+      87,
+      93,
+      94,
+      96,
+      97,
+      99
+    ],
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem_corrected/split3_k60_oracle_first-only.json",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    }
+  },
+  "records": [
+    {
+      "pair_id": 25,
+      "cell": "D1xR0",
+      "episode_id": 2388,
+      "start_row": 283639,
+      "goal_row": 283689,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 49.52825164794922,
+        "angle_dist": 0.12560594081878662,
+        "c_real_state": 49.653857588768005,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.820453882217407
+      }
+    },
+    {
+      "pair_id": 46,
+      "cell": "D1xR3",
+      "episode_id": 3363,
+      "start_row": 410963,
+      "goal_row": 411013,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 66.7022705078125,
+        "angle_dist": 2.0193387309657496,
+        "c_real_state": 68.72160923877826,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.727604866027832
+      }
+    },
+    {
+      "pair_id": 60,
+      "cell": "D2xR2",
+      "episode_id": 3789,
+      "start_row": 465802,
+      "goal_row": 465852,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 47.63842010498047,
+        "angle_dist": 1.387282971535818,
+        "c_real_state": 49.02570307651629,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.769195079803467
+      }
+    },
+    {
+      "pair_id": 61,
+      "cell": "D2xR2",
+      "episode_id": 7711,
+      "start_row": 956737,
+      "goal_row": 956787,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 167.77540588378906,
+        "angle_dist": 2.541128639374868,
+        "c_real_state": 170.31653452316394,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.311866044998169
+      }
+    },
+    {
+      "pair_id": 67,
+      "cell": "D2xR3",
+      "episode_id": 14179,
+      "start_row": 1785862,
+      "goal_row": 1785912,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 39.73165512084961,
+        "angle_dist": 0.6205759048461914,
+        "c_real_state": 40.3522310256958,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.012712001800537
+      }
+    },
+    {
+      "pair_id": 70,
+      "cell": "D2xR3",
+      "episode_id": 15152,
+      "start_row": 1902386,
+      "goal_row": 1902436,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 60.90701675415039,
+        "angle_dist": 1.773139540349142,
+        "c_real_state": 62.68015629449953,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.149186849594116
+      }
+    },
+    {
+      "pair_id": 71,
+      "cell": "D2xR3",
+      "episode_id": 6461,
+      "start_row": 803551,
+      "goal_row": 803601,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 41.719451904296875,
+        "angle_dist": 0.9090781211853027,
+        "c_real_state": 42.62853002548218,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 12.464814186096191
+      }
+    },
+    {
+      "pair_id": 73,
+      "cell": "D2xR3",
+      "episode_id": 4709,
+      "start_row": 579221,
+      "goal_row": 579271,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 16.893795013427734,
+        "angle_dist": 2.432177782058716,
+        "c_real_state": 19.32597279548645,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.255223989486694
+      }
+    },
+    {
+      "pair_id": 78,
+      "cell": "D3xR0",
+      "episode_id": 10116,
+      "start_row": 1236973,
+      "goal_row": 1237023,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 21.714561462402344,
+        "angle_dist": 0.11053717136383057,
+        "c_real_state": 21.825098633766174,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.638621807098389
+      }
+    },
+    {
+      "pair_id": 86,
+      "cell": "D3xR1",
+      "episode_id": 8060,
+      "start_row": 991930,
+      "goal_row": 991980,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 93.7031021118164,
+        "angle_dist": 0.08474564552307129,
+        "c_real_state": 93.78784775733948,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 12.508112907409668
+      }
+    },
+    {
+      "pair_id": 87,
+      "cell": "D3xR2",
+      "episode_id": 16731,
+      "start_row": 2108182,
+      "goal_row": 2108232,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 36.13351821899414,
+        "angle_dist": 0.3656724691390991,
+        "c_real_state": 36.49919068813324,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.281905889511108
+      }
+    },
+    {
+      "pair_id": 93,
+      "cell": "D3xR3",
+      "episode_id": 4928,
+      "start_row": 611861,
+      "goal_row": 611911,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 52.6848030090332,
+        "angle_dist": 1.5049312114715576,
+        "c_real_state": 54.18973422050476,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.678454875946045
+      }
+    },
+    {
+      "pair_id": 94,
+      "cell": "D3xR3",
+      "episode_id": 112,
+      "start_row": 12473,
+      "goal_row": 12523,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 369.5237121582031,
+        "angle_dist": 1.9682929515838623,
+        "c_real_state": 371.492005109787,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.883623123168945
+      }
+    },
+    {
+      "pair_id": 96,
+      "cell": "D3xR3",
+      "episode_id": 16559,
+      "start_row": 2085670,
+      "goal_row": 2085720,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 119.09524536132812,
+        "angle_dist": 2.3966043889522552,
+        "c_real_state": 121.49184975028038,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.501923084259033
+      }
+    },
+    {
+      "pair_id": 97,
+      "cell": "D3xR3",
+      "episode_id": 10948,
+      "start_row": 1355747,
+      "goal_row": 1355797,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 130.13290405273438,
+        "angle_dist": 0.3604562282562256,
+        "c_real_state": 130.4933602809906,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.5433509349823
+      }
+    },
+    {
+      "pair_id": 99,
+      "cell": "D3xR3",
+      "episode_id": 5015,
+      "start_row": 625913,
+      "goal_row": 625963,
+      "result": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 68.51591491699219,
+        "angle_dist": 2.682202402745382,
+        "c_real_state": 71.19811731973758,
+        "oracle_rollouts": 240,
+        "oracle_env_steps": 6000,
+        "cem_solves": 4,
+        "elapsed_seconds": 11.571722984313965
+      }
+    }
+  ],
+  "aggregate": {
+    "k": 60,
+    "n_pairs": 16,
+    "success_count": 0,
+    "success_rate": 0.0,
+    "oracle_rollouts": 3840,
+    "oracle_env_steps": 96000,
+    "elapsed_seconds": 186.39488101005554
+  }
+}

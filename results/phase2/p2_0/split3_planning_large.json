@@ -1,0 +1,571 @@
+{
+  "metadata": {
+    "split": 3,
+    "variant": "large",
+    "seed": 0,
+    "device": "mps",
+    "pairs_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase1/track_a_pairs.json",
+    "pairs_subset_override": false,
+    "selected_pair_ids": [
+      25,
+      46,
+      60,
+      61,
+      67,
+      70,
+      71,
+      73,
+      78,
+      86,
+      87,
+      93,
+      94,
+      96,
+      97,
+      99
+    ],
+    "pair_cell_map": {
+      "25": "D1xR0",
+      "46": "D1xR3",
+      "60": "D2xR2",
+      "61": "D2xR2",
+      "67": "D2xR3",
+      "70": "D2xR3",
+      "71": "D2xR3",
+      "73": "D2xR3",
+      "78": "D3xR0",
+      "86": "D3xR1",
+      "87": "D3xR2",
+      "93": "D3xR3",
+      "94": "D3xR3",
+      "96": "D3xR3",
+      "97": "D3xR3",
+      "99": "D3xR3"
+    },
+    "raw_model_checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/lewm-pusht",
+    "model_checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-pusht",
+    "cost_head_checkpoint": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_large/split3_all_fail_strong_rho_large_seed0_best.pt",
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_planning_large.json",
+    "cache_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache",
+    "dataset_name": "pusht_expert_train",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    },
+    "success_definition": "final block_pos_dist < 20 and final angle_dist < pi/9; env_success records whether the environment ever terminated.",
+    "elapsed_seconds": 346.12969493865967
+  },
+  "records": [
+    {
+      "pair_id": 25,
+      "cell": "D1xR0",
+      "episode_id": 2388,
+      "start_row": 283639,
+      "goal_row": 283689,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 49.52825164794922,
+        "angle_dist": 0.12560594081878662,
+        "c_real_state": 49.653857588768005,
+        "elapsed_seconds": 11.494601011276245
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 49.52825164794922,
+        "angle_dist": 0.12560594081878662,
+        "c_real_state": 49.653857588768005,
+        "elapsed_seconds": 10.952844858169556
+      }
+    },
+    {
+      "pair_id": 46,
+      "cell": "D1xR3",
+      "episode_id": 3363,
+      "start_row": 410963,
+      "goal_row": 411013,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 125.18999481201172,
+        "angle_dist": 1.4146167079554957,
+        "c_real_state": 126.60461151996722,
+        "elapsed_seconds": 10.861709117889404
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 29.375825881958008,
+        "angle_dist": 2.73279470205307,
+        "c_real_state": 32.10862058401108,
+        "elapsed_seconds": 10.728422164916992
+      }
+    },
+    {
+      "pair_id": 60,
+      "cell": "D2xR2",
+      "episode_id": 3789,
+      "start_row": 465802,
+      "goal_row": 465852,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 25.098167419433594,
+        "angle_dist": 0.11150842905044556,
+        "c_real_state": 25.20967584848404,
+        "elapsed_seconds": 10.71933889389038
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 57.38680648803711,
+        "angle_dist": 1.0916672984706324,
+        "c_real_state": 58.47847378650774,
+        "elapsed_seconds": 10.72600793838501
+      }
+    },
+    {
+      "pair_id": 61,
+      "cell": "D2xR2",
+      "episode_id": 7711,
+      "start_row": 956737,
+      "goal_row": 956787,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 153.58145141601562,
+        "angle_dist": 1.4284224549876612,
+        "c_real_state": 155.0098738710033,
+        "elapsed_seconds": 10.739725828170776
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 26.034013748168945,
+        "angle_dist": 0.31055930256843567,
+        "c_real_state": 26.34457305073738,
+        "elapsed_seconds": 10.732232809066772
+      }
+    },
+    {
+      "pair_id": 67,
+      "cell": "D2xR3",
+      "episode_id": 14179,
+      "start_row": 1785862,
+      "goal_row": 1785912,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 33.40082550048828,
+        "angle_dist": 0.3231015205383301,
+        "c_real_state": 33.72392702102661,
+        "elapsed_seconds": 10.929670095443726
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 108.03440856933594,
+        "angle_dist": 1.4017562866210938,
+        "c_real_state": 109.43616485595703,
+        "elapsed_seconds": 10.751134157180786
+      }
+    },
+    {
+      "pair_id": 70,
+      "cell": "D2xR3",
+      "episode_id": 15152,
+      "start_row": 1902386,
+      "goal_row": 1902436,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 59.67401123046875,
+        "angle_dist": 1.8190003077136438,
+        "c_real_state": 61.493011538182394,
+        "elapsed_seconds": 10.713922023773193
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 59.8485107421875,
+        "angle_dist": 2.0494938532458704,
+        "c_real_state": 61.89800459543337,
+        "elapsed_seconds": 11.090734004974365
+      }
+    },
+    {
+      "pair_id": 71,
+      "cell": "D2xR3",
+      "episode_id": 6461,
+      "start_row": 803551,
+      "goal_row": 803601,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 46.720428466796875,
+        "angle_dist": 0.7456483840942383,
+        "c_real_state": 47.46607685089111,
+        "elapsed_seconds": 10.918843030929565
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 60.452430725097656,
+        "angle_dist": 1.2953581809997559,
+        "c_real_state": 61.74778890609741,
+        "elapsed_seconds": 10.773130893707275
+      }
+    },
+    {
+      "pair_id": 73,
+      "cell": "D2xR3",
+      "episode_id": 4709,
+      "start_row": 579221,
+      "goal_row": 579271,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 91.86233520507812,
+        "angle_dist": 1.1672379970550537,
+        "c_real_state": 93.02957320213318,
+        "elapsed_seconds": 10.610671281814575
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 99.64464569091797,
+        "angle_dist": 1.5188767910003662,
+        "c_real_state": 101.16352248191833,
+        "elapsed_seconds": 10.71328592300415
+      }
+    },
+    {
+      "pair_id": 78,
+      "cell": "D3xR0",
+      "episode_id": 10116,
+      "start_row": 1236973,
+      "goal_row": 1237023,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 139.5687255859375,
+        "angle_dist": 0.5007249116897583,
+        "c_real_state": 140.06945049762726,
+        "elapsed_seconds": 10.912978172302246
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 58.87702941894531,
+        "angle_dist": 0.47819602489471436,
+        "c_real_state": 59.35522544384003,
+        "elapsed_seconds": 10.695701122283936
+      }
+    },
+    {
+      "pair_id": 86,
+      "cell": "D3xR1",
+      "episode_id": 8060,
+      "start_row": 991930,
+      "goal_row": 991980,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 0.9821520447731018,
+        "angle_dist": 1.4576317071914673,
+        "c_real_state": 2.439783751964569,
+        "elapsed_seconds": 10.899128675460815
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 34.022274017333984,
+        "angle_dist": 1.6042922735214233,
+        "c_real_state": 35.62656629085541,
+        "elapsed_seconds": 10.765008926391602
+      }
+    },
+    {
+      "pair_id": 87,
+      "cell": "D3xR2",
+      "episode_id": 16731,
+      "start_row": 2108182,
+      "goal_row": 2108232,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 92.75977325439453,
+        "angle_dist": 1.105774164199829,
+        "c_real_state": 93.86554741859436,
+        "elapsed_seconds": 11.174487113952637
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 29.948959350585938,
+        "angle_dist": 0.30607306957244873,
+        "c_real_state": 30.255032420158386,
+        "elapsed_seconds": 10.972398281097412
+      }
+    },
+    {
+      "pair_id": 93,
+      "cell": "D3xR3",
+      "episode_id": 4928,
+      "start_row": 611861,
+      "goal_row": 611911,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 58.70577621459961,
+        "angle_dist": 1.8169121742248535,
+        "c_real_state": 60.52268838882446,
+        "elapsed_seconds": 10.710651874542236
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 81.88307189941406,
+        "angle_dist": 1.5373387336730957,
+        "c_real_state": 83.42041063308716,
+        "elapsed_seconds": 10.619146823883057
+      }
+    },
+    {
+      "pair_id": 94,
+      "cell": "D3xR3",
+      "episode_id": 112,
+      "start_row": 12473,
+      "goal_row": 12523,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 118.33358001708984,
+        "angle_dist": 2.572209421788351,
+        "c_real_state": 120.9057894388782,
+        "elapsed_seconds": 10.63802981376648
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 155.8944854736328,
+        "angle_dist": 2.118913412094116,
+        "c_real_state": 158.01339888572693,
+        "elapsed_seconds": 10.752775192260742
+      }
+    },
+    {
+      "pair_id": 96,
+      "cell": "D3xR3",
+      "episode_id": 16559,
+      "start_row": 2085670,
+      "goal_row": 2085720,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 67.20856475830078,
+        "angle_dist": 2.3994666039943695,
+        "c_real_state": 69.60803136229515,
+        "elapsed_seconds": 10.62033987045288
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 32.994651794433594,
+        "angle_dist": 2.1807821691036224,
+        "c_real_state": 35.175433963537216,
+        "elapsed_seconds": 10.773956775665283
+      }
+    },
+    {
+      "pair_id": 97,
+      "cell": "D3xR3",
+      "episode_id": 10948,
+      "start_row": 1355747,
+      "goal_row": 1355797,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 176.49374389648438,
+        "angle_dist": 0.2997506856918335,
+        "c_real_state": 176.7934945821762,
+        "elapsed_seconds": 10.763028383255005
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 196.2168426513672,
+        "angle_dist": 1.4546844959259033,
+        "c_real_state": 197.6715271472931,
+        "elapsed_seconds": 10.656992197036743
+      }
+    },
+    {
+      "pair_id": 99,
+      "cell": "D3xR3",
+      "episode_id": 5015,
+      "start_row": 625913,
+      "goal_row": 625963,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 90.15481567382812,
+        "angle_dist": 2.5517049471484583,
+        "c_real_state": 92.70652062097659,
+        "elapsed_seconds": 10.607526063919067
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 127.85733795166016,
+        "angle_dist": 1.9096422831164759,
+        "c_real_state": 129.76698023477664,
+        "elapsed_seconds": 10.788721799850464
+      }
+    }
+  ],
+  "aggregate": {
+    "n_pairs": 16,
+    "euclidean_success_rate": 0.0,
+    "cpsi_success_rate": 0.0,
+    "delta_success_rate": 0.0,
+    "euclidean_env_success_rate": 0.0,
+    "cpsi_env_success_rate": 0.0,
+    "per_cell": {
+      "D1xR0": {
+        "n_pairs": 1,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D1xR3": {
+        "n_pairs": 1,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D2xR2": {
+        "n_pairs": 2,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D2xR3": {
+        "n_pairs": 4,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D3xR0": {
+        "n_pairs": 1,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D3xR1": {
+        "n_pairs": 1,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D3xR2": {
+        "n_pairs": 1,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      },
+      "D3xR3": {
+        "n_pairs": 5,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      }
+    },
+    "headroom_closure": {
+      "cells": {
+        "D1xR3": {
+          "phase1_latent_cem_late_success_rate": 0.0,
+          "phase1_v1_cem_late_success_rate": 0.508,
+          "phase1_headroom": 0.508,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        },
+        "D2xR2": {
+          "phase1_latent_cem_late_success_rate": 0.021,
+          "phase1_v1_cem_late_success_rate": 0.564,
+          "phase1_headroom": 0.5429999999999999,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        },
+        "D2xR3": {
+          "phase1_latent_cem_late_success_rate": 0.007,
+          "phase1_v1_cem_late_success_rate": 0.714,
+          "phase1_headroom": 0.707,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        },
+        "D3xR0": {
+          "phase1_latent_cem_late_success_rate": 0.167,
+          "phase1_v1_cem_late_success_rate": 0.992,
+          "phase1_headroom": 0.825,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        },
+        "D3xR1": {
+          "phase1_latent_cem_late_success_rate": 0.371,
+          "phase1_v1_cem_late_success_rate": 0.571,
+          "phase1_headroom": 0.19999999999999996,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        },
+        "D3xR2": {
+          "phase1_latent_cem_late_success_rate": 0.092,
+          "phase1_v1_cem_late_success_rate": 0.667,
+          "phase1_headroom": 0.5750000000000001,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        },
+        "D3xR3": {
+          "phase1_latent_cem_late_success_rate": 0.071,
+          "phase1_v1_cem_late_success_rate": 0.993,
+          "phase1_headroom": 0.922,
+          "matched_euclidean_success_rate": 0.0,
+          "matched_cpsi_success_rate": 0.0,
+          "headroom_closure": 0.0
+        }
+      },
+      "mean_headroom_closure": 0.0
+    },
+    "split3_rescue": {
+      "n_hard_pairs_evaluated": 16,
+      "n_euclidean_failures": 16,
+      "n_cpsi_rescues": 0,
+      "rescue_rate_among_euclidean_failures": 0.0,
+      "cpsi_success_rate_on_hard_pairs": 0.0,
+      "rescued_pair_ids": []
+    },
+    "latent_favorable_degradation": {
+      "D1xR0": {
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0,
+        "phase1_latent_cem_late_success_rate": 0.508,
+        "phase1_v1_cem_late_success_rate": 0.333
+      }
+    }
+  }
+}

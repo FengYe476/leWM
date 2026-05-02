@@ -1,0 +1,12 @@
+{
+  "checkpoint": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_full/split3_cem_aware_small_seed0_best.pt",
+  "split": 3,
+  "variant": "small",
+  "n_records": 1280,
+  "pairwise_accuracy": 0.5788312411636176,
+  "spearman": 0.2269929181404742,
+  "cost_min": -0.6884886026382446,
+  "cost_max": 206.3059844970703,
+  "label_min": 4.682186126708984,
+  "label_max": 440.92266845703125
+}
