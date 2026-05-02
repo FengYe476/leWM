@@ -8,13 +8,13 @@ The D3 row alignment paradox is the measurement that the highest-displacement ro
 
 - D-row comparison across D0, D1, D2, and D3.
 - Most visible in D3xR0, D3xR1, D3xR2, D3xR3.
-- Representative pair IDs: `74`, `78`, `86`, `93`, `99`.
+- Representative pair IDs: `74`, `78`, `86`, `92`, `93`, `99`.
 
 ## Key Numbers
 
 - Row Pearson(C_real_z, C_real_state): D0=`0.323`, D1=`0.393`, D2=`0.451`, D3=`0.630`.
 - D3 mean per-cell Spearman values are positive in all four cells: D3xR0=`0.667`, D3xR1=`0.726`, D3xR2=`0.581`, D3xR3=`0.401`.
-- Despite this, D3 latent CEM_late is only `17.9%` row-wide.
+- Despite this, D3 latent CEM_late is only `17.88%` row-wide (pair-weighted across 26 D3 pairs and 520 CEM_late records, matching the D3_overall convention in the V3 row comparison).
 - D3 V3 oracle CEM_late rises to `47.7%`, and V1 reaches D3xR0=`99.2%` and D3xR3=`99.3%`.
 
 ## Evidence
