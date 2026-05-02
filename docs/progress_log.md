@@ -207,3 +207,15 @@ This file is intended to be append-only. Future entries should:
 - Marked Track A as closed in `README.md` and linked the closeout reading guide.
 - Recorded the Phase 0 frozen exclusion now no longer defensible after Track A: no planner redesign beyond fixed evaluation settings.
 - Phase 1 ends here as Track A only; Tracks B, C, and D remain not started.
+
+## 2026-05-02 — Day 18: Stage 1A random-geometry decision gate
+
+- Completed Stage 1A random-geometry controls C0-C7 on the Track A 100-pair PushT endpoint-ranking task.
+- Wrote the canonical Stage 1A result memo at `docs/phase2/stage1/stage1a_result_memo.md`.
+- Saved the combined Stage 1A output at `results/phase2/stage1/stage1a_full.json`.
+- Established C4/C5 null floors near zero ranking correlation and chance pairwise accuracy: C4 Spearman `-0.006`, pairwise `0.498`; C5 Spearman `0.004`, pairwise `0.500`.
+- Found that C6, the seed-0 random-init LeWM encoder, is anti-correlated with physical endpoint ranking: Spearman `-0.200`, pairwise `0.475`.
+- Confirmed that learned LeWM weights are essential for goal ranking, ruling out Strong B.
+- Confirmed that random linear projections of LeWM's learned 192-d latent space preserve most endpoint ranking signal: C2 `m=192` Spearman `0.495±0.019` versus C0 Spearman `0.506`.
+- Positioned DINOv2 below LeWM on this task-specific ranking objective: C7 mean-pool Spearman `0.286`.
+- Decision: skip Stage 1B and proceed with Plan A, the TMLR empirical study framing.

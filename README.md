@@ -16,6 +16,10 @@ Phase 1 Track A revises the Phase 0 encoder-only framing into a two-bottleneck f
 
 Phase 1 reading guide and scope boundaries: [docs/phase1/phase1_closeout.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/phase1_closeout.md:1).
 
+## Stage 1A Conclusion
+
+Stage 1A evaluated eight random-geometry controls (C0-C7) on the Track A 100-pair PushT endpoint ranking task. Strong B is ruled out: C6, the random-init LeWM encoder, has Spearman `-0.200` and proves that learned weights are essential for goal ranking, so the "random geometry matches LeWM" framing does not hold. However, random linear projections of LeWM's learned latent space preserve most ranking signal: C2 `m=192` reaches Spearman `0.495` versus C0's `0.506`. The project proceeds to Plan A, the TMLR empirical study. The canonical source is [docs/phase2/stage1/stage1a_result_memo.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase2/stage1/stage1a_result_memo.md:1).
+
 ## Research Question
 
 Where does LeWM's long-horizon goal-conditioned planning failure originate?
@@ -300,6 +304,13 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 | Track C | Not started — Phase 2 candidates | - | Frozen metric calibration ladder |
 | Track D | Not started — Phase 2 candidates | - | Conditional representation retraining |
 
+### Stage 1
+
+| Stage | Status | Date | Deliverable |
+| --- | --- | --- | --- |
+| Stage 1A | ✅ Complete | 2026-05-02 | Random-geometry controls C0-C7, decision gate assessment, result memo |
+| Stage 1B | Skipped | — | Strong B ruled out by Stage 1A; Stage 1B planning sweep not needed |
+
 ## Additional Docs
 
 - [docs/research_plan.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/research_plan.md:1)
@@ -314,3 +325,5 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 - [docs/phase1/oracle_v3_row_comparison.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/oracle_v3_row_comparison.md:1)
 - [docs/phase1/track_a_analysis_report.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_analysis_report.md:1)
 - [docs/phase1/track_a_supplementary_findings.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_supplementary_findings.md:1)
+- [docs/phase2/phase2_summary.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase2/phase2_summary.md:1)
+- [docs/phase2/stage1/stage1a_result_memo.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase2/stage1/stage1a_result_memo.md:1)
