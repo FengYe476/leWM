@@ -200,3 +200,10 @@ This file is intended to be append-only. Future entries should:
 - Updated Failure Atlas page `09` with the pair-weighted D3 latent CEM_late convention and value.
 - Added D3xR2 representative pair `92` to the D3 row alignment paradox examples.
 - No Phase 0 source files or earlier atlas pages were changed.
+
+## 2026-05-01 — Day 17: Phase 1 Track A closeout
+
+- Wrote the Phase 1 Track A closeout at `docs/phase1/phase1_closeout.md`.
+- Marked Track A as closed in `README.md` and linked the closeout reading guide.
+- Recorded the Phase 0 frozen exclusion now no longer defensible after Track A: no planner redesign beyond fixed evaluation settings.
+- Phase 1 ends here as Track A only; Tracks B, C, and D remain not started.

@@ -14,6 +14,8 @@ Phase 1 has substantially revised these conclusions. See [docs/phase1/track_a_su
 
 Phase 1 Track A revises the Phase 0 encoder-only framing into a two-bottleneck finding: predictor sharpness limits latent CEM in high-displacement cells, while cost-criterion alignment explains much of the D0/D1 low-rotation gap where V3 oracle underperformed latent. The canonical source is [docs/phase1/track_a_summary.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_summary.md:1). Phase 1 currently covers only Track A; Tracks B, C, and D are not started.
 
+Phase 1 reading guide and scope boundaries: [docs/phase1/phase1_closeout.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/phase1_closeout.md:1).
+
 ## Research Question
 
 Where does LeWM's long-horizon goal-conditioned planning failure originate?
@@ -293,7 +295,7 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 
 | Track | Status | Date | Deliverable |
 | --- | --- | --- | --- |
-| Track A | ✅ Complete | 2026-05-01 | Stratified 100-pair PushT analysis, oracle V3/V1/V2 ablation, Phase 0 revisions, and Failure Atlas extension |
+| Track A | ✅ Closed | 2026-05-01 | Stratified 100-pair PushT analysis, oracle V3/V1/V2 ablation, Phase 0 revisions, and Failure Atlas extension |
 | Track B | Not started — Phase 2 candidates | - | Encoder replacement / DINOv2 control |
 | Track C | Not started — Phase 2 candidates | - | Frozen metric calibration ladder |
 | Track D | Not started — Phase 2 candidates | - | Conditional representation retraining |
