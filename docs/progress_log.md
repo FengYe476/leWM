@@ -181,3 +181,12 @@ This file is intended to be append-only. Future entries should:
 - include the project day
 - record both actions taken and concrete findings
 - distinguish completed evidence from planned next steps
+
+## 2026-05-01 — Day 15: Track A consolidation
+
+- Accepted V1/V2 oracle ablation as the final Phase 1 Track A experimental finding.
+- Wrote the canonical Track A summary at `docs/phase1/track_a_summary.md`.
+- Wrote Phase 0 claim revisions at `docs/phase1/phase0_revisions.md` without modifying frozen Phase 0 source documents.
+- Added new Failure Atlas pages `05` through `09` for predictor sharpness, cost-criterion misalignment, V2 indicator degeneracy, R3 apparent infeasibility revision, and the D3 alignment paradox.
+- Updated the README conclusion note, Phase 1 Track A conclusion, status table, and Additional Docs links.
+- Net revision: Phase 0's predictor-fidelity and per-pair heterogeneity findings hold, while the planner-not-bottleneck and large-displacement-encoder-collapse framings are revised or falsified by Track A.

@@ -56,31 +56,31 @@ Track A set out to turn the Phase 0 PushT offset-50 diagnosis from a 30-pair ran
 
 ## 3. Headline Findings
 
-**F1. Stratified sampling produced a balanced grid with no empty cells.**  
+**F1. Stratified sampling produced a balanced grid with no empty cells.**
 The final sample is `100/100` pairs across the 4x4 D/R grid, every cell has 6 or 7 pairs, and no cell was capped. Evidence: [results/phase1/track_a_pairs.json](../../results/phase1/track_a_pairs.json), [docs/phase1/track_a_sampling_report.md](track_a_sampling_report.md). Applies to all 16 cells.
 
-**F2. DP1 passes, so Phase 0's high per-pair correlation variance was not random-sampling noise.**  
+**F2. DP1 passes, so Phase 0's high per-pair correlation variance was not random-sampling noise.**
 Track A measured per-pair Spearman std `0.477` with 95% bootstrap CI `[0.412, 0.529]`, above the `0.300` threshold; Phase 0 was mean `0.353`, std `0.486`. Evidence: [docs/phase1/track_a_analysis_report.md](track_a_analysis_report.md), [results/phase1/track_a_analysis/track_a_analysis.json](../../results/phase1/track_a_analysis/track_a_analysis.json). Applies globally across the 100-pair grid.
 
-**F3. Failure decomposition reveals an invisible quadrant: all_fail with strong encoder rho.**  
+**F3. Failure decomposition reveals an invisible quadrant: all_fail with strong encoder rho.**
 There are `16` all_fail + strong_rho pairs, with mean displacement `121.51` px and mean rotation `1.325` rad; this quadrant touches D1xR0, D1xR3, D2xR2, D2xR3, and every D3 cell. Evidence: [docs/phase1/track_a_supplementary_findings.md](track_a_supplementary_findings.md), [results/phase1/track_a_analysis/failure_mode_decomposition.json](../../results/phase1/track_a_analysis/failure_mode_decomposition.json). Applies mainly to D2-D3 plus selected D1 cells.
 
-**F4. Encoder-physics alignment is non-monotonic and inverted by D row.**  
+**F4. Encoder-physics alignment is non-monotonic and inverted by D row.**
 Row Pearson(C_real_z, C_real_state) is D0=`0.323`, D1=`0.393`, D2=`0.451`, D3=`0.630`; D3 has the best row-wise encoder-physics alignment, not the worst. Evidence: [docs/phase1/track_a_supplementary_findings.md](track_a_supplementary_findings.md), [results/phase1/track_a_analysis/d_row_cost_diagnosis.json](../../results/phase1/track_a_analysis/d_row_cost_diagnosis.json). Applies to the D-row displacement axis.
 
-**F5. V3 oracle CEM separates a predictor-sharpness regime from a cost-misalignment regime.**  
+**F5. V3 oracle CEM separates a predictor-sharpness regime from a cost-misalignment regime.**
 V3 beats latent CEM_late by `+29.81` pp on the D3 row and is positive on D2 overall, but underperforms latent in D0xR0 (`-17.50` pp), D0xR1 (`-50.00` pp), and D1xR0 (`-34.17` pp). Evidence: [docs/phase1/oracle_v3_row_comparison.md](oracle_v3_row_comparison.md), V3 row JSONs under [results/phase1/](../../results/phase1/). Applies to D2-D3 for predictor sharpness and D0/D1 low-R for cost misalignment.
 
-**F6. V1 hinge oracle CEM beats V3 in 16/16 cells and largely closes the latent-favorable gaps.**  
+**F6. V1 hinge oracle CEM beats V3 in 16/16 cells and largely closes the latent-favorable gaps.**
 D0xR0/D0xR1/D1xR0 move from V3-vs-latent gaps of `-17.50/-50.00/-34.17` pp to V1-vs-latent gaps of `0.00/-7.50/-17.50` pp. Evidence: [docs/phase1/oracle_full_variant_comparison.md](oracle_full_variant_comparison.md), V1 JSONs under [results/phase1/v1_oracle_ablation/](../../results/phase1/v1_oracle_ablation/). Applies to all 16 cells, especially D0/D1 low-R.
 
-**F7. V2 indicator oracle CEM degenerates under this CEM setup.**  
+**F7. V2 indicator oracle CEM degenerates under this CEM setup.**
 The selected-elite degeneracy proxy flags `60` pairs with all stored early/late V2 elite costs equal to `1.0`; V2 falls below V3 by more than 10 pp in D1xR2, D2xR1, and all four D3 cells. Evidence: [docs/phase1/oracle_full_variant_comparison.md](oracle_full_variant_comparison.md), [results/phase1/v2_oracle_ablation/](../../results/phase1/v2_oracle_ablation/). Applies to cells where the indicator gives CEM little outside-region ordering signal.
 
-**F8. Track A supports two independent bottleneck axes.**  
+**F8. Track A supports two independent bottleneck axes.**
 Predictor sharpness varies mainly along the displacement axis, while cost-criterion alignment varies in low-rotation and high-rotation cells and globally by cost shape; V1 and V2 differ by more than 5 pp in `14/16` cells. Evidence: [docs/phase1/oracle_v3_row_comparison.md](oracle_v3_row_comparison.md), [docs/phase1/oracle_full_variant_comparison.md](oracle_full_variant_comparison.md). Applies across the full 4x4 grid.
 
-**F9. V1 oracle success shows the offset-50 task is often feasible under the right planning loop.**  
+**F9. V1 oracle success shows the offset-50 task is often feasible under the right planning loop.**
 V1 reaches at least 95% CEM_late success in 6 cells: D0xR0, D0xR2, D1xR1, D2xR1, D3xR0, and D3xR3; the extreme-displacement cells D3xR0 and D3xR3 reach `99.2%` and `99.3%`. Evidence: [docs/phase1/oracle_full_variant_comparison.md](oracle_full_variant_comparison.md), [results/phase1/v1_oracle_ablation/](../../results/phase1/v1_oracle_ablation/). Applies to offset-50 PushT only.
 
 ## 4. Failure Mechanism Map
