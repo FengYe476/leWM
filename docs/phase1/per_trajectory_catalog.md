@@ -10,7 +10,7 @@ This catalog indexes per-trajectory visualizations for five locked PushT pairs u
 |---|---:|---|---|
 | F4: D3 row alignment paradox | 80 | D3xR1 | Lowest `pair_id` in D3xR1 |
 | F5: predictor sharpness in D3 | 74 | D3xR0 | Lowest `pair_id` in D3xR0 |
-| F6: cost-criterion misalignment | 6 | D0xR1 | Lowest `pair_id` in D0xR1 |
+| F6: cost-criterion misalignment | 8 | D0xR1 | Replacement F6 anchor selected by latent/V3/V1 CEM_late signature |
 | F7: V2 indicator degeneracy | 93 | D3xR3 | Lowest `pair_id` in D3xR3 |
 | Sign-reversal cluster | 20 | D0xR3 | Most-negative-rho pair from the Track A analysis report |
 
@@ -40,15 +40,15 @@ Pair 74 is the lowest-ID D3xR0 pair. The block-trajectory overlay shows the sele
 
 ![Pair 74 cost cascade](../../results/phase1/figures/per_trajectory/74_D3xR0_cost_cascade.png)
 
-### Pair 6 - D0xR1 - Anchors F6
+### Pair 8 - D0xR1 - Anchors F6
 
-Pair 6 is the lowest-ID D0xR1 pair. The trajectory and cost-panel figures show the final selected action sequence for latent, V3, V1, and V2 on a low-displacement, low-rotation cell used in the cost-criterion comparison. The cascade panel shows the source-wise latent CEM cost reduction and observed success rates from the original 80 action records. Relevant finding: [Track A summary F6](track_a_summary.md#3-headline-findings). Atlas pointer: [cost-criterion misalignment](../../results/failure_atlas/06_cost_criterion_misalignment.md).
+Pair 8 is the D0xR1 replacement anchor for F6. Pair 6 was the original lowest-id selection, but all variants succeeded trivially; it was replaced with pair 8, whose stored CEM_late counts exhibit the F6 mechanism. Old pair 6 artifacts are retained as `*_replaced.{png,json}`. The trajectory and cost-panel figures show the final selected action sequence for latent, V3, V1, and V2 on this low-displacement, low-rotation cell, and the cascade panel shows source-wise latent CEM costs and success rates from the original 80 action records. Relevant finding: [Track A summary F6](track_a_summary.md#3-headline-findings). Atlas pointer: [cost-criterion misalignment](../../results/failure_atlas/06_cost_criterion_misalignment.md).
 
-![Pair 6 block trajectories](../../results/phase1/figures/per_trajectory/6_D0xR1_block_trajectories.png)
+![Pair 8 block trajectories](../../results/phase1/figures/per_trajectory/8_D0xR1_block_trajectories.png)
 
-![Pair 6 cost panel](../../results/phase1/figures/per_trajectory/6_D0xR1_cost_panel.png)
+![Pair 8 cost panel](../../results/phase1/figures/per_trajectory/8_D0xR1_cost_panel.png)
 
-![Pair 6 cost cascade](../../results/phase1/figures/per_trajectory/6_D0xR1_cost_cascade.png)
+![Pair 8 cost cascade](../../results/phase1/figures/per_trajectory/8_D0xR1_cost_cascade.png)
 
 ### Pair 93 - D3xR3 - Anchors F7
 

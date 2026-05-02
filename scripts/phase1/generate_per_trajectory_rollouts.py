@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate state-capture rollouts for the five locked Track A anchor pairs."""
+"""Generate state-capture rollouts for locked or requested Track A anchor pairs."""
 
 from __future__ import annotations
 
@@ -86,8 +86,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--device", default="mps")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--pair-ids", type=parse_pair_ids, default=None)
     parser.add_argument("--overwrite", action="store_true")
     return parser.parse_args()
+
+
+def parse_pair_ids(raw: str) -> list[int]:
+    values = []
+    for chunk in raw.split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        values.append(int(chunk))
+    if not values:
+        raise argparse.ArgumentTypeError("--pair-ids must include at least one id")
+    return list(dict.fromkeys(values))
 
 
 def get_git_commit() -> str:
@@ -135,13 +148,14 @@ def make_cem_args(*, checkpoint_dir: Path, device: str, seed: int, num_per_sourc
     )
 
 
-def load_locked_pairs(path: Path) -> tuple[dict, list[dict]]:
+def load_selected_pairs(path: Path, pair_ids: list[int] | None) -> tuple[dict, list[dict]]:
     data = json.loads(path.read_text())
     by_id = {int(pair["pair_id"]): pair for pair in data["pairs"]}
-    missing = sorted(set(LOCKED_PAIR_IDS.values()) - set(by_id))
+    requested_ids = pair_ids if pair_ids is not None else list(LOCKED_PAIR_IDS.values())
+    missing = sorted(set(requested_ids) - set(by_id))
     if missing:
-        raise ValueError(f"Locked pair_ids not found in {path}: {missing}")
-    pairs = [by_id[pair_id] for pair_id in LOCKED_PAIR_IDS.values()]
+        raise ValueError(f"Requested pair_ids not found in {path}: {missing}")
+    pairs = [by_id[pair_id] for pair_id in requested_ids]
     return data, pairs
 
 
@@ -354,8 +368,9 @@ def main() -> int:
     args.device = resolve_device(args.device)
     args.checkpoint_dir = DEFAULT_CHECKPOINT_DIR.expanduser().resolve()
 
-    pairs_data, pairs = load_locked_pairs(args.pairs_path)
-    validate_locked_selection(pairs, pairs_data["pairs"])
+    pairs_data, pairs = load_selected_pairs(args.pairs_path, args.pair_ids)
+    if args.pair_ids is None:
+        validate_locked_selection(pairs, pairs_data["pairs"])
     pair_metadata = pairs_data["metadata"]
     offset = int(pair_metadata["offset"])
     if offset != 50:
@@ -373,10 +388,10 @@ def main() -> int:
     print(f"cache_dir: {cache_dir}")
     print(f"checkpoint_dir: {args.checkpoint_dir}")
     print(f"device: {args.device}")
-    print("locked_pairs:")
-    for label, pair_id in LOCKED_PAIR_IDS.items():
-        pair = next(pair for pair in pairs if int(pair["pair_id"]) == pair_id)
-        print(f"  {label}: pair_id={pair_id} cell={pair['cell']}")
+    label = "locked_pairs" if args.pair_ids is None else "requested_pairs"
+    print(f"{label}:")
+    for idx, pair in enumerate(pairs, start=1):
+        print(f"  P{idx}: pair_id={pair['pair_id']} cell={pair['cell']}")
 
     dataset = get_dataset(cache_dir, dataset_name)
     index = prepare_dataset_index(dataset)

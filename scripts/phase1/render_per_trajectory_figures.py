@@ -34,7 +34,7 @@ DEFAULT_TRACK_A_PATH = PROJECT_ROOT / "results" / "phase1" / "track_a_three_cost
 PAIR_ORDER = [
     (80, "D3xR1", "F4"),
     (74, "D3xR0", "F5"),
-    (6, "D0xR1", "F6"),
+    (8, "D0xR1", "F6"),
     (93, "D3xR3", "F7"),
     (20, "D0xR3", "sign-reversal"),
 ]
@@ -59,7 +59,31 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--trajectory-dir", type=Path, default=DEFAULT_TRAJECTORY_DIR)
     parser.add_argument("--figure-dir", type=Path, default=DEFAULT_FIGURE_DIR)
     parser.add_argument("--track-a-path", type=Path, default=DEFAULT_TRACK_A_PATH)
+    parser.add_argument("--pair-ids", type=parse_pair_ids, default=None)
     return parser.parse_args()
+
+
+def parse_pair_ids(raw: str) -> list[int]:
+    values = []
+    for chunk in raw.split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        values.append(int(chunk))
+    if not values:
+        raise argparse.ArgumentTypeError("--pair-ids must include at least one id")
+    return list(dict.fromkeys(values))
+
+
+def selected_pair_order(pair_ids: list[int] | None) -> list[tuple[int, str, str]]:
+    if pair_ids is None:
+        return PAIR_ORDER
+    requested = set(pair_ids)
+    selected = [pair for pair in PAIR_ORDER if pair[0] in requested]
+    missing = sorted(requested - {pair[0] for pair in selected})
+    if missing:
+        raise ValueError(f"Requested pair_ids are not configured for rendering: {missing}")
+    return selected
 
 
 def load_trajectory(trajectory_dir: Path, pair_id: int, cell: str, variant: str) -> dict:
@@ -67,9 +91,12 @@ def load_trajectory(trajectory_dir: Path, pair_id: int, cell: str, variant: str)
     return json.loads(path.read_text())
 
 
-def load_all_trajectories(trajectory_dir: Path) -> dict[tuple[int, str], dict[str, dict]]:
+def load_all_trajectories(
+    trajectory_dir: Path,
+    pair_order: list[tuple[int, str, str]],
+) -> dict[tuple[int, str], dict[str, dict]]:
     data = {}
-    for pair_id, cell, _ in PAIR_ORDER:
+    for pair_id, cell, _ in pair_order:
         data[(pair_id, cell)] = {
             variant: load_trajectory(trajectory_dir, pair_id, cell, variant)
             for variant in VARIANT_ORDER
@@ -400,11 +427,12 @@ def main() -> int:
     args.track_a_path = args.track_a_path.expanduser().resolve()
     args.figure_dir.mkdir(parents=True, exist_ok=True)
 
-    trajectories = load_all_trajectories(args.trajectory_dir)
+    pair_order = selected_pair_order(args.pair_ids)
+    trajectories = load_all_trajectories(args.trajectory_dir, pair_order)
     track_a_data = json.loads(args.track_a_path.read_text())
     outputs = []
 
-    for pair_id, cell, anchor in PAIR_ORDER:
+    for pair_id, cell, anchor in pair_order:
         pair_traj = trajectories[(pair_id, cell)]
         block_path = args.figure_dir / f"{pair_id}_{cell}_block_trajectories.png"
         panel_path = args.figure_dir / f"{pair_id}_{cell}_cost_panel.png"
