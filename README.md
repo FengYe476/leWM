@@ -8,6 +8,12 @@ Phase 0 is complete. The binding conclusion is that PushT long-horizon degradati
 
 The final synthesis is [results/phase0_report.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase0_report.md:1). The shorter binding memo is [results/decision_memo.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/decision_memo.md:1), and the failure atlas is under [results/failure_atlas/](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/failure_atlas/01_large_displacement_encoder_geometry_failure.md:1).
 
+Phase 1 has substantially revised these conclusions. See [docs/phase1/track_a_summary.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_summary.md:1) and [docs/phase1/phase0_revisions.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/phase0_revisions.md:1).
+
+## Phase 1 Conclusion (Track A)
+
+Phase 1 Track A revises the Phase 0 encoder-only framing into a two-bottleneck finding: predictor sharpness limits latent CEM in high-displacement cells, while cost-criterion alignment explains much of the D0/D1 low-rotation gap where V3 oracle underperformed latent. The canonical source is [docs/phase1/track_a_summary.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_summary.md:1). Phase 1 currently covers only Track A; Tracks B, C, and D are not started.
+
 ## Research Question
 
 Where does LeWM's long-horizon goal-conditioned planning failure originate?
@@ -283,6 +289,15 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 | Day 13 | ✅ Complete | Draft interpretation of failure origin and residual ambiguity |
 | Day 14 | ✅ Complete | Final Phase 0 writeup and handoff package |
 
+### Phase 1
+
+| Track | Status | Date | Deliverable |
+| --- | --- | --- | --- |
+| Track A | ✅ Complete | 2026-05-01 | Stratified 100-pair PushT analysis, oracle V3/V1/V2 ablation, Phase 0 revisions, and Failure Atlas extension |
+| Track B | Not started — Phase 2 candidates | - | Encoder replacement / DINOv2 control |
+| Track C | Not started — Phase 2 candidates | - | Frozen metric calibration ladder |
+| Track D | Not started — Phase 2 candidates | - | Conditional representation retraining |
+
 ## Additional Docs
 
 - [docs/research_plan.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/research_plan.md:1)
@@ -291,3 +306,9 @@ Cube does not show PushT's horizon-dependent degradation. Success stays essentia
 - [docs/mps_setup.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/mps_setup.md:1)
 - [results/phase0_report.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase0_report.md:1)
 - [results/decision_memo.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/decision_memo.md:1)
+- [docs/phase1/track_a_summary.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_summary.md:1)
+- [docs/phase1/phase0_revisions.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/phase0_revisions.md:1)
+- [docs/phase1/oracle_full_variant_comparison.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/oracle_full_variant_comparison.md:1)
+- [docs/phase1/oracle_v3_row_comparison.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/oracle_v3_row_comparison.md:1)
+- [docs/phase1/track_a_analysis_report.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_analysis_report.md:1)
+- [docs/phase1/track_a_supplementary_findings.md](/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/phase1/track_a_supplementary_findings.md:1)
