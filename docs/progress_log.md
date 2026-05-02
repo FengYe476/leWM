@@ -181,3 +181,29 @@ This file is intended to be append-only. Future entries should:
 - include the project day
 - record both actions taken and concrete findings
 - distinguish completed evidence from planned next steps
+
+## 2026-05-01 — Day 15: Track A consolidation
+
+- Accepted V1/V2 oracle ablation as the final Phase 1 Track A experimental finding.
+- Wrote the canonical Track A summary at `docs/phase1/track_a_summary.md`.
+- Wrote Phase 0 claim revisions at `docs/phase1/phase0_revisions.md` without modifying frozen Phase 0 source documents.
+- Added new Failure Atlas pages `05` through `09` for predictor sharpness, cost-criterion misalignment, V2 indicator degeneracy, R3 apparent infeasibility revision, and the D3 alignment paradox.
+- Updated the README conclusion note, Phase 1 Track A conclusion, status table, and Additional Docs links.
+- Net revision: Phase 0's predictor-fidelity and per-pair heterogeneity findings hold, while the planner-not-bottleneck and large-displacement-encoder-collapse framings are revised or falsified by Track A.
+
+## 2026-05-01 — Day 16: Track A cleanup
+
+- Replaced the F6 per-trajectory anchor: pair `6` was retained as `*_replaced` and pair `8` became the D0xR1 visual anchor.
+- Reran only the four pair `8` per-trajectory rollouts and rendered its three replacement figures.
+- Removed gitignored smoke-run links from the Track A summary evidence inventory.
+- Corrected the Track A mechanism-map label for D2xR0 from `both` to `cost misalignment`.
+- Updated Failure Atlas page `09` with the pair-weighted D3 latent CEM_late convention and value.
+- Added D3xR2 representative pair `92` to the D3 row alignment paradox examples.
+- No Phase 0 source files or earlier atlas pages were changed.
+
+## 2026-05-01 — Day 17: Phase 1 Track A closeout
+
+- Wrote the Phase 1 Track A closeout at `docs/phase1/phase1_closeout.md`.
+- Marked Track A as closed in `README.md` and linked the closeout reading guide.
+- Recorded the Phase 0 frozen exclusion now no longer defensible after Track A: no planner redesign beyond fixed evaluation settings.
+- Phase 1 ends here as Track A only; Tracks B, C, and D remain not started.

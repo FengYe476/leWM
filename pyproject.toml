@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lewm-failure-audit"
+version = "0.1.0"
+description = "Utilities for the LeWM long-horizon failure audit"
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+include = ["lewm_audit*"]

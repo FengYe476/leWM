@@ -1,0 +1,343 @@
+{
+  "metadata": {
+    "three_cost_path": "results/phase1/track_a_three_cost.json",
+    "source_git_commit": "45d65afc15466686ed8d63c6427ef9e68ff1a497",
+    "analysis_git_commit": "f4893ed636db83241292448113f9bd60b504a7b7",
+    "seed": 0,
+    "bootstrap_n": 10000,
+    "displacement_edges": [
+      0.0,
+      10.0,
+      50.0,
+      120.0,
+      "inf"
+    ],
+    "rotation_edges": [
+      0.0,
+      0.25,
+      0.75,
+      1.25,
+      "inf"
+    ]
+  },
+  "dp1": {
+    "n_pairs_used": 100,
+    "mean_rho": 0.3328033096587676,
+    "std_rho": 0.47728394230893634,
+    "median_rho": 0.41437545373831397,
+    "min_rho": -0.7658727336414002,
+    "max_rho": 0.9141146748437917,
+    "ci_low_std": 0.41176554076382443,
+    "ci_high_std": 0.5287873885962817,
+    "threshold": 0.3,
+    "verdict": "pass",
+    "phase0_reference": {
+      "mean": 0.353,
+      "std": 0.486
+    }
+  },
+  "per_cell_table": [
+    {
+      "cell": "D0xR0",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 368,
+      "success_rate": 0.7666666666666667,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.3877640409848076,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.16096350638748047,
+      "cell_pearson_c_model_vs_c_real_z": 0.8411241992416744
+    },
+    {
+      "cell": "D0xR1",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 214,
+      "success_rate": 0.44583333333333336,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.40588242665146884,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.2597865139879782,
+      "cell_pearson_c_model_vs_c_real_z": 0.8985112866761539
+    },
+    {
+      "cell": "D0xR2",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 154,
+      "success_rate": 0.32083333333333336,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.31846278842436176,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.5349319015569249,
+      "cell_pearson_c_model_vs_c_real_z": 0.9390436803567234
+    },
+    {
+      "cell": "D0xR3",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 22,
+      "success_rate": 0.04583333333333333,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": -0.27319128032435325,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.40567965223528685,
+      "cell_pearson_c_model_vs_c_real_z": 0.8004769715537617
+    },
+    {
+      "cell": "D1xR0",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 130,
+      "success_rate": 0.2708333333333333,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.49853611158857963,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.32327951561678747,
+      "cell_pearson_c_model_vs_c_real_z": 0.7970903057295066
+    },
+    {
+      "cell": "D1xR1",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 36,
+      "success_rate": 0.075,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.33814633891980345,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.41918384018303856,
+      "cell_pearson_c_model_vs_c_real_z": 0.8453238221880175
+    },
+    {
+      "cell": "D1xR2",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 91,
+      "success_rate": 0.18958333333333333,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.14372199735764912,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.5878408731808796,
+      "cell_pearson_c_model_vs_c_real_z": 0.9492984048187056
+    },
+    {
+      "cell": "D1xR3",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 0,
+      "success_rate": 0.0,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": -0.2856321568306697,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.41384943750141984,
+      "cell_pearson_c_model_vs_c_real_z": 0.7891078519085554
+    },
+    {
+      "cell": "D2xR0",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 72,
+      "success_rate": 0.15,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.3168537175773429,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.7331967559151187,
+      "cell_pearson_c_model_vs_c_real_z": 0.7944987366018733
+    },
+    {
+      "cell": "D2xR1",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 83,
+      "success_rate": 0.17291666666666666,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.5967439515912039,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.2986009046421595,
+      "cell_pearson_c_model_vs_c_real_z": 0.6333575980612329
+    },
+    {
+      "cell": "D2xR2",
+      "N_pairs": 7,
+      "N_records": 560,
+      "success_count": 5,
+      "success_rate": 0.008928571428571428,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.07548420448368286,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.4603994754602315,
+      "cell_pearson_c_model_vs_c_real_z": 0.8291747537653751
+    },
+    {
+      "cell": "D2xR3",
+      "N_pairs": 7,
+      "N_records": 560,
+      "success_count": 1,
+      "success_rate": 0.0017857142857142857,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.38413051906692,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.4315707904806437,
+      "cell_pearson_c_model_vs_c_real_z": 0.7944422302916109
+    },
+    {
+      "cell": "D3xR0",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 38,
+      "success_rate": 0.07916666666666666,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.6671065105803716,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.3363768404595312,
+      "cell_pearson_c_model_vs_c_real_z": 0.9023129200048301
+    },
+    {
+      "cell": "D3xR1",
+      "N_pairs": 7,
+      "N_records": 560,
+      "success_count": 64,
+      "success_rate": 0.11428571428571428,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.7262180187746299,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.2643750910937376,
+      "cell_pearson_c_model_vs_c_real_z": 0.825615330882903
+    },
+    {
+      "cell": "D3xR2",
+      "N_pairs": 6,
+      "N_records": 480,
+      "success_count": 13,
+      "success_rate": 0.027083333333333334,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.58095921504826,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.3756894903264419,
+      "cell_pearson_c_model_vs_c_real_z": 0.7515053347638361
+    },
+    {
+      "cell": "D3xR3",
+      "N_pairs": 7,
+      "N_records": 560,
+      "success_count": 10,
+      "success_rate": 0.017857142857142856,
+      "mean_pair_spearman_c_real_z_vs_c_real_state": 0.40105425716959775,
+      "std_pair_spearman_c_real_z_vs_c_real_state": 0.3280978032165549,
+      "cell_pearson_c_model_vs_c_real_z": 0.6519350573897625
+    }
+  ],
+  "cell_pair_corrs": {
+    "D0xR0": [
+      0.4499625242886046,
+      0.2678571582176548,
+      0.6365444849969948,
+      0.4671605568249424,
+      0.195399195623156,
+      0.309660325957493
+    ],
+    "D0xR1": [
+      0.8442110334179493,
+      0.3242381622128458,
+      0.5996142951910277,
+      0.23139221234261664,
+      0.21996412919496447,
+      0.21587472754940895
+    ],
+    "D0xR2": [
+      0.40878487538132063,
+      0.8219878105954056,
+      0.649226441631505,
+      -0.0575347284265956,
+      0.6637520806343267,
+      -0.5754397492697917
+    ],
+    "D0xR3": [
+      -0.07126489325039898,
+      0.3736991420974388,
+      -0.7658727336414002,
+      -0.5687889517957716,
+      -0.42934303119648604,
+      -0.17757721415950156
+    ],
+    "D1xR0": [
+      0.5561503792806065,
+      0.3438264862891746,
+      0.7341417275564842,
+      0.8499135583110967,
+      0.5668993415943062,
+      -0.05971482350019016
+    ],
+    "D1xR1": [
+      0.14274759217729482,
+      0.24430085772312296,
+      0.43004829105912135,
+      -0.3257493177635906,
+      0.6928738865447728,
+      0.8446567237780994
+    ],
+    "D1xR2": [
+      0.21967228492404292,
+      -0.4104340286419837,
+      0.5878478165660255,
+      0.8247518138378713,
+      -0.7015793949154322,
+      0.3420734923753708
+    ],
+    "D1xR3": [
+      -0.6831705212552567,
+      0.09819257786047948,
+      -0.6131296079046983,
+      -0.27440225035161747,
+      0.3204786676192504,
+      -0.5617618069521758
+    ],
+    "D2xR0": [
+      0.8641841675727513,
+      -0.590805185224714,
+      0.809142204753755,
+      0.8161106593649644,
+      0.6621723151404992,
+      -0.6596818561431985
+    ],
+    "D2xR1": [
+      0.7938681997051473,
+      0.5162367916821253,
+      0.07293015851531971,
+      0.8399995601236967,
+      0.8422391261032126,
+      0.5151898734177215
+    ],
+    "D2xR2": [
+      0.30944843114551646,
+      0.5692353703616967,
+      -0.5630633270818898,
+      0.3456432235456155,
+      0.2601964367195386,
+      0.19744425228263818,
+      -0.5905149555873357
+    ],
+    "D2xR3": [
+      0.4911705737666292,
+      0.9141146748437917,
+      -0.4790644748097713,
+      0.5655162714705114,
+      0.41866244281792897,
+      0.2377184653959425,
+      0.5407956799834075
+    ],
+    "D3xR0": [
+      0.011651623570847385,
+      0.8683080068021678,
+      0.7387377885187961,
+      0.8841046239784901,
+      0.6280397442993506,
+      0.8717972763125768
+    ],
+    "D3xR1": [
+      0.14556805354082888,
+      0.8582738770580167,
+      0.7173378506379827,
+      0.7603464644974263,
+      0.8661657394632273,
+      0.9114244529000388,
+      0.8244096933248887
+    ],
+    "D3xR2": [
+      0.8249573648514533,
+      0.12743911544038813,
+      0.8028520044537547,
+      0.8218429220481436,
+      0.0662809883423862,
+      0.8423828951534347
+    ],
+    "D3xR3": [
+      0.410088464658699,
+      0.34437071266344704,
+      0.7606519177469729,
+      0.6521927296961495,
+      0.37332313205551354,
+      -0.2578661484272674,
+      0.5246189917936693
+    ]
+  },
+  "figures": {
+    "success_rate": "results/phase1/figures/track_a/success_rate_heatmap.png",
+    "mean_pair_spearman": "results/phase1/figures/track_a/mean_pair_spearman_heatmap.png",
+    "std_pair_spearman": "results/phase1/figures/track_a/std_pair_spearman_heatmap.png",
+    "cell_model_realz_pearson": "results/phase1/figures/track_a/cell_model_realz_pearson_heatmap.png",
+    "sign_reversal_distribution": "results/phase1/figures/track_a/sign_reversal_distribution.png",
+    "per_cell_rho_distribution": "results/phase1/figures/track_a/per_cell_rho_distribution.png"
+  }
+}

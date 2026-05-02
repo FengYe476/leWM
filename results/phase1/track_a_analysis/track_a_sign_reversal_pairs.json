@@ -1,0 +1,233 @@
+[
+  {
+    "pair_id": 20,
+    "cell": "D0xR3",
+    "rho": -0.7658727336414002,
+    "success_count": 0,
+    "block_displacement_px": 8.55335900799666,
+    "required_rotation_rad": 1.9312204162227076,
+    "episode_id": 15286,
+    "start_row": 1920981,
+    "goal_row": 1921031
+  },
+  {
+    "pair_id": 40,
+    "cell": "D1xR2",
+    "rho": -0.7015793949154322,
+    "success_count": 0,
+    "block_displacement_px": 38.706540781417154,
+    "required_rotation_rad": 1.1522377173053187,
+    "episode_id": 4304,
+    "start_row": 532736,
+    "goal_row": 532786
+  },
+  {
+    "pair_id": 42,
+    "cell": "D1xR3",
+    "rho": -0.6831705212552567,
+    "success_count": 0,
+    "block_displacement_px": 48.491223693302835,
+    "required_rotation_rad": 2.0828614234924316,
+    "episode_id": 2688,
+    "start_row": 312757,
+    "goal_row": 312807
+  },
+  {
+    "pair_id": 53,
+    "cell": "D2xR0",
+    "rho": -0.6596818561431985,
+    "success_count": 0,
+    "block_displacement_px": 50.69464347658522,
+    "required_rotation_rad": 0.20663213729858398,
+    "episode_id": 15591,
+    "start_row": 1945991,
+    "goal_row": 1946041
+  },
+  {
+    "pair_id": 44,
+    "cell": "D1xR3",
+    "rho": -0.6131296079046983,
+    "success_count": 0,
+    "block_displacement_px": 39.6872090465218,
+    "required_rotation_rad": 2.6944146792041224,
+    "episode_id": 13608,
+    "start_row": 1717757,
+    "goal_row": 1717807
+  },
+  {
+    "pair_id": 49,
+    "cell": "D2xR0",
+    "rho": -0.590805185224714,
+    "success_count": 0,
+    "block_displacement_px": 116.91029530741615,
+    "required_rotation_rad": 0.07361763715744019,
+    "episode_id": 9557,
+    "start_row": 1170625,
+    "goal_row": 1170675
+  },
+  {
+    "pair_id": 66,
+    "cell": "D2xR2",
+    "rho": -0.5905149555873357,
+    "success_count": 0,
+    "block_displacement_px": 79.69836402710385,
+    "required_rotation_rad": 0.8602793216705322,
+    "episode_id": 14501,
+    "start_row": 1828031,
+    "goal_row": 1828081
+  },
+  {
+    "pair_id": 17,
+    "cell": "D0xR2",
+    "rho": -0.5754397492697917,
+    "success_count": 5,
+    "block_displacement_px": 6.228885656558198,
+    "required_rotation_rad": 1.0034739971160889,
+    "episode_id": 4661,
+    "start_row": 571584,
+    "goal_row": 571634
+  },
+  {
+    "pair_id": 21,
+    "cell": "D0xR3",
+    "rho": -0.5687889517957716,
+    "success_count": 0,
+    "block_displacement_px": 9.846012915486256,
+    "required_rotation_rad": 2.321852207183838,
+    "episode_id": 1400,
+    "start_row": 173111,
+    "goal_row": 173161
+  },
+  {
+    "pair_id": 62,
+    "cell": "D2xR2",
+    "rho": -0.5630633270818898,
+    "success_count": 0,
+    "block_displacement_px": 84.54745093298287,
+    "required_rotation_rad": 0.7737761477576655,
+    "episode_id": 10461,
+    "start_row": 1293751,
+    "goal_row": 1293801
+  },
+  {
+    "pair_id": 47,
+    "cell": "D1xR3",
+    "rho": -0.5617618069521758,
+    "success_count": 0,
+    "block_displacement_px": 42.532755207922115,
+    "required_rotation_rad": 2.0960477034198206,
+    "episode_id": 18401,
+    "start_row": 2306853,
+    "goal_row": 2306903
+  },
+  {
+    "pair_id": 69,
+    "cell": "D2xR3",
+    "rho": -0.4790644748097713,
+    "success_count": 0,
+    "block_displacement_px": 52.51805502174111,
+    "required_rotation_rad": 1.7575226465808313,
+    "episode_id": 3504,
+    "start_row": 427894,
+    "goal_row": 427944
+  },
+  {
+    "pair_id": 22,
+    "cell": "D0xR3",
+    "rho": -0.42934303119648604,
+    "success_count": 0,
+    "block_displacement_px": 5.20070373216798,
+    "required_rotation_rad": 2.5303099155426025,
+    "episode_id": 17154,
+    "start_row": 2149881,
+    "goal_row": 2149931
+  },
+  {
+    "pair_id": 37,
+    "cell": "D1xR2",
+    "rho": -0.4104340286419837,
+    "success_count": 0,
+    "block_displacement_px": 32.58990736150369,
+    "required_rotation_rad": 1.2372393012046814,
+    "episode_id": 7176,
+    "start_row": 888388,
+    "goal_row": 888438
+  },
+  {
+    "pair_id": 33,
+    "cell": "D1xR1",
+    "rho": -0.3257493177635906,
+    "success_count": 0,
+    "block_displacement_px": 47.443060506611076,
+    "required_rotation_rad": 0.5150444209575653,
+    "episode_id": 11768,
+    "start_row": 1474494,
+    "goal_row": 1474544
+  },
+  {
+    "pair_id": 45,
+    "cell": "D1xR3",
+    "rho": -0.27440225035161747,
+    "success_count": 0,
+    "block_displacement_px": 20.50661946207457,
+    "required_rotation_rad": 1.6737616101848047,
+    "episode_id": 8727,
+    "start_row": 1079166,
+    "goal_row": 1079216
+  },
+  {
+    "pair_id": 98,
+    "cell": "D3xR3",
+    "rho": -0.2578661484272674,
+    "success_count": 0,
+    "block_displacement_px": 122.80108399186554,
+    "required_rotation_rad": 1.319040060043335,
+    "episode_id": 1581,
+    "start_row": 193679,
+    "goal_row": 193729
+  },
+  {
+    "pair_id": 23,
+    "cell": "D0xR3",
+    "rho": -0.17757721415950156,
+    "success_count": 0,
+    "block_displacement_px": 9.633766763618308,
+    "required_rotation_rad": 1.3124877254115503,
+    "episode_id": 9712,
+    "start_row": 1188490,
+    "goal_row": 1188540
+  },
+  {
+    "pair_id": 18,
+    "cell": "D0xR3",
+    "rho": -0.07126489325039898,
+    "success_count": 0,
+    "block_displacement_px": 9.41338975528662,
+    "required_rotation_rad": 1.259503189717428,
+    "episode_id": 9720,
+    "start_row": 1189347,
+    "goal_row": 1189397
+  },
+  {
+    "pair_id": 29,
+    "cell": "D1xR0",
+    "rho": -0.05971482350019016,
+    "success_count": 2,
+    "block_displacement_px": 41.70934675393798,
+    "required_rotation_rad": 0.10613524913787842,
+    "episode_id": 18084,
+    "start_row": 2278026,
+    "goal_row": 2278076
+  },
+  {
+    "pair_id": 15,
+    "cell": "D0xR2",
+    "rho": -0.0575347284265956,
+    "success_count": 6,
+    "block_displacement_px": 3.0426057488014178,
+    "required_rotation_rad": 0.9718627333641052,
+    "episode_id": 10104,
+    "start_row": 1234687,
+    "goal_row": 1234737
+  }
+]

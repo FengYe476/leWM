@@ -1,0 +1,74 @@
+{
+  "comparison": "Phase 0 saved analysis vs refactored end-to-end rerun",
+  "seeded_reproduction": true,
+  "phase0_analysis_path": "results/three_cost_analysis.json",
+  "refactor_raw_path": "results/phase1/three_cost_offset50_refactor.json",
+  "refactor_analysis_path": "results/phase1/three_cost_analysis_refactor.json",
+  "all_passed": true,
+  "tolerance_policy": {
+    "correlations_and_rates": 0.005,
+    "counts": "exact"
+  },
+  "rows": [
+    {
+      "metric": "corr(C_model, C_real_z) at offset 50",
+      "key": "corr_c_model_vs_c_real_z",
+      "kind": "correlation",
+      "phase0_value": 0.8639646408956962,
+      "refactor_value": 0.8639646408956962,
+      "delta": 0.0,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "metric": "per-pair mean corr(C_real_z, C_real_state)",
+      "key": "per_pair_mean_corr_c_real_z_vs_c_real_state",
+      "kind": "correlation",
+      "phase0_value": 0.3529711613920646,
+      "refactor_value": 0.3529711613920646,
+      "delta": 0.0,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "metric": "per-pair std corr(C_real_z, C_real_state)",
+      "key": "per_pair_std_corr_c_real_z_vs_c_real_state",
+      "kind": "correlation",
+      "phase0_value": 0.48648417517758613,
+      "refactor_value": 0.48648417517758613,
+      "delta": 0.0,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "metric": "pairs with at least 1 successful action",
+      "key": "pairs_with_at_least_1_successful_action",
+      "kind": "count",
+      "phase0_value": 23,
+      "refactor_value": 23,
+      "delta": 0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "metric": "CEM-late success rate",
+      "key": "cem_late_success_rate",
+      "kind": "rate",
+      "phase0_value": 0.5266666666666666,
+      "refactor_value": 0.5266666666666666,
+      "delta": 0.0,
+      "tolerance": 0.005,
+      "passed": true
+    },
+    {
+      "metric": "random-action success rate",
+      "key": "random_action_success_rate",
+      "kind": "rate",
+      "phase0_value": 0.15666666666666668,
+      "refactor_value": 0.15666666666666668,
+      "delta": 0.0,
+      "tolerance": 0.005,
+      "passed": true
+    }
+  ]
+}
