@@ -1,0 +1,85 @@
+{
+  "split": 3,
+  "fold": "all_fail_strong_rho",
+  "variant": "small",
+  "seed": 0,
+  "best_epoch": 2,
+  "train_examples": 12160,
+  "val_examples": 1280,
+  "test_examples": 2560,
+  "train_triples": 412708,
+  "val_triples": 40156,
+  "test_triples": 93364,
+  "test_loss": 1.1346894649014743,
+  "test_pairwise_accuracy": 0.6213101409536866,
+  "test_spearman_C_psi_vs_C_v1": 0.34863641855609356,
+  "test_per_pair_spearman_mean": 0.3153784225015151,
+  "test_per_pair_spearman_std": 0.33939785010921525,
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_small_mixed/split3_all_fail_strong_rho_small_seed0_best.pt",
+  "test_per_pair_spearman": {
+    "25": {
+      "spearman": 0.3224984674508695,
+      "n_records": 160
+    },
+    "46": {
+      "spearman": 0.3506397687215695,
+      "n_records": 160
+    },
+    "60": {
+      "spearman": 0.16419283284742384,
+      "n_records": 160
+    },
+    "61": {
+      "spearman": 0.5037755989039141,
+      "n_records": 160
+    },
+    "67": {
+      "spearman": 0.434318444181448,
+      "n_records": 160
+    },
+    "70": {
+      "spearman": 0.3158137621792194,
+      "n_records": 160
+    },
+    "71": {
+      "spearman": 0.298714220833851,
+      "n_records": 160
+    },
+    "73": {
+      "spearman": 0.6010796115863046,
+      "n_records": 160
+    },
+    "78": {
+      "spearman": 0.7143575011073113,
+      "n_records": 160
+    },
+    "86": {
+      "spearman": 0.5845021231061326,
+      "n_records": 160
+    },
+    "87": {
+      "spearman": 0.5313145527505392,
+      "n_records": 160
+    },
+    "93": {
+      "spearman": -0.6584183896499338,
+      "n_records": 160
+    },
+    "94": {
+      "spearman": 0.03200439886912194,
+      "n_records": 160
+    },
+    "96": {
+      "spearman": -0.2179334665854241,
+      "n_records": 160
+    },
+    "97": {
+      "spearman": 0.5333907231673917,
+      "n_records": 160
+    },
+    "99": {
+      "spearman": 0.5358046105545029,
+      "n_records": 160
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "variant": "full",
+  "seed": 0,
+  "best_epoch": 5,
+  "train_examples": 12160,
+  "val_examples": 1280,
+  "test_predicted_examples": 1280,
+  "train_triples": 412708,
+  "val_triples": 40156,
+  "test_predicted_triples": 46682,
+  "test_predicted_loss": 2.067619803969083,
+  "test_predicted_pairwise_accuracy": 0.5921768561758279,
+  "test_predicted_spearman": 0.20136105002254348,
+  "test_predicted_per_pair_spearman_mean": 0.2557565656326746,
+  "test_predicted_per_pair_spearman_std": 0.31275812339551,
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_full/split3_full_mahalanobis_seed0_best.pt",
+  "test_predicted_per_pair_spearman": {
+    "25": {
+      "spearman": 0.18434193888038167,
+      "n_records": 80
+    },
+    "46": {
+      "spearman": 0.1779599156310512,
+      "n_records": 80
+    },
+    "60": {
+      "spearman": -0.21118959443278554,
+      "n_records": 80
+    },
+    "61": {
+      "spearman": 0.05979459122560762,
+      "n_records": 80
+    },
+    "67": {
+      "spearman": 0.5028811209609917,
+      "n_records": 80
+    },
+    "70": {
+      "spearman": 0.21854195968120022,
+      "n_records": 80
+    },
+    "71": {
+      "spearman": 0.34479846622563537,
+      "n_records": 80
+    },
+    "73": {
+      "spearman": 0.6458366877775719,
+      "n_records": 80
+    },
+    "78": {
+      "spearman": -0.19584034130869168,
+      "n_records": 80
+    },
+    "86": {
+      "spearman": 0.5991340022197732,
+      "n_records": 80
+    },
+    "87": {
+      "spearman": 0.4005649353381918,
+      "n_records": 80
+    },
+    "93": {
+      "spearman": -0.3338281548866469,
+      "n_records": 80
+    },
+    "94": {
+      "spearman": 0.15476085027808786,
+      "n_records": 80
+    },
+    "96": {
+      "spearman": 0.8364211873075553,
+      "n_records": 80
+    },
+    "97": {
+      "spearman": 0.44845028264511405,
+      "n_records": 80
+    },
+    "99": {
+      "spearman": 0.2594772025797562,
+      "n_records": 80
+    }
+  }
+}

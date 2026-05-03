@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "split": 1,
+    "variant": "small",
+    "seed": 0,
+    "device": "mps",
+    "pairs_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase1/track_a_pairs.json",
+    "pairs_subset_override": true,
+    "selected_pair_ids": [
+      0,
+      1
+    ],
+    "pair_cell_map": {
+      "0": "D0xR0",
+      "1": "D0xR0"
+    },
+    "raw_model_checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/lewm-pusht",
+    "model_checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-pusht",
+    "cost_head_checkpoint": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_small/split1_random_70_15_15_small_seed0_best.pt",
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/planning_smoke.json",
+    "cache_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache",
+    "dataset_name": "pusht_expert_train",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    },
+    "success_definition": "final block_pos_dist < 20 and final angle_dist < pi/9; env_success records whether the environment ever terminated.",
+    "elapsed_seconds": 43.78494119644165
+  },
+  "records": [
+    {
+      "pair_id": 0,
+      "cell": "D0xR0",
+      "episode_id": 8937,
+      "start_row": 1107775,
+      "goal_row": 1107825,
+      "euclidean": {
+        "success": true,
+        "env_success": true,
+        "block_pos_dist": 9.5912446975708,
+        "angle_dist": 0.0654827356338501,
+        "c_real_state": 9.65672743320465,
+        "elapsed_seconds": 11.429081201553345
+      },
+      "cpsi": {
+        "success": true,
+        "env_success": false,
+        "block_pos_dist": 8.574780464172363,
+        "angle_dist": 0.2482592761516571,
+        "c_real_state": 8.82303974032402,
+        "elapsed_seconds": 10.771328687667847
+      }
+    },
+    {
+      "pair_id": 1,
+      "cell": "D0xR0",
+      "episode_id": 14024,
+      "start_row": 1766493,
+      "goal_row": 1766543,
+      "euclidean": {
+        "success": true,
+        "env_success": true,
+        "block_pos_dist": 13.802903175354004,
+        "angle_dist": 0.21610307693481445,
+        "c_real_state": 14.019006252288818,
+        "elapsed_seconds": 10.779839992523193
+      },
+      "cpsi": {
+        "success": true,
+        "env_success": false,
+        "block_pos_dist": 5.506568431854248,
+        "angle_dist": 0.09439802169799805,
+        "c_real_state": 5.600966453552246,
+        "elapsed_seconds": 10.747004985809326
+      }
+    }
+  ],
+  "aggregate": {
+    "n_pairs": 2,
+    "euclidean_success_rate": 1.0,
+    "cpsi_success_rate": 1.0,
+    "delta_success_rate": 0.0,
+    "euclidean_env_success_rate": 1.0,
+    "cpsi_env_success_rate": 0.0,
+    "per_cell": {
+      "D0xR0": {
+        "n_pairs": 2,
+        "euclidean_success_rate": 1.0,
+        "cpsi_success_rate": 1.0,
+        "delta": 0.0
+      }
+    },
+    "headroom_closure": {
+      "cells": {},
+      "mean_headroom_closure": null
+    },
+    "split3_rescue": null,
+    "latent_favorable_degradation": {}
+  }
+}

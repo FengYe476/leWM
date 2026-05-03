@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "split": 3,
+    "model_type": "mlp",
+    "variant": "small",
+    "requested_variant": "small",
+    "seed": 0,
+    "device": "mps",
+    "pairs_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase1/track_a_pairs.json",
+    "pairs_subset_override": true,
+    "selected_pair_ids": [
+      25
+    ],
+    "pair_cell_map": {
+      "25": "D1xR0"
+    },
+    "raw_model_checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/lewm-pusht",
+    "model_checkpoint_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/checkpoints/converted/lewm-pusht",
+    "cost_head_checkpoint": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_smoke/split3_cem_aware_small_seed0_best.pt",
+    "cost_model_checkpoint": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_smoke/split3_cem_aware_small_seed0_best.pt",
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_smoke_planning_loadcheck.json",
+    "cache_dir": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache",
+    "dataset_name": "pusht_expert_train",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    },
+    "success_definition": "final block_pos_dist < 20 and final angle_dist < pi/9; env_success records whether the environment ever terminated.",
+    "elapsed_seconds": 21.851404190063477
+  },
+  "records": [
+    {
+      "pair_id": 25,
+      "cell": "D1xR0",
+      "episode_id": 2388,
+      "start_row": 283639,
+      "goal_row": 283689,
+      "euclidean": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 49.52825164794922,
+        "angle_dist": 0.12560594081878662,
+        "c_real_state": 49.653857588768005,
+        "elapsed_seconds": 11.303411960601807
+      },
+      "cpsi": {
+        "success": false,
+        "env_success": false,
+        "block_pos_dist": 44.09500503540039,
+        "angle_dist": 0.06274211406707764,
+        "c_real_state": 44.15774714946747,
+        "elapsed_seconds": 10.530583143234253
+      }
+    }
+  ],
+  "aggregate": {
+    "n_pairs": 1,
+    "euclidean_success_rate": 0.0,
+    "cpsi_success_rate": 0.0,
+    "delta_success_rate": 0.0,
+    "euclidean_env_success_rate": 0.0,
+    "cpsi_env_success_rate": 0.0,
+    "per_cell": {
+      "D1xR0": {
+        "n_pairs": 1,
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0
+      }
+    },
+    "headroom_closure": {
+      "cells": {},
+      "mean_headroom_closure": null
+    },
+    "split3_rescue": {
+      "n_hard_pairs_evaluated": 1,
+      "n_euclidean_failures": 1,
+      "n_cpsi_rescues": 0,
+      "rescue_rate_among_euclidean_failures": 0.0,
+      "cpsi_success_rate_on_hard_pairs": 0.0,
+      "rescued_pair_ids": []
+    },
+    "latent_favorable_degradation": {
+      "D1xR0": {
+        "euclidean_success_rate": 0.0,
+        "cpsi_success_rate": 0.0,
+        "delta": 0.0,
+        "phase1_latent_cem_late_success_rate": 0.508,
+        "phase1_v1_cem_late_success_rate": 0.333
+      }
+    }
+  }
+}

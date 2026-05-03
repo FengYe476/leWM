@@ -1,0 +1,110 @@
+{
+  "test_pair_ids": [
+    7,
+    29,
+    33,
+    41,
+    48,
+    54,
+    56,
+    59,
+    63,
+    69,
+    76,
+    77,
+    78,
+    79,
+    95
+  ],
+  "test_records": 1200,
+  "rows": [
+    {
+      "model": "Euclidean",
+      "global_spearman": 0.5993085807861925,
+      "pairwise_accuracy": 0.6809094290496559,
+      "per_pair_spearman_mean": 0.4465325942346147,
+      "per_pair_spearman_std": 0.4496433488160481,
+      "best_epoch": null
+    },
+    {
+      "model": "Small C_psi",
+      "global_spearman": 0.4422086509507407,
+      "pairwise_accuracy": 0.7773154175190626,
+      "per_pair_spearman_mean": 0.6509587494563449,
+      "per_pair_spearman_std": 0.3358641632316912,
+      "best_epoch": 7,
+      "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_small/split1_random_70_15_15_small_seed0_test_metrics.json"
+    },
+    {
+      "model": "Large C_psi",
+      "global_spearman": 0.5121358195582277,
+      "pairwise_accuracy": 0.8122326576157709,
+      "per_pair_spearman_mean": 0.7213255749108156,
+      "per_pair_spearman_std": 0.28952834787856124,
+      "best_epoch": 2,
+      "metrics_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split1_large/split1_random_70_15_15_large_seed0_test_metrics.json"
+    }
+  ],
+  "euclidean_per_pair_spearman": {
+    "7": {
+      "spearman": 0.6463345875018186,
+      "n_records": 80
+    },
+    "29": {
+      "spearman": -0.11438352420174266,
+      "n_records": 80
+    },
+    "33": {
+      "spearman": -0.35554617871195493,
+      "n_records": 80
+    },
+    "41": {
+      "spearman": 0.7866504124759586,
+      "n_records": 80
+    },
+    "48": {
+      "spearman": 0.8385411339385042,
+      "n_records": 80
+    },
+    "54": {
+      "spearman": 0.7325768481694803,
+      "n_records": 80
+    },
+    "56": {
+      "spearman": -0.13320127312248364,
+      "n_records": 80
+    },
+    "59": {
+      "spearman": 0.47654505277316783,
+      "n_records": 80
+    },
+    "63": {
+      "spearman": 0.4370543037146692,
+      "n_records": 80
+    },
+    "69": {
+      "spearman": -0.44336653052638814,
+      "n_records": 80
+    },
+    "76": {
+      "spearman": 0.7498066059259966,
+      "n_records": 80
+    },
+    "77": {
+      "spearman": 0.8471494573770605,
+      "n_records": 80
+    },
+    "78": {
+      "spearman": 0.6270785157937082,
+      "n_records": 80
+    },
+    "79": {
+      "spearman": 0.8955627421730142,
+      "n_records": 80
+    },
+    "95": {
+      "spearman": 0.7071867602384119,
+      "n_records": 80
+    }
+  }
+}

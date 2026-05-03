@@ -1,0 +1,83 @@
+{
+  "variant": "diagonal",
+  "seed": 0,
+  "best_epoch": 18,
+  "train_examples": 12160,
+  "val_examples": 1280,
+  "test_predicted_examples": 1280,
+  "train_triples": 412708,
+  "val_triples": 40156,
+  "test_predicted_triples": 46682,
+  "test_predicted_loss": 0.9477639815876904,
+  "test_predicted_pairwise_accuracy": 0.5680562101023949,
+  "test_predicted_spearman": 0.2737128050541644,
+  "test_predicted_per_pair_spearman_mean": 0.19779037546793932,
+  "test_predicted_per_pair_spearman_std": 0.33526230042561855,
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/mahalanobis_diagonal/split3_diagonal_mahalanobis_seed0_best.pt",
+  "test_predicted_per_pair_spearman": {
+    "25": {
+      "spearman": 0.19391401226173025,
+      "n_records": 80
+    },
+    "46": {
+      "spearman": -0.42126072348350135,
+      "n_records": 80
+    },
+    "60": {
+      "spearman": -0.10203687093771666,
+      "n_records": 80
+    },
+    "61": {
+      "spearman": -0.11431318910777925,
+      "n_records": 80
+    },
+    "67": {
+      "spearman": 0.4271320839207946,
+      "n_records": 80
+    },
+    "70": {
+      "spearman": 0.42109704641350215,
+      "n_records": 80
+    },
+    "71": {
+      "spearman": 0.30400443441264746,
+      "n_records": 80
+    },
+    "73": {
+      "spearman": 0.5136632480785983,
+      "n_records": 80
+    },
+    "78": {
+      "spearman": 0.4507996413558501,
+      "n_records": 80
+    },
+    "86": {
+      "spearman": 0.5638783658397905,
+      "n_records": 80
+    },
+    "87": {
+      "spearman": 0.3431689121537605,
+      "n_records": 80
+    },
+    "93": {
+      "spearman": -0.3636342401443832,
+      "n_records": 80
+    },
+    "94": {
+      "spearman": 0.12656464692176322,
+      "n_records": 80
+    },
+    "96": {
+      "spearman": 0.8060750020332675,
+      "n_records": 80
+    },
+    "97": {
+      "spearman": -0.12007627290432032,
+      "n_records": 80
+    },
+    "99": {
+      "spearman": 0.13566991067302578,
+      "n_records": 80
+    }
+  }
+}

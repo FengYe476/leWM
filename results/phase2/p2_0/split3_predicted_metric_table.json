@@ -1,0 +1,72 @@
+{
+  "n_records": 1280,
+  "test_pair_ids": [
+    25,
+    46,
+    60,
+    61,
+    67,
+    70,
+    71,
+    73,
+    78,
+    86,
+    87,
+    93,
+    94,
+    96,
+    97,
+    99
+  ],
+  "rows": [
+    {
+      "model": "Euclidean",
+      "pairwise_accuracy": 0.5777173214515231,
+      "spearman": 0.23254857025316414,
+      "per_pair_spearman_mean": 0.23046832398002853,
+      "per_pair_spearman_std": 0.38115906408608685
+    },
+    {
+      "model": "MLP offline small",
+      "pairwise_accuracy": 0.6135769675677991,
+      "spearman": 0.2696939658580731,
+      "per_pair_spearman_mean": 0.31303296490395727,
+      "per_pair_spearman_std": 0.31681762658988
+    },
+    {
+      "model": "MLP offline large",
+      "pairwise_accuracy": 0.6108564328863374,
+      "spearman": 0.3517263095028944,
+      "per_pair_spearman_mean": 0.3055317867650299,
+      "per_pair_spearman_std": 0.32543833235619934
+    },
+    {
+      "model": "MLP mixed small",
+      "pairwise_accuracy": 0.5942119018036931,
+      "spearman": 0.2849479490770111,
+      "per_pair_spearman_mean": 0.25921969677721457,
+      "per_pair_spearman_std": 0.2816242064405252
+    },
+    {
+      "model": "MLP mixed temp",
+      "pairwise_accuracy": 0.5967396426888308,
+      "spearman": 0.37765032360576933,
+      "per_pair_spearman_mean": 0.27239888201977747,
+      "per_pair_spearman_std": 0.2915089453812092
+    },
+    {
+      "model": "Mahalanobis lowrank",
+      "pairwise_accuracy": 0.6139839766933721,
+      "spearman": 0.3011834832917582,
+      "per_pair_spearman_mean": 0.31256000933361083,
+      "per_pair_spearman_std": 0.30680683291403116
+    },
+    {
+      "model": "CEM-aware",
+      "pairwise_accuracy": 0.5788312411636176,
+      "spearman": 0.2269929181404742,
+      "per_pair_spearman_mean": 0.22546953423053018,
+      "per_pair_spearman_std": 0.3518443781804851
+    }
+  ]
+}

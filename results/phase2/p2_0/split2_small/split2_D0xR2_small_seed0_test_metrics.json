@@ -1,0 +1,45 @@
+{
+  "split": 2,
+  "fold": "D0xR2",
+  "variant": "small",
+  "seed": 0,
+  "best_epoch": 3,
+  "train_examples": 6800,
+  "val_examples": 720,
+  "test_examples": 480,
+  "train_triples": 233453,
+  "val_triples": 23710,
+  "test_triples": 15951,
+  "test_loss": 0.04115718587533291,
+  "test_pairwise_accuracy": 0.863644912544668,
+  "test_spearman_C_psi_vs_C_v1": 0.8479469132214396,
+  "test_per_pair_spearman_mean": 0.8323572694167235,
+  "test_per_pair_spearman_std": 0.0753374951375293,
+  "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split2_small/split2_D0xR2_small_seed0_best.pt",
+  "test_per_pair_spearman": {
+    "12": {
+      "spearman": 0.9057127062149016,
+      "n_records": 80
+    },
+    "13": {
+      "spearman": 0.8982207968081817,
+      "n_records": 80
+    },
+    "14": {
+      "spearman": 0.8677253659132375,
+      "n_records": 80
+    },
+    "15": {
+      "spearman": 0.6846255386443528,
+      "n_records": 80
+    },
+    "16": {
+      "spearman": 0.7977254327699195,
+      "n_records": 80
+    },
+    "17": {
+      "spearman": 0.840133776149748,
+      "n_records": 80
+    }
+  }
+}

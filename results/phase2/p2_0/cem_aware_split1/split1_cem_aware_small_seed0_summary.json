@@ -1,0 +1,83 @@
+{
+  "best_checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_split1/split1_cem_aware_small_seed0_best.pt",
+  "log_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_split1/split1_cem_aware_small_seed0_train_log.json",
+  "epochs": [
+    {
+      "epoch": 1,
+      "collected": 35000,
+      "loss_mean": 30.051120189722955,
+      "loss_first": 8.20615291595459,
+      "loss_last": 67.86783599853516,
+      "val_predicted": {
+        "spearman": 0.3483591744186209,
+        "n_examples": 1200,
+        "prediction_min": 0.6573346853256226,
+        "prediction_max": 395.4864196777344,
+        "label_min": 0.0,
+        "label_max": 408.0997314453125
+      },
+      "test_predicted_probe": {
+        "spearman": 0.5734581441857546,
+        "n_examples": 1200,
+        "prediction_min": 0.13162915408611298,
+        "prediction_max": 371.15057373046875,
+        "label_min": 0.0,
+        "label_max": 429.29681396484375
+      },
+      "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_split1/split1_cem_aware_small_seed0_epoch1.pt",
+      "elapsed_seconds": 253.92718386650085
+    },
+    {
+      "epoch": 2,
+      "collected": 35000,
+      "loss_mean": 29.41564980237279,
+      "loss_first": 59.244537353515625,
+      "loss_last": 16.631729125976562,
+      "val_predicted": {
+        "spearman": 0.3572414187240717,
+        "n_examples": 1200,
+        "prediction_min": 0.6507327556610107,
+        "prediction_max": 270.5957946777344,
+        "label_min": 0.0,
+        "label_max": 408.0997314453125
+      },
+      "test_predicted_probe": {
+        "spearman": 0.49919158208932585,
+        "n_examples": 1200,
+        "prediction_min": -9.686126708984375,
+        "prediction_max": 302.137939453125,
+        "label_min": 0.0,
+        "label_max": 429.29681396484375
+      },
+      "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_split1/split1_cem_aware_small_seed0_epoch2.pt",
+      "elapsed_seconds": 253.273784160614
+    },
+    {
+      "epoch": 3,
+      "collected": 35000,
+      "loss_mean": 24.179890659522332,
+      "loss_first": 7.135308742523193,
+      "loss_last": 30.01008415222168,
+      "val_predicted": {
+        "spearman": 0.3836316072185141,
+        "n_examples": 1200,
+        "prediction_min": 4.48845911026001,
+        "prediction_max": 435.8699951171875,
+        "label_min": 0.0,
+        "label_max": 408.0997314453125
+      },
+      "test_predicted_probe": {
+        "spearman": 0.5746644217130981,
+        "n_examples": 1200,
+        "prediction_min": 4.672348976135254,
+        "prediction_max": 388.5509338378906,
+        "label_min": 0.0,
+        "label_max": 429.29681396484375
+      },
+      "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/cem_aware_split1/split1_cem_aware_small_seed0_epoch3.pt",
+      "elapsed_seconds": 253.21111178398132
+    }
+  ],
+  "elapsed_seconds": 760.4121310710907,
+  "samples_collected": 105000
+}

@@ -1,0 +1,23 @@
+{
+  "runs": [
+    {
+      "split": 3,
+      "fold": "all_fail_strong_rho",
+      "variant": "small",
+      "seed": 0,
+      "best_epoch": 6,
+      "train_examples": 6080,
+      "val_examples": 640,
+      "test_examples": 1280,
+      "train_triples": 206354,
+      "val_triples": 20078,
+      "test_triples": 46682,
+      "test_loss": 0.1391066668525534,
+      "test_pairwise_accuracy": 0.6669594276166403,
+      "test_spearman_C_psi_vs_C_v1": 0.3961780192808168,
+      "test_per_pair_spearman_mean": 0.44543962191333647,
+      "test_per_pair_spearman_std": 0.29396509368535817,
+      "checkpoint_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/split3_small/split3_all_fail_strong_rho_small_seed0_best.pt"
+    }
+  ]
+}

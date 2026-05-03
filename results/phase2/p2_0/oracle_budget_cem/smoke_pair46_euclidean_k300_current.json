@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "seed": 0,
+    "device": "mps",
+    "split": 3,
+    "k_values": [
+      300
+    ],
+    "prefilter": "euclidean",
+    "cpsi_checkpoint": null,
+    "pairs": [
+      46
+    ],
+    "pairs_subset_override": true,
+    "output_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem/smoke_pair46_euclidean_k300_current.json",
+    "cem_config": {
+      "num_samples": 300,
+      "iterations": 30,
+      "topk": 30,
+      "var_scale": 1.0,
+      "planning_horizon": 5,
+      "receding_horizon": 5,
+      "action_block": 5,
+      "eval_budget": 100,
+      "offset": 50
+    }
+  },
+  "phase1_validation": null,
+  "sweep": {
+    "rows": [
+      {
+        "k": 300,
+        "n_pairs": 1,
+        "success_count": 0,
+        "success_rate": 0.0,
+        "oracle_rollouts": 36000,
+        "oracle_env_steps": 900000,
+        "elapsed_seconds": 102.33765482902527
+      }
+    ],
+    "baseline_k0_success_count": 0,
+    "knee_k": 300
+  },
+  "split1_followup": null,
+  "per_k_paths": [
+    "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/p2_0/oracle_budget_cem/split3_k300.json"
+  ]
+}
