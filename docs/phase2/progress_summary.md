@@ -6,7 +6,10 @@ This document records the completed Phase 2 work before starting the Cube cross-
 - Step 2 Stage 1B-Smoke is complete, with verdict **Continue B**.
 - Full Stage 1B 9-dimension sweep is complete and plotted.
 - Cube cross-environment setup is complete through pair sampling and latent artifact extraction.
-- Pending work is Cube Stage 1A, Cube C6 replication, and Cube Stage 1B.
+- Cube Stage 1A C0-C5 is complete.
+- Cube C6 replication is complete, with verdict **C6-NO-INVERSION**.
+- Cube Stage 1B re-rank is complete, with verdict **CUBE-STAGE1B-FLAT-ROBUST**.
+- No Cube replication item is currently pending.
 
 ## Completed: Step 1 - C6 Audit (Random-Init Encoder Geometry)
 
@@ -155,15 +158,117 @@ Artifacts:
 | Script | `scripts/phase2/cube/extract_cube_latents.py` |
 | Results | `results/phase2/cube/cube_latents.pt` |
 
-## Pending: Cube Stage 1A + C6 Replication
+## Completed: Cube Stage 1A C0-C5
 
-Next steps for the new chat:
+Cube Stage 1A evaluated the learned Cube LeWM latent geometry and random-geometry controls C0-C5 over:
 
-1. Cube Stage 1A controls (`C0-C7`) - endpoint ranking analysis.
-2. Cube C6 replication (`S1-S6`) - test whether signal inversion occurs in 3D.
-3. Cube Stage 1B - test whether low-dimensional planning transfers to 3D.
+`100 pairs x 80 actions = 8000 records`
 
-The immediate next implementation target is Cube Stage 1A over `results/phase2/cube/cube_latents.pt`, using the PushT Stage 1A control structure as the reference while adapting the cost semantics to Cube's position-only success criterion.
+Key results:
+
+| Control | Result |
+| --- | --- |
+| C0 trained LeWM | Spearman `+0.604`, pairwise accuracy `0.707` |
+| C2 Gaussian `m=64` | Spearman `+0.575 +/- 0.019` |
+| C4 Gaussian null | Spearman `-0.003 +/- 0.013` |
+| C5 shuffled latent | Spearman `-0.001 +/- 0.011` |
+
+The Cube C0 result is stronger than PushT C0 on endpoint ranking (`+0.604` vs `+0.506`) while the C4/C5 null floors remain near zero. This confirms that the learned Cube latent contains real goal-ranking structure.
+
+Artifacts:
+
+| Type | Path |
+| --- | --- |
+| Script | `scripts/phase2/cube/cube_stage1a.py` |
+| Results | `results/phase2/cube/cube_stage1a.json` |
+
+## Completed: Cube C6 Replication
+
+Verdict: **C6-NO-INVERSION**
+
+Cube C6 replicated the PushT C6 S1-S6 sub-experiments on OGBench-Cube. The random-init ViT does not invert the task signal on Cube: the 10-seed aggregate is weakly positive and no seeds are negative.
+
+| Sub-experiment | Cube Spearman | PushT Spearman |
+| --- | ---: | ---: |
+| S1 random-init ViT 10-seed | `+0.115 +/- 0.016` | `-0.156 +/- 0.086` |
+| S1 negative seeds | `0/10` | `8/10` |
+| S3 eval seed0 | `+0.137` | `-0.200` |
+| S3 train seed0 | `+0.078` | `+0.025` |
+| S4 raw pixel L2 | `+0.069` | `+0.697` |
+| S4 mean RGB diff | `+0.153` | `+0.705` |
+| S5 object feature | `+0.99995` | `+0.426` |
+| S6 small CNN eval | `+0.119` | `-0.182` |
+| S6 ResNet18 eval | `+0.211` | `+0.304` |
+
+Interpretation: PushT inversion depends on the presence of a strong pixel-level task signal in the 2D overhead view. Cube raw pixel distance is near zero because small 3D cube displacements produce weak and view-dependent pixel changes. The broader conclusion still generalizes: learned weights are essential. Cube trained LeWM reaches Spearman `+0.604`, far above raw pixel L2 `+0.069` and random-init ViT `+0.115`.
+
+Replay validation used regenerated actions. Ordering matched the latent artifact, and replayed `C_real_state` matched within relaxed tolerance: max abs diff `0.0471125`, mean abs diff `3.05e-05`, `atol=0.05`; worst pair was pair `91`.
+
+Artifacts:
+
+| Type | Path |
+| --- | --- |
+| Script | `scripts/phase2/cube/cube_c6_audit.py` |
+| Results | `results/phase2/cube/c6_audit/` |
+| Summary | `results/phase2/cube/c6_audit/cube_c6_audit_summary.json` |
+| Memo | `docs/phase2/cube/cube_c6_audit_memo.md` |
+
+## Completed: Cube Stage 1B Re-rank
+
+Verdict: **CUBE-STAGE1B-FLAT-ROBUST**
+
+Cube Stage 1B tested projected-cost final-pool re-ranking on all `100` Cube pairs. It scored one default LeWM final CEM pool per pair:
+
+`100 pairs x 300 candidates = 30,000 simulator rollouts`
+
+Then it re-ranked the labelled pool for:
+
+`100 pairs x {1,2,4,8,16,32,64,128,192} x 3 seeds = 2700 projected records`
+
+Runtime:
+
+| Run | Wall-clock | Estimated/actual full |
+| --- | ---: | ---: |
+| Smoke `5` pairs | `234.394s` (`3m54s`) | `1h18m08s` estimate |
+| Full `100` pairs | `4747.490s` (`1h19m08s`) | actual |
+
+Headline results:
+
+| Dimension | Success | Spearman | False elite | Action L2 |
+| --- | ---: | ---: | ---: | ---: |
+| `m=1` | `42.7% +/- 3.2%` | `0.002` | `0.616` | `9.902` |
+| `m=2` | `41.3% +/- 6.5%` | `0.008` | `0.615` | `9.879` |
+| `m=4` | `44.7% +/- 1.2%` | `0.004` | `0.608` | `8.777` |
+| `m=8` | `43.3% +/- 1.5%` | `0.005` | `0.608` | `7.487` |
+| `m=16` | `43.3% +/- 0.6%` | `0.010` | `0.603` | `5.566` |
+| `m=32` | `46.3% +/- 2.5%` | `0.007` | `0.609` | `4.238` |
+| `m=64` | `49.7% +/- 2.5%` | `0.008` | `0.607` | `3.647` |
+| `m=128` | `47.7% +/- 2.9%` | `0.009` | `0.605` | `2.470` |
+| `m=192` | `47.7% +/- 1.2%` | `0.006` | `0.606` | `2.301` |
+
+Default LeWM rank-1 success on the same pools is `49.0%`; average final-pool candidate success is `38.6%`.
+
+Key findings:
+
+- Cube does not show a sharp PushT-style planning elbow. Success is already `42.7%` at `m=1`, peaks at `49.7%` at `m=64`, and stays `47.7%` at `m=192`.
+- Endpoint-planning decoupling is stronger on Cube: Stage 1A C2 endpoint Spearman rises from `0.238` to `0.603`, while Stage 1B final-pool Spearman stays near zero at every dimension.
+- False elite rate is flat at about `0.61` across all dimensions, so projection does not collapse the Cube final-pool landscape.
+- Action L2 to the default plan decreases smoothly with dimension, and LeWM top-30 overlap rises to `0.886` by `m=192`.
+
+Artifacts:
+
+| Type | Path |
+| --- | --- |
+| Script | `scripts/phase2/cube/cube_stage1b.py` |
+| Smoke results | `results/phase2/cube/cube_stage1b_smoke.json` |
+| Smoke stdout | `results/phase2/cube/cube_stage1b_smoke.log` |
+| Full results | `results/phase2/cube/cube_stage1b.json` |
+| Full stdout | `results/phase2/cube/cube_stage1b_full.log` |
+| Memo | `docs/phase2/cube/cube_stage1b_memo.md` |
+
+## Pending
+
+No Cube replication work is pending. The next optional branch is method development or follow-up diagnostics, for example deciding whether a full projected-CEM Cube run is worth the extra compute after the re-rank result.
 
 ## Key Paper Findings So Far
 
@@ -185,6 +290,18 @@ Endpoint ranking quality from Stage 1A does not predict planning ranking quality
 
 Paper framing: endpoint ranking and planning success are separable geometric properties. A representation can preserve endpoint rankings under random projection while still having weak ranking over the final clustered CEM pool, and yet still support planning.
 
+### F4. Cube Cross-Environment C6 Split
+
+Cube does not reproduce the PushT random-init signal inversion: random-init ViT is `+0.115 +/- 0.016` over 10 seeds with `0/10` negative seeds. The environmental difference is raw pixel signal strength. PushT raw pixel L2 is `+0.697`, while Cube raw pixel L2 is only `+0.069`.
+
+Paper framing: signal inversion is environment-dependent, but learned weights are essential in both environments. Cube strengthens the learned-representation claim because trained LeWM reaches `+0.604` from a near-zero raw pixel baseline.
+
+### F5. Cube Low-Dimensional Re-rank Robustness
+
+Cube Stage 1B re-rank does not reproduce PushT's sharp low-dimensional planning elbow. Cube success is already `42.7%` at `m=1`, peaks at `49.7%` at `m=64`, and remains `47.7%` at `m=192`, while final-pool Spearman stays near zero across all dimensions.
+
+Paper framing: random projection preserves final-pool selection in both environments, but the dimensional curve is environment-dependent. PushT suggests a `32-64` dimensional planning-effective subspace; Cube suggests a flatter and more robust final-pool geometry under re-ranking.
+
 ## File Inventory
 
 | Category | Paths |
@@ -202,6 +319,15 @@ Paper framing: endpoint ranking and planning success are separable geometric pro
 | Cube pair artifact | `results/phase2/cube/cube_pairs.json` |
 | Cube latent extractor | `scripts/phase2/cube/extract_cube_latents.py` |
 | Cube latent artifact | `results/phase2/cube/cube_latents.pt` |
+| Cube Stage 1A script | `scripts/phase2/cube/cube_stage1a.py` |
+| Cube Stage 1A results | `results/phase2/cube/cube_stage1a.json` |
+| Cube C6 audit script | `scripts/phase2/cube/cube_c6_audit.py` |
+| Cube C6 audit results | `results/phase2/cube/c6_audit/` |
+| Cube C6 audit memo | `docs/phase2/cube/cube_c6_audit_memo.md` |
+| Cube Stage 1B script | `scripts/phase2/cube/cube_stage1b.py` |
+| Cube Stage 1B results | `results/phase2/cube/cube_stage1b_smoke.json`, `results/phase2/cube/cube_stage1b.json` |
+| Cube Stage 1B logs | `results/phase2/cube/cube_stage1b_smoke.log`, `results/phase2/cube/cube_stage1b_full.log` |
+| Cube Stage 1B memo | `docs/phase2/cube/cube_stage1b_memo.md` |
 | This progress summary | `docs/phase2/progress_summary.md` |
 
 Repository note: all scripts, results, memos, and figures for this block are committed and pushed to `https://github.com/FengYe476/leWM.git` on the `phase1` branch.
