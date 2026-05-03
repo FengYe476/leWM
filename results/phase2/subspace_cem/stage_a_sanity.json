@@ -1,0 +1,86 @@
+{
+  "config": {
+    "m": 64,
+    "seed": 0,
+    "pairs": [
+      25,
+      50,
+      75
+    ],
+    "n_samples": 300,
+    "n_iterations": 30,
+    "n_elites": 30,
+    "algorithm": "subspace_cem_m64_search_full_rerank"
+  },
+  "subspace_cem": [
+    {
+      "pair_id": 25,
+      "rank1_success": false,
+      "rank1_C_real_state": 49.750639617443085,
+      "elite_cost_std": 0.47492120029856105,
+      "cost_dynamic_range": 8.273223876953125,
+      "action_l2_from_default": 27.7469539642334,
+      "selection_regret": 1.4297075867652893,
+      "final_rerank_pool_size": 300,
+      "final_pool_full_cost_std": 1.4388133278071653
+    },
+    {
+      "pair_id": 50,
+      "rank1_success": true,
+      "rank1_C_real_state": 14.20470142364502,
+      "elite_cost_std": 1.1495577504849408,
+      "cost_dynamic_range": 181.90511798858643,
+      "action_l2_from_default": 3.41282320022583,
+      "selection_regret": 13.835602030158043,
+      "final_rerank_pool_size": 300,
+      "final_pool_full_cost_std": 23.309533087065766
+    },
+    {
+      "pair_id": 75,
+      "rank1_success": false,
+      "rank1_C_real_state": 55.65016305446625,
+      "elite_cost_std": 1.4656886243751295,
+      "cost_dynamic_range": 104.80377197265625,
+      "action_l2_from_default": 10.137369155883789,
+      "selection_regret": 21.955076694488525,
+      "final_rerank_pool_size": 300,
+      "final_pool_full_cost_std": 36.54028555338284
+    }
+  ],
+  "default_cem": [
+    {
+      "pair_id": 25,
+      "rank1_success": false,
+      "rank1_C_real_state": 49.653857588768005,
+      "elite_cost_std": 0.3345081846003431,
+      "cost_dynamic_range": 4.85699462890625,
+      "action_l2_from_default": 0.0,
+      "selection_regret": 1.33292555809021,
+      "final_rerank_pool_size": 300,
+      "final_pool_full_cost_std": 0.8537134289977343
+    },
+    {
+      "pair_id": 50,
+      "rank1_success": true,
+      "rank1_C_real_state": 7.320695996284485,
+      "elite_cost_std": 1.7779872842637336,
+      "cost_dynamic_range": 232.37814331054688,
+      "action_l2_from_default": 0.0,
+      "selection_regret": 6.82234862446785,
+      "final_rerank_pool_size": 300,
+      "final_pool_full_cost_std": 42.11532802252861
+    },
+    {
+      "pair_id": 75,
+      "rank1_success": false,
+      "rank1_C_real_state": 58.77137577533722,
+      "elite_cost_std": 3.021684010269857,
+      "cost_dynamic_range": 288.9842720031738,
+      "action_l2_from_default": 0.0,
+      "selection_regret": 57.3904909491539,
+      "final_rerank_pool_size": 300,
+      "final_pool_full_cost_std": 66.71688801822377
+    }
+  ],
+  "wall_clock_seconds": 22.480834007263184
+}
