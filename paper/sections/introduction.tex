@@ -7,9 +7,9 @@ LeWM is one such model \citep{lewm2025}. Figure~\ref{fig:concept} illustrates th
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/figure_concept.png}
+\includegraphics[width=\textwidth]{figures/fig1_real_data.pdf}
 \caption{% REVISION: addresses W1
-Endpoint-planning decoupling in terminal-cost latent planning. \textbf{Left:} On a fixed endpoint benchmark, the learned latent cost ranks terminal states correctly---dots near the goal (star) have low physical cost (green) and dots far from the goal have high physical cost (red), so $\Rendpoint$ is positive. \textbf{Right:} After 30 CEM iterations, the candidate pool contracts into a small region near the goal. Within this local cluster, the same cost function no longer separates good candidates from bad ones---colors are scrambled---so $\Rpool \approx 0$. The gap $\DeltaCEM = \Rendpoint - \Rpool$ measures this endpoint-planning decoupling.}
+Endpoint-planning decoupling on a real PushT pair. \textbf{(a)}~On the fixed 80-candidate endpoint artifact, the learned latent cost retains positive physical rank order ($\Rendpoint=0.791$). Terminal block coordinates are not stored in this endpoint artifact, so panel~(a) uses a pair-specific PCA of predicted terminal latents. \textbf{(b)}~Inside the 300-candidate final CEM pool for the same pair, plotted by replayed terminal block position, the learned cost loses physical rank order ($\Rpool(\Cmodel)=-0.047$). \textbf{(c)}~A privileged V1 hinge cost evaluated on the same physical pool recovers substantial local rank order ($\Rpool(C_\mathrm{V1})=0.597$), showing that the pool is not intrinsically unrankable. Stars mark the goal.}
 \label{fig:concept}
 \end{figure}
 
@@ -24,8 +24,8 @@ Our empirical claims apply to LeWM with Euclidean terminal latent costs under CE
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/figure2_motivation.pdf}
-\caption{Motivating evidence for the endpoint-planning gap. \textbf{(a)}~PushT planning success drops sharply with goal offset, from 96\% at offset~25 to 10\% at offset~100. \textbf{(b)}~Per-pair three-cost attribution at offset~50 ($\pm$\,SEM, $n=30$ pairs). Predictor fidelity is high (mean Spearman 0.779), but encoder-physics alignment is weak and heterogeneous (0.353), so end-to-end alignment is also low (0.332). The gap between predictor fidelity and encoder-physics alignment motivates the distinction between endpoint geometry and planning geometry developed in Section~4.}
+\includegraphics[width=\textwidth]{figures/fig2_enhanced.pdf}
+\caption{Motivating evidence for the endpoint-planning gap. \textbf{(a)}~PushT planning success drops sharply with goal offset, from 96\% at offset~25 to 10\% at offset~100. \textbf{(b)}~Per-pair three-cost attribution at offset~50 shown as a dot plot ($\pm$\,SEM, $n=30$ pairs). Predictor fidelity is high (mean Spearman 0.779), but encoder-physics alignment is weak and heterogeneous (0.353), so end-to-end alignment is also low (0.332). The gap between predictor fidelity and encoder-physics alignment motivates the distinction between endpoint geometry and planning geometry developed in Section~4.}
 \label{fig:motivation}
 \end{figure}
 

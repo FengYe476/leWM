@@ -51,8 +51,8 @@ Figure~\ref{fig:hero} visualizes the same endpoint-pool split across projection 
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/hero_figure.pdf}
-\caption{Planning-compatible geometry diagnostics across PushT and OGBench-Cube protocols. Blue lines show endpoint Spearman rank correlation $\Rendpoint$ on fixed endpoint artifacts; red dashed lines show final-pool Spearman rank correlation $\Rpool$ on the 300 candidates retained by CEM; gray bands mark $\DeltaCEM=\Rendpoint-\Rpool$ at each projection dimension; green bars show rank-1 planning success in percent. The figure compares whether endpoint geometry transfers to the local candidate pools from which CEM selects actions.}
+\includegraphics[width=\textwidth]{figures/fig3_enhanced.pdf}
+\caption{Planning-compatible geometry diagnostics across PushT and OGBench-Cube protocols. Blue lines show endpoint Spearman rank correlation $\Rendpoint$ on fixed endpoint artifacts; red dashed lines show final-pool Spearman rank correlation $\Rpool$ on the 300 candidates retained by CEM; orange fill marks $\DeltaCEM=\Rendpoint-\Rpool$ at each projection dimension; green bars show rank-1 planning success in percent. The figure compares whether endpoint geometry transfers to the local candidate pools from which CEM selects actions.}
 \label{fig:hero}
 \end{figure*}
 
@@ -93,14 +93,21 @@ The pool-level collapse could reflect two different mechanisms. One possibility 
 
 Across the 100 PushT pairs, the learned Euclidean cost gives $\Rpool(\Cmodel)=0.084$, while the V1 oracle gives $\Rpool(C_\mathrm{V1})=0.666$. The same pattern holds in the hard subsets. In the 16 invisible-quadrant pairs, where the final pools contain little success mass ($M_\mathrm{pool\_success}=1.4\%$), $\Rpool(C_\mathrm{V1})=0.775$ while $\Rpool(\Cmodel)=0.022$. In the 21 sign-reversal pairs, $\Rpool(C_\mathrm{V1})=0.925$ while $\Rpool(\Cmodel)=-0.040$. Even in the latent-favorable subset, where the learned cost performs comparatively better, V1 remains stronger: $\Rpool(C_\mathrm{V1})=0.417$ versus $\Rpool(\Cmodel)=0.197$.
 
-These numbers rule out pure CEM convergence compression as the dominant explanation and clearly exceed the pre-registered ``mixed'' zone. The mixed rule was designed for cases where the privileged ranker itself had only weak final-pool signal, e.g., $\Rpool(C_\mathrm{V1}) \in [0.05,0.15]$. Here $\Rpool(C_\mathrm{V1})=0.666 \gg 0.15$ while $\Rpool(\Cmodel)=0.084 \approx 0$, so the overall 100-pair result fits the local-representation-failure pattern: V1 retains substantial ranking power inside the CEM final pool, whereas the learned Euclidean cost does not. Per subset, the invisible-quadrant and sign-reversal groups show the strongest representation failure; ordinary and latent-favorable pairs retain partial learned-cost signal alongside stronger V1 signal.
+These numbers rule out pure CEM convergence compression as the dominant explanation and clearly exceed the pre-registered ``mixed'' zone. The mixed rule was designed for cases where the privileged ranker itself had only weak final-pool signal, e.g., $\Rpool(C_\mathrm{V1}) \in [0.05,0.15]$. Here $\Rpool(C_\mathrm{V1})=0.666 \gg 0.15$ while $\Rpool(\Cmodel)=0.084 \approx 0$, so the overall 100-pair result fits the local-representation-failure pattern: V1 retains substantial ranking power inside the CEM final pool, whereas the learned Euclidean cost does not. Per subset, the invisible-quadrant and sign-reversal groups show the strongest representation failure; ordinary and latent-favorable pairs retain partial learned-cost signal alongside stronger V1 signal. Figure~\ref{fig:v1_attribution} shows the same attribution at pair level.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/fig_new_a_attribution.pdf}
+\caption{V1 attribution on the 100 PushT final CEM pools. Each point is one pair, with $x=\Rpool(\Cmodel)$ and $y=\Rpool(C_\mathrm{V1})$; undefined V1 Spearman values from constant oracle costs are plotted with the effective value 0. The diagonal marks equal learned and privileged rank signal. Most points lie above the diagonal, especially invisible-quadrant and sign-reversal pairs, supporting local representation failure rather than pure CEM convergence compression. Overlapping anchor definitions are assigned to a single primary subset in the legend to keep one point per pair.}
+\label{fig:v1_attribution}
+\end{figure}
 
 \subsection{Per-subset structure in PushT}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/figure3_per_subset.pdf}
-\caption{Per-subset rank-1 planning success ($M_\mathrm{rank1}$) at projection dimension $m=64$ under two PushT protocols. Dashed lines show aggregate success. \textbf{(a)}~Full projected CEM: ordinary pairs reach 86.7\% while invisible-quadrant and sign-reversal pairs stay below 5\%. \textbf{(b)}~Re-rank-only: ordinary pairs drop to 55.3\% while latent-favorable pairs rise to 75.0\%. The aggregate masks sharply different subset behavior under both protocols.}
+\includegraphics[width=\textwidth]{figures/fig4_butterfly.pdf}
+\caption{Per-subset rank-1 planning success ($M_\mathrm{rank1}$) at projection dimension $m=64$ under two PushT protocols, shown as a butterfly chart. Leftward bars show full projected CEM and rightward bars show re-rank-only, with colors denoting subset membership. Dashed vertical lines mark aggregate success on each side. Ordinary pairs reach 86.7\% under full projected CEM, while latent-favorable pairs rise to 75.0\% under re-rank-only; the aggregate masks sharply different subset behavior under both protocols.}
 \label{fig:per_subset}
 \end{figure}
 
