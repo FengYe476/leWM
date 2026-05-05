@@ -8,3 +8,15 @@ __pycache__/
 docs/phase1/*.docx
 *.egg-info/
 results/phase1/*_smoke*.json
+.DS_Store
+cube_extended_run.log
+stage1b_full.log
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.pdf
+paper/*.bak
+paper/sections/*.bak
+results/revision/**/*.pt

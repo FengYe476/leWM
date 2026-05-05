@@ -1,0 +1,186 @@
+\section{Stage 1A Eight Controls Full Results}
+\label{app:stage1a}
+
+Stage~1A evaluated whether the endpoint ranking of LeWM could be explained by
+random geometry alone, by comparing the trained encoder (C0) against seven
+controls on the same Track~A 100-pair artifact (8{,}000 records).  All
+controls use Euclidean distance as the cost; only the representation
+changes.  Ten random seeds were used for stochastic controls (C1--C5);
+single-seed or deterministic controls are noted.
+
+\subsection{Control Definitions}
+\label{app:control_defs}
+
+\begin{itemize}
+\item \textbf{C0}: Trained LeWM encoder, 192-dimensional latent, Euclidean
+  distance.  This is the baseline under audit.
+\item \textbf{C1}: Same LeWM latents after a random orthogonal rotation
+  ($192\times 192$); preserves all pairwise distances exactly.
+\item \textbf{C2}: Gaussian random projection of LeWM latents to dimension
+  $m \in \{1,2,4,8,16,32,64,128,192\}$, with entries
+  $\mathcal{N}(0,1)/\!\sqrt{m}$.
+\item \textbf{C3}: Coordinate subset of LeWM latents (first $m$ dimensions),
+  $m \in \{8,16,32,64\}$.
+\item \textbf{C4}: Gaussian null---i.i.d.\ $\mathcal{N}(0,1)$ vectors of
+  dimension 192, independent of observations.
+\item \textbf{C5}: Independent row shuffle of LeWM latents---each latent
+  dimension is permuted independently, destroying inter-dimension structure.
+\item \textbf{C6}: Randomly initialized LeWM encoder (same ViT-tiny architecture,
+  untrained weights), seed~0.
+\item \textbf{C7}: DINOv2 ViT-B/14 features (86.6M parameters,
+  768-dimensional), CLS token and mean-pooled patch tokens.
+\end{itemize}
+
+\subsection{Aggregate Results}
+\label{app:stage1a_agg}
+
+Table~\ref{tab:stage1a-summary} reports the aggregate Spearman correlation,
+pairwise accuracy, per-pair mean~$\rho$, and false-elite rate for each
+control.  The $\pm$ values are standard deviations over 10 random seeds.
+
+\begin{table}[h]
+\centering
+\caption{Stage~1A aggregate endpoint metrics on the Track~A 100-pair
+artifact.  Spearman and pairwise accuracy are computed over all 8{,}000
+records.  Per-pair $\rho$ averages 100 within-pair Spearman values.
+False-elite rate is the fraction of the top-30 candidates (by model cost)
+that are not in the true top-30 (by $C_\text{real\_state}$).
+$\pm$ denotes std over 10 seeds for stochastic controls.}
+\label{tab:stage1a-summary}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+Control & Description & Spearman & Pairwise acc.\ & Per-pair $\rho$ & False elite \\
+\midrule
+C0 & LeWM 192-d & 0.506 & 0.632 & 0.333 & 0.700 \\
+C1 & Orthogonal 192-d & 0.506$\pm$0.000 & 0.632$\pm$0.000 & 0.333 & 0.700 \\
+\midrule
+C2 ($m\!=\!1$) & Gaussian proj.\ & 0.196$\pm$0.082 & 0.554$\pm$0.014 & 0.145 & 0.790 \\
+C2 ($m\!=\!8$) & Gaussian proj.\ & 0.379$\pm$0.035 & 0.603$\pm$0.013 & 0.266 & 0.723 \\
+C2 ($m\!=\!32$) & Gaussian proj.\ & 0.444$\pm$0.033 & 0.621$\pm$0.011 & 0.309 & 0.706 \\
+C2 ($m\!=\!64$) & Gaussian proj.\ & 0.473$\pm$0.026 & 0.626$\pm$0.007 & 0.320 & 0.704 \\
+C2 ($m\!=\!192$) & Gaussian proj.\ & 0.495$\pm$0.019 & 0.629$\pm$0.007 & 0.326 & 0.701 \\
+\midrule
+C3 ($m\!=\!64$) & Coord.\ subset & 0.487$\pm$0.033 & 0.629$\pm$0.011 & 0.327 & 0.702 \\
+\midrule
+C4 & Gaussian null & $-$0.006$\pm$0.012 & 0.498$\pm$0.003 & $-$0.005 & 0.838 \\
+C5 & Shuffled latent & 0.004$\pm$0.006 & 0.500$\pm$0.003 & $-$0.000 & 0.837 \\
+\midrule
+C6 & Randomly initialized ViT & $-$0.200 & 0.475 & $-$0.066 & 0.904 \\
+\midrule
+C7 (CLS) & DINOv2 CLS & 0.238 & 0.582 & 0.218 & 0.747 \\
+C7 (mean) & DINOv2 mean & 0.286 & 0.595 & 0.253 & 0.750 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Key observations:
+
+\paragraph{C1 confirms distance preservation.}
+The orthogonal transform reproduces C0 exactly (Spearman 0.506, zero
+variance), verifying that the evaluation pipeline is rotation-invariant.
+
+\paragraph{C4 and C5 are uninformative.}
+The Gaussian null (C4: $-$0.006) and shuffled latent (C5: 0.004) produce
+near-zero Spearman, confirming that the endpoint ranking signal requires
+\emph{structured} latent geometry, not arbitrary high-dimensional distances.
+
+\paragraph{C6 is worse than random.}
+The randomly initialized ViT-tiny reaches Spearman $-$0.200, \emph{below} both null
+controls.  This anti-correlation is analyzed in detail in
+Appendix~\ref{app:c6_audit} and discussed in Section~5.1.
+
+\paragraph{C7 underperforms LeWM.}
+DINOv2 mean-pool (0.286) and CLS (0.238) both fall below trained LeWM
+(0.506), confirming that generic visual features do not match task-trained
+endpoint geometry on PushT.
+
+\subsection{C2 Gaussian Projection Ladder}
+\label{app:c2_ladder}
+
+Table~\ref{tab:c2-ladder} reports the full C2 dimension ladder from $m=1$
+to $m=192$.  Endpoint Spearman rises steeply from $m=1$ to $m=32$, then
+plateaus.  At $m=64$, Gaussian projections recover 93.5\% of the full
+192-dimensional Spearman (0.473 vs.\ 0.506).  The C3 coordinate subset at
+$m=64$ (0.487) is comparable, indicating that the ranking signal is
+distributed rather than concentrated in specific learned dimensions.
+
+\begin{table}[h]
+\centering
+\caption{C2 Gaussian projection and C3 coordinate subset endpoint Spearman
+across projection dimensions.  $\pm$ denotes std over 10 seeds.}
+\label{tab:c2-ladder}
+\begin{tabular}{lccc}
+\toprule
+Dimension $m$ & C2 Spearman & C3 Spearman & C2 / C0 (\%) \\
+\midrule
+1 & 0.196$\pm$0.082 & --- & 38.7 \\
+2 & 0.235$\pm$0.049 & --- & 46.4 \\
+4 & 0.323$\pm$0.047 & --- & 63.8 \\
+8 & 0.379$\pm$0.035 & 0.367$\pm$0.029 & 74.9 \\
+16 & 0.407$\pm$0.037 & 0.423$\pm$0.032 & 80.4 \\
+32 & 0.444$\pm$0.033 & 0.455$\pm$0.027 & 87.7 \\
+64 & 0.473$\pm$0.026 & 0.487$\pm$0.033 & 93.5 \\
+128 & 0.477$\pm$0.019 & --- & 94.3 \\
+192 & 0.495$\pm$0.019 & --- & 97.8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This ladder is an \emph{endpoint} result.  Section~4 and
+Appendix~\ref{app:stage1b} show that the same dimension sweep produces a
+very different pattern when measured inside the final candidate pool of CEM:
+$\Rpool$ stays near zero across all dimensions even as $\Rendpoint$ rises.
+
+\subsection{Per-Anchor Breakdowns}
+\label{app:anchor_breakdown}
+
+The Track~A pairs include three diagnostic anchors defined in
+Appendix~\ref{app:track_a}: the invisible quadrant (16 all-fail,
+strong-$\rho$ pairs), the sign-reversal cluster (21 negative-$\rho$ pairs),
+and the latent-favorable subset (12 pairs from D0xR1 and D1xR0).
+Table~\ref{tab:anchor-breakdown} reports per-anchor Spearman for C0 and
+C2 at $m=64$.
+
+\begin{table}[h]
+\centering
+\caption{Per-anchor endpoint Spearman for C0 (trained LeWM) and C2 Gaussian
+projection at $m=64$.  C2 values are mean$\pm$std over 10 seeds.}
+\label{tab:anchor-breakdown}
+\begin{tabular}{lcc}
+\toprule
+Anchor subset & C0 Spearman & C2 ($m\!=\!64$) Spearman \\
+\midrule
+Invisible quadrant (16 pairs) & 0.462 & 0.323$\pm$0.090 \\
+Sign-reversal cluster (21 pairs) & $-$0.034 & 0.012$\pm$0.110 \\
+Latent-favorable (12 pairs) & 0.519 & 0.479$\pm$0.045 \\
+\midrule
+All 100 pairs & 0.506 & 0.473$\pm$0.026 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The invisible quadrant retains positive Spearman under both C0 (0.462) and
+projected C2 (0.323), confirming that endpoint geometry looks healthy for
+these pairs even though CEM cannot find successful actions.  The
+sign-reversal cluster shows near-zero or slightly negative Spearman under
+both representations, consistent with the encoder producing systematically
+inverted rankings for these high-rotation pairs.
+
+The latent-favorable subset preserves 92.3\% of C0 Spearman under C2
+projection (0.479 vs.\ 0.519), indicating that the latent-favorable signal
+is robust to dimensionality reduction.
+
+\subsection{Implication for the Audit}
+
+Stage~1A ruled out the ``Strong~B'' hypothesis: random
+architecture-matched geometry does not explain the endpoint ranking of LeWM.
+The trained encoder produces task-relevant structure (C0: 0.506) from a
+worse-than-random starting point (C6: $-$0.200), and null controls
+(C4, C5) confirm that arbitrary distances carry no signal.  Random
+projections of the \emph{learned} space preserve much of this signal, but
+that is a property of the learned geometry, not evidence that random
+geometry suffices.  This conclusion motivated the Stage~1B planning
+experiments (Appendix~\ref{app:stage1b}), which tested whether the preserved
+endpoint signal transfers to CEM planning behavior.

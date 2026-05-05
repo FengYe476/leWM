@@ -1,0 +1,98 @@
+\section{Pre-registration Artifacts and Decision Memos}
+\label{app:preregistration}
+
+The audit used binding decision trees, fixed evaluation artifacts, and
+documented framing resets (Section~3.1).  Each phase recorded its
+hypothesis, continuation criteria, and possible outcomes before data
+inspection.  This appendix catalogs the decision memos released with the
+supplementary materials and lists the git timestamps that anchor each
+pre-registered decision.  Table~\ref{tab:appendix-commits} in
+Appendix~\ref{app:reproducibility} provides the commit hashes for the main
+experimental artifacts.
+
+\subsection{Decision Memo Index}
+
+\begin{table}[h]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.17\textwidth} p{0.32\textwidth} p{0.15\textwidth} p{0.23\textwidth}@{}}
+\toprule
+Memo & Path & Phase & Verdict \\
+\midrule
+Stage 1A result memo & \path{docs/phase2/stage1/stage1a_result_memo.md} & Stage 1A & Strong B ruled out; C6 = $-0.200$; proceed to Plan A \\
+C6 audit memo & \path{docs/phase2/c6_audit_memo.md} & C6 audit & C6-REAL: anti-correlation confirmed across 10 seeds \\
+Cube C6 audit memo & \path{docs/phase2/cube/cube_c6_audit_memo.md} & Cube C6 & C6-NO-INVERSION: Cube randomly initialized encoder is $+0.115 \pm 0.016$ \\
+Stage 1B smoke memo & \path{docs/phase2/stage1b_smoke_memo.md} & Stage 1B smoke & Continue B: proceed to full sweep \\
+Track B memo & \path{docs/phase2/track_b_memo.md} & Track B & DINOv2 underperforms LeWM ($0.261$ vs.\ $0.503$) \\
+P2-0 memo & \path{docs/phase2/p2_0_memo.md} & Learned costs & Cost heads fail planning ($0/16$ Split 3); drop cost-head approach \\
+Protocol matching memo & \path{docs/phase2/protocol_matching_memo.md} & Protocol match & Re-rank flat confirmed; Case E stable; launch Subspace-CEM \\
+Cube Stage 1B memo & \path{docs/phase2/cube/cube_stage1b_memo.md} & Cube Stage 1B & CUBE-STAGE1B-FLAT-ROBUST \\
+Phase A memo & \path{docs/phase2/phase_a_memo.md} & Closeout Phase A & Subspace-CEM FAIL ($-8.3$ pp); Cube anomaly MIXED \\
+\bottomrule
+\end{tabular}
+\caption{Decision memos released with the supplementary materials.  Each
+memo was committed before the next experimental phase.}
+\label{tab:decision-memo-index}
+\end{table}
+
+\subsection{Pre-registered Decision Gates}
+
+\begin{table}[h]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.17\textwidth} p{0.33\textwidth} p{0.27\textwidth} p{0.11\textwidth}@{}}
+\toprule
+Gate & Pre-registered criterion & Observed value & Outcome \\
+\midrule
+Strong B (Stage 1A) & $m \leq 8$ projection within $0.05$ Spearman of C0 and C6 within $0.05$ of C0 & C2 $m{=}8$ gap $= 0.127$; C6 $= -0.200$ & Ruled out \\
+Learned cost planning (P2-0) & $\geq 5/16$ Split 3 hard-pair rescues without regression & Best variant: $1/16$ (CEM-aware) & Failed \\
+DINOv2 encoder (Track B) & DINOv2 matches LeWM Spearman within $0.05$ & Gap $= 0.242$ ($0.261$ vs.\ $0.503$) & Failed \\
+Protocol matching & Re-rank-only flat ($< 5$ pp range) and full projected CEM has elbow & Re-rank range $= 5.4$ pp; CEM elbow confirmed & Confirmed \\
+Subspace-CEM Stage A & $\geq +3$ pp over the better of default and pure projected $m{=}64$ & $-8.3$ pp vs.\ default & Failed \\
+Cube anomaly & $m{=}32$ vs.\ $m{=}192$ gap $\geq 10$ pp across 3 seeds & $+5.33$ pp (MIXED: in 5--10 pp range) & Mixed \\
+\bottomrule
+\end{tabular}
+\caption{Pre-registered decision gates with quantitative thresholds.  Each
+gate was recorded in the corresponding memo before data inspection.}
+\label{tab:preregistered-gates}
+\end{table}
+
+\subsection{Git-Anchored Timeline}
+
+\begin{table}[h]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{0.22\textwidth} p{0.13\textwidth} p{0.55\textwidth}@{}}
+\toprule
+Date & Commit & Event \\
+\midrule
+2026-05-01 03:36 & \texttt{486adee} & Aggregate latent diagnostics and Cube eval pipeline \\
+2026-05-01 03:52 & \texttt{eac7bfc} & Cube baseline and sweep infrastructure \\
+2026-05-01 13:06 & \texttt{7388a9a} & Phase 0 three-cost refactor \\
+2026-05-01 18:03 & \texttt{78900c3} & Track A D3-row cost-criterion ablation (V1/V2/V3) \\
+2026-05-01 22:53 & \texttt{ecea011} & Track A closeout \\
+2026-05-02 17:08 & \texttt{e1f97f3} & Stage 1A random-geometry decision gate \\
+2026-05-02 19:25 & \texttt{dac7a06} & C6 audit S1--S6 + memo (verdict: C6-REAL) \\
+2026-05-02 20:58 & \texttt{e2e19e3} & Stage 1B smoke memo (verdict: Continue B) \\
+2026-05-03 14:29 & \texttt{2fdee8e} & Taxonomy, hero figure, protocol memo \\
+2026-05-03 & \texttt{adc573ac} & Subspace-CEM Stage A (verdict: FAIL) \\
+\bottomrule
+\end{tabular}
+\caption{Git-anchored audit timeline.  Commits are listed in chronological
+order; each records the pre-registered decision or artifact before the
+subsequent phase.}
+\label{tab:git-anchored-timeline}
+\end{table}
+
+\subsection{Framing Resets}
+
+The audit underwent three documented framing resets (Section~3.2).  The
+first reset moved from encoder-collapse to cost-landscape mismatch after
+Phase 1 falsified the large-displacement hypothesis.  The second narrowed
+cost-landscape mismatch to endpoint-planning decoupling after C6 rejected
+the architecture-only account.  The third incorporated the search-selection
+split after protocol matching confirmed the re-rank flatness.  Each reset
+was written into a memo before the next phase's experiments.

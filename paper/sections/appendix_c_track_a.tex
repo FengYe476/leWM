@@ -1,0 +1,223 @@
+\section{Track A Stratified Sampling and Analysis}
+\label{app:track_a}
+
+Phase~1 converted the Phase~0 30-pair PushT diagnosis into a 100-pair
+stratified artifact at offset~50, with 80 candidate actions per pair split
+evenly across four sources (20~data, 20~smooth-random, 20~CEM-early,
+20~CEM-late; 8{,}000 records total).  This appendix documents the sampling
+grid, failure-mode decomposition, sign-reversal cluster, and D-row cost
+diagnosis that underlie the main-text audit trajectory (Section~3.2).
+
+\subsection{Stratified Sampling Grid}
+\label{app:track_a_grid}
+
+Pairs were sampled over a $4\times 4$ displacement$\times$rotation grid with
+edges $D \in \{0, 10, 50, 120, \infty\}$~pixels and
+$R \in \{0, 0.25, 0.75, 1.25, \infty\}$~radians.  Table~\ref{tab:track-a-grid}
+reports the per-cell pair count, success rate, and per-pair encoder-physics
+Spearman correlation.
+
+\begin{table}[h]
+\centering
+\caption{Track~A per-cell summary ($4\times 4$ displacement$\times$rotation
+grid, 100 pairs, 80 actions each).  Success rate is the fraction of actions
+that satisfy the PushT success criterion.  Mean~$\rho$ is the within-pair
+Spearman correlation between $C_\text{real\_z}$ and $C_\text{real\_state}$,
+averaged over pairs in the cell.}
+\label{tab:track-a-grid}
+\begin{tabular}{lcccc}
+\toprule
+ & R0 ($<$0.25) & R1 (0.25--0.75) & R2 (0.75--1.25) & R3 ($>$1.25) \\
+\midrule
+D0 ($<$10\,px) & 6 / 76.7\% / 0.39 & 6 / 44.6\% / 0.41 & 6 / 32.1\% / 0.32 & 6 / 4.6\% / $-$0.27 \\
+D1 (10--50\,px) & 6 / 27.1\% / 0.50 & 6 / 7.5\% / 0.34 & 6 / 19.0\% / 0.14 & 6 / 0.0\% / $-$0.29 \\
+D2 (50--120\,px) & 6 / 15.0\% / 0.32 & 6 / 17.3\% / 0.60 & 7 / 0.9\% / 0.08 & 7 / 0.2\% / 0.38 \\
+D3 ($>$120\,px) & 6 / 7.9\% / 0.67 & 7 / 11.4\% / 0.73 & 6 / 2.7\% / 0.58 & 7 / 1.8\% / 0.40 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No cell was empty; all 16 cells have 6--7 pairs.  Success rate decreases with
+both displacement and rotation, but encoder-physics alignment does
+\emph{not} follow a simple monotone pattern: D3 cells have higher mean~$\rho$
+than D0 cells (see Section~\ref{app:drow} below).
+
+\subsection{DP1 Aggregate Statistics}
+\label{app:dp1}
+
+The DP1 diagnostic checks whether per-pair Spearman heterogeneity is
+comparable to Phase~0.  Over all 100 pairs, the per-pair Spearman
+$\rho(C_\text{real\_z}, C_\text{real\_state})$ has mean 0.333, std 0.477,
+and median 0.414 (range $-0.766$ to $+0.914$).  The bootstrapped 95\% CI for
+the standard deviation is $[0.412, 0.529]$, above the 0.300 pre-registered
+threshold.  Phase~0 reference values (mean 0.353, std 0.486) are within this
+interval, confirming that the stratified artifact preserves the heterogeneity
+observed in Phase~0.
+
+\subsection{Failure-Mode Decomposition}
+\label{app:failure_decomp}
+
+Each of the 100 pairs was classified along two axes: (i)~\emph{success
+class}---``all\_fail'' if 0/80 actions succeed, ``some\_succ'' otherwise; and
+(ii)~\emph{encoder class}---``neg\_rho'' if per-pair
+$\rho(C_\text{real\_z}, C_\text{real\_state}) < 0$, ``weak\_rho'' if
+$0 \le \rho < 0.3$, ``strong\_rho'' if $\rho \ge 0.3$.
+Table~\ref{tab:failure-decomp} reports the resulting $2\times 3$ count
+matrix.
+
+\begin{table}[h]
+\centering
+\caption{Failure-mode decomposition of 100 Track~A pairs.  Rows indicate
+whether any of the 80 candidate actions succeed; columns indicate the sign
+and magnitude of per-pair encoder-physics Spearman $\rho$.}
+\label{tab:failure-decomp}
+\begin{tabular}{lccc}
+\toprule
+ & neg\_rho ($\rho<0$) & weak\_rho ($0\le\rho<0.3$) & strong\_rho ($\rho\ge 0.3$) \\
+\midrule
+all\_fail (0/80 success) & 18 & 7 & 16 \\
+some\_succ ($\ge$1/80) & 3 & 10 & 46 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 41 all-fail pairs span all three encoder classes.  Notably, 16 all-fail
+pairs have strong encoder-physics alignment ($\rho \ge 0.3$), meaning the
+encoder ranks terminal states correctly but no sampled action reaches the
+goal.  This is the \emph{invisible quadrant}: endpoint metrics look healthy,
+yet the planner cannot find a solution.  These 16 pairs concentrate in
+high-displacement cells (mean displacement 121.5\,px, mean rotation
+1.33\,rad), predominantly D2--D3 $\times$ R0--R3.
+
+Source verification confirmed that all 41 all-fail pairs have zero successes
+across all four action sources (data, smooth-random, CEM-early, CEM-late),
+ruling out source-specific artifacts.
+
+\subsection{Sign-Reversal Cluster}
+\label{app:sign_reversal}
+
+Twenty-one pairs have negative per-pair $\rho(C_\text{real\_z},
+C_\text{real\_state})$, meaning the latent distance of the encoder ranks terminal
+states in the \emph{wrong direction} relative to physical task cost.  Of
+these, 18 are all-fail pairs and 3 have marginal success (2--6/80 actions).
+The sign-reversal cluster concentrates in the R2--R3 rotation columns (15 of
+21 pairs), with D0xR3 contributing 5 pairs alone.
+Table~\ref{tab:sign-reversal} lists the pairs sorted by $\rho$.
+
+\begin{table}[h]
+\centering
+\caption{Sign-reversal pairs (negative per-pair Spearman
+$\rho(C_\text{real\_z}, C_\text{real\_state})$).  ``Succ'' is the number of
+successful actions out of 80.  Displacement is in pixels; rotation is in
+radians.}
+\label{tab:sign-reversal}
+\begin{tabular}{rllrccc}
+\toprule
+Pair & Cell & $\rho$ & Succ & Disp.\ (px) & Rot.\ (rad) \\
+\midrule
+20 & D0xR3 & $-$0.766 & 0 & 8.6 & 1.93 \\
+40 & D1xR2 & $-$0.702 & 0 & 38.7 & 1.15 \\
+42 & D1xR3 & $-$0.683 & 0 & 48.5 & 2.08 \\
+53 & D2xR0 & $-$0.660 & 0 & 50.7 & 0.21 \\
+44 & D1xR3 & $-$0.613 & 0 & 39.7 & 2.69 \\
+49 & D2xR0 & $-$0.591 & 0 & 116.9 & 0.07 \\
+66 & D2xR2 & $-$0.591 & 0 & 79.7 & 0.86 \\
+17 & D0xR2 & $-$0.575 & 5 & 6.2 & 1.00 \\
+21 & D0xR3 & $-$0.569 & 0 & 9.9 & 2.32 \\
+62 & D2xR2 & $-$0.563 & 0 & 84.6 & 0.77 \\
+47 & D1xR3 & $-$0.562 & 0 & 42.5 & 2.10 \\
+69 & D2xR3 & $-$0.479 & 0 & 52.5 & 1.76 \\
+22 & D0xR3 & $-$0.429 & 0 & 5.2 & 2.53 \\
+37 & D1xR2 & $-$0.410 & 0 & 32.6 & 1.24 \\
+33 & D1xR1 & $-$0.326 & 0 & 47.4 & 0.52 \\
+45 & D1xR3 & $-$0.274 & 0 & 20.5 & 1.67 \\
+98 & D3xR3 & $-$0.258 & 0 & 122.8 & 1.32 \\
+23 & D0xR3 & $-$0.178 & 0 & 9.6 & 1.31 \\
+18 & D0xR3 & $-$0.071 & 0 & 9.4 & 1.26 \\
+29 & D1xR0 & $-$0.060 & 2 & 41.7 & 0.11 \\
+15 & D0xR2 & $-$0.058 & 6 & 3.0 & 0.97 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The sign-reversal cluster informed the later five-subset classification used
+in Section~4.4 and Appendix~\ref{app:stage1b}: pairs with $\rho<0$ map to
+the ``sign-reversal'' subset, while all-fail pairs with $\rho \ge 0.3$ map
+to the ``invisible quadrant.''
+
+\subsection{D-Row Cost Diagnosis}
+\label{app:drow}
+
+Section~3.2 reports that the largest-displacement row (D3) has the strongest
+encoder-physics Pearson correlation, falsifying the Phase~0 hypothesis that
+large displacement causes encoder collapse.
+Table~\ref{tab:drow} reports row-level Pearson correlations for all three
+cost pairs.
+
+\begin{table}[h]
+\centering
+\caption{D-row cost diagnosis.  Each row aggregates all pairs in the
+displacement bin.  Pearson correlations are computed over all records in the
+row (not averaged per pair).  ``Pairs $\le\tau$'' is the number of pairs
+whose best $C_\text{real\_state}$ is below the success threshold
+$\tau = 20.2$.}
+\label{tab:drow}
+\begin{tabular}{lccccccc}
+\toprule
+Row & Pairs & Records & $\overline{C}_\text{real\_state}$ & Pairs $\le\tau$ & $r(\Cmodel, C_\text{real\_z})$ & $r(C_\text{real\_z}, C_\text{real\_state})$ & $r(\Cmodel, C_\text{real\_state})$ \\
+\midrule
+D0 & 24 & 1920 & 33.0 & 24 & 0.865 & 0.323 & 0.221 \\
+D1 & 24 & 1920 & 52.9 & 17 & 0.848 & 0.393 & 0.282 \\
+D2 & 26 & 2080 & 78.9 & 17 & 0.747 & 0.451 & 0.453 \\
+D3 & 26 & 2080 & 104.8 & 19 & 0.780 & 0.630 & 0.517 \\
+\midrule
+All & 100 & 8000 & 68.3 & 77 & 0.814 & 0.489 & 0.391 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The encoder-physics Pearson correlation $r(C_\text{real\_z},
+C_\text{real\_state})$ rises monotonically from 0.323 at D0 to 0.630 at D3.
+The predictor-fidelity correlation $r(\Cmodel, C_\text{real\_z})$ remains
+high across all rows (0.747--0.865), confirming that the predictor faithfully
+tracks the encoder even at large displacements.  The end-to-end correlation
+$r(\Cmodel, C_\text{real\_state})$ also rises with displacement, from 0.221
+to 0.517, driven primarily by the encoder-physics term.
+
+This non-monotonic pattern---the encoder is \emph{better} aligned with
+physics at large displacements---falsified the Phase~0 large-displacement
+encoder-collapse hypothesis and redirected the audit toward cost-landscape
+mismatch (Table~1, Phase~1 row).
+
+\subsection{Failure Mechanism Map}
+\label{app:failure_map}
+
+Combining the D-row diagnosis with oracle ablation results
+(Appendix~\ref{app:oracle}), the Track~A analysis identified two independent
+bottleneck axes: cost misalignment (encoder ranks terminal states incorrectly)
+and predictor sharpness (predictor rollout degrades the cost signal).
+Table~\ref{tab:failure-map} summarizes the dominant bottleneck per cell.
+
+\begin{table}[h]
+\centering
+\caption{Dominant bottleneck per Track~A cell, inferred from three-cost
+attribution and oracle ablation results.  ``Cost'' = cost misalignment;
+``Pred'' = predictor sharpness; ``Both'' = both axes contribute.}
+\label{tab:failure-map}
+\begin{tabular}{lcccc}
+\toprule
+ & R0 & R1 & R2 & R3 \\
+\midrule
+D0 & easy & cost & both & cost \\
+D1 & cost & both & both & cost \\
+D2 & cost & pred & pred & cost \\
+D3 & pred & pred & pred & both \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Cost misalignment dominates the R3 column (high rotation, all displacement
+levels) and D0--D1 at low rotation.  Predictor sharpness dominates D2--D3 at
+intermediate rotation.  This two-axis structure informed the subsequent
+Stage~1A random-geometry controls (Appendix~\ref{app:stage1a}) and the
+endpoint-planning decoupling analysis (Section~4).

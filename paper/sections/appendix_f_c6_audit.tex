@@ -1,0 +1,210 @@
+\section{C6 Audit Cross-Environment Details}
+\label{app:c6_audit}
+
+Section~5 reports that the randomly initialized LeWM encoder (C6) produces
+anti-correlated endpoint rankings on PushT but not on Cube.  This appendix
+documents the six sub-experiments (S1--S6) that diagnosed the mechanism,
+tested cross-environment generalization, and ruled out implementation
+artifacts.  All sub-experiments use the Track~A 100-pair PushT artifact
+(8{,}000 records) and the corresponding 100-pair Cube artifact.
+
+\subsection{S1: Ten-Seed Random-Init Robustness}
+\label{app:s1}
+
+Ten independently initialized random ViT-tiny encoders were evaluated on
+both environments.  Table~\ref{tab:s1} reports the aggregate Spearman
+$\rho(C_\text{random}, C_\text{real\_state})$ across seeds.
+
+\begin{table}[h]
+\centering
+\caption{S1: Randomly initialized ViT-tiny endpoint Spearman across 10 seeds.}
+\label{tab:s1}
+\begin{tabular}{lcc}
+\toprule
+Statistic & PushT & Cube \\
+\midrule
+Mean $\pm$ std & $-$0.156 $\pm$ 0.086 & $+$0.115 $\pm$ 0.016 \\
+Negative seeds & 8 / 10 & 0 / 10 \\
+Seed-0 value & $-$0.200 & $+$0.137 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The PushT anti-correlation is robust across seeds (8/10 negative), while
+Cube shows a weak but consistently positive correlation (0/10 negative).
+The cross-environment split is not a seed accident.
+
+\subsection{S2: Pre- vs.\ Post-Projector}
+\label{app:s2}
+
+S2 tested whether the projector head (the linear layer after the ViT
+backbone) contributes to the anti-correlation.  On PushT, pre-projector and
+post-projector Spearman are identical ($-$0.201 vs.\ $-$0.201), ruling out
+the projector as a source of signal inversion.  On Cube, both values are
+weakly positive ($+$0.125 and $+$0.137).
+
+\subsection{S3: Eval Mode vs.\ Train Mode}
+\label{app:s3}
+
+S3 tested whether LayerNorm's eval-mode running statistics cause the
+inversion.  Table~\ref{tab:s3} compares eval-mode and train-mode Spearman.
+
+\begin{table}[h]
+\centering
+\caption{S3: Eval-mode vs.\ train-mode randomly initialized ViT-tiny (seed~0).}
+\label{tab:s3}
+\begin{tabular}{lcc}
+\toprule
+Mode & PushT & Cube \\
+\midrule
+Eval & $-$0.200 & $+$0.137 \\
+Train & $+$0.025 & $+$0.078 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On PushT, switching from eval to train mode flips the sign from $-$0.200 to
+$+$0.025, implicating eval-mode normalization statistics as the mechanism.
+On Cube, both modes are positive, consistent with the absence of signal
+inversion.
+
+\subsection{S4: Raw-Pixel Baselines}
+\label{app:s4}
+
+S4 measured whether raw pixel distances carry task-relevant signal without
+any learned encoder.  Table~\ref{tab:s4} reports two pixel-level baselines.
+
+\begin{table}[h]
+\centering
+\caption{S4: Raw-pixel endpoint Spearman baselines.}
+\label{tab:s4}
+\begin{tabular}{lcc}
+\toprule
+Metric & PushT & Cube \\
+\midrule
+Raw pixel $\ell_2$ & $+$0.697 & $+$0.069 \\
+Mean RGB diff & $+$0.705 & $+$0.153 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+PushT raw pixels carry a strong task signal ($+$0.697) because the 2D
+overhead view makes block displacement directly visible in pixel space.  The
+randomly initialized ViT in eval mode inverts this $+$0.70 signal to $-$0.20.  Cube
+raw pixel $\ell_2$ is near zero ($+$0.069) because small 3D cube
+displacements produce weak and view-dependent pixel changes, explaining why
+Cube does not exhibit signal inversion.
+
+\subsection{S5: Hand-Crafted Object Features}
+\label{app:s5}
+
+S5 tested task-specific baselines that do not require a learned encoder.
+
+\begin{table}[h]
+\centering
+\caption{S5: Hand-crafted object feature endpoint Spearman.  PushT uses the
+block center position extracted from the simulator state; Cube uses the cube
+position.}
+\label{tab:s5}
+\begin{tabular}{lcc}
+\toprule
+Feature & PushT & Cube \\
+\midrule
+Object feature & $+$0.426 & $+$1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The PushT block-center feature ($+$0.426) confirms that pixel-level task
+signal exists but is weaker than raw pixel $\ell_2$ ($+$0.697) because it
+ignores angle.  The Cube object feature reaches near-perfect correlation
+($+$1.000) because the task cost is defined directly on cube position.
+
+\subsection{S6: Cross-Architecture Controls}
+\label{app:s6}
+
+S6 tested whether the eval-mode signal inversion is specific to the ViT-tiny
+architecture.  Two additional randomly initialized architectures were evaluated:
+a small CNN with BatchNorm (3 conv layers, $\sim$0.1M parameters) and
+ResNet18 ($\sim$11M parameters).
+
+\begin{table}[h]
+\centering
+\caption{S6: Cross-architecture randomly initialized endpoint Spearman (eval mode,
+seed~0).}
+\label{tab:s6}
+\begin{tabular}{lcc}
+\toprule
+Architecture & PushT & Cube \\
+\midrule
+ViT-tiny (C6) & $-$0.200 & $+$0.137 \\
+Small CNN & $-$0.182 & $+$0.119 \\
+ResNet18 & $+$0.304 & $+$0.211 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The small CNN with BatchNorm replicates the ViT-tiny inversion on PushT
+($-$0.182), while ResNet18 does not ($+$0.304).  On Cube, all architectures
+are positive.  The inversion appears in shallow networks with normalization
+layers (ViT-tiny with LayerNorm, small CNN with BatchNorm) but not in
+deeper residual networks.
+
+\subsection{Cross-Environment Summary}
+\label{app:c6_summary}
+
+Table~\ref{tab:c6-cross} consolidates all sub-experiments into a single
+cross-environment comparison.
+
+\begin{table}[h]
+\centering
+\caption{Full C6 audit cross-environment summary.  Each row is one
+sub-experiment or baseline.  Spearman correlations measure endpoint ranking
+on the respective 100-pair artifact.}
+\label{tab:c6-cross}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcc}
+\toprule
+Sub-exp.\ & Metric & PushT Spearman & Cube Spearman \\
+\midrule
+S1 & Randomly initialized ViT 10-seed mean & $-$0.156 $\pm$ 0.086 & $+$0.115 $\pm$ 0.016 \\
+S2 & Pre-projector (seed 0, eval) & $-$0.201 & $+$0.125 \\
+S2 & Post-projector (seed 0, eval) & $-$0.200 & $+$0.137 \\
+S3 & Eval mode (seed 0) & $-$0.200 & $+$0.137 \\
+S3 & Train mode (seed 0) & $+$0.025 & $+$0.078 \\
+S4 & Raw pixel $\ell_2$ & $+$0.697 & $+$0.069 \\
+S4 & Mean RGB diff & $+$0.705 & $+$0.153 \\
+S5 & Object feature & $+$0.426 & $+$1.000 \\
+S6 & Small CNN (eval) & $-$0.182 & $+$0.119 \\
+S6 & ResNet18 (eval) & $+$0.304 & $+$0.211 \\
+\midrule
+--- & C0 trained LeWM & $+$0.506 & $+$0.604 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{Mechanism Interpretation}
+
+The C6 audit identifies three findings used in the main text
+(Section~5):
+
+\paragraph{1.\ Signal inversion is environment-dependent.}
+PushT's 2D overhead view creates a strong raw-pixel task signal ($+$0.70)
+that shallow random networks with normalization layers invert to $-$0.20 in
+eval mode.  Cube's 3D rendering produces weak raw-pixel signal ($+$0.07),
+so there is nothing strong enough to invert.
+
+\paragraph{2.\ Learned weights are essential in both environments.}
+Trained LeWM reaches $+$0.506 on PushT (from a $-$0.200 randomly initialized
+starting point) and $+$0.604 on Cube (from a near-zero raw-pixel baseline
+of $+$0.069).  In both cases, the learned representation creates substantial
+endpoint geometry that neither random features nor raw pixels provide.
+
+\paragraph{3.\ Randomly initialized encoders are not neutral baselines.}
+The C6 result invalidates the assumption that randomly initialized encoders provide
+a neutral zero-information reference.  On PushT, C6 is actively
+anti-informative; using it as a baseline would overstate the contribution of
+learned weights.  This finding informed the decision of the audit to use C4
+(Gaussian null) and C5 (shuffled latent) as the proper uninformative
+baselines (Appendix~\ref{app:stage1a}).

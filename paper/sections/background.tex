@@ -1,0 +1,41 @@
+\section{Background}
+
+The introduction frames the failure as a gap between endpoint geometry and planner-local geometry. This section specifies the environments, model notation, planner, and evaluation practice used in the audit.
+
+\subsection{Evaluation environments}
+
+We compare endpoint and planner-local metrics on two image-based manipulation tasks. PushT is a 2D planar pushing task \citep{pusht2023}: an agent observes $224\times224$ RGB images and pushes a T-shaped block toward a target pose. The simulator state is seven-dimensional, and success requires the block position to be within 20 pixels of the target and the block angle to be within $\pi/9$.
+
+OGBench-Cube is a 3D MuJoCo manipulation task from OGBench \citep{ogbench2024}: a robot observes rendered $224\times224$ RGB images and moves a cube toward a target position, with success defined by $\lVert x_\mathrm{cube}^{\mathrm{terminal}} - x_\mathrm{cube}^{\mathrm{goal}}\rVert_2 \leq 0.04$. In both environments, LeWM is trained from expert demonstrations rather than reward-labeled rollouts.
+
+\subsection{LeWM architecture and training}
+
+Given these tasks, we next specify the model under audit. LeWM is a Joint-Embedding Predictive Architecture (JEPA) world model for goal-conditioned control from pixels that bypasses pixel reconstruction and instead predicts future embeddings in a learned latent space \citep{lewm2025}.
+
+The encoder is a 5.5M-parameter ViT-tiny that maps an observation $o$ to a 192-dimensional latent state, $z=\mathrm{enc}(o)$. The 12.5M-parameter predictor maps a current latent and action-block sequence to a future latent, $\zhatH = f_\theta(z_t, a_{t:t+H-1})$, where $H$ is the planning horizon in action blocks. PushT and OGBench-Cube use separate LeWM checkpoints.
+
+The training objective combines next-embedding prediction with SIGReg regularization, which encourages an approximately isotropic Gaussian latent distribution \citep{sigr2024}. LeWM uses neither a stop-gradient target nor an exponential-moving-average encoder, and relies on no pretrained visual backbone or reward supervision, so the learned latent geometry comes from demonstration pixels, actions, prediction loss, and regularization.
+
+This setup matters for our audit because latent distance is not an auxiliary score. It is the geometry in which the model learns dynamics and in which the planner operates at inference.
+
+\subsection{CEM planning in latent space}
+
+With the model specified, inference reduces to optimizing action sequences in its latent geometry. LeWM plans with the Cross-Entropy Method (CEM) \citep{cem1999}. Given a current observation $o$ and a goal observation $o_g$, the model first encodes both as $z=\mathrm{enc}(o)$ and $\zgoal=\mathrm{enc}(o_g)$. The planner then samples $N=300$ candidate action sequences from a Gaussian proposal. Each candidate is propagated through the predictor to obtain a predicted terminal latent $\zhatH$. The model score is squared Euclidean distance to the goal latent, $\Cmodel(\zhatH,\zgoal)=\lVert \zhatH-\zgoal\rVert_2^2$, where lower cost indicates a better candidate.
+
+CEM uses this score within an iterative optimization loop. At each iteration, LeWM selects the top $K=30$ elites with the lowest $\Cmodel$. It refits the Gaussian proposal from those elites, then samples again. The default planner repeats this process for 30 iterations. It then executes the rank-1 action sequence under receding-horizon replanning. In our PushT experiments, the planner uses action blocks of length 5 and a planning horizon of 5 blocks. In Cube, it uses the same action block size and a 10-block horizon.
+
+This dual role of $\Cmodel$ is central to the audit. During training, LeWM learns to predict future encoder embeddings. During planning, CEM treats Euclidean distance between predicted and goal embeddings as the objective. If $\Cmodel$ ranks terminal states by physical task cost, then the scoring rule appears aligned with the task. The audit tests whether that endpoint view transfers to the local geometry induced by CEM.
+
+\subsection{Evaluation practice for latent world models}
+
+Latent world models are commonly evaluated with representation metrics and task success. Probing methods train a linear or shallow head on frozen latents to recover physical variables \citep{worldmodels2018, probing2020, lewm2025}; prediction error asks whether rollout latents match future latents, usually with mean squared error or latent distance. These tests measure state information and dynamics, not whether CEM can use the resulting cost landscape.
+
+Endpoint ranking is closer to planning \citep{planningeval2023, endpointmetrics2024}. It fixes terminal states and goals, then measures whether a latent cost such as $\Cmodel$ correlates with a physical task cost. We use Spearman correlation for this role and call it $\Rendpoint$. Endpoint ranking connects representation geometry to the control objective while avoiding planner variance, simulator rollouts, and optimizer randomness.
+
+Task success measures the deployed system, but it does not attribute failures: the encoder, predictor, cost, and optimizer can fail in different ways. The missing object is the candidate pool produced by optimization. We therefore measure the final pool of CEM with $\Rpool$ and compare it to endpoint ranking through $\DeltaCEM=\Rendpoint-\Rpool$.
+
+\subsection{Related work}
+
+Dreamer and DreamerV3 learn latent dynamics for imagination-based reinforcement learning and evaluate mainly through downstream return across control domains \citep{dreamer2020,dreamerv3_2023}. TD-MPC combines latent dynamics, temporal-difference value learning, and model predictive control, while PLDM and DINO-WM use reconstruction-free latent prediction for zero-shot goal-conditioned planning \citep{tdmpc2022,pldm2024,dinowm2024}. JEPA-style models, including I-JEPA and V-JEPA, predict in representation space rather than pixels \citep{lecun2022,ijepa2023,vjepa2024}; LeWM adds actions, latent planning, and SIGReg-stabilized training, but evaluation still centers on return, success, prediction error, probing, or planning performance rather than CEM-pool rank geometry.
+
+CEM is a classic stochastic optimizer for rare-event estimation and optimization \citep{cem1999}; it is widely used as a latent-world-model planner because it optimizes action sequences using rollout scores, while MPPI weights sampled trajectories by exponentiated costs rather than refitting an elite distribution \citep{mppi2017}. Random projections are backed by the Johnson-Lindenstrauss lemma, which shows that pairwise distances among finite point sets can be approximately preserved in logarithmic dimension \citep{jl1984}; recent latent-world-model work uses them as regularizers and controls, including SIGReg one-dimensional embedding tests and LeWM projection ablations \citep{sigr2024,lewm2025}. Pre-registration is standard in psychology and clinical research, where planned hypotheses, inclusion rules, and analyses are recorded before data inspection; in ML it remains rare, although predictive-modeling work and NeurIPS preregistration efforts argue for pre-specified analyses to reduce data-dependent researcher freedom \citep{hofman2023preregistration}, and our audit adopts this methodology for iterative model diagnosis.

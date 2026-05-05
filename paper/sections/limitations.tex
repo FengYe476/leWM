@@ -1,0 +1,19 @@
+\section{Limitations and Frozen Exclusions}
+
+% REVISION: addresses W1
+The evidence has bounded scope. All experiments use a single latent world model, LeWM, and two single-object manipulation environments, PushT and OGBench-Cube. The framework is intended to be model-agnostic, but cross-model generalization to PLDM, DINO-WM, TD-MPC, or other latent planners is not tested. The environments also do not cover locomotion, navigation, deformable objects, multi-object interaction, semantic planning, broad exploration data, mixed-quality behavior, or online collection.
+
+% REVISION: addresses W3
+Cube-specific evidence remains narrower than PushT but is strengthened by the extended full projected-CEM run: the full projected-CEM cell uses the first 50 Cube pairs with three projection seeds, while the Cube re-rank-only cell uses all 100 pairs with three seeds. This supports the cross-environment $\DeltaCEM$ claim, but Cube still has fewer full-planning pairs than PushT and should not be interpreted as a complete environment-general validation.
+
+We report seed-level variance but not formal significance tests; the paper relies on locked decision rules, replicated seeds, and cross-protocol consistency rather than confidence intervals or hypothesis tests.
+
+% REVISION: addresses W5
+The physical task costs used for pool metrics are privileged evaluation signals: appropriate for diagnosis, but unavailable to a deployed planner. The proposed protocol is an evaluation protocol, not a new planning objective. Our privilege-free proxy analysis suggests that learned-cost spread can partially monitor high-regret cases without simulator access, but this proxy has only been validated on PushT and does not yet replace $\Rpool$ or selection-regret measurement across environments.
+
+% REVISION: addresses W4
+CEM remains the primary optimizer studied in this paper. The MPPI comparison on a 30-pair PushT subset (90 scored pools across three seeds) provides partial cross-optimizer evidence: soft weighting preserves more physical pool diversity and improves $\Rpool(\Cmodel)$, but it does not close the endpoint-pool gap. Gradient-based planners, learned proposals, value-guided search, and closed-loop replanning may interact differently with the same latent geometry and would require their own optimizer-local pool definitions.
+
+Subspace-CEM was tested at smoke scale: 30 pairs, two seeds, $m=64$. A wider search over projection dimensions, iteration schedules, or re-ranking pool sizes could differ; we stopped because the pre-registered criterion was not met.
+
+Frozen exclusions include multi-step rollout training, closed-loop SIGReg, drift-aware CEM, and hierarchical world modeling; they define scope, not permanent claims.

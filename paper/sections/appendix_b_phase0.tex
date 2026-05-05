@@ -1,0 +1,208 @@
+\section{Phase 0 Full Results}
+\label{app:phase0}
+
+Phase~0 reproduced the LeWM baselines on both environments and ran offset
+sweeps, three-cost attribution, per-pair categorization, and aggregate latent
+diagnostics.  These results motivated the audit framing developed in
+Sections~3--4 of the main text.
+
+\subsection{PushT Baseline and Offset Sweep}
+
+The PushT baseline was reproduced at 98\% success on 50 episodes (paper
+reference: 96\%; the difference is within finite-sample variation at $n=50$).
+Table~\ref{tab:pusht-offset} reports the offset sweep.  Planning success drops
+sharply beyond offset~25, falling from 96\% to 10\% at offset~100.  All runs
+used seed~42 on Apple Silicon MPS; the full sweep took approximately one hour.
+These numbers are plotted in Figure~\ref{fig:motivation}a.
+
+\begin{table}[h]
+\centering
+\caption{PushT planning success versus goal offset.  Each row evaluates 50
+episodes at the indicated offset (number of environment steps between the
+initial observation and the goal observation in the expert demonstration).}
+\label{tab:pusht-offset}
+\begin{tabular}{lcccc}
+\toprule
+Goal offset (steps) & 25 & 50 & 75 & 100 \\
+\midrule
+Success rate (\%) & 96 & 58 & 16 & 10 \\
+Successes / episodes & 48/50 & 29/50 & 8/50 & 5/50 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cube Baseline and Offset Sweep}
+
+The OGBench-Cube baseline was reproduced at 66\% on 50 episodes (paper
+reference: 74\%).  Unlike PushT, Cube success does not degrade with goal
+offset: it remains between 50\% and 68\% across all four offsets
+(Table~\ref{tab:cube-offset}).  This flat curve indicates a
+horizon-independent visual encoding difficulty rather than the
+displacement-dependent breakdown observed in PushT.  Cube entered the audit
+at Phase~2 with its own 100-pair stratified artifact (Appendix~\ref{app:stage1b}).
+
+\begin{table}[h]
+\centering
+\caption{OGBench-Cube planning success versus goal offset.  Each row evaluates
+50 episodes.  Success is defined by
+$\|x_\text{cube}^\text{terminal} - x_\text{cube}^\text{goal}\|_2 \le 0.04$.}
+\label{tab:cube-offset}
+\begin{tabular}{lcccc}
+\toprule
+Goal offset (steps) & 25 & 50 & 75 & 100 \\
+\midrule
+Success rate (\%) & 68 & 50 & 58 & 50 \\
+Successes / episodes & 34/50 & 25/50 & 29/50 & 25/50 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Three-Cost Attribution}
+\label{app:three-cost}
+
+At offset~50, 30 PushT diagnostic pairs were each evaluated with 40 candidate
+actions (10 per source: expert data, random, CEM-early, CEM-late; 1{,}200
+records total).  Three pairwise Spearman correlations decompose the end-to-end
+cost alignment into a predictor-fidelity term and an encoder-physics term:
+
+\begin{itemize}
+\item \textbf{Predictor fidelity} $\rho(\Cmodel,\, C_\text{real\_z})$: how
+  well the imagined terminal latent from the predictor tracks the real
+  terminal latent.
+\item \textbf{Encoder-physics alignment}
+  $\rho(C_\text{real\_z},\, C_\text{real\_state})$: how well latent distance
+  from the \emph{real} terminal encoding tracks physical task cost.
+\item \textbf{End-to-end alignment}
+  $\rho(\Cmodel,\, C_\text{real\_state})$: the product-path correlation that
+  CEM planning ultimately depends on.
+\end{itemize}
+
+\noindent
+Here $\Cmodel = \|\zhatH - \zgoal\|^2$ is the model cost used by CEM,
+$C_\text{real\_z} = \|z_\text{terminal} - \zgoal\|^2$ uses the encoder
+applied to the actual terminal observation, and
+$C_\text{real\_state}$ is the V1 hinge cost combining block position error
+and angle error.
+
+Table~\ref{tab:three-cost} reports both global (all 1{,}200 records pooled)
+and per-pair (mean $\pm$ SEM over 30 pairs) correlations.  Predictor fidelity
+is high in both views.  Encoder-physics alignment is moderate globally but
+weak and heterogeneous per pair: 6 of 30 pairs have negative
+$\rho(C_\text{real\_z}, C_\text{real\_state})$, and the per-pair standard
+deviation is 0.502.  This heterogeneity motivates the per-subset analysis in
+Appendix~\ref{app:track_a} and the endpoint-planning decoupling framework in
+Section~4.  These per-pair means are plotted in Figure~\ref{fig:motivation}b.
+
+\begin{table}[h]
+\centering
+\caption{Three-cost attribution at PushT offset~50.  Global correlations pool
+all 1{,}200 records; per-pair correlations average 30 within-pair Spearman
+values ($\pm$\,SEM).}
+\label{tab:three-cost}
+\begin{tabular}{lcc}
+\toprule
+Correlation pair & Global Spearman & Per-pair Spearman (mean $\pm$ SEM) \\
+\midrule
+Predictor fidelity: $\rho(\Cmodel, C_\text{real\_z})$ & 0.864 & 0.779 $\pm$ 0.030 \\
+Encoder-physics: $\rho(C_\text{real\_z}, C_\text{real\_state})$ & 0.669 & 0.353 $\pm$ 0.092 \\
+End-to-end: $\rho(\Cmodel, C_\text{real\_state})$ & 0.596 & 0.332 $\pm$ 0.085 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Per-Pair Categorization}
+\label{app:per-pair-cat}
+
+The 30 offset-50 pairs were categorized by the number of successful actions
+among their 40 candidates (Table~\ref{tab:pair-categories}).  This
+categorization informed Phase~1 Track~A stratified sampling
+(Appendix~\ref{app:track_a}): the 100-pair artifact was designed to cover the
+full displacement$\times$rotation grid, including cells where Phase~0 found
+zero-success pairs.
+
+\begin{table}[h]
+\centering
+\caption{Per-pair categorization at PushT offset~50 ($n=30$ pairs, 40 actions
+each).  Block displacement is the Euclidean distance between initial and goal
+block positions in pixel coordinates.}
+\label{tab:pair-categories}
+\begin{tabular}{lccccc}
+\toprule
+Category & Definition & Count & Mean success & Mean displacement & Mean latent dist.\ \\
+\midrule
+Easy & $>$25/40 successes & 8 & 80.9\% & 2.57 & 12.50 \\
+Hard & 1--25/40 successes & 15 & 21.2\% & 66.01 & 18.84 \\
+Impossible & 0/40 successes & 7 & 0.0\% & 123.27 & 19.36 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The ``Impossible'' pairs have zero successful actions in the 40-candidate pool,
+indicating that the CEM search space does not contain solutions at these
+displacements.  Their mean block displacement (123.3 pixels) is roughly 48$\times$
+larger than the Easy pairs (2.6 pixels), while their mean latent distance
+(19.4) is only 1.55$\times$ larger, illustrating the compression of physical
+task structure in the learned latent geometry.
+
+\subsection{Aggregate Latent Diagnostics}
+\label{app:latent-diag}
+
+Phase~0 also evaluated aggregate properties of the LeWM latent space over 100
+randomly sampled trajectories (10 latent steps each, action blocks of 5;
+seed~42).  Table~\ref{tab:latent-diagnostics} compares real encoder latents
+with predictor-imagined latents.
+
+\begin{table}[h]
+\centering
+\caption{Aggregate latent diagnostics for LeWM PushT.  Real latents use the
+encoder applied to ground-truth observations; imagined latents use the
+predictor rolled forward from the initial observation.  Effective rank is the
+exponentiated entropy of the normalized singular-value spectrum.
+Participation rank is $(\text{tr}\,\Sigma)^2 / \|\Sigma\|_F^2$.}
+\label{tab:latent-diagnostics}
+\begin{tabular}{lcc}
+\toprule
+Metric & Real latents & Imagined latents \\
+\midrule
+Temporal straightness (mean $\pm$ std) & 0.516 $\pm$ 0.301 & 0.531 $\pm$ 0.299 \\
+Effective rank & 107.3 & 106.1 \\
+Participation rank & 63.9 & 63.1 \\
+Top-1 variance fraction & 3.40\% & 3.50\% \\
+Top-10 variance fraction & 25.9\% & 26.2\% \\
+Covariance trace & 190.0 & 190.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Prediction error grows with rollout horizon: mean $\ell_2$ distance between
+real and imagined latents rises from 1.10 at step~1 to 5.83 at step~10
+(Table~\ref{tab:pred-error}).  Despite this drift, imagined latents preserve
+aggregate distributional properties: effective rank, participation rank, and
+covariance spectrum are nearly identical between real and imagined latents.
+This confirms that the predictor does not collapse the representation, and the
+planning failure is not attributable to predictor divergence in aggregate.
+
+\begin{table}[h]
+\centering
+\caption{Predictor rollout error by horizon step.  $\ell_2$ distance is
+computed between the real encoder latent and the predictor-imagined latent at
+each step, averaged over 100 trajectories.}
+\label{tab:pred-error}
+\begin{tabular}{lcccccccccc}
+\toprule
+Step & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\midrule
+Mean $\ell_2$ & 1.10 & 1.59 & 2.17 & 2.50 & 2.87 & 3.40 & 4.00 & 4.52 & 5.14 & 5.83 \\
+MSE & .008 & .018 & .048 & .058 & .072 & .101 & .136 & .168 & .215 & .271 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Phase~0 conclusion was that encoder goal geometry, not predictor drift or
+planner weakness, is the primary source of long-horizon failure in PushT.  The
+predictor faithfully preserves the cost landscape of the encoder, so the CEM
+planner optimizes a faithful but misaligned objective.  This conclusion was
+later refined by the Track~A analysis (Appendix~\ref{app:track_a}) and the
+endpoint-planning decoupling framework (Section~4), which showed that the
+misalignment is not a global encoder property but a local interaction between
+cost geometry and CEM search dynamics.

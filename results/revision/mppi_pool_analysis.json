@@ -1,0 +1,3875 @@
+{
+  "metadata": {
+    "format": "pusht_mppi_pool_analysis_v1",
+    "created_at": "2026-05-04T19:50:07.817122+00:00",
+    "git_commit": "b323ca6e6a0701244aa99f5b1ae189e24744786b",
+    "script_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/scripts/revision/mppi_pool_analysis.py",
+    "mppi_run": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_30pair.json",
+    "cem_rpool": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/rpool_v1_pusht.json",
+    "n_mppi_seed_runs": 90,
+    "n_pairs": 30,
+    "pair_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      16,
+      19,
+      25,
+      30,
+      46,
+      60,
+      61,
+      67,
+      70,
+      71,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78
+    ],
+    "aggregation": "MPPI per-seed metrics are averaged across seeds within pair, then across pairs."
+  },
+  "mppi_per_seed": [
+    {
+      "pair_id": 25,
+      "seed": 0,
+      "cell": "D1xR0",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_025_seed_0_tau_1.pt",
+      "rank1_index": 44,
+      "oracle_best_index": 169,
+      "Rpool_Cmodel": 0.0637985111425901,
+      "Rpool_V1": 0.999998569783823,
+      "pool_Creal_std": 0.20329056129208134,
+      "pool_Creal_range": 2.8674808144569397,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 1.33292555809021,
+      "rank1_c_real_state": 49.653857588768005,
+      "oracle_best_c_real_state": 48.320932030677795,
+      "rank1_default_cost": 95.44564819335938,
+      "pool_Cmodel_std": 6.155748753512894,
+      "final_weight_effective_sample_size": 15.991574968282388
+    },
+    {
+      "pair_id": 25,
+      "seed": 1,
+      "cell": "D1xR0",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_025_seed_1_tau_1.pt",
+      "rank1_index": 33,
+      "oracle_best_index": 168,
+      "Rpool_Cmodel": 0.019314066401714857,
+      "Rpool_V1": 0.9999986046868568,
+      "pool_Creal_std": 0.20422533527690898,
+      "pool_Creal_range": 2.8674808144569397,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 1.33292555809021,
+      "rank1_c_real_state": 49.653857588768005,
+      "oracle_best_c_real_state": 48.320932030677795,
+      "rank1_default_cost": 93.80119323730469,
+      "pool_Cmodel_std": 7.782383118185077,
+      "final_weight_effective_sample_size": 6.567031570575025
+    },
+    {
+      "pair_id": 25,
+      "seed": 2,
+      "cell": "D1xR0",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_025_seed_2_tau_1.pt",
+      "rank1_index": 169,
+      "oracle_best_index": 167,
+      "Rpool_Cmodel": 0.04056339816191517,
+      "Rpool_V1": 0.9999986046868568,
+      "pool_Creal_std": 0.20422533527690898,
+      "pool_Creal_range": 2.8674808144569397,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 1.33292555809021,
+      "rank1_c_real_state": 49.653857588768005,
+      "oracle_best_c_real_state": 48.320932030677795,
+      "rank1_default_cost": 87.72262573242188,
+      "pool_Cmodel_std": 9.430039523030878,
+      "final_weight_effective_sample_size": 3.8729814498759048
+    },
+    {
+      "pair_id": 46,
+      "seed": 0,
+      "cell": "D1xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_046_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 51,
+      "Rpool_Cmodel": -0.04124279339788933,
+      "Rpool_V1": 0.01542407255440798,
+      "pool_Creal_std": 35.323136545240175,
+      "pool_Creal_range": 234.5091656446457,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 46.44826829433441,
+      "rank1_c_real_state": 49.53225911060442,
+      "oracle_best_c_real_state": 3.08399081627001,
+      "rank1_default_cost": 126.46842193603516,
+      "pool_Cmodel_std": 26.353841676172745,
+      "final_weight_effective_sample_size": 1.1868366090249127
+    },
+    {
+      "pair_id": 46,
+      "seed": 1,
+      "cell": "D1xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_046_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 127,
+      "Rpool_Cmodel": -0.034627266873296134,
+      "Rpool_V1": 0.0990361106283837,
+      "pool_Creal_std": 21.60594349610402,
+      "pool_Creal_range": 161.66578489542007,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 29.115523397922516,
+      "rank1_c_real_state": 31.560495976601736,
+      "oracle_best_c_real_state": 2.44497257867922,
+      "rank1_default_cost": 154.03538513183594,
+      "pool_Cmodel_std": 49.770795745082715,
+      "final_weight_effective_sample_size": 1.0549403858150563
+    },
+    {
+      "pair_id": 46,
+      "seed": 2,
+      "cell": "D1xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_046_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 285,
+      "Rpool_Cmodel": 0.17398723998503385,
+      "Rpool_V1": 0.4071610680264126,
+      "pool_Creal_std": 52.5764780963298,
+      "pool_Creal_range": 262.90163564682007,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 5.31734561920166,
+      "rank1_c_real_state": 13.353693131600515,
+      "oracle_best_c_real_state": 8.036347512398855,
+      "rank1_default_cost": 116.53987121582031,
+      "pool_Cmodel_std": 29.91169857590047,
+      "final_weight_effective_sample_size": 1.798601437641444
+    },
+    {
+      "pair_id": 60,
+      "seed": 0,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_060_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 157,
+      "Rpool_Cmodel": 0.2861329570328559,
+      "Rpool_V1": 0.6073038599453289,
+      "pool_Creal_std": 22.52771213457139,
+      "pool_Creal_range": 214.5491470356835,
+      "pool_success_mass": 0.023333333333333334,
+      "planning_success": false,
+      "selection_regret": 3.5437945385826666,
+      "rank1_c_real_state": 6.375957280397415,
+      "oracle_best_c_real_state": 2.8321627418147486,
+      "rank1_default_cost": 81.56822204589844,
+      "pool_Cmodel_std": 61.864943857700084,
+      "final_weight_effective_sample_size": 1.0160184887733887
+    },
+    {
+      "pair_id": 60,
+      "seed": 1,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_060_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 208,
+      "Rpool_Cmodel": 0.1679578661985133,
+      "Rpool_V1": 0.8956968587628911,
+      "pool_Creal_std": 44.08298570634768,
+      "pool_Creal_range": 193.45589239498506,
+      "pool_success_mass": 0.023333333333333334,
+      "planning_success": false,
+      "selection_regret": 71.04448890686035,
+      "rank1_c_real_state": 76.6219264308559,
+      "oracle_best_c_real_state": 5.577437523995535,
+      "rank1_default_cost": 17.706104278564453,
+      "pool_Cmodel_std": 84.00245636328681,
+      "final_weight_effective_sample_size": 1.0107763861112862
+    },
+    {
+      "pair_id": 60,
+      "seed": 2,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_060_seed_2_tau_1.pt",
+      "rank1_index": 272,
+      "oracle_best_index": 196,
+      "Rpool_Cmodel": 0.2823715819064656,
+      "Rpool_V1": 0.8632360608763066,
+      "pool_Creal_std": 36.41614794697448,
+      "pool_Creal_range": 151.05321517586708,
+      "pool_success_mass": 0.043333333333333335,
+      "planning_success": false,
+      "selection_regret": 49.018011182546616,
+      "rank1_c_real_state": 52.74101322889328,
+      "oracle_best_c_real_state": 3.7230020463466644,
+      "rank1_default_cost": 29.652551651000977,
+      "pool_Cmodel_std": 86.56895666072332,
+      "final_weight_effective_sample_size": 1.4078673246779163
+    },
+    {
+      "pair_id": 61,
+      "seed": 0,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_061_seed_0_tau_1.pt",
+      "rank1_index": 13,
+      "oracle_best_index": 292,
+      "Rpool_Cmodel": 0.06215580173113034,
+      "Rpool_V1": 0.7709565661840686,
+      "pool_Creal_std": 42.406072194575906,
+      "pool_Creal_range": 242.9195320347892,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 28.460211999714375,
+      "rank1_c_real_state": 66.31653503328562,
+      "oracle_best_c_real_state": 37.85632303357124,
+      "rank1_default_cost": 160.94192504882812,
+      "pool_Cmodel_std": 52.866793585394056,
+      "final_weight_effective_sample_size": 1.4102429482530912
+    },
+    {
+      "pair_id": 61,
+      "seed": 1,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_061_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 124,
+      "Rpool_Cmodel": 0.09487438749319438,
+      "Rpool_V1": 0.6008057867309636,
+      "pool_Creal_std": 27.365695540210126,
+      "pool_Creal_range": 207.34528082212339,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 46.35720920562745,
+      "rank1_c_real_state": 64.73290253082385,
+      "oracle_best_c_real_state": 18.3756933251964,
+      "rank1_default_cost": 217.35267639160156,
+      "pool_Cmodel_std": 49.86473370912679,
+      "final_weight_effective_sample_size": 1.0000453005656735
+    },
+    {
+      "pair_id": 61,
+      "seed": 2,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_061_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 128,
+      "Rpool_Cmodel": -0.31021322459138434,
+      "Rpool_V1": 0.8373848598317759,
+      "pool_Creal_std": 91.20937195172998,
+      "pool_Creal_range": 372.948609828949,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 28.12303543090821,
+      "rank1_c_real_state": 83.08592081466784,
+      "oracle_best_c_real_state": 54.962885383759634,
+      "rank1_default_cost": 148.61563110351562,
+      "pool_Cmodel_std": 52.57905578578881,
+      "final_weight_effective_sample_size": 1.0240287927836176
+    },
+    {
+      "pair_id": 67,
+      "seed": 0,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_067_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 242,
+      "Rpool_Cmodel": 0.06597094439665435,
+      "Rpool_V1": 0.8313321722728982,
+      "pool_Creal_std": 33.12875929695663,
+      "pool_Creal_range": 168.27263879776,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 99.73572731018066,
+      "rank1_c_real_state": 110.3399133682251,
+      "oracle_best_c_real_state": 10.604186058044434,
+      "rank1_default_cost": 46.47854232788086,
+      "pool_Cmodel_std": 90.2134487762987,
+      "final_weight_effective_sample_size": 1.0001836006763116
+    },
+    {
+      "pair_id": 67,
+      "seed": 1,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_067_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 197,
+      "Rpool_Cmodel": 0.3043894547330116,
+      "Rpool_V1": 0.9316462644294391,
+      "pool_Creal_std": 43.91713995652322,
+      "pool_Creal_range": 167.8912377357483,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 102.53008127212524,
+      "rank1_c_real_state": 107.2809190750122,
+      "oracle_best_c_real_state": 4.750837802886963,
+      "rank1_default_cost": 34.86637878417969,
+      "pool_Cmodel_std": 83.32078323111342,
+      "final_weight_effective_sample_size": 1.000026703335081
+    },
+    {
+      "pair_id": 67,
+      "seed": 2,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_067_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 227,
+      "Rpool_Cmodel": 0.14887924097975935,
+      "Rpool_V1": 0.7797639492167,
+      "pool_Creal_std": 37.46167374483339,
+      "pool_Creal_range": 129.68720936775208,
+      "pool_success_mass": 0.0033333333333333335,
+      "planning_success": false,
+      "selection_regret": 104.77515196800232,
+      "rank1_c_real_state": 109.00871849060059,
+      "oracle_best_c_real_state": 4.233566522598267,
+      "rank1_default_cost": 49.911983489990234,
+      "pool_Cmodel_std": 104.02687760523847,
+      "final_weight_effective_sample_size": 1.055435916607914
+    },
+    {
+      "pair_id": 70,
+      "seed": 0,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_070_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 6,
+      "Rpool_Cmodel": 0.47373770819675765,
+      "Rpool_V1": 0.8066249624995833,
+      "pool_Creal_std": 26.09783209695483,
+      "pool_Creal_range": 179.80451846122742,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 26.383744955062866,
+      "rank1_c_real_state": 31.525281016026632,
+      "oracle_best_c_real_state": 5.141536060963766,
+      "rank1_default_cost": 82.88724517822266,
+      "pool_Cmodel_std": 63.551614001634256,
+      "final_weight_effective_sample_size": 1.0632501454421268
+    },
+    {
+      "pair_id": 70,
+      "seed": 1,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_070_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 187,
+      "Rpool_Cmodel": 0.6122245802731141,
+      "Rpool_V1": 0.7940430449227214,
+      "pool_Creal_std": 28.160175726157085,
+      "pool_Creal_range": 169.28519582748413,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 29.712839603424072,
+      "rank1_c_real_state": 40.099634710942404,
+      "oracle_best_c_real_state": 10.386795107518331,
+      "rank1_default_cost": 110.80252075195312,
+      "pool_Cmodel_std": 63.98983936412379,
+      "final_weight_effective_sample_size": 0.9999999999999991
+    },
+    {
+      "pair_id": 70,
+      "seed": 2,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_070_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 80,
+      "Rpool_Cmodel": 0.5920714674607496,
+      "Rpool_V1": 0.8212531250347226,
+      "pool_Creal_std": 24.734150036548254,
+      "pool_Creal_range": 140.45783746242523,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 20.059943556785583,
+      "rank1_c_real_state": 23.134262625371115,
+      "oracle_best_c_real_state": 3.074319068585531,
+      "rank1_default_cost": 67.50148010253906,
+      "pool_Cmodel_std": 74.43777671591592,
+      "final_weight_effective_sample_size": 1.0
+    },
+    {
+      "pair_id": 71,
+      "seed": 0,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_071_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 205,
+      "Rpool_Cmodel": 0.302490027666974,
+      "Rpool_V1": 0.7261814760485313,
+      "pool_Creal_std": 18.18888573596818,
+      "pool_Creal_range": 120.60878610610962,
+      "pool_success_mass": 0.023333333333333334,
+      "planning_success": false,
+      "selection_regret": 35.56220245361328,
+      "rank1_c_real_state": 39.917348861694336,
+      "oracle_best_c_real_state": 4.355146408081055,
+      "rank1_default_cost": 7.218022346496582,
+      "pool_Cmodel_std": 83.92031803964612,
+      "final_weight_effective_sample_size": 1.0000760584498793
+    },
+    {
+      "pair_id": 71,
+      "seed": 1,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_071_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 280,
+      "Rpool_Cmodel": 0.3895265044182373,
+      "Rpool_V1": 0.6433557185350826,
+      "pool_Creal_std": 14.982134202524765,
+      "pool_Creal_range": 109.69251155853271,
+      "pool_success_mass": 0.013333333333333334,
+      "planning_success": false,
+      "selection_regret": 36.12570285797119,
+      "rank1_c_real_state": 38.61444139480591,
+      "oracle_best_c_real_state": 2.488738536834717,
+      "rank1_default_cost": 9.299105644226074,
+      "pool_Cmodel_std": 97.05920230888366,
+      "final_weight_effective_sample_size": 1.002127418587851
+    },
+    {
+      "pair_id": 71,
+      "seed": 2,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_071_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 297,
+      "Rpool_Cmodel": 0.5319986118390851,
+      "Rpool_V1": 0.8704463918027135,
+      "pool_Creal_std": 21.458606006183025,
+      "pool_Creal_range": 156.80268549919128,
+      "pool_success_mass": 0.0033333333333333335,
+      "planning_success": false,
+      "selection_regret": 39.927026987075806,
+      "rank1_c_real_state": 44.672083377838135,
+      "oracle_best_c_real_state": 4.745056390762329,
+      "rank1_default_cost": 11.051471710205078,
+      "pool_Cmodel_std": 95.19991153969067,
+      "final_weight_effective_sample_size": 1.0042657894822147
+    },
+    {
+      "pair_id": 73,
+      "seed": 0,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_073_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 223,
+      "Rpool_Cmodel": 0.12663798503932228,
+      "Rpool_V1": 0.5075782742532553,
+      "pool_Creal_std": 23.150798293685625,
+      "pool_Creal_range": 89.76200461387634,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 87.9835045337677,
+      "rank1_c_real_state": 91.56803441047668,
+      "oracle_best_c_real_state": 3.5845298767089844,
+      "rank1_default_cost": 41.149330139160156,
+      "pool_Cmodel_std": 71.14254786306874,
+      "final_weight_effective_sample_size": 2.554371336765843
+    },
+    {
+      "pair_id": 73,
+      "seed": 1,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_073_seed_1_tau_1.pt",
+      "rank1_index": 268,
+      "oracle_best_index": 242,
+      "Rpool_Cmodel": 0.37003285532986485,
+      "Rpool_V1": 0.7218770793579676,
+      "pool_Creal_std": 29.797468389405044,
+      "pool_Creal_range": 148.6825180053711,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 68.15244936943054,
+      "rank1_c_real_state": 78.70912194252014,
+      "oracle_best_c_real_state": 10.5566725730896,
+      "rank1_default_cost": 23.759368896484375,
+      "pool_Cmodel_std": 78.3590795940771,
+      "final_weight_effective_sample_size": 2.1580654598780695
+    },
+    {
+      "pair_id": 73,
+      "seed": 2,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_073_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 10,
+      "Rpool_Cmodel": 0.3750832233327928,
+      "Rpool_V1": 0.9249468325062835,
+      "pool_Creal_std": 64.65020826072264,
+      "pool_Creal_range": 250.30332744121552,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 32.07284128665924,
+      "rank1_c_real_state": 34.26177740097046,
+      "oracle_best_c_real_state": 2.1889361143112183,
+      "rank1_default_cost": 43.35383987426758,
+      "pool_Cmodel_std": 74.02016052054425,
+      "final_weight_effective_sample_size": 2.9255343524833792
+    },
+    {
+      "pair_id": 0,
+      "seed": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_000_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 107,
+      "Rpool_Cmodel": -0.39205667029093455,
+      "Rpool_V1": 0.977123754496792,
+      "pool_Creal_std": 35.44105688136806,
+      "pool_Creal_range": 143.4822919294238,
+      "pool_success_mass": 0.26,
+      "planning_success": false,
+      "selection_regret": 39.303490936756134,
+      "rank1_c_real_state": 47.36421573162079,
+      "oracle_best_c_real_state": 8.060724794864655,
+      "rank1_default_cost": 17.919269561767578,
+      "pool_Cmodel_std": 51.74187225811208,
+      "final_weight_effective_sample_size": 1.1964333177038478
+    },
+    {
+      "pair_id": 0,
+      "seed": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_000_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 190,
+      "Rpool_Cmodel": 0.4496612352035349,
+      "Rpool_V1": 0.7967888286418504,
+      "pool_Creal_std": 18.318489017360953,
+      "pool_Creal_range": 99.06501937309375,
+      "pool_success_mass": 0.7233333333333334,
+      "planning_success": true,
+      "selection_regret": 1.3346903920173645,
+      "rank1_c_real_state": 8.662976503372192,
+      "oracle_best_c_real_state": 7.328286111354828,
+      "rank1_default_cost": 17.761180877685547,
+      "pool_Cmodel_std": 53.97839202855384,
+      "final_weight_effective_sample_size": 1.4747980871245838
+    },
+    {
+      "pair_id": 0,
+      "seed": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_000_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 211,
+      "Rpool_Cmodel": 0.06516620221619046,
+      "Rpool_V1": 0.9814431814642618,
+      "pool_Creal_std": 32.192329018412764,
+      "pool_Creal_range": 137.01737536489964,
+      "pool_success_mass": 0.15,
+      "planning_success": false,
+      "selection_regret": 50.32501196861267,
+      "rank1_c_real_state": 58.46751856803894,
+      "oracle_best_c_real_state": 8.14250659942627,
+      "rank1_default_cost": 15.433398246765137,
+      "pool_Cmodel_std": 61.996463182234486,
+      "final_weight_effective_sample_size": 1.4027503379294184
+    },
+    {
+      "pair_id": 1,
+      "seed": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_001_seed_0_tau_1.pt",
+      "rank1_index": 122,
+      "oracle_best_index": 71,
+      "Rpool_Cmodel": 0.06910046652698452,
+      "Rpool_V1": null,
+      "pool_Creal_std": 0.23262015296210634,
+      "pool_Creal_range": 2.5913565158843994,
+      "pool_success_mass": 1.0,
+      "planning_success": true,
+      "selection_regret": 1.3060224056243896,
+      "rank1_c_real_state": 7.539253234863281,
+      "oracle_best_c_real_state": 6.233230829238892,
+      "rank1_default_cost": 19.858699798583984,
+      "pool_Cmodel_std": 29.558786054072172,
+      "final_weight_effective_sample_size": 3.4677936652648214
+    },
+    {
+      "pair_id": 1,
+      "seed": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_001_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 264,
+      "Rpool_Cmodel": 0.1592777315722402,
+      "Rpool_V1": 0.7777891738837551,
+      "pool_Creal_std": 22.006216721367036,
+      "pool_Creal_range": 159.01629519462585,
+      "pool_success_mass": 0.7433333333333333,
+      "planning_success": true,
+      "selection_regret": 4.315219163894653,
+      "rank1_c_real_state": 7.539253234863281,
+      "oracle_best_c_real_state": 3.224034070968628,
+      "rank1_default_cost": 6.172969341278076,
+      "pool_Cmodel_std": 58.032566005918206,
+      "final_weight_effective_sample_size": 2.375968057546449
+    },
+    {
+      "pair_id": 1,
+      "seed": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_001_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 50,
+      "Rpool_Cmodel": 0.41509759756896375,
+      "Rpool_V1": 0.7175950708501818,
+      "pool_Creal_std": 30.882659220693203,
+      "pool_Creal_range": 226.87995529174805,
+      "pool_success_mass": 0.31,
+      "planning_success": false,
+      "selection_regret": 7.394819259643555,
+      "rank1_c_real_state": 10.206303119659424,
+      "oracle_best_c_real_state": 2.811483860015869,
+      "rank1_default_cost": 4.51870584487915,
+      "pool_Cmodel_std": 57.68130907124933,
+      "final_weight_effective_sample_size": 3.9452986219769466
+    },
+    {
+      "pair_id": 2,
+      "seed": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_002_seed_0_tau_1.pt",
+      "rank1_index": 100,
+      "oracle_best_index": 213,
+      "Rpool_Cmodel": 0.3355961502289026,
+      "Rpool_V1": 0.5666431675163149,
+      "pool_Creal_std": 11.448962076746062,
+      "pool_Creal_range": 71.87452933192253,
+      "pool_success_mass": 0.84,
+      "planning_success": true,
+      "selection_regret": 5.458025172352791,
+      "rank1_c_real_state": 5.986428543925285,
+      "oracle_best_c_real_state": 0.5284033715724945,
+      "rank1_default_cost": 2.815709352493286,
+      "pool_Cmodel_std": 48.01989456399514,
+      "final_weight_effective_sample_size": 5.5989975662964975
+    },
+    {
+      "pair_id": 2,
+      "seed": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_002_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 60,
+      "Rpool_Cmodel": 0.21541201863954698,
+      "Rpool_V1": 0.5218430420507922,
+      "pool_Creal_std": 7.401000112515574,
+      "pool_Creal_range": 58.80411085486412,
+      "pool_success_mass": 0.9166666666666666,
+      "planning_success": true,
+      "selection_regret": 4.8020199835300446,
+      "rank1_c_real_state": 7.161663293838501,
+      "oracle_best_c_real_state": 2.3596433103084564,
+      "rank1_default_cost": 2.885054588317871,
+      "pool_Cmodel_std": 53.281673089313855,
+      "final_weight_effective_sample_size": 5.939866123666808
+    },
+    {
+      "pair_id": 2,
+      "seed": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_002_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 269,
+      "Rpool_Cmodel": 0.28352935513506733,
+      "Rpool_V1": 0.5886361828888265,
+      "pool_Creal_std": 10.116885114033222,
+      "pool_Creal_range": 85.86098527908325,
+      "pool_success_mass": 0.8533333333333334,
+      "planning_success": true,
+      "selection_regret": 4.6294141709804535,
+      "rank1_c_real_state": 5.734309881925583,
+      "oracle_best_c_real_state": 1.1048957109451294,
+      "rank1_default_cost": 2.6918907165527344,
+      "pool_Cmodel_std": 56.519338129794235,
+      "final_weight_effective_sample_size": 7.211831764587897
+    },
+    {
+      "pair_id": 3,
+      "seed": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_003_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 187,
+      "Rpool_Cmodel": 0.19405259902906974,
+      "Rpool_V1": 0.9171192095430163,
+      "pool_Creal_std": 46.49843757609462,
+      "pool_Creal_range": 234.0492381155491,
+      "pool_success_mass": 0.5633333333333334,
+      "planning_success": true,
+      "selection_regret": 14.098265171051025,
+      "rank1_c_real_state": 15.769307672977448,
+      "oracle_best_c_real_state": 1.6710425019264221,
+      "rank1_default_cost": 25.481721878051758,
+      "pool_Cmodel_std": 67.03707989673161,
+      "final_weight_effective_sample_size": 1.504269191885996
+    },
+    {
+      "pair_id": 3,
+      "seed": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_003_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 57,
+      "Rpool_Cmodel": 0.46107675347672616,
+      "Rpool_V1": 0.8161029385294437,
+      "pool_Creal_std": 32.64769776629163,
+      "pool_Creal_range": 170.9243787229061,
+      "pool_success_mass": 0.7166666666666667,
+      "planning_success": true,
+      "selection_regret": 5.518730044364929,
+      "rank1_c_real_state": 6.917820155620575,
+      "oracle_best_c_real_state": 1.3990901112556458,
+      "rank1_default_cost": 24.510738372802734,
+      "pool_Cmodel_std": 61.7841675280792,
+      "final_weight_effective_sample_size": 1.0418870655844374
+    },
+    {
+      "pair_id": 3,
+      "seed": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_003_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 229,
+      "Rpool_Cmodel": 0.035702942534833644,
+      "Rpool_V1": 0.9726543070752717,
+      "pool_Creal_std": 38.74503044145028,
+      "pool_Creal_range": 171.27290422121158,
+      "pool_success_mass": 0.37,
+      "planning_success": false,
+      "selection_regret": 34.32819867134094,
+      "rank1_c_real_state": 35.362078845500946,
+      "oracle_best_c_real_state": 1.0338801741600037,
+      "rank1_default_cost": 21.63510513305664,
+      "pool_Cmodel_std": 52.41071192792683,
+      "final_weight_effective_sample_size": 1.0063510417495565
+    },
+    {
+      "pair_id": 4,
+      "seed": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_004_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 57,
+      "Rpool_Cmodel": 0.49952826397172345,
+      "Rpool_V1": 0.6274845225890706,
+      "pool_Creal_std": 14.664340349096033,
+      "pool_Creal_range": 103.2839699536562,
+      "pool_success_mass": 0.7533333333333333,
+      "planning_success": true,
+      "selection_regret": 1.0727465897798538,
+      "rank1_c_real_state": 1.3753162026405334,
+      "oracle_best_c_real_state": 0.3025696128606796,
+      "rank1_default_cost": 2.340958595275879,
+      "pool_Cmodel_std": 85.91337679766734,
+      "final_weight_effective_sample_size": 1.7184544821332286
+    },
+    {
+      "pair_id": 4,
+      "seed": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_004_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 203,
+      "Rpool_Cmodel": 0.46463063752621026,
+      "Rpool_V1": 0.8327430286242337,
+      "pool_Creal_std": 28.459606458950848,
+      "pool_Creal_range": 172.94775850698352,
+      "pool_success_mass": 0.47333333333333333,
+      "planning_success": true,
+      "selection_regret": 6.4876083843410015,
+      "rank1_c_real_state": 6.564620316028595,
+      "oracle_best_c_real_state": 0.07701193168759346,
+      "rank1_default_cost": 10.253662109375,
+      "pool_Cmodel_std": 87.85220713732654,
+      "final_weight_effective_sample_size": 1.9818647323500715
+    },
+    {
+      "pair_id": 4,
+      "seed": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_004_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 76,
+      "Rpool_Cmodel": -0.12073889196597147,
+      "Rpool_V1": 0.9289784219239009,
+      "pool_Creal_std": 38.72927731491357,
+      "pool_Creal_range": 167.37228763103485,
+      "pool_success_mass": 0.22,
+      "planning_success": false,
+      "selection_regret": 52.3319850564003,
+      "rank1_c_real_state": 52.97329634428024,
+      "oracle_best_c_real_state": 0.6413112878799438,
+      "rank1_default_cost": 4.418047904968262,
+      "pool_Cmodel_std": 75.03169511169321,
+      "final_weight_effective_sample_size": 1.6719545932668116
+    },
+    {
+      "pair_id": 5,
+      "seed": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_005_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 293,
+      "Rpool_Cmodel": 0.6139665825204712,
+      "Rpool_V1": 0.7568850856704127,
+      "pool_Creal_std": 22.346410846072214,
+      "pool_Creal_range": 119.00182440876961,
+      "pool_success_mass": 0.77,
+      "planning_success": true,
+      "selection_regret": 1.7918656766414642,
+      "rank1_c_real_state": 2.067132830619812,
+      "oracle_best_c_real_state": 0.2752671539783478,
+      "rank1_default_cost": 4.117330074310303,
+      "pool_Cmodel_std": 80.39503321595667,
+      "final_weight_effective_sample_size": 7.610786885704615
+    },
+    {
+      "pair_id": 5,
+      "seed": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_005_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 252,
+      "Rpool_Cmodel": 0.5662197421421915,
+      "Rpool_V1": 0.6052361784179201,
+      "pool_Creal_std": 13.756662917850042,
+      "pool_Creal_range": 98.74943161569536,
+      "pool_success_mass": 0.8833333333333333,
+      "planning_success": true,
+      "selection_regret": 2.0368081387132406,
+      "rank1_c_real_state": 2.067132830619812,
+      "oracle_best_c_real_state": 0.030324691906571388,
+      "rank1_default_cost": 3.87941837310791,
+      "pool_Cmodel_std": 62.779125763259685,
+      "final_weight_effective_sample_size": 10.495143200723245
+    },
+    {
+      "pair_id": 5,
+      "seed": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_005_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 35,
+      "Rpool_Cmodel": 0.6116506941028496,
+      "Rpool_V1": 0.6448215598150635,
+      "pool_Creal_std": 18.520584073197497,
+      "pool_Creal_range": 119.54897892475128,
+      "pool_success_mass": 0.87,
+      "planning_success": true,
+      "selection_regret": 0.8546631336212158,
+      "rank1_c_real_state": 2.067132830619812,
+      "oracle_best_c_real_state": 1.2124696969985962,
+      "rank1_default_cost": 4.431209564208984,
+      "pool_Cmodel_std": 70.56597310497335,
+      "final_weight_effective_sample_size": 8.823281428204805
+    },
+    {
+      "pair_id": 12,
+      "seed": 0,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_012_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 113,
+      "Rpool_Cmodel": 0.40006834418535303,
+      "Rpool_V1": 0.7277789334532253,
+      "pool_Creal_std": 52.70054728194216,
+      "pool_Creal_range": 195.82829397916794,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 6.193176448345184,
+      "rank1_c_real_state": 7.6644665638553064,
+      "oracle_best_c_real_state": 1.4712901155101221,
+      "rank1_default_cost": 23.28719139099121,
+      "pool_Cmodel_std": 69.45330906095779,
+      "final_weight_effective_sample_size": 1.007257520233843
+    },
+    {
+      "pair_id": 12,
+      "seed": 1,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_012_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 15,
+      "Rpool_Cmodel": 0.2786134926250341,
+      "Rpool_V1": 0.6347365171317086,
+      "pool_Creal_std": 46.4805771109059,
+      "pool_Creal_range": 230.71073937812915,
+      "pool_success_mass": 0.23,
+      "planning_success": false,
+      "selection_regret": 9.704896241426468,
+      "rank1_c_real_state": 10.886475771665573,
+      "oracle_best_c_real_state": 1.1815795302391052,
+      "rank1_default_cost": 4.666722297668457,
+      "pool_Cmodel_std": 132.85594044286444,
+      "final_weight_effective_sample_size": 1.1177941767702426
+    },
+    {
+      "pair_id": 12,
+      "seed": 2,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_012_seed_2_tau_1.pt",
+      "rank1_index": 265,
+      "oracle_best_index": 25,
+      "Rpool_Cmodel": -0.3846179408201187,
+      "Rpool_V1": 0.9555803484613274,
+      "pool_Creal_std": 30.01838784802323,
+      "pool_Creal_range": 135.06553089618683,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 54.367029786109924,
+      "rank1_c_real_state": 55.919325534497396,
+      "oracle_best_c_real_state": 1.552295748387472,
+      "rank1_default_cost": 20.387332916259766,
+      "pool_Cmodel_std": 78.08089437443824,
+      "final_weight_effective_sample_size": 2.623374188144594
+    },
+    {
+      "pair_id": 13,
+      "seed": 0,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_013_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 183,
+      "Rpool_Cmodel": 0.369650329448105,
+      "Rpool_V1": 0.667836397194307,
+      "pool_Creal_std": 21.05335791566682,
+      "pool_Creal_range": 129.10839009284973,
+      "pool_success_mass": 0.6733333333333333,
+      "planning_success": true,
+      "selection_regret": 2.507778286933899,
+      "rank1_c_real_state": 3.1261125802993774,
+      "oracle_best_c_real_state": 0.6183342933654785,
+      "rank1_default_cost": 2.7240123748779297,
+      "pool_Cmodel_std": 82.08877248055957,
+      "final_weight_effective_sample_size": 1.0412134395704296
+    },
+    {
+      "pair_id": 13,
+      "seed": 1,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_013_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 69,
+      "Rpool_Cmodel": 0.4216273514150157,
+      "Rpool_V1": 0.7039988497399476,
+      "pool_Creal_std": 27.574243507483846,
+      "pool_Creal_range": 141.11844396591187,
+      "pool_success_mass": 0.4666666666666667,
+      "planning_success": false,
+      "selection_regret": 25.400973618030548,
+      "rank1_c_real_state": 26.192960679531097,
+      "oracle_best_c_real_state": 0.7919870615005493,
+      "rank1_default_cost": 5.022017955780029,
+      "pool_Cmodel_std": 118.96941821654372,
+      "final_weight_effective_sample_size": 3.2283086581024745
+    },
+    {
+      "pair_id": 13,
+      "seed": 2,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_013_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 122,
+      "Rpool_Cmodel": 0.2875383059811775,
+      "Rpool_V1": 0.7946019204800026,
+      "pool_Creal_std": 29.600171281988576,
+      "pool_Creal_range": 158.0862005352974,
+      "pool_success_mass": 0.48,
+      "planning_success": true,
+      "selection_regret": 0.6537887454032898,
+      "rank1_c_real_state": 1.1592880487442017,
+      "oracle_best_c_real_state": 0.5054993033409119,
+      "rank1_default_cost": 4.01578426361084,
+      "pool_Cmodel_std": 88.90506521563647,
+      "final_weight_effective_sample_size": 1.675309820307247
+    },
+    {
+      "pair_id": 14,
+      "seed": 0,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_014_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 244,
+      "Rpool_Cmodel": 0.4250958343981599,
+      "Rpool_V1": 0.5979066158457486,
+      "pool_Creal_std": 29.96334206392672,
+      "pool_Creal_range": 159.64061272144318,
+      "pool_success_mass": 0.27666666666666667,
+      "planning_success": true,
+      "selection_regret": 3.4905821084976196,
+      "rank1_c_real_state": 5.280973732471466,
+      "oracle_best_c_real_state": 1.7903916239738464,
+      "rank1_default_cost": 4.166256904602051,
+      "pool_Cmodel_std": 129.94294255688044,
+      "final_weight_effective_sample_size": 1.409543806214626
+    },
+    {
+      "pair_id": 14,
+      "seed": 1,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_014_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 17,
+      "Rpool_Cmodel": 0.18576384182046468,
+      "Rpool_V1": 0.4508945629993164,
+      "pool_Creal_std": 15.814435266052962,
+      "pool_Creal_range": 132.46110659837723,
+      "pool_success_mass": 0.64,
+      "planning_success": true,
+      "selection_regret": 4.411898672580719,
+      "rank1_c_real_state": 6.8968822956085205,
+      "oracle_best_c_real_state": 2.4849836230278015,
+      "rank1_default_cost": 4.475091457366943,
+      "pool_Cmodel_std": 74.4250961511457,
+      "final_weight_effective_sample_size": 1.050014625987643
+    },
+    {
+      "pair_id": 14,
+      "seed": 2,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_014_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 191,
+      "Rpool_Cmodel": 0.20885298725541393,
+      "Rpool_V1": 0.4051064429521922,
+      "pool_Creal_std": 14.310108479254785,
+      "pool_Creal_range": 78.1503701210022,
+      "pool_success_mass": 0.48333333333333334,
+      "planning_success": true,
+      "selection_regret": 5.405884146690369,
+      "rank1_c_real_state": 6.150741755962372,
+      "oracle_best_c_real_state": 0.7448576092720032,
+      "rank1_default_cost": 3.0467281341552734,
+      "pool_Cmodel_std": 75.69361049909081,
+      "final_weight_effective_sample_size": 1.1564149114884037
+    },
+    {
+      "pair_id": 16,
+      "seed": 0,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_016_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 56,
+      "Rpool_Cmodel": 0.23225724730274777,
+      "Rpool_V1": 0.5769299518320944,
+      "pool_Creal_std": 16.21205146870425,
+      "pool_Creal_range": 177.57333129644394,
+      "pool_success_mass": 0.3,
+      "planning_success": true,
+      "selection_regret": 8.140299558639526,
+      "rank1_c_real_state": 13.379673808813095,
+      "oracle_best_c_real_state": 5.239374250173569,
+      "rank1_default_cost": 7.521908283233643,
+      "pool_Cmodel_std": 97.74134997308138,
+      "final_weight_effective_sample_size": 1.060912245641173
+    },
+    {
+      "pair_id": 16,
+      "seed": 1,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_016_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 83,
+      "Rpool_Cmodel": -0.11290569895221059,
+      "Rpool_V1": 0.11371225325565677,
+      "pool_Creal_std": 8.03699671593507,
+      "pool_Creal_range": 63.125612616539,
+      "pool_success_mass": 0.36333333333333334,
+      "planning_success": false,
+      "selection_regret": 11.272578746080399,
+      "rank1_c_real_state": 14.507921427488327,
+      "oracle_best_c_real_state": 3.2353426814079285,
+      "rank1_default_cost": 5.711822509765625,
+      "pool_Cmodel_std": 60.98434809820402,
+      "final_weight_effective_sample_size": 1.1669072216452696
+    },
+    {
+      "pair_id": 16,
+      "seed": 2,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_016_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 179,
+      "Rpool_Cmodel": 0.10544961610684563,
+      "Rpool_V1": 0.47820624291101227,
+      "pool_Creal_std": 15.801023777015844,
+      "pool_Creal_range": 96.6491476893425,
+      "pool_success_mass": 0.3,
+      "planning_success": true,
+      "selection_regret": 4.906308352947235,
+      "rank1_c_real_state": 11.9502654671669,
+      "oracle_best_c_real_state": 7.0439571142196655,
+      "rank1_default_cost": 8.999432563781738,
+      "pool_Cmodel_std": 84.99528703099399,
+      "final_weight_effective_sample_size": 1.0361226349178323
+    },
+    {
+      "pair_id": 19,
+      "seed": 0,
+      "cell": "D0xR3",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_019_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 16,
+      "Rpool_Cmodel": 0.029850639198138466,
+      "Rpool_V1": 0.299645299393775,
+      "pool_Creal_std": 22.541439472883248,
+      "pool_Creal_range": 134.1497684121132,
+      "pool_success_mass": 0.16666666666666666,
+      "planning_success": false,
+      "selection_regret": 13.862697545682089,
+      "rank1_c_real_state": 15.073482636605398,
+      "oracle_best_c_real_state": 1.2107850909233093,
+      "rank1_default_cost": 11.831511497497559,
+      "pool_Cmodel_std": 127.18126769207599,
+      "final_weight_effective_sample_size": 1.0000030994469005
+    },
+    {
+      "pair_id": 19,
+      "seed": 1,
+      "cell": "D0xR3",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_019_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 182,
+      "Rpool_Cmodel": 0.12095624628676463,
+      "Rpool_V1": 0.6256543239033631,
+      "pool_Creal_std": 54.9105039891722,
+      "pool_Creal_range": 252.87819150487056,
+      "pool_success_mass": 0.13666666666666666,
+      "planning_success": true,
+      "selection_regret": 9.980797439813614,
+      "rank1_c_real_state": 11.68594241142273,
+      "oracle_best_c_real_state": 1.7051449716091156,
+      "rank1_default_cost": 20.110450744628906,
+      "pool_Cmodel_std": 117.76695095225392,
+      "final_weight_effective_sample_size": 1.0378598027495372
+    },
+    {
+      "pair_id": 19,
+      "seed": 2,
+      "cell": "D0xR3",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_019_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 53,
+      "Rpool_Cmodel": 0.21245069123976143,
+      "Rpool_V1": 0.23823227122546098,
+      "pool_Creal_std": 38.637831146781615,
+      "pool_Creal_range": 253.55251300731769,
+      "pool_success_mass": 0.11333333333333333,
+      "planning_success": false,
+      "selection_regret": 8.141554787755013,
+      "rank1_c_real_state": 8.976452067494392,
+      "oracle_best_c_real_state": 0.8348972797393799,
+      "rank1_default_cost": 10.0083646774292,
+      "pool_Cmodel_std": 119.69832236814044,
+      "final_weight_effective_sample_size": 1.0006310545343549
+    },
+    {
+      "pair_id": 30,
+      "seed": 0,
+      "cell": "D1xR1",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_030_seed_0_tau_1.pt",
+      "rank1_index": 139,
+      "oracle_best_index": 49,
+      "Rpool_Cmodel": -0.07595767219105193,
+      "Rpool_V1": 0.7340067218940021,
+      "pool_Creal_std": 19.767089210568823,
+      "pool_Creal_range": 119.50191402435303,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 3.3993470668792725,
+      "rank1_c_real_state": 34.373962342739105,
+      "oracle_best_c_real_state": 30.974615275859833,
+      "rank1_default_cost": 156.49911499023438,
+      "pool_Cmodel_std": 21.89852063565787,
+      "final_weight_effective_sample_size": 1.992303010405815
+    },
+    {
+      "pair_id": 30,
+      "seed": 1,
+      "cell": "D1xR1",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_030_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 297,
+      "Rpool_Cmodel": -0.24115448406698936,
+      "Rpool_V1": 0.9871965834877995,
+      "pool_Creal_std": 45.4062681152189,
+      "pool_Creal_range": 190.6624492108822,
+      "pool_success_mass": 0.1,
+      "planning_success": false,
+      "selection_regret": 98.71286717057228,
+      "rank1_c_real_state": 100.57454815506935,
+      "oracle_best_c_real_state": 1.8616809844970703,
+      "rank1_default_cost": 5.870819091796875,
+      "pool_Cmodel_std": 103.40435636459489,
+      "final_weight_effective_sample_size": 1.0386482347047
+    },
+    {
+      "pair_id": 30,
+      "seed": 2,
+      "cell": "D1xR1",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_030_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 87,
+      "Rpool_Cmodel": -0.33411482349803884,
+      "Rpool_V1": 0.8894271667140144,
+      "pool_Creal_std": 41.083789703385236,
+      "pool_Creal_range": 181.89352697134018,
+      "pool_success_mass": 0.01,
+      "planning_success": false,
+      "selection_regret": 100.53950119018555,
+      "rank1_c_real_state": 114.20731872320175,
+      "oracle_best_c_real_state": 13.667817533016205,
+      "rank1_default_cost": 8.23867130279541,
+      "pool_Cmodel_std": 76.63627371189534,
+      "final_weight_effective_sample_size": 1.0280630475353125
+    },
+    {
+      "pair_id": 6,
+      "seed": 0,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_006_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 11,
+      "Rpool_Cmodel": 0.5402811142346026,
+      "Rpool_V1": 0.5692216577428598,
+      "pool_Creal_std": 13.589004659114904,
+      "pool_Creal_range": 78.63973787426949,
+      "pool_success_mass": 0.6966666666666667,
+      "planning_success": true,
+      "selection_regret": 1.430761843919754,
+      "rank1_c_real_state": 2.812585771083832,
+      "oracle_best_c_real_state": 1.3818239271640778,
+      "rank1_default_cost": 1.094716191291809,
+      "pool_Cmodel_std": 77.16934076897694,
+      "final_weight_effective_sample_size": 1.000796832206803
+    },
+    {
+      "pair_id": 6,
+      "seed": 1,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_006_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 38,
+      "Rpool_Cmodel": 0.37457953694813917,
+      "Rpool_V1": 0.4640065766983927,
+      "pool_Creal_std": 12.315283924811624,
+      "pool_Creal_range": 99.15151208639145,
+      "pool_success_mass": 0.7266666666666667,
+      "planning_success": true,
+      "selection_regret": 5.079304218292236,
+      "rank1_c_real_state": 5.721596419811249,
+      "oracle_best_c_real_state": 0.6422922015190125,
+      "rank1_default_cost": 4.040770530700684,
+      "pool_Cmodel_std": 67.75627495307178,
+      "final_weight_effective_sample_size": 1.0209297579916576
+    },
+    {
+      "pair_id": 6,
+      "seed": 2,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_006_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 34,
+      "Rpool_Cmodel": 0.5881082858897084,
+      "Rpool_V1": 0.4704177664765223,
+      "pool_Creal_std": 12.32579453657595,
+      "pool_Creal_range": 110.24382776021957,
+      "pool_success_mass": 0.7233333333333334,
+      "planning_success": true,
+      "selection_regret": 4.776497900485992,
+      "rank1_c_real_state": 6.66584312915802,
+      "oracle_best_c_real_state": 1.8893452286720276,
+      "rank1_default_cost": 3.672947645187378,
+      "pool_Cmodel_std": 76.69001880159406,
+      "final_weight_effective_sample_size": 1.6641156070205165
+    },
+    {
+      "pair_id": 7,
+      "seed": 0,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_007_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 28,
+      "Rpool_Cmodel": -0.032432804808942325,
+      "Rpool_V1": 0.18922515735150736,
+      "pool_Creal_std": 3.8923258214287086,
+      "pool_Creal_range": 26.273800648748875,
+      "pool_success_mass": 0.97,
+      "planning_success": true,
+      "selection_regret": 6.592063702642918,
+      "rank1_c_real_state": 6.766380786895752,
+      "oracle_best_c_real_state": 0.17431708425283432,
+      "rank1_default_cost": 1.1556565761566162,
+      "pool_Cmodel_std": 3.24097616053768,
+      "final_weight_effective_sample_size": 88.26532231444618
+    },
+    {
+      "pair_id": 7,
+      "seed": 1,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_007_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 157,
+      "Rpool_Cmodel": -0.012795253280592007,
+      "Rpool_V1": 0.10448457838206379,
+      "pool_Creal_std": 3.9380183227927206,
+      "pool_Creal_range": 35.127443231642246,
+      "pool_success_mass": 0.9666666666666667,
+      "planning_success": true,
+      "selection_regret": 7.077003873884678,
+      "rank1_c_real_state": 7.279449462890625,
+      "oracle_best_c_real_state": 0.2024455890059471,
+      "rank1_default_cost": 1.1675515174865723,
+      "pool_Cmodel_std": 3.8212912474959144,
+      "final_weight_effective_sample_size": 89.4034818707942
+    },
+    {
+      "pair_id": 7,
+      "seed": 2,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_007_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 199,
+      "Rpool_Cmodel": 0.058301536683740926,
+      "Rpool_V1": 0.12378726784243171,
+      "pool_Creal_std": 4.055384347244564,
+      "pool_Creal_range": 40.27391089498997,
+      "pool_success_mass": 0.95,
+      "planning_success": true,
+      "selection_regret": 12.234866991639137,
+      "rank1_c_real_state": 12.386470317840576,
+      "oracle_best_c_real_state": 0.1516033262014389,
+      "rank1_default_cost": 1.232391119003296,
+      "pool_Cmodel_std": 3.119859490916437,
+      "final_weight_effective_sample_size": 84.78046414641821
+    },
+    {
+      "pair_id": 8,
+      "seed": 0,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_008_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 221,
+      "Rpool_Cmodel": 0.13810953455038388,
+      "Rpool_V1": 0.45290307632548016,
+      "pool_Creal_std": 21.90443299680628,
+      "pool_Creal_range": 219.60803091526031,
+      "pool_success_mass": 0.23333333333333334,
+      "planning_success": false,
+      "selection_regret": 27.728300750255585,
+      "rank1_c_real_state": 28.72482603788376,
+      "oracle_best_c_real_state": 0.9965252876281738,
+      "rank1_default_cost": 11.614503860473633,
+      "pool_Cmodel_std": 99.00806340525497,
+      "final_weight_effective_sample_size": 1.0128035616198503
+    },
+    {
+      "pair_id": 8,
+      "seed": 1,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_008_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 110,
+      "Rpool_Cmodel": 0.11668974099712219,
+      "Rpool_V1": 0.9786068496398775,
+      "pool_Creal_std": 53.72405866208579,
+      "pool_Creal_range": 205.756118953228,
+      "pool_success_mass": 0.013333333333333334,
+      "planning_success": false,
+      "selection_regret": 53.46214383840561,
+      "rank1_c_real_state": 62.8459997177124,
+      "oracle_best_c_real_state": 9.383855879306793,
+      "rank1_default_cost": 62.12067413330078,
+      "pool_Cmodel_std": 73.42404281352393,
+      "final_weight_effective_sample_size": 1.0000002384186026
+    },
+    {
+      "pair_id": 8,
+      "seed": 2,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_008_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 251,
+      "Rpool_Cmodel": 0.424261602906699,
+      "Rpool_V1": 0.7432077481733593,
+      "pool_Creal_std": 28.569241813794534,
+      "pool_Creal_range": 149.06309774518013,
+      "pool_success_mass": 0.38333333333333336,
+      "planning_success": true,
+      "selection_regret": 2.9981851875782013,
+      "rank1_c_real_state": 3.5246967673301697,
+      "oracle_best_c_real_state": 0.5265115797519684,
+      "rank1_default_cost": 8.358781814575195,
+      "pool_Cmodel_std": 94.19430051796765,
+      "final_weight_effective_sample_size": 1.0000030994466687
+    },
+    {
+      "pair_id": 9,
+      "seed": 0,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_009_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 152,
+      "Rpool_Cmodel": -0.19502039812227542,
+      "Rpool_V1": 0.35697319130505223,
+      "pool_Creal_std": 23.828152048220073,
+      "pool_Creal_range": 108.34983762005439,
+      "pool_success_mass": 0.29,
+      "planning_success": true,
+      "selection_regret": 4.346907392144203,
+      "rank1_c_real_state": 4.625275701284409,
+      "oracle_best_c_real_state": 0.2783683091402054,
+      "rank1_default_cost": 12.371176719665527,
+      "pool_Cmodel_std": 90.54221138428687,
+      "final_weight_effective_sample_size": 1.0207298016359618
+    },
+    {
+      "pair_id": 9,
+      "seed": 1,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_009_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 273,
+      "Rpool_Cmodel": -0.292471246176111,
+      "Rpool_V1": 0.11549491261975717,
+      "pool_Creal_std": 17.675527259606543,
+      "pool_Creal_range": 114.87380385398865,
+      "pool_success_mass": 0.20666666666666667,
+      "planning_success": false,
+      "selection_regret": 15.653290498758658,
+      "rank1_c_real_state": 16.599169872701168,
+      "oracle_best_c_real_state": 0.9458793739425104,
+      "rank1_default_cost": 16.14984893798828,
+      "pool_Cmodel_std": 82.8585565253667,
+      "final_weight_effective_sample_size": 1.432688250159685
+    },
+    {
+      "pair_id": 9,
+      "seed": 2,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_009_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 229,
+      "Rpool_Cmodel": -0.0510195061425145,
+      "Rpool_V1": 0.48735118574666136,
+      "pool_Creal_std": 27.491495282730163,
+      "pool_Creal_range": 126.94592972496619,
+      "pool_success_mass": 0.2733333333333333,
+      "planning_success": true,
+      "selection_regret": 9.609688714146614,
+      "rank1_c_real_state": 10.281114012002945,
+      "oracle_best_c_real_state": 0.6714252978563309,
+      "rank1_default_cost": 10.044046401977539,
+      "pool_Cmodel_std": 89.1745092190153,
+      "final_weight_effective_sample_size": 1.2016058560986056
+    },
+    {
+      "pair_id": 10,
+      "seed": 0,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_010_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 36,
+      "Rpool_Cmodel": 0.24412653369907164,
+      "Rpool_V1": 0.8484829371773246,
+      "pool_Creal_std": 36.734407853718125,
+      "pool_Creal_range": 174.7560698390007,
+      "pool_success_mass": 0.42333333333333334,
+      "planning_success": false,
+      "selection_regret": 22.72993043065071,
+      "rank1_c_real_state": 23.227440178394318,
+      "oracle_best_c_real_state": 0.49750974774360657,
+      "rank1_default_cost": 12.173791885375977,
+      "pool_Cmodel_std": 76.4996871405043,
+      "final_weight_effective_sample_size": 1.0001521226499326
+    },
+    {
+      "pair_id": 10,
+      "seed": 1,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_010_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 180,
+      "Rpool_Cmodel": 0.23379904973566099,
+      "Rpool_V1": 0.6630675061579575,
+      "pool_Creal_std": 30.335788984762424,
+      "pool_Creal_range": 154.9931411743164,
+      "pool_success_mass": 0.47333333333333333,
+      "planning_success": true,
+      "selection_regret": 0.6887714266777039,
+      "rank1_c_real_state": 1.3996756076812744,
+      "oracle_best_c_real_state": 0.7109041810035706,
+      "rank1_default_cost": 10.949763298034668,
+      "pool_Cmodel_std": 68.43090932190779,
+      "final_weight_effective_sample_size": 1.0387174874557286
+    },
+    {
+      "pair_id": 10,
+      "seed": 2,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_010_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 37,
+      "Rpool_Cmodel": 0.32361020612880365,
+      "Rpool_V1": 0.718686564513951,
+      "pool_Creal_std": 36.12805348352611,
+      "pool_Creal_range": 188.69185976684093,
+      "pool_success_mass": 0.4533333333333333,
+      "planning_success": true,
+      "selection_regret": 2.323463127017021,
+      "rank1_c_real_state": 2.7565553784370422,
+      "oracle_best_c_real_state": 0.43309225142002106,
+      "rank1_default_cost": 10.257169723510742,
+      "pool_Cmodel_std": 66.42959274892067,
+      "final_weight_effective_sample_size": 1.0113611389710726
+    },
+    {
+      "pair_id": 74,
+      "seed": 0,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_074_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 293,
+      "Rpool_Cmodel": 0.30515005722285804,
+      "Rpool_V1": 0.9548523872487471,
+      "pool_Creal_std": 19.51859527615483,
+      "pool_Creal_range": 149.65066426992416,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 57.83658766746521,
+      "rank1_c_real_state": 94.57698738574982,
+      "oracle_best_c_real_state": 36.74039971828461,
+      "rank1_default_cost": 127.07150268554688,
+      "pool_Cmodel_std": 47.2670181959102,
+      "final_weight_effective_sample_size": 1.0
+    },
+    {
+      "pair_id": 74,
+      "seed": 1,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_074_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 246,
+      "Rpool_Cmodel": 0.00772764141823798,
+      "Rpool_V1": 0.9920506131602217,
+      "pool_Creal_std": 31.43403480582447,
+      "pool_Creal_range": 207.53435266017914,
+      "pool_success_mass": 0.14666666666666667,
+      "planning_success": false,
+      "selection_regret": 29.637234330177307,
+      "rank1_c_real_state": 31.910832285881042,
+      "oracle_best_c_real_state": 2.2735979557037354,
+      "rank1_default_cost": 125.40370178222656,
+      "pool_Cmodel_std": 55.97349769089114,
+      "final_weight_effective_sample_size": 1.0
+    },
+    {
+      "pair_id": 74,
+      "seed": 2,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_074_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 90,
+      "Rpool_Cmodel": 0.05068545206057845,
+      "Rpool_V1": 0.9439974142553622,
+      "pool_Creal_std": 45.89978408363259,
+      "pool_Creal_range": 205.1085216999054,
+      "pool_success_mass": 0.1,
+      "planning_success": false,
+      "selection_regret": 38.1031129360199,
+      "rank1_c_real_state": 39.99018883705139,
+      "oracle_best_c_real_state": 1.8870759010314941,
+      "rank1_default_cost": 205.9934539794922,
+      "pool_Cmodel_std": 52.819777370057984,
+      "final_weight_effective_sample_size": 2.153357611416873
+    },
+    {
+      "pair_id": 75,
+      "seed": 0,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_075_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 48,
+      "Rpool_Cmodel": -0.23646262736252627,
+      "Rpool_V1": 0.937112481802789,
+      "pool_Creal_std": 33.83504566569553,
+      "pool_Creal_range": 191.40648359060287,
+      "pool_success_mass": 0.03333333333333333,
+      "planning_success": false,
+      "selection_regret": 67.63648098707199,
+      "rank1_c_real_state": 69.20671832561493,
+      "oracle_best_c_real_state": 1.5702373385429382,
+      "rank1_default_cost": 98.77275085449219,
+      "pool_Cmodel_std": 65.05975287818055,
+      "final_weight_effective_sample_size": 1.00151462640404
+    },
+    {
+      "pair_id": 75,
+      "seed": 1,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_075_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 124,
+      "Rpool_Cmodel": 0.31121145790508786,
+      "Rpool_V1": 0.8938238518089805,
+      "pool_Creal_std": 28.08932377232178,
+      "pool_Creal_range": 178.6377716064453,
+      "pool_success_mass": 0.02,
+      "planning_success": false,
+      "selection_regret": 54.07784080505371,
+      "rank1_c_real_state": 66.5623539686203,
+      "oracle_best_c_real_state": 12.48451316356659,
+      "rank1_default_cost": 67.82720947265625,
+      "pool_Cmodel_std": 69.71655508662359,
+      "final_weight_effective_sample_size": 1.0
+    },
+    {
+      "pair_id": 75,
+      "seed": 2,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_075_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 253,
+      "Rpool_Cmodel": 0.021707352303914487,
+      "Rpool_V1": 0.8976326088768972,
+      "pool_Creal_std": 42.19139518396763,
+      "pool_Creal_range": 185.80938333669772,
+      "pool_success_mass": 0.03,
+      "planning_success": false,
+      "selection_regret": 18.778625011444092,
+      "rank1_c_real_state": 22.90225601196289,
+      "oracle_best_c_real_state": 4.123631000518799,
+      "rank1_default_cost": 37.552764892578125,
+      "pool_Cmodel_std": 78.73775845019726,
+      "final_weight_effective_sample_size": 1.0
+    },
+    {
+      "pair_id": 76,
+      "seed": 0,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_076_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 264,
+      "Rpool_Cmodel": 0.1239951555017278,
+      "Rpool_V1": 0.9853431996445788,
+      "pool_Creal_std": 66.4761136082039,
+      "pool_Creal_range": 266.1646664440632,
+      "pool_success_mass": 0.08333333333333333,
+      "planning_success": false,
+      "selection_regret": 215.21264362335205,
+      "rank1_c_real_state": 221.28932338953018,
+      "oracle_best_c_real_state": 6.076679766178131,
+      "rank1_default_cost": 183.20794677734375,
+      "pool_Cmodel_std": 40.084613294496755,
+      "final_weight_effective_sample_size": 1.029202567529789
+    },
+    {
+      "pair_id": 76,
+      "seed": 1,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_076_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 151,
+      "Rpool_Cmodel": 0.10743898348192642,
+      "Rpool_V1": 0.9840895092531777,
+      "pool_Creal_std": 57.70991306329281,
+      "pool_Creal_range": 231.53480375209918,
+      "pool_success_mass": 0.05333333333333334,
+      "planning_success": false,
+      "selection_regret": 205.68714627623558,
+      "rank1_c_real_state": 208.27187630534172,
+      "oracle_best_c_real_state": 2.58473002910614,
+      "rank1_default_cost": 177.02362060546875,
+      "pool_Cmodel_std": 56.08829064821593,
+      "final_weight_effective_sample_size": 1.0056198093322637
+    },
+    {
+      "pair_id": 76,
+      "seed": 2,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_076_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 243,
+      "Rpool_Cmodel": 0.12398848876098624,
+      "Rpool_V1": 0.9848626747240573,
+      "pool_Creal_std": 38.365093038872615,
+      "pool_Creal_range": 157.816140294075,
+      "pool_success_mass": 0.07666666666666666,
+      "planning_success": false,
+      "selection_regret": 34.44622004032135,
+      "rank1_c_real_state": 38.80898576974869,
+      "oracle_best_c_real_state": 4.362765729427338,
+      "rank1_default_cost": 112.95820617675781,
+      "pool_Cmodel_std": 56.24401544927396,
+      "final_weight_effective_sample_size": 1.0000002384186089
+    },
+    {
+      "pair_id": 77,
+      "seed": 0,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_077_seed_0_tau_1.pt",
+      "rank1_index": 185,
+      "oracle_best_index": 289,
+      "Rpool_Cmodel": 0.5959692885476504,
+      "Rpool_V1": 0.9649561407025584,
+      "pool_Creal_std": 45.31372394895952,
+      "pool_Creal_range": 196.11050081253052,
+      "pool_success_mass": 0.13666666666666666,
+      "planning_success": true,
+      "selection_regret": 12.559875965118408,
+      "rank1_c_real_state": 13.8564133644104,
+      "oracle_best_c_real_state": 1.2965373992919922,
+      "rank1_default_cost": 2.59983491897583,
+      "pool_Cmodel_std": 87.91315527861923,
+      "final_weight_effective_sample_size": 8.932726802170675
+    },
+    {
+      "pair_id": 77,
+      "seed": 1,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_077_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 226,
+      "Rpool_Cmodel": 0.5963119590217668,
+      "Rpool_V1": 0.9701681124497905,
+      "pool_Creal_std": 51.13396127476011,
+      "pool_Creal_range": 238.03575360799303,
+      "pool_success_mass": 0.1,
+      "planning_success": true,
+      "selection_regret": 14.577852129936218,
+      "rank1_c_real_state": 15.91376781463623,
+      "oracle_best_c_real_state": 1.3359156847000122,
+      "rank1_default_cost": 2.8645896911621094,
+      "pool_Cmodel_std": 89.93993048481605,
+      "final_weight_effective_sample_size": 7.048229681989214
+    },
+    {
+      "pair_id": 77,
+      "seed": 2,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_077_seed_2_tau_1.pt",
+      "rank1_index": 143,
+      "oracle_best_index": 125,
+      "Rpool_Cmodel": 0.5294045489394327,
+      "Rpool_V1": 0.955066406896505,
+      "pool_Creal_std": 50.818881803769855,
+      "pool_Creal_range": 199.3320142030716,
+      "pool_success_mass": 0.15,
+      "planning_success": true,
+      "selection_regret": 9.677268147468567,
+      "rank1_c_real_state": 11.038180828094482,
+      "oracle_best_c_real_state": 1.3609126806259155,
+      "rank1_default_cost": 2.5252857208251953,
+      "pool_Cmodel_std": 104.90645710183722,
+      "final_weight_effective_sample_size": 7.246329892707355
+    },
+    {
+      "pair_id": 78,
+      "seed": 0,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_078_seed_0_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 144,
+      "Rpool_Cmodel": 0.194837275969733,
+      "Rpool_V1": 0.9381348681652018,
+      "pool_Creal_std": 42.76811972427105,
+      "pool_Creal_range": 225.54382303357124,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 52.69304394721985,
+      "rank1_c_real_state": 58.97631561756134,
+      "oracle_best_c_real_state": 6.283271670341492,
+      "rank1_default_cost": 186.95529174804688,
+      "pool_Cmodel_std": 33.439072415035426,
+      "final_weight_effective_sample_size": 1.128004742445476
+    },
+    {
+      "pair_id": 78,
+      "seed": 1,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_078_seed_1_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 147,
+      "Rpool_Cmodel": 0.2220780230891454,
+      "Rpool_V1": 0.9494064365326091,
+      "pool_Creal_std": 45.76383496960213,
+      "pool_Creal_range": 191.2225834766971,
+      "pool_success_mass": 0.016666666666666666,
+      "planning_success": false,
+      "selection_regret": 115.11137574911118,
+      "rank1_c_real_state": 125.79844182729721,
+      "oracle_best_c_real_state": 10.687066078186035,
+      "rank1_default_cost": 66.8863525390625,
+      "pool_Cmodel_std": 61.63799236134641,
+      "final_weight_effective_sample_size": 1.0
+    },
+    {
+      "pair_id": 78,
+      "seed": 2,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "v1_favorable"
+      ],
+      "pool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pusht_pools/pair_078_seed_2_tau_1.pt",
+      "rank1_index": 0,
+      "oracle_best_index": 61,
+      "Rpool_Cmodel": -0.1116812409026767,
+      "Rpool_V1": 0.9025593617706863,
+      "pool_Creal_std": 34.99390688252601,
+      "pool_Creal_range": 185.4649687369717,
+      "pool_success_mass": 0.0,
+      "planning_success": false,
+      "selection_regret": 125.43117075761685,
+      "rank1_c_real_state": 135.11357593536377,
+      "oracle_best_c_real_state": 9.682405177746908,
+      "rank1_default_cost": 39.9136848449707,
+      "pool_Cmodel_std": 50.381207623573324,
+      "final_weight_effective_sample_size": 1.0
+    }
+  ],
+  "mppi_per_pair": [
+    {
+      "pair_id": 0,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.3333333333333333,
+      "selection_regret": 30.321064432462055,
+      "Rpool_Cmodel": 0.040923589042930274,
+      "Rpool_V1": 0.9184519215343014,
+      "pool_Creal_std": 28.650624972380594,
+      "pool_Creal_range": 126.52156222247238,
+      "pool_success_mass": 0.37777777777777777,
+      "rank1_c_real_state": 38.16490360101064,
+      "pool_Cmodel_std": 55.9055758229668,
+      "final_weight_effective_sample_size": 1.3579939142526165
+    },
+    {
+      "pair_id": 1,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 4.338686943054199,
+      "Rpool_Cmodel": 0.21449193188939616,
+      "Rpool_V1": 0.7476921223669685,
+      "pool_Creal_std": 17.707165365007448,
+      "pool_Creal_range": 129.49586900075278,
+      "pool_success_mass": 0.6844444444444444,
+      "rank1_c_real_state": 8.428269863128662,
+      "pool_Cmodel_std": 48.424220377079905,
+      "final_weight_effective_sample_size": 3.2630201149294056
+    },
+    {
+      "pair_id": 2,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 1.0,
+      "selection_regret": 4.96315310895443,
+      "Rpool_Cmodel": 0.278179174667839,
+      "Rpool_V1": 0.5590407974853112,
+      "pool_Creal_std": 9.655615767764951,
+      "pool_Creal_range": 72.17987515528996,
+      "pool_success_mass": 0.87,
+      "rank1_c_real_state": 6.294133906563123,
+      "pool_Cmodel_std": 52.60696859436774,
+      "final_weight_effective_sample_size": 6.250231818183734
+    },
+    {
+      "pair_id": 3,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 17.981731295585632,
+      "Rpool_Cmodel": 0.23027743168020987,
+      "Rpool_V1": 0.9019588183825773,
+      "pool_Creal_std": 39.29705526127884,
+      "pool_Creal_range": 192.0821736865556,
+      "pool_success_mass": 0.5499999999999999,
+      "rank1_c_real_state": 19.34973555803299,
+      "pool_Cmodel_std": 60.410653117579216,
+      "final_weight_effective_sample_size": 1.1841690997399965
+    },
+    {
+      "pair_id": 4,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 19.96411334350705,
+      "Rpool_Cmodel": 0.28114000317732074,
+      "Rpool_V1": 0.7964019910457351,
+      "pool_Creal_std": 27.28440804098682,
+      "pool_Creal_range": 147.8680053638915,
+      "pool_success_mass": 0.48222222222222216,
+      "rank1_c_real_state": 20.304410954316456,
+      "pool_Cmodel_std": 82.9324263488957,
+      "final_weight_effective_sample_size": 1.790757935916704
+    },
+    {
+      "pair_id": 5,
+      "cell": "D0xR0",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 1.0,
+      "selection_regret": 1.561112316325307,
+      "Rpool_Cmodel": 0.5972790062551708,
+      "Rpool_V1": 0.6689809413011321,
+      "pool_Creal_std": 18.207885945706582,
+      "pool_Creal_range": 112.43341164973874,
+      "pool_success_mass": 0.8411111111111111,
+      "rank1_c_real_state": 2.067132830619812,
+      "pool_Cmodel_std": 71.24671069472991,
+      "final_weight_effective_sample_size": 8.976403838210889
+    },
+    {
+      "pair_id": 6,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 1.0,
+      "selection_regret": 3.7621879875659943,
+      "Rpool_Cmodel": 0.5009896456908167,
+      "Rpool_V1": 0.5012153336392583,
+      "pool_Creal_std": 12.743361040167493,
+      "pool_Creal_range": 96.01169257362683,
+      "pool_success_mass": 0.7155555555555555,
+      "rank1_c_real_state": 5.066675106684367,
+      "pool_Cmodel_std": 73.87187817454759,
+      "final_weight_effective_sample_size": 1.2286140657396591
+    },
+    {
+      "pair_id": 7,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 1.0,
+      "selection_regret": 8.634644856055578,
+      "Rpool_Cmodel": 0.004357826198068865,
+      "Rpool_V1": 0.13916566785866763,
+      "pool_Creal_std": 3.961909497155331,
+      "pool_Creal_range": 33.891718258460365,
+      "pool_success_mass": 0.9622222222222222,
+      "rank1_c_real_state": 8.81076685587565,
+      "pool_Cmodel_std": 3.3940422996500104,
+      "final_weight_effective_sample_size": 87.48308944388619
+    },
+    {
+      "pair_id": 8,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.3333333333333333,
+      "selection_regret": 28.0628765920798,
+      "Rpool_Cmodel": 0.22635362615140173,
+      "Rpool_V1": 0.7249058913795724,
+      "pool_Creal_std": 34.73257782422887,
+      "pool_Creal_range": 191.47574920455614,
+      "pool_success_mass": 0.21,
+      "rank1_c_real_state": 31.69850750764211,
+      "pool_Cmodel_std": 88.87546891224885,
+      "final_weight_effective_sample_size": 1.0042689664950406
+    },
+    {
+      "pair_id": 9,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 9.869962201683158,
+      "Rpool_Cmodel": -0.17950371681363364,
+      "Rpool_V1": 0.3199397632238236,
+      "pool_Creal_std": 22.998391530185597,
+      "pool_Creal_range": 116.72319039966975,
+      "pool_success_mass": 0.25666666666666665,
+      "rank1_c_real_state": 10.501853195329508,
+      "pool_Cmodel_std": 87.52509237622296,
+      "final_weight_effective_sample_size": 1.2183413026314176
+    },
+    {
+      "pair_id": 10,
+      "cell": "D0xR1",
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 8.580721661448479,
+      "Rpool_Cmodel": 0.26717859652117876,
+      "Rpool_V1": 0.7434123359497443,
+      "pool_Creal_std": 34.39941677400222,
+      "pool_Creal_range": 172.81369026005268,
+      "pool_success_mass": 0.45,
+      "rank1_c_real_state": 9.127890388170878,
+      "pool_Cmodel_std": 70.45339640377759,
+      "final_weight_effective_sample_size": 1.016743583025578
+    },
+    {
+      "pair_id": 12,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 23.421700825293858,
+      "Rpool_Cmodel": 0.0980212986634228,
+      "Rpool_V1": 0.7726985996820872,
+      "pool_Creal_std": 43.06650408029043,
+      "pool_Creal_range": 187.20152141782796,
+      "pool_success_mass": 0.07666666666666667,
+      "rank1_c_real_state": 24.823422623339425,
+      "pool_Cmodel_std": 93.46338129275348,
+      "final_weight_effective_sample_size": 1.5828086283828933
+    },
+    {
+      "pair_id": 13,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 9.520846883455912,
+      "Rpool_Cmodel": 0.35960532894809943,
+      "Rpool_V1": 0.7221457224714191,
+      "pool_Creal_std": 26.075924235046415,
+      "pool_Creal_range": 142.771011531353,
+      "pool_success_mass": 0.54,
+      "rank1_c_real_state": 10.159453769524893,
+      "pool_Cmodel_std": 96.65441863757991,
+      "final_weight_effective_sample_size": 1.981610639326717
+    },
+    {
+      "pair_id": 14,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 1.0,
+      "selection_regret": 4.436121642589569,
+      "Rpool_Cmodel": 0.2732375544913462,
+      "Rpool_V1": 0.4846358739324191,
+      "pool_Creal_std": 20.029295269744825,
+      "pool_Creal_range": 123.41736314694087,
+      "pool_success_mass": 0.46666666666666673,
+      "rank1_c_real_state": 6.109532594680786,
+      "pool_Cmodel_std": 93.35388306903899,
+      "final_weight_effective_sample_size": 1.205324447896891
+    },
+    {
+      "pair_id": 16,
+      "cell": "D0xR2",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.6666666666666666,
+      "selection_regret": 8.10639555255572,
+      "Rpool_Cmodel": 0.07493372148579426,
+      "Rpool_V1": 0.38961614933292116,
+      "pool_Creal_std": 13.350023987218387,
+      "pool_Creal_range": 112.44936386744182,
+      "pool_success_mass": 0.3211111111111111,
+      "rank1_c_real_state": 13.279286901156107,
+      "pool_Cmodel_std": 81.24032836742647,
+      "final_weight_effective_sample_size": 1.0879807007347584
+    },
+    {
+      "pair_id": 19,
+      "cell": "D0xR3",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.3333333333333333,
+      "selection_regret": 10.661683257750239,
+      "Rpool_Cmodel": 0.1210858589082215,
+      "Rpool_V1": 0.3878439648408663,
+      "pool_Creal_std": 38.69659153627902,
+      "pool_Creal_range": 213.52682430810046,
+      "pool_success_mass": 0.1388888888888889,
+      "rank1_c_real_state": 11.911959038507506,
+      "pool_Cmodel_std": 121.5488470041568,
+      "final_weight_effective_sample_size": 1.012831318910264
+    },
+    {
+      "pair_id": 25,
+      "cell": "D1xR0",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "latent_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 1.33292555809021,
+      "Rpool_Cmodel": 0.04122532523540671,
+      "Rpool_V1": 0.9999985930525122,
+      "pool_Creal_std": 0.20391374394863312,
+      "pool_Creal_range": 2.8674808144569397,
+      "pool_success_mass": 0.0,
+      "rank1_c_real_state": 49.653857588768005,
+      "pool_Cmodel_std": 7.789390464909616,
+      "final_weight_effective_sample_size": 8.810529329577772
+    },
+    {
+      "pair_id": 30,
+      "cell": "D1xR1",
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 67.55057180921237,
+      "Rpool_Cmodel": -0.21707565991869338,
+      "Rpool_V1": 0.8702101573652721,
+      "pool_Creal_std": 35.41904900972432,
+      "pool_Creal_range": 164.01929673552513,
+      "pool_success_mass": 0.03666666666666667,
+      "rank1_c_real_state": 83.05194307367007,
+      "pool_Cmodel_std": 67.3130502373827,
+      "final_weight_effective_sample_size": 1.3530047642152756
+    },
+    {
+      "pair_id": 46,
+      "cell": "D1xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 26.96037910381953,
+      "Rpool_Cmodel": 0.032705726571282796,
+      "Rpool_V1": 0.1738737504030681,
+      "pool_Creal_std": 36.501852712558,
+      "pool_Creal_range": 219.6921953956286,
+      "pool_success_mass": 0.0,
+      "rank1_c_real_state": 31.48214940626889,
+      "pool_Cmodel_std": 35.34544533238531,
+      "final_weight_effective_sample_size": 1.3467928108271376
+    },
+    {
+      "pair_id": 60,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 41.202098209329876,
+      "Rpool_Cmodel": 0.24548746837927826,
+      "Rpool_V1": 0.7887455931948422,
+      "pool_Creal_std": 34.342281929297855,
+      "pool_Creal_range": 186.35275153551189,
+      "pool_success_mass": 0.03,
+      "rank1_c_real_state": 45.24629898004886,
+      "pool_Cmodel_std": 77.47878562723673,
+      "final_weight_effective_sample_size": 1.1448873998541969
+    },
+    {
+      "pair_id": 61,
+      "cell": "D2xR2",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 34.313485545416675,
+      "Rpool_Cmodel": -0.051061011789019874,
+      "Rpool_V1": 0.7363824042489361,
+      "pool_Creal_std": 53.66037989550534,
+      "pool_Creal_range": 274.40447422862053,
+      "pool_success_mass": 0.0,
+      "rank1_c_real_state": 71.37845279292577,
+      "pool_Cmodel_std": 51.77019436010321,
+      "final_weight_effective_sample_size": 1.144772347200794
+    },
+    {
+      "pair_id": 67,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 102.34698685010274,
+      "Rpool_Cmodel": 0.1730798800364751,
+      "Rpool_V1": 0.8475807953063458,
+      "pool_Creal_std": 38.16919099943775,
+      "pool_Creal_range": 155.28369530042013,
+      "pool_success_mass": 0.0011111111111111111,
+      "rank1_c_real_state": 108.87651697794597,
+      "pool_Cmodel_std": 92.52036987088354,
+      "final_weight_effective_sample_size": 1.0185487402064355
+    },
+    {
+      "pair_id": 70,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 25.385509371757507,
+      "Rpool_Cmodel": 0.5593445853102071,
+      "Rpool_V1": 0.8073070441523424,
+      "pool_Creal_std": 26.33071928655339,
+      "pool_Creal_range": 163.18251725037894,
+      "pool_success_mass": 0.0,
+      "rank1_c_real_state": 31.586392784113382,
+      "pool_Cmodel_std": 67.32641002722465,
+      "final_weight_effective_sample_size": 1.021083381814042
+    },
+    {
+      "pair_id": 71,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 37.20497743288676,
+      "Rpool_Cmodel": 0.4080050479747655,
+      "Rpool_V1": 0.7466611954621092,
+      "pool_Creal_std": 18.209875314891992,
+      "pool_Creal_range": 129.0346610546112,
+      "pool_success_mass": 0.013333333333333334,
+      "rank1_c_real_state": 41.06795787811279,
+      "pool_Cmodel_std": 92.05981062940681,
+      "final_weight_effective_sample_size": 1.002156422173315
+    },
+    {
+      "pair_id": 73,
+      "cell": "D2xR3",
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 62.73626506328583,
+      "Rpool_Cmodel": 0.29058468790066,
+      "Rpool_V1": 0.7181340620391689,
+      "pool_Creal_std": 39.19949164793777,
+      "pool_Creal_range": 162.91595002015433,
+      "pool_success_mass": 0.0,
+      "rank1_c_real_state": 68.17964458465576,
+      "pool_Cmodel_std": 74.50726265923004,
+      "final_weight_effective_sample_size": 2.5459903830424304
+    },
+    {
+      "pair_id": 74,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 41.8589783112208,
+      "Rpool_Cmodel": 0.12118771690055817,
+      "Rpool_V1": 0.9636334715547769,
+      "pool_Creal_std": 32.28413805520396,
+      "pool_Creal_range": 187.43117954333624,
+      "pool_success_mass": 0.08222222222222222,
+      "rank1_c_real_state": 55.49266950289408,
+      "pool_Cmodel_std": 52.02009775228644,
+      "final_weight_effective_sample_size": 1.3844525371389576
+    },
+    {
+      "pair_id": 75,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 46.8309822678566,
+      "Rpool_Cmodel": 0.03215206094882536,
+      "Rpool_V1": 0.9095229808295556,
+      "pool_Creal_std": 34.70525487399498,
+      "pool_Creal_range": 185.2845461779153,
+      "pool_success_mass": 0.027777777777777776,
+      "rank1_c_real_state": 52.890442768732704,
+      "pool_Cmodel_std": 71.17135547166713,
+      "final_weight_effective_sample_size": 1.0005048754680133
+    },
+    {
+      "pair_id": 76,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 151.782003313303,
+      "Rpool_Cmodel": 0.11847420924821349,
+      "Rpool_V1": 0.984765127873938,
+      "pool_Creal_std": 54.183706570123114,
+      "pool_Creal_range": 218.5052034967458,
+      "pool_success_mass": 0.07111111111111111,
+      "rank1_c_real_state": 156.12339515487352,
+      "pool_Cmodel_std": 50.80563979732889,
+      "final_weight_effective_sample_size": 1.0116075384268872
+    },
+    {
+      "pair_id": 77,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 1.0,
+      "selection_regret": 12.271665414174398,
+      "Rpool_Cmodel": 0.57389526550295,
+      "Rpool_V1": 0.9633968866829513,
+      "pool_Creal_std": 49.08885567582983,
+      "pool_Creal_range": 211.1594228745317,
+      "pool_success_mass": 0.1288888888888889,
+      "rank1_c_real_state": 13.602787335713705,
+      "pool_Cmodel_std": 94.25318095509083,
+      "final_weight_effective_sample_size": 7.742428792289082
+    },
+    {
+      "pair_id": 78,
+      "cell": "D3xR0",
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "v1_favorable"
+      ],
+      "n_seeds": 3,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "planning_success": 0.0,
+      "selection_regret": 97.74519681798263,
+      "Rpool_Cmodel": 0.10174468605206721,
+      "Rpool_V1": 0.9300335554894991,
+      "pool_Creal_std": 41.17528719213306,
+      "pool_Creal_range": 200.74379174908003,
+      "pool_success_mass": 0.005555555555555556,
+      "rank1_c_real_state": 106.62944446007411,
+      "pool_Cmodel_std": 48.48609079998505,
+      "final_weight_effective_sample_size": 1.0426682474818254
+    }
+  ],
+  "cem_per_pair": [
+    {
+      "pair_id": 0,
+      "cell": "D0xR0",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 1.850810170173645,
+      "Rpool_Cmodel": 0.15438017225244324,
+      "Rpool_V1": null,
+      "pool_Creal_std": 0.9954716356092698,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 3.9449143044478863
+    },
+    {
+      "pair_id": 1,
+      "cell": "D0xR0",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 3.57724666595459,
+      "Rpool_Cmodel": 0.1489153016746443,
+      "Rpool_V1": 0.5360928301905423,
+      "pool_Creal_std": 7.938499889262656,
+      "pool_success_mass": 0.8933333333333333,
+      "pool_Cmodel_std": 22.24036416355069
+    },
+    {
+      "pair_id": 2,
+      "cell": "D0xR0",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 6.496888220310211,
+      "Rpool_Cmodel": -0.12320663176853375,
+      "Rpool_V1": 0.10346256235885692,
+      "pool_Creal_std": 1.7061605551837882,
+      "pool_success_mass": 0.9966666666666667,
+      "pool_Cmodel_std": 5.824274987550105
+    },
+    {
+      "pair_id": 3,
+      "cell": "D0xR0",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 5.337380349636078,
+      "Rpool_Cmodel": 0.5237838525853005,
+      "Rpool_V1": 0.36561489440004735,
+      "pool_Creal_std": 4.89755792183505,
+      "pool_success_mass": 0.9533333333333334,
+      "pool_Cmodel_std": 13.050665836100046
+    },
+    {
+      "pair_id": 4,
+      "cell": "D0xR0",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 0.6843732222914696,
+      "Rpool_Cmodel": 0.40787464624589126,
+      "Rpool_V1": 0.2688740996733069,
+      "pool_Creal_std": 7.702873427914056,
+      "pool_success_mass": 0.9733333333333334,
+      "pool_Cmodel_std": 32.690820412342795
+    },
+    {
+      "pair_id": 5,
+      "cell": "D0xR0",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 0.8546631336212158,
+      "Rpool_Cmodel": 0.443792720670547,
+      "Rpool_V1": 0.16910615126259304,
+      "pool_Creal_std": 3.93434446307595,
+      "pool_success_mass": 0.9933333333333333,
+      "pool_Cmodel_std": 4.525440114447957
+    },
+    {
+      "pair_id": 6,
+      "cell": "D0xR1",
+      "subsets": [
+        "latent_favorable"
+      ],
+      "planning_success": true,
+      "selection_regret": 2.600172996520996,
+      "Rpool_Cmodel": -0.033707930088112084,
+      "Rpool_V1": null,
+      "pool_Creal_std": 0.5547785279725165,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 3.920692696344313
+    },
+    {
+      "pair_id": 7,
+      "cell": "D0xR1",
+      "subsets": [
+        "latent_favorable"
+      ],
+      "planning_success": true,
+      "selection_regret": 1.3480596542358398,
+      "Rpool_Cmodel": 0.0807733419260214,
+      "Rpool_V1": null,
+      "pool_Creal_std": 0.5499656464509978,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 0.053483076932170866
+    },
+    {
+      "pair_id": 8,
+      "cell": "D0xR1",
+      "subsets": [
+        "latent_favorable"
+      ],
+      "planning_success": true,
+      "selection_regret": 0.571413554251194,
+      "Rpool_Cmodel": 0.48727519194657715,
+      "Rpool_V1": null,
+      "pool_Creal_std": 3.2522701098801794,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 28.486501315040414
+    },
+    {
+      "pair_id": 9,
+      "cell": "D0xR1",
+      "subsets": [
+        "latent_favorable"
+      ],
+      "planning_success": true,
+      "selection_regret": 1.3178948275744915,
+      "Rpool_Cmodel": 0.4764450192681,
+      "Rpool_V1": 0.08280870801801572,
+      "pool_Creal_std": 4.3554415059359535,
+      "pool_success_mass": 0.89,
+      "pool_Cmodel_std": 33.128284316331666
+    },
+    {
+      "pair_id": 10,
+      "cell": "D0xR1",
+      "subsets": [
+        "latent_favorable"
+      ],
+      "planning_success": true,
+      "selection_regret": 4.747818112373352,
+      "Rpool_Cmodel": 0.17932154801720018,
+      "Rpool_V1": 0.16909009727115443,
+      "pool_Creal_std": 2.8521426034455097,
+      "pool_success_mass": 0.9533333333333334,
+      "pool_Cmodel_std": 38.90622394285944
+    },
+    {
+      "pair_id": 12,
+      "cell": "D0xR2",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 1.4385721683502197,
+      "Rpool_Cmodel": 0.40726852520583556,
+      "Rpool_V1": 0.21250257609071155,
+      "pool_Creal_std": 8.37815299377747,
+      "pool_success_mass": 0.82,
+      "pool_Cmodel_std": 86.43783175081025
+    },
+    {
+      "pair_id": 13,
+      "cell": "D0xR2",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 0.709185971878469,
+      "Rpool_Cmodel": 0.2575664174046378,
+      "Rpool_V1": null,
+      "pool_Creal_std": 0.652514908200179,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 2.995259075704573
+    },
+    {
+      "pair_id": 14,
+      "cell": "D0xR2",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 0.8373348116874695,
+      "Rpool_Cmodel": 0.005794286603184479,
+      "Rpool_V1": null,
+      "pool_Creal_std": 0.4276959710496495,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 2.307156100779066
+    },
+    {
+      "pair_id": 16,
+      "cell": "D0xR2",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 2.1863824129104614,
+      "Rpool_Cmodel": 0.002931588128756986,
+      "Rpool_V1": null,
+      "pool_Creal_std": 1.3039259018974843,
+      "pool_success_mass": 1.0,
+      "pool_Cmodel_std": 1.0103739172713286
+    },
+    {
+      "pair_id": 19,
+      "cell": "D0xR3",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": true,
+      "selection_regret": 5.288108229637146,
+      "Rpool_Cmodel": -0.06082467582973144,
+      "Rpool_V1": 0.32306303391532804,
+      "pool_Creal_std": 5.3210375606599625,
+      "pool_success_mass": 0.9,
+      "pool_Cmodel_std": 66.53466498365158
+    },
+    {
+      "pair_id": 25,
+      "cell": "D1xR0",
+      "subsets": [
+        "invisible_quadrant",
+        "latent_favorable"
+      ],
+      "planning_success": false,
+      "selection_regret": 1.33292555809021,
+      "Rpool_Cmodel": 0.061227276470822385,
+      "Rpool_V1": 0.999998569783823,
+      "pool_Creal_std": 0.20329056129208134,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 0.8537134289977343
+    },
+    {
+      "pair_id": 30,
+      "cell": "D1xR1",
+      "subsets": [
+        "ordinary"
+      ],
+      "planning_success": false,
+      "selection_regret": 10.830290675163269,
+      "Rpool_Cmodel": 0.06673807486749853,
+      "Rpool_V1": 0.732473027478083,
+      "pool_Creal_std": 7.827324282244294,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 2.101605051987205
+    },
+    {
+      "pair_id": 46,
+      "cell": "D1xR3",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 15.951216220855713,
+      "Rpool_Cmodel": -0.5979161621351715,
+      "Rpool_V1": 0.3707944989897328,
+      "pool_Creal_std": 3.4646340169100758,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 20.660750701002268
+    },
+    {
+      "pair_id": 60,
+      "cell": "D2xR2",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 28.627813816070557,
+      "Rpool_Cmodel": -0.12303915855055783,
+      "Rpool_V1": 0.7030438115979066,
+      "pool_Creal_std": 5.008552049837642,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 7.357407243768771
+    },
+    {
+      "pair_id": 61,
+      "cell": "D2xR2",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 4.66182279586792,
+      "Rpool_Cmodel": 0.3570106334514828,
+      "Rpool_V1": -0.09698241091567683,
+      "pool_Creal_std": 3.715284798687016,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 12.932278552806316
+    },
+    {
+      "pair_id": 67,
+      "cell": "D2xR3",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 103.0439538359642,
+      "Rpool_Cmodel": 0.2815897954421716,
+      "Rpool_V1": 0.46137045967177415,
+      "pool_Creal_std": 41.890320753222454,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 34.600155222709716
+    },
+    {
+      "pair_id": 70,
+      "cell": "D2xR3",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 6.556379318237305,
+      "Rpool_Cmodel": -0.02831409237880421,
+      "Rpool_V1": 0.8703545594951054,
+      "pool_Creal_std": 2.8246979832619217,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 4.820076668455807
+    },
+    {
+      "pair_id": 71,
+      "cell": "D2xR3",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 38.089025020599365,
+      "Rpool_Cmodel": -0.23648218313536815,
+      "Rpool_V1": 0.9413664596273291,
+      "pool_Creal_std": 9.30815407171771,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 18.608788514190145
+    },
+    {
+      "pair_id": 73,
+      "cell": "D2xR3",
+      "subsets": [
+        "invisible_quadrant"
+      ],
+      "planning_success": false,
+      "selection_regret": 25.337422132492065,
+      "Rpool_Cmodel": 0.23061732317397232,
+      "Rpool_V1": 0.7799833462921479,
+      "pool_Creal_std": 32.63031443690521,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 23.79670022909409
+    },
+    {
+      "pair_id": 74,
+      "cell": "D3xR0",
+      "subsets": [
+        "v1_favorable"
+      ],
+      "planning_success": false,
+      "selection_regret": 111.83478951454163,
+      "Rpool_Cmodel": -0.19574884165379614,
+      "Rpool_V1": 0.5425100278891988,
+      "pool_Creal_std": 6.531417760397673,
+      "pool_success_mass": 0.0,
+      "pool_Cmodel_std": 9.527123462408285
+    },
+    {
+      "pair_id": 75,
+      "cell": "D3xR0",
+      "subsets": [
+        "v1_favorable"
+      ],
+      "planning_success": false,
+      "selection_regret": 57.3904909491539,
+      "Rpool_Cmodel": 0.45357081745352723,
+      "Rpool_V1": 0.8971586515607748,
+      "pool_Creal_std": 22.079840213332528,
+      "pool_success_mass": 0.5533333333333333,
+      "pool_Cmodel_std": 66.71688801822377
+    },
+    {
+      "pair_id": 76,
+      "cell": "D3xR0",
+      "subsets": [
+        "v1_favorable"
+      ],
+      "planning_success": false,
+      "selection_regret": 94.10075491666794,
+      "Rpool_Cmodel": -0.20563561817353526,
+      "Rpool_V1": 0.9616893521039122,
+      "pool_Creal_std": 21.15006196141872,
+      "pool_success_mass": 0.0033333333333333335,
+      "pool_Cmodel_std": 15.9843318621688
+    },
+    {
+      "pair_id": 77,
+      "cell": "D3xR0",
+      "subsets": [
+        "v1_favorable"
+      ],
+      "planning_success": false,
+      "selection_regret": 28.17789199948311,
+      "Rpool_Cmodel": -0.18575450838342647,
+      "Rpool_V1": 0.9673093156590535,
+      "pool_Creal_std": 11.066918209452835,
+      "pool_success_mass": 0.4,
+      "pool_Cmodel_std": 1.2619780350258178
+    },
+    {
+      "pair_id": 78,
+      "cell": "D3xR0",
+      "subsets": [
+        "invisible_quadrant",
+        "v1_favorable"
+      ],
+      "planning_success": false,
+      "selection_regret": 25.820939421653748,
+      "Rpool_Cmodel": 0.21541706018955764,
+      "Rpool_V1": 0.9928926840116418,
+      "pool_Creal_std": 15.897863731079728,
+      "pool_success_mass": 0.21666666666666667,
+      "pool_Cmodel_std": 88.46274182487663
+    }
+  ],
+  "summary": {
+    "cem_default": {
+      "n_pairs": 30,
+      "planning_success": {
+        "mean": 0.5333333333333333,
+        "std": 0.5074162634049248,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 30,
+        "ddof": 1
+      },
+      "selection_regret": {
+        "mean": 19.720067355874924,
+        "std": 31.39066505420191,
+        "min": 0.571413554251194,
+        "max": 111.83478951454163,
+        "n": 30,
+        "ddof": 1
+      },
+      "Rpool_Cmodel": {
+        "mean": 0.11505545969603787,
+        "std": 0.2695249170459804,
+        "min": -0.5979161621351715,
+        "max": 0.5237838525853005,
+        "n": 30,
+        "ddof": 1
+      },
+      "Rpool_V1": {
+        "mean": 0.5371555350619722,
+        "std": 0.3483398466822842,
+        "min": -0.09698241091567683,
+        "max": 0.999998569783823,
+        "n": 23,
+        "ddof": 1
+      },
+      "pool_Creal_std": {
+        "mean": 7.9473836150636865,
+        "std": 9.806898471272099,
+        "min": 0.20329056129208134,
+        "max": 41.890320753222454,
+        "n": 30,
+        "ddof": 1
+      },
+      "pool_Creal_range": {
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null,
+        "n": 0,
+        "ddof": 1
+      },
+      "pool_success_mass": {
+        "mean": 0.5515555555555556,
+        "std": 0.46254148272769396,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 30,
+        "ddof": 1
+      },
+      "pool_Cmodel_std": {
+        "mean": 21.79138299366265,
+        "std": 25.13439995395475,
+        "min": 0.053483076932170866,
+        "max": 88.46274182487663,
+        "n": 30,
+        "ddof": 1
+      },
+      "final_weight_effective_sample_size": {
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null,
+        "n": 0,
+        "ddof": 1
+      }
+    },
+    "mppi_tau_1": {
+      "n_pairs": 30,
+      "planning_success": {
+        "mean": 0.3888888888888889,
+        "std": 0.41136473485583813,
+        "min": 0.0,
+        "max": 1.0,
+        "n": 30,
+        "ddof": 1
+      },
+      "selection_regret": {
+        "mean": 31.456967598960198,
+        "std": 34.82985632731499,
+        "min": 1.33292555809021,
+        "max": 151.782003313303,
+        "n": 30,
+        "ddof": 1
+      },
+      "Rpool_Cmodel": {
+        "mean": 0.19394336217701866,
+        "std": 0.20351415800888842,
+        "min": -0.21707565991869338,
+        "max": 0.5972790062551708,
+        "n": 30,
+        "ddof": 1
+      },
+      "Rpool_V1": {
+        "mean": 0.7072783837360708,
+        "std": 0.23663035713706715,
+        "min": 0.13916566785866763,
+        "max": 0.9999985930525122,
+        "n": 30,
+        "ddof": 1
+      },
+      "pool_Creal_std": {
+        "mean": 29.47769160115279,
+        "std": 13.69607097345341,
+        "min": 0.20391374394863312,
+        "max": 54.183706570123114,
+        "n": 30,
+        "ddof": 1
+      },
+      "pool_Creal_range": {
+        "mean": 154.3913396074549,
+        "std": 57.214156964441926,
+        "min": 2.8674808144569397,
+        "max": 274.40447422862053,
+        "n": 30,
+        "ddof": 1
+      },
+      "pool_success_mass": {
+        "mean": 0.27800000000000014,
+        "std": 0.30579174431259637,
+        "min": 0.0,
+        "max": 0.9622222222222222,
+        "n": 30,
+        "ddof": 1
+      },
+      "pool_Cmodel_std": {
+        "mean": 68.82514584927142,
+        "std": 25.679051135587482,
+        "min": 3.3940422996500104,
+        "max": 121.5488470041568,
+        "n": 30,
+        "ddof": 1
+      },
+      "final_weight_effective_sample_size": {
+        "mean": 5.1071205795992975,
+        "std": 15.736092788643731,
+        "min": 1.0005048754680133,
+        "max": 87.48308944388619,
+        "n": 30,
+        "ddof": 1
+      }
+    },
+    "mppi_by_subset": {
+      "invisible_quadrant": {
+        "n_pairs": 8,
+        "planning_success": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 8,
+          "ddof": 1
+        },
+        "selection_regret": {
+          "mean": 41.435328391836144,
+          "std": 30.018933336928278,
+          "min": 1.33292555809021,
+          "max": 102.34698685010274,
+          "n": 8,
+          "ddof": 1
+        },
+        "Rpool_Cmodel": {
+          "mean": 0.21242146370238194,
+          "std": 0.20646275351407992,
+          "min": -0.051061011789019874,
+          "max": 0.5593445853102071,
+          "n": 8,
+          "ddof": 1
+        },
+        "Rpool_V1": {
+          "mean": 0.7273354297324156,
+          "std": 0.24078165701539955,
+          "min": 0.1738737504030681,
+          "max": 0.9999985930525122,
+          "n": 8,
+          "ddof": 1
+        },
+        "pool_Creal_std": {
+          "mean": 30.827213191266345,
+          "std": 16.067325183768748,
+          "min": 0.20391374394863312,
+          "max": 53.66037989550534,
+          "n": 8,
+          "ddof": 1
+        },
+        "pool_Creal_range": {
+          "mean": 161.7167156999728,
+          "std": 78.38803483586301,
+          "min": 2.8674808144569397,
+          "max": 274.40447422862053,
+          "n": 8,
+          "ddof": 1
+        },
+        "pool_success_mass": {
+          "mean": 0.005555555555555556,
+          "std": 0.010902809372110727,
+          "min": 0.0,
+          "max": 0.03,
+          "n": 8,
+          "ddof": 1
+        },
+        "pool_Cmodel_std": {
+          "mean": 62.34970862142249,
+          "std": 29.30725479369072,
+          "min": 7.789390464909616,
+          "max": 92.52036987088354,
+          "n": 8,
+          "ddof": 1
+        },
+        "final_weight_effective_sample_size": {
+          "mean": 2.2543451018370155,
+          "std": 2.6984231230303655,
+          "min": 1.002156422173315,
+          "max": 8.810529329577772,
+          "n": 8,
+          "ddof": 1
+        }
+      },
+      "latent_favorable": {
+        "n_pairs": 5,
+        "planning_success": {
+          "mean": 0.7333333333333333,
+          "std": 0.27888667551135854,
+          "min": 0.3333333333333333,
+          "max": 1.0,
+          "n": 5,
+          "ddof": 1
+        },
+        "selection_regret": {
+          "mean": 11.7820786597666,
+          "std": 9.396731389631727,
+          "min": 3.7621879875659943,
+          "max": 28.0628765920798,
+          "n": 5,
+          "ddof": 1
+        },
+        "Rpool_Cmodel": {
+          "mean": 0.16387519554956648,
+          "std": 0.2605648518206955,
+          "min": -0.17950371681363364,
+          "max": 0.5009896456908167,
+          "n": 5,
+          "ddof": 1
+        },
+        "Rpool_V1": {
+          "mean": 0.4857277984102133,
+          "std": 0.26049871771962835,
+          "min": 0.13916566785866763,
+          "max": 0.7434123359497443,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_Creal_std": {
+          "mean": 21.7671313331479,
+          "std": 13.487473769895676,
+          "min": 3.961909497155331,
+          "max": 34.73257782422887,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_Creal_range": {
+          "mean": 122.18320813927316,
+          "std": 62.9981134105614,
+          "min": 33.891718258460365,
+          "max": 191.47574920455614,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_success_mass": {
+          "mean": 0.518888888888889,
+          "std": 0.3178603233893547,
+          "min": 0.21,
+          "max": 0.9622222222222222,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_Cmodel_std": {
+          "mean": 64.82397563328941,
+          "std": 35.28812356270456,
+          "min": 3.3940422996500104,
+          "max": 88.87546891224885,
+          "n": 5,
+          "ddof": 1
+        },
+        "final_weight_effective_sample_size": {
+          "mean": 18.390211472355578,
+          "std": 38.62424018793159,
+          "min": 1.0042689664950406,
+          "max": 87.48308944388619,
+          "n": 5,
+          "ddof": 1
+        }
+      },
+      "ordinary": {
+        "n_pairs": 12,
+        "planning_success": {
+          "mean": 0.5833333333333334,
+          "std": 0.35176323534072423,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 12,
+          "ddof": 1
+        },
+        "selection_regret": {
+          "mean": 16.902265117562195,
+          "std": 18.24155461509755,
+          "min": 1.561112316325307,
+          "max": 67.55057180921237,
+          "n": 12,
+          "ddof": 1
+        },
+        "Rpool_Cmodel": {
+          "mean": 0.19600826994092146,
+          "std": 0.19859174810723426,
+          "min": -0.21707565991869338,
+          "max": 0.5972790062551708,
+          "n": 12,
+          "ddof": 1
+        },
+        "Rpool_V1": {
+          "mean": 0.6849730883117507,
+          "std": 0.18904225587354365,
+          "min": 0.3878439648408663,
+          "max": 0.9184519215343014,
+          "n": 12,
+          "ddof": 1
+        },
+        "pool_Creal_std": {
+          "mean": 26.45334528928572,
+          "std": 10.93997021191563,
+          "min": 9.655615767764951,
+          "max": 43.06650408029043,
+          "n": 12,
+          "ddof": 1
+        },
+        "pool_Creal_range": {
+          "mean": 143.66385650715753,
+          "std": 39.90633055764487,
+          "min": 72.17987515528996,
+          "max": 213.52682430810046,
+          "n": 12,
+          "ddof": 1
+        },
+        "pool_success_mass": {
+          "mean": 0.4487962962962964,
+          "std": 0.2751151002196606,
+          "min": 0.03666666666666667,
+          "max": 0.87,
+          "n": 12,
+          "ddof": 1
+        },
+        "pool_Cmodel_std": {
+          "mean": 77.09170529699647,
+          "std": 21.786516184873825,
+          "min": 48.424220377079905,
+          "max": 121.5488470041568,
+          "n": 12,
+          "ddof": 1
+        },
+        "final_weight_effective_sample_size": {
+          "mean": 2.587178101725012,
+          "std": 2.4926232540501503,
+          "min": 1.012831318910264,
+          "max": 8.976403838210889,
+          "n": 12,
+          "ddof": 1
+        }
+      },
+      "v1_favorable": {
+        "n_pairs": 5,
+        "planning_success": {
+          "mean": 0.2,
+          "std": 0.447213595499958,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 5,
+          "ddof": 1
+        },
+        "selection_regret": {
+          "mean": 70.09776522490748,
+          "std": 55.043903660222526,
+          "min": 12.271665414174398,
+          "max": 151.782003313303,
+          "n": 5,
+          "ddof": 1
+        },
+        "Rpool_Cmodel": {
+          "mean": 0.18949078773052283,
+          "std": 0.2179049791426765,
+          "min": 0.03215206094882536,
+          "max": 0.57389526550295,
+          "n": 5,
+          "ddof": 1
+        },
+        "Rpool_V1": {
+          "mean": 0.9502704044861442,
+          "std": 0.030044319887071867,
+          "min": 0.9095229808295556,
+          "max": 0.984765127873938,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_Creal_std": {
+          "mean": 42.28744847345699,
+          "std": 9.308233968566643,
+          "min": 32.28413805520396,
+          "max": 54.183706570123114,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_Creal_range": {
+          "mean": 200.62482876832183,
+          "std": 14.492207176856615,
+          "min": 185.2845461779153,
+          "max": 218.5052034967458,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_success_mass": {
+          "mean": 0.0631111111111111,
+          "std": 0.0482624000569725,
+          "min": 0.005555555555555556,
+          "max": 0.1288888888888889,
+          "n": 5,
+          "ddof": 1
+        },
+        "pool_Cmodel_std": {
+          "mean": 63.34727295527167,
+          "std": 19.511814446104143,
+          "min": 48.48609079998505,
+          "max": 94.25318095509083,
+          "n": 5,
+          "ddof": 1
+        },
+        "final_weight_effective_sample_size": {
+          "mean": 2.4363323981609533,
+          "std": 2.97047351240329,
+          "min": 1.0005048754680133,
+          "max": 7.742428792289082,
+          "n": 5,
+          "ddof": 1
+        }
+      }
+    }
+  },
+  "comparison_table": [
+    {
+      "metric": "Planning success (30 pairs)",
+      "key": "planning_success",
+      "cem_default": 0.5333333333333333,
+      "mppi_tau_1": 0.3888888888888889,
+      "format": "percent"
+    },
+    {
+      "metric": "Rpool(C_model) mean",
+      "key": "Rpool_Cmodel",
+      "cem_default": 0.11505545969603787,
+      "mppi_tau_1": 0.19394336217701866,
+      "format": "float"
+    },
+    {
+      "metric": "Rpool(V1) mean",
+      "key": "Rpool_V1",
+      "cem_default": 0.5371555350619722,
+      "mppi_tau_1": 0.7072783837360708,
+      "format": "float"
+    },
+    {
+      "metric": "Pool C_real_state std mean",
+      "key": "pool_Creal_std",
+      "cem_default": 7.9473836150636865,
+      "mppi_tau_1": 29.47769160115279,
+      "format": "float"
+    },
+    {
+      "metric": "Pool success mass mean",
+      "key": "pool_success_mass",
+      "cem_default": 0.5515555555555556,
+      "mppi_tau_1": 0.27800000000000014,
+      "format": "percent"
+    }
+  ],
+  "decision": {
+    "verdict": "Endpoint-planning decoupling is partially optimizer-general and partially CEM-specific.",
+    "rationale": "CEM hard truncation compresses pool diversity by 3.7x relative to MPPI, reducing Rpool(C_model) from 0.194 to 0.115. However, even MPPI retains only 41% of the endpoint ranking signal (Rpool/Rendpoint = 0.194/0.47), confirming that most of the decoupling is representation-driven rather than optimizer-specific.",
+    "cem_planning_success": 0.5333333333333333,
+    "mppi_planning_success": 0.3888888888888889,
+    "success_gap_cem_minus_mppi": 0.14444444444444443,
+    "cem_Rpool_Cmodel": 0.11505545969603787,
+    "mppi_Rpool_Cmodel": 0.19394336217701866,
+    "Rpool_gap_mppi_minus_cem": 0.07888790248098079,
+    "endpoint_reference_R": 0.47,
+    "cem_pool_Creal_std": 7.9473836150636865,
+    "mppi_pool_Creal_std": 29.47769160115279,
+    "pool_Creal_std_ratio_mppi_over_cem": 3.708,
+    "cem_specific_recovered_endpoint_pool_gap_fraction": 0.2222,
+    "mppi_retained_endpoint_signal_fraction": 0.4126,
+    "planning_success_note": "MPPI planning success is lower than CEM, consistent with slower convergence under 30 iterations. This does not invalidate the pool-level comparison because the diagnostic targets pool ranking geometry, not absolute planning performance.",
+    "invisible_quadrant_note": "The selected invisible-quadrant pairs have 0% planning success under both matched CEM and MPPI.",
+    "thresholds": {
+      "success_debug_gap": 0.1,
+      "rpool_gap_threshold": 0.1,
+      "near_zero_rpool_threshold": 0.1
+    }
+  }
+}

@@ -1,0 +1,255 @@
+\section{Negative Result Details}
+\label{app:negative}
+
+Section~6 and Figure~5 summarize four failed repairs.  This appendix
+provides the corresponding experimental details, full data tables, and
+additional ablations.  Unless otherwise noted, all repairs use the same
+Track~A 100-pair PushT artifact (Appendix~\ref{app:track_a}) and the
+default CEM hyperparameters: 300 samples, 30 elites, and 30 iterations.
+
+\subsection{Learned Cost Heads}
+\label{app:negative_cost_heads}
+
+MLP cost heads $C_\psi(z,\zgoal)$ were trained on frozen LeWM latents using
+V1 hinge labels.  Two data splits were used: Split~1 contains 15 easier
+pairs with at least one successful action under default CEM, and Split~3
+contains 16 hard pairs with zero successes under default CEM.  The split
+numbering follows internal experiment IDs.
+
+\begin{table}[h]
+\centering
+\caption{Endpoint ranking on Split~1 held-out pairs.}
+\label{tab:h-cost-split1}
+\small
+\begin{tabular}{lcc}
+\toprule
+Cost function & Spearman & Pairwise accuracy \\
+\midrule
+Euclidean & 0.599 & 0.681 \\
+Small $C_\psi$ & 0.442 & 0.777 \\
+Large $C_\psi$ & 0.512 & 0.812 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Predicted endpoint metrics on Split~3 hard pairs across
+cost-head variants.}
+\label{tab:h-cost-split3}
+\small
+\begin{tabular}{lcc}
+\toprule
+Cost function & Spearman & Pairwise accuracy \\
+\midrule
+Euclidean & 0.233 & 0.578 \\
+MLP offline small & 0.270 & 0.614 \\
+MLP offline large & 0.352 & 0.611 \\
+MLP mixed small & 0.285 & 0.594 \\
+MLP mixed temp & 0.378 & 0.597 \\
+Mahalanobis low-rank & 0.301 & 0.614 \\
+CEM-aware & 0.227 & 0.579 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{CEM planning success with learned cost heads.  No variant recovers
+Split~3 hard-pair successes.}
+\label{tab:h-cost-planning}
+\small
+\begin{tabular}{llcc}
+\toprule
+Split & Cost & Successes & Total \\
+\midrule
+Split~3 & Euclidean & 0 & 16 \\
+Split~3 & Small $C_\psi$ & 0 & 16 \\
+Split~3 & Large $C_\psi$ & 0 & 16 \\
+Split~3 & Mixed $C_\psi$ & 0 & 16 \\
+Split~3 & Mahalanobis & 0 & 16 \\
+Split~3 & CEM-aware & 1 & 16 \\
+Split~1 & Euclidean & 4 & 15 \\
+Split~1 & $C_\psi$ & 3 & 15 \\
+Split~1 & CEM-aware & 2 & 15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The mechanism is elite-cost compression.  At CEM iteration~30, the
+Euclidean cost has elite standard deviation 0.354, while $C_\psi$ has elite
+standard deviation 0.0015, a 238$\times$ compression.  This removes local
+discrimination: all 30 elites receive nearly identical scores, so the
+proposal update receives no gradient to separate near-successes from
+near-misses, analogous to the V2 indicator degeneracy
+(Appendix~\ref{app:oracle}).
+
+\subsection{DINOv2 Encoder Replacement}
+\label{app:negative_dinov2}
+
+\begin{table}[h]
+\centering
+\caption{Endpoint ranking comparison between trained LeWM,
+random-projected LeWM, and DINOv2 features on the Track~A 100-pair
+artifact.}
+\label{tab:h-dino}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Representation & Dim & Spearman & Pairwise acc. & Per-pair $\rho$ \\
+\midrule
+LeWM (trained) & 192 & 0.503 & 0.647 & 0.355 \\
+Random projection of LeWM & 192 & 0.501 & 0.643 & 0.349 \\
+DINOv2 mean-pool & 768 & 0.261 & 0.610 & 0.285 \\
+DINOv2 CLS & 768 & 0.239 & 0.594 & 0.248 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+DINOv2 mean-pool reaches the highest pairwise accuracy among non-LeWM
+representations (0.610), but its Spearman correlation (0.261) is roughly
+half of trained LeWM (0.503).  The random projection of LeWM latents
+preserves 99.6\% of the Spearman signal (0.501 vs.\ 0.503), consistent
+with Stage~1A (Appendix~\ref{app:stage1a}).  The 86.6M-parameter
+ViT-B/14 of DINOv2 has 15.7$\times$ more parameters than the 5.5M-parameter
+ViT-tiny, so the gap is not attributable to model capacity but to
+task-specific training.
+
+\subsection{Hybrid CEM Oracle Budget}
+\label{app:negative_hybrid}
+
+Hybrid CEM re-ranks the top $k$ CEM candidates per iteration using the V1
+simulator cost from Equation~\ref{eq:v1}.  This tests whether injecting
+ground-truth cost signal during search recovers hard-pair successes.
+
+\begin{table}[h]
+\centering
+\caption{Hybrid CEM successes on Split~3 hard pairs by oracle budget.
+Oracle budget is $k/N$ where $N=300$.}
+\label{tab:h-oracle-split3}
+\small
+\begin{tabular}{cccc}
+\toprule
+$k$ & Oracle budget (\%) & Euclidean pre. & $C_\psi$ pre. \\
+\midrule
+0 & 0 & 0/16 & 0/16 \\
+30 & 10 & 0/16 & 0/16 \\
+60 & 20 & 7/16 & 6/16 \\
+90 & 30 & 10/16 & 9/16 \\
+150 & 50 & 12/16 & 14/16 \\
+300 & 100 & 13/16 & 13/16 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Partial oracle schedules at $k=60$ on Split~3 hard pairs.  Only
+sustained oracle access across all iterations recovers substantial
+successes.}
+\label{tab:h-oracle-partial}
+\small
+\begin{tabular}{lc}
+\toprule
+Schedule & Successes / 16 \\
+\midrule
+First iteration only & 0 \\
+Early 5 iterations & 0 \\
+Early 10 iterations & 2 \\
+Every 3rd iteration & 4 \\
+Late 10 iterations & 3 \\
+All 30 iterations & 7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Hybrid CEM successes on Split~1 easier pairs.  Euclidean prefilter
+saturates at $k=150$.}
+\label{tab:h-oracle-split1}
+\small
+\begin{tabular}{ccc}
+\toprule
+$k$ & Euclidean pre. & $C_\psi$ pre. ($k=150$) \\
+\midrule
+0 & 4/15 & -- \\
+60 & 10/15 & -- \\
+90 & 12/15 & -- \\
+150 & 13/15 & 11/15 \\
+300 & 13/15 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 20\% oracle budget threshold ($k=60$) reported in Section~6.3
+corresponds to 115{,}200 oracle rollouts and 2{,}880{,}000 simulator
+environment steps over 30 CEM iterations.  This overhead makes hybrid CEM
+impractical for deployment but confirms that the CEM cost landscape, not
+action sampling, is the primary bottleneck.
+
+\subsection{Subspace-CEM Stage A}
+\label{app:negative_subspace}
+
+Subspace-CEM searched with an $m=64$ projected cost and selected the rank-1
+action by full 192-dimensional LeWM cost.  The locked Stage~A criterion
+required at least +3 percentage points over the better of default CEM and
+pure projected $m=64$.
+
+\begin{table}[h]
+\centering
+\caption{Subspace-CEM Stage~A results over 30 pairs and two seeds.  Overall
+$\Delta=-8.3$ percentage points versus default CEM.}
+\label{tab:h-subspace}
+\small
+\begin{tabular}{lccc}
+\toprule
+Subset & Subspace (\%) & Default (\%) & Pure proj. $m{=}64$ (\%) \\
+\midrule
+Invisible quadrant & 0.0 & 0.0 & 6.25 \\
+Ordinary & 75.0 & 83.3 & 85.0 \\
+Latent favorable & 90.0 & 100.0 & 80.0 \\
+V1 favorable & 20.0 & 40.0 & 20.0 \\
+Overall & 48.3 & 56.7 & 50.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Subspace-CEM regresses in every subset where default CEM has nonzero
+success.  The largest regressions are in ordinary pairs ($-8.3$ percentage
+points) and V1-favorable pairs ($-20.0$ percentage points).  The failure
+shows that projected-cost search moves the CEM pool into a region that
+full-dimensional re-ranking cannot recover, confirming that the
+search-selection split identified in Section~4 cannot be repaired by a
+simple two-stage approach.
+
+\subsection{Cube Anomaly Multi-Seed Check}
+\label{app:negative_cube_anomaly}
+
+The Cube full projected CEM dimension sweep (Appendix~\ref{app:stage1b},
+Section~G.3) showed a non-monotonic inverted-U success pattern peaking at
+$m=32$.  A multi-seed sanity check added projection seeds~1 and~2 to the
+existing seed~0 baseline.
+
+\begin{table}[h]
+\centering
+\caption{Cube full projected CEM multi-seed check over 25 pairs.  The
+$m=32$ versus $m=192$ gap is +5.33 percentage points across three seeds.}
+\label{tab:h-cube-anomaly}
+\small
+\begin{tabular}{ccccc}
+\toprule
+$m$ & Seed 0 (\%) & Seed 1 (\%) & Seed 2 (\%) & 3-seed mean (\%) \\
+\midrule
+32 & 76.0 & 72.0 & 64.0 & 70.7 \\
+64 & 72.0 & 60.0 & 72.0 & 68.0 \\
+192 & 60.0 & 64.0 & 72.0 & 65.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The $m=32$ advantage persists across seeds but with high variance, including
+a seed-level range of 12 percentage points at $m=32$.  The closeout
+classified this as MIXED under the pre-registered 5--10 percentage-point
+criterion, and Cube entered the final paper as supplementary rather than
+primary evidence.

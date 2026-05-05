@@ -1,0 +1,176 @@
+\section{V1/V2/V3 Oracle Ablation Details}
+\label{app:oracle}
+
+The Track~A artifact (Appendix~\ref{app:track_a}) established that default
+latent CEM fails in many cells of the displacement$\times$rotation grid.
+This appendix reports three oracle-cost variants that replace the latent
+cost with privileged simulator-state costs, isolating cost-shape effects from
+representation effects.  All variants use the same 100-pair Track~A artifact,
+the same CEM hyperparameters (300 samples, 30 elites, 30 iterations), and
+seed~0.  Only the CEM scoring function changes; the encoder, predictor, and
+action sampling are identical.
+
+\subsection{Oracle Cost Definitions}
+
+\paragraph{V3: latent-delta oracle.}
+$C_\text{V3} = \|z_\text{terminal} - \zgoal\|^2$, where $z_\text{terminal}$
+is the encoder applied to the \emph{actual} terminal observation after
+simulator rollout.  V3 removes predictor error but keeps the
+latent geometry as the cost surface.
+
+\paragraph{V1: hinge oracle.}
+\begin{equation}
+C_\text{V1} = \max(\Delta_\text{pos} - 20, 0) + \alpha \cdot \max(\Delta_\text{angle} - \pi/9, 0),
+\label{eq:v1}
+\end{equation}
+where $\Delta_\text{pos}$ is the block position error in pixels,
+$\Delta_\text{angle}$ is the absolute angle error in radians, and
+$\alpha = 20 / (\pi/9) \approx 57.3$ equalizes the two terms at the success
+boundary.  V1 is zero inside the success region and rises linearly outside
+it, providing a shaped cost that directly encodes the task success criterion.
+
+\paragraph{V2: indicator oracle.}
+$C_\text{V2} = \mathbb{1}[\text{not success}]$, where success is the
+conjunctive PushT criterion ($\Delta_\text{pos} < 20$\,px and
+$\Delta_\text{angle} < \pi/9$).  V2 gives binary feedback with no gradient
+outside the success region.
+
+\subsection{Full 16-Cell Variant Matrix}
+
+Table~\ref{tab:oracle-matrix} reports CEM-late success rates for all four
+cost variants across the $4\times 4$ grid.  V1 reaches the highest success
+in every cell; V3 exceeds default latent in 10 of 16 cells; V2 degenerates
+in high-displacement cells.
+
+\begin{table}[h]
+\centering
+\caption{CEM-late success rate (\%) by cost variant across the Track~A
+$4\times 4$ grid.  Each cell evaluates 6--7 pairs $\times$ 20 CEM-late
+actions.  Bold marks the highest rate per cell.}
+\label{tab:oracle-matrix}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccccccccccc}
+\toprule
+ & \multicolumn{4}{c}{R0} & \multicolumn{4}{c}{R1} & \multicolumn{4}{c}{R2} & \multicolumn{4}{c}{R3} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}\cmidrule(lr){10-13}\cmidrule(lr){14-17}
+ & D0 & D1 & D2 & D3 & D0 & D1 & D2 & D3 & D0 & D1 & D2 & D3 & D0 & D1 & D2 & D3 \\
+\midrule
+Latent & \textbf{100.0} & 50.8 & 40.8 & 16.7 & 91.7 & 16.7 & 46.7 & 37.1 & 66.7 & 50.0 & 2.1 & 9.2 & 16.7 & 0.0 & 0.7 & 7.1 \\
+V3     & 82.5 & 16.7 & 40.8 & 85.8 & 41.7 & 50.0 & 62.5 & 44.3 & 75.8 & 79.2 & 11.4 & 27.5 & 16.7 & 0.8 & 0.0 & 35.7 \\
+V1     & \textbf{100.0} & \textbf{33.3} & \textbf{55.0} & \textbf{99.2} & \textbf{84.2} & \textbf{100.0} & \textbf{100.0} & \textbf{57.1} & \textbf{100.0} & \textbf{83.3} & \textbf{56.4} & \textbf{66.7} & \textbf{66.7} & \textbf{50.8} & \textbf{71.4} & \textbf{99.3} \\
+V2     & \textbf{100.0} & 33.3 & 33.3 & 66.7 & 65.8 & 66.7 & 50.0 & 14.3 & 83.3 & 33.3 & 14.3 & 0.0 & 33.3 & 0.0 & 0.0 & 0.0 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{V3 vs.\ Default Latent}
+\label{app:v3_vs_latent}
+
+V3 removes predictor error by encoding the actual terminal observation
+instead of the predicted latent.  Table~\ref{tab:v3-delta} summarizes the
+V3$-$latent difference per cell.
+
+\begin{table}[h]
+\centering
+\caption{$\Delta$ (V3 $-$ latent) in CEM-late success rate (percentage
+points).  Positive values mean V3 outperforms default latent CEM.}
+\label{tab:v3-delta}
+\begin{tabular}{lcccc}
+\toprule
+ & R0 & R1 & R2 & R3 \\
+\midrule
+D0 & $-$17.5 & $-$50.0 & $+$9.2 & 0.0 \\
+D1 & $-$34.2 & $+$33.3 & $+$29.2 & $+$0.8 \\
+D2 & 0.0 & $+$15.8 & $+$9.3 & $-$0.7 \\
+D3 & $+$69.2 & $+$7.1 & $+$18.3 & $+$28.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+V3 improves over latent in 10 of 16 cells but \emph{regresses} in three
+latent-favorable cells: D0xR0 ($-$17.5\,pp), D0xR1 ($-$50.0\,pp), and D1xR0
+($-$34.2\,pp).  These are cells where the imagined latent from the predictor
+happens to rank candidates better than the encoder applied to real terminal
+observations---a predictor-favorable artifact that V3 removes.
+
+\subsection{V1 vs.\ V3}
+\label{app:v1_vs_v3}
+
+V1 hinge cost outperforms V3 in all 16 cells (Table~\ref{tab:v1-delta}).
+The gains are largest in the R3 column (high rotation): D1xR3 $+$50.0\,pp,
+D2xR3 $+$71.4\,pp, D3xR3 $+$63.6\,pp.  V1 also closes the
+latent-favorable gaps: D0xR1 recovers from V3's 41.7\% to 84.2\%, and D1xR0
+recovers from 16.7\% to 33.3\%.
+
+\begin{table}[h]
+\centering
+\caption{$\Delta$ (V1 $-$ V3) in CEM-late success rate (percentage points).
+V1 exceeds V3 in all 16 cells.}
+\label{tab:v1-delta}
+\begin{tabular}{lcccc}
+\toprule
+ & R0 & R1 & R2 & R3 \\
+\midrule
+D0 & $+$17.5 & $+$42.5 & $+$24.2 & $+$50.0 \\
+D1 & $+$16.7 & $+$50.0 & $+$4.2 & $+$50.0 \\
+D2 & $+$14.2 & $+$37.5 & $+$45.0 & $+$71.4 \\
+D3 & $+$13.3 & $+$12.9 & $+$39.2 & $+$63.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+V1 reaches at least 95\% CEM-late success in four cells: D0xR0 (100.0\%),
+D0xR2 (100.0\%), D3xR0 (99.2\%), and D3xR3 (99.3\%).  These results
+demonstrate that the offset-50 PushT task is feasible under a well-shaped
+planning cost, even at large displacements and rotations.
+
+\subsection{V2 Indicator Degeneracy}
+\label{app:v2_degen}
+
+V2 uses binary success/failure as the CEM cost.  This creates a degeneracy:
+when no candidate in the elite set succeeds, all elites receive cost~1.0 and
+CEM cannot distinguish among them.  The degeneracy proxy flagged 60 of 100
+pairs with all stored early and late V2 elite costs equal to~1.0.
+
+Table~\ref{tab:v2-delta} shows V1$-$V2 differences.  V1 exceeds V2 in 14 of
+16 cells, with the remaining 2 cells tied.  The gap widens with displacement
+and rotation: D3xR3 shows a 99.3\,pp difference (V1: 99.3\%, V2: 0.0\%).
+
+\begin{table}[h]
+\centering
+\caption{$\Delta$ (V1 $-$ V2) in CEM-late success rate (percentage points).
+V1 exceeds or ties V2 in all 16 cells.}
+\label{tab:v2-delta}
+\begin{tabular}{lcccc}
+\toprule
+ & R0 & R1 & R2 & R3 \\
+\midrule
+D0 & 0.0 & $+$18.3 & $+$16.7 & $+$33.3 \\
+D1 & 0.0 & $+$33.3 & $+$50.0 & $+$50.8 \\
+D2 & $+$21.7 & $+$50.0 & $+$42.1 & $+$71.4 \\
+D3 & $+$32.5 & $+$42.9 & $+$66.7 & $+$99.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The V2 degeneracy illustrates that binary cost provides insufficient
+gradient for the iterative refinement of CEM.  A cost function that is zero or
+one gives CEM no information to separate near-successes from far-misses,
+causing the proposal distribution to drift randomly once all elites fail.
+
+\subsection{Implications for the Audit}
+
+The oracle ablation established three results used in the main text.
+First, V1 oracle CEM shows that the offset-50 task is feasible in most
+Track~A cells, so the latent CEM failures are not caused by task
+impossibility.  Second, the V3 latent-favorable cells (D0xR0, D0xR1, D1xR0)
+show that predictor rollouts can sometimes rank candidates better than the
+encoder on real observations, complicating a simple ``predictor degrades
+everything'' narrative.  Third, the V2 degeneracy shows that cost shape
+matters: binary feedback is insufficient for CEM, and the gap between V1 and
+V2 grows with task difficulty.
+
+These results motivated the Phase~2 learned-cost-head experiments
+(Section~6.1 and Appendix~\ref{app:negative}), which asked whether a learned
+cost could approximate V1's shaping without simulator access.

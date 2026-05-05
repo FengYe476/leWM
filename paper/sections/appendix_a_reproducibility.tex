@@ -1,0 +1,195 @@
+\section{Reproducibility and Setup}
+\label{app:reproducibility}
+
+\subsection{Hardware}
+
+All results use fixed public LeWM checkpoints and no additional LeWM training. Local
+development and most PushT analyses were run on the Apple Silicon workstation
+recorded in the repository setup notes: macOS 26.3 ARM on an Apple M5 Pro, using
+PyTorch MPS when available. The MPS device is visible from a normal host
+terminal; the Codex sandbox can fail to expose Metal devices, so all MPS claims
+refer to host-terminal runs. The RunPod closeout record reports an NVIDIA RTX
+5090 server with CUDA 13.0 and 32GB VRAM for the final GPU-only checks. The
+repository also includes \texttt{scripts/setup\_runpod.sh}, whose header targets
+a fresh RunPod instance with system Python 3.12, CUDA 12.8, and pre-installed
+\texttt{torch}/\texttt{torchvision}; the closeout log is the source for the
+actual final RunPod runtime.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{p{0.22\linewidth}p{0.28\linewidth}p{0.40\linewidth}}
+\toprule
+Hardware & Evidence in repo & Experiments run there \\
+\midrule
+Apple Silicon MPS workstation & \texttt{README.md}; \texttt{progress\_log.md}; \texttt{mps\_setup.md} & Phase 0 PushT/Cube baselines and sweeps; Track A 100-pair PushT artifact and three-cost pass; Stage 1A controls; Stage 1B PushT full projected CEM; PushT re-rank-only protocol matching; Cube Stage 1B re-rank-only; P2-0 learned-cost, DINOv2, and hybrid-CEM analyses. \\
+RunPod RTX 5090 GPU server & \texttt{closeout\_session\_summary.md} & Cube anomaly multi-seed sanity; PushT Subspace-CEM Stage A; CUDA-side Cube full projected CEM/protocol matching artifacts. \\
+CPU / offline aggregation & Artifact metadata and memos & Orthogonal sanity check, CEM-gap aggregation, taxonomy table, paper figure generation, and LaTeX compilation. \\
+\bottomrule
+\end{tabular}
+\caption{Compute placement for the main audit artifacts.}
+\label{tab:appendix-hardware}
+\end{table}
+
+\subsection{Software Environment}
+
+The standard local setup command is \texttt{bash scripts/setup\_env.sh}. This
+creates the \texttt{lewm-audit} conda environment with Python 3.11. The requested
+search for environment YAML files returned no \texttt{*.yml} or \texttt{*.yaml}
+environment file, so the repository should be treated as script-configured rather
+than YAML-configured. The setup and progress logs verify
+\texttt{stable-worldmodel==0.0.6}, editable
+\texttt{stable-pretraining==0.1.7.dev44+gd8d8f568d.d20260501},
+\texttt{ogbench==1.2.1}, and local PyTorch
+\texttt{2.13.0.dev20260430}. RunPod final checks used miniconda,
+\texttt{lewm-audit}, and PyTorch \texttt{2.11+cu128} according to the closeout
+summary; the one-shot RunPod script installs \texttt{stable-worldmodel[train]},
+\texttt{ogbench}, \texttt{gymnasium}, \texttt{opencv-python-headless},
+\texttt{matplotlib}, \texttt{seaborn}, \texttt{scipy}, and
+\texttt{scikit-learn} after confirming the pre-installed PyTorch package.
+
+The only tracked local patch is \texttt{patches/lewm\_mps\_fix.patch}. It changes
+the upstream LeWM \texttt{jepa.py} tensor-transfer path so that floating tensors
+moved to an MPS device are cast to \texttt{torch.float32}; without this safeguard, MPS
+rejects upstream \texttt{float64} tensors. Re-application instructions are in
+\texttt{docs/mps\_setup.md}. The paper was compiled with \texttt{tectonic
+main.tex} from \texttt{paper/}, using the ICLR 2025 template.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{p{0.24\linewidth}p{0.32\linewidth}p{0.34\linewidth}}
+\toprule
+Component & Recorded version or setting & Source \\
+\midrule
+Conda environment & \texttt{lewm-audit} & \texttt{README.md}; setup scripts \\
+Python & \texttt{3.11} local; system Python 3.12 targeted by RunPod script & \texttt{README.md}; setup scripts \\
+\texttt{stable-worldmodel} & \texttt{0.0.6} local verified install & \texttt{README.md}; progress log \\
+\texttt{stable-pretraining} & \begin{tabular}[t]{@{}l@{}}\texttt{0.1.7.dev44+}\\\texttt{gd8d8f568d.d20260501}\end{tabular} editable install & \texttt{README.md}; progress log \\
+\texttt{ogbench} & \texttt{1.2.1} local verified install & \texttt{README.md}; progress log \\
+PyTorch & \texttt{2.13.0.dev20260430} local MPS; \texttt{2.11+cu128} RunPod closeout & \texttt{README.md}; closeout summary \\
+CUDA / GPU & CUDA 13.0, RTX 5090, 32GB VRAM for final RunPod runs & closeout summary \\
+LaTeX & \texttt{tectonic main.tex} & closeout summary \\
+\bottomrule
+\end{tabular}
+\caption{Software versions recorded in setup scripts and progress logs.}
+\label{tab:appendix-software}
+\end{table}
+
+\subsection{Checkpoints}
+
+Checkpoint download is handled by \texttt{scripts/download\_checkpoints.sh} on
+local machines and by the equivalent checkpoint step in
+\texttt{scripts/setup\_runpod.sh} on RunPod. Both scripts use the Hugging Face
+CLI, with repository type \texttt{model}, to download the official public LeWM
+checkpoint repositories. The root README links the LeWM Hugging Face collection
+at \url{https://huggingface.co/collections/quentinll/lewm}. The exact Hugging
+Face snapshot revision is not pinned in the repository:
+\texttt{[TO BE FILLED: Hugging Face revision or snapshot hash for each checkpoint]}.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.15\linewidth}p{0.21\linewidth}p{0.27\linewidth}p{0.25\linewidth}}
+\toprule
+Environment & Hugging Face model ID & Raw local files & Converted checkpoint \\
+\midrule
+PushT & \texttt{quentinll/lewm-pusht} & \begin{tabular}[t]{@{}l@{}}\texttt{weights.pt} and\\\texttt{config.json} under\\\texttt{checkpoints/lewm-pusht/}\end{tabular} & \begin{tabular}[t]{@{}l@{}}\texttt{lewm\_object.ckpt}\\under \texttt{checkpoints/}\\\texttt{converted/lewm-pusht/}\end{tabular} \\
+OGBench-Cube & \texttt{quentinll/lewm-cube} & \begin{tabular}[t]{@{}l@{}}\texttt{weights.pt} and\\\texttt{config.json} under\\\texttt{checkpoints/lewm-cube/}\end{tabular} & \begin{tabular}[t]{@{}l@{}}\texttt{lewm\_object.ckpt}\\under \texttt{checkpoints/}\\\texttt{converted/lewm-cube/}\end{tabular} \\
+\bottomrule
+\end{tabular}
+\caption{Official public LeWM checkpoints used by the audit.}
+\label{tab:appendix-checkpoints}
+\end{table}
+
+\texttt{scripts/verify\_checkpoint.py} reconstructs the LeWM \texttt{JEPA} model
+from \texttt{config.json}, loads \texttt{weights.pt}, saves a
+\texttt{stable\_worldmodel.policy.AutoCostModel}-compatible object checkpoint as
+\texttt{lewm\_object.ckpt}, and verifies load plus forward passes. The progress
+log records that both PushT and Cube checkpoint files are about 69MB, that the
+converted checkpoints produce encoder embeddings of shape \((1,192)\), and that
+predictor verification produced shape \((1,3,192)\). The verified model has
+about 18.0M parameters: 5.5M in the encoder and 12.5M in the predictor stack.
+PushT uses raw action dimension 2 and effective checkpoint action dimension 10;
+Cube uses raw action dimension 5 and effective checkpoint action dimension 25,
+matching \texttt{action\_block=5}.
+
+\subsection{Evaluation Seeds}
+
+The audit uses fixed dataset-pair artifacts where possible and then varies only
+the intended stochastic object. For Phase 0 baselines and offset sweeps, the
+default command-line seed is 42. The later paper artifacts use seed 0 for fixed
+pair selection, CEM sampling base seeds, and single-run controls unless a
+multi-seed check is explicitly listed. Gaussian projection matrices have shape
+\([192,m]\), entries \(\mathcal{N}(0,1)/\sqrt{m}\), and are fixed per
+\((m,\texttt{projection\_seed})\) across pairs and CEM iterations.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{0.28\linewidth}p{0.28\linewidth}p{0.34\linewidth}}
+\toprule
+Artifact or phase & Seeds & Notes \\
+\midrule
+Phase 0 PushT/Cube baselines and offset sweeps & 42 & Defaults in \texttt{eval\_pusht\_baseline.py}, \texttt{eval\_pusht\_sweep.py}, \texttt{eval\_cube\_baseline.py}, and \texttt{eval\_cube\_sweep.py}. \\
+Track A PushT pair set and three-cost artifact & 0 & \texttt{track\_a\_pairs.json} and \texttt{track\_a\_three\_cost.json}; 100 pairs, 80 actions per pair. \\
+Stage 1A C1-C5 controls & 0--9 & Ten-seed orthogonal, Gaussian projection, coordinate subset, Gaussian null, and shuffle controls. \\
+Stage 1A C0/C6/C7 & 0 or deterministic single run & C0 is trained LeWM; C6 is randomly initialized LeWM seed 0; C7 DINOv2 feature extraction records seed 0. \\
+Stage 1B PushT full projected CEM & base seed 0; projection seeds 0,1,2 & 63-pair smoke/full record; later full artifact uses dimensions 1--192 and the same projection seed set. \\
+PushT re-rank-only protocol matching & base seed 0; projection seeds 0,1,2 & 100 pairs, 9 projection dimensions, 2700 projected records. \\
+Cube Stage 1B re-rank-only & base seed 0; projection seeds 0,1,2 & 100 Cube pairs, 9 projection dimensions, 2700 projected records. \\
+Cube full projected CEM smoke & base seed 0; projection seed 0 & 25 selected Cube pairs, dimensions \(\{1,8,32,64,192\}\). \\
+Cube anomaly sanity & projection seeds 0,1,2 & Seed 0 from \texttt{cube\_full\_proj\_cem.json}; added seeds 1 and 2 in \texttt{cube\_anomaly\_sanity.json}. \\
+P2-0 learned costs and hybrid CEM & 0 & Cost-head splits, planning evaluation, and oracle-budget sweeps record seed 0. \\
+PushT Subspace-CEM Stage A & 0,1 & 30 pairs, \texttt{m=64} search with full-dimensional re-rank. \\
+\bottomrule
+\end{tabular}
+\caption{Seed policy by experimental phase.}
+\label{tab:appendix-seeds}
+\end{table}
+
+\subsection{Reproducibility Notes}
+
+The main fixed artifacts record the commit that generated them. The repository
+history has continued after these pre-registration and closeout points, so the
+artifact-level commit hashes are the reproducibility anchors rather than the
+current branch head alone.
+
+\begin{table}[h]
+\centering
+\scriptsize
+\begin{tabular}{p{0.30\linewidth}p{0.22\linewidth}p{0.38\linewidth}}
+\toprule
+Anchor & Commit & Evidence \\
+\midrule
+Track A stratified pair artifact & \texttt{3ac6afa93c98} & \texttt{track\_a\_pairs.json} \\
+Track A three-cost pass & \texttt{45d65afc1546} & \texttt{track\_a\_three\_cost.json} \\
+Stage 1B smoke / full projected CEM & \texttt{7848d5b00f28}, \texttt{a48f9f3d0e18} & \texttt{stage1b\_smoke\_memo.md}; \texttt{stage1b\_full.json} \\
+PushT re-rank-only and Cube Stage 1B & \texttt{a3388de9d6dc} & \texttt{pusht\_rerank\_only.json}; \texttt{cube\_stage1b.json} \\
+Cube full projected CEM & \texttt{485b3390154f} & \texttt{cube\_full\_proj\_cem.json} \\
+Protocol-matching memo & \texttt{7917feb3996e} & \texttt{protocol\_matching\_memo.md} \\
+PushT Subspace-CEM Stage A & \texttt{adc573ac8c2b} & \texttt{stage\_a\_pusht.json} \\
+\bottomrule
+\end{tabular}
+\caption{Commit anchors recorded by the reproducibility artifacts.}
+\label{tab:appendix-commits}
+\end{table}
+
+Known non-determinism comes from stochastic CEM sampling, simulator rollouts,
+random projections, GPU kernels, and backend differences between MPS and CUDA.
+The code sets Python, NumPy, and PyTorch seeds in the Phase 2 evaluators where
+the scripts expose a seed; CUDA scripts call \texttt{torch.cuda.manual\_seed\_all}
+when CUDA is available. Some finite-sample baseline variation is expected: for
+example, the reproduced PushT baseline is 98\% on 50 episodes versus the paper
+reference point of 96\%, and Cube baseline is 66\% on 50 episodes versus the
+paper reference point of 74\%.
+
+Runtime estimates recorded in the repository are as follows. PushT MPS baseline
+evaluation takes about 295 seconds for 50 episodes, with a one-time first-solve
+shader warmup. The PushT offset sweep took about 1 hour on MPS. The Track A
+100-pair three-cost run took about 9 minutes from its recorded start and finish
+timestamps. PushT re-rank-only and Cube full projected CEM each report about
+5 minutes 16 seconds. Cube Stage 1B re-rank-only reports about 1 hour 19
+minutes. Final RunPod closeout runs report 7 minutes 8 seconds for the Cube
+anomaly sanity check and 4 minutes 23 seconds for PushT Subspace-CEM Stage A.
