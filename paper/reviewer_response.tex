@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\Rendpoint}{R_{\mathrm{endpoint}}}
+\newcommand{\Rpool}{R_{\mathrm{pool}}}
+\newcommand{\DeltaCEM}{\Delta_{\mathrm{CEM}}}
+\newcommand{\Cmodel}{C_{\mathrm{model}}}
+\newcommand{\CVone}{C_{\mathrm{V1}}}
+\newcommand{\Creal}{C_{\mathrm{real\_state}}}
+
+\title{Response to Reviewer Comments}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+We thank the reviewer for the thorough and constructive evaluation. Below we address each weakness with new experiments and text revisions. All supplementary experiments, scripts, and data are released in the repository under \path{scripts/revision/}, \path{results/revision/}, and \path{docs/revision/}.
+
+\section*{W1: Single-model, dual-environment generalization}
+
+\paragraph{Reviewer concern.}
+All experiments use only LeWM on PushT and OGBench-Cube. The abstract and introduction overclaim generality with phrases like ``any latent world model that plans with terminal latent costs can be audited this way.''
+
+\paragraph{Our response.}
+We agree that the empirical evidence is bounded to one model and two environments, and have revised all overclaiming language accordingly.
+
+\textit{Abstract:} The original sentence has been replaced with: ``For LeWM-style latent planners that select actions by terminal latent costs under iterative sampling-based optimization, we recommend reporting pool-level and selection-level metrics alongside endpoint metrics.''
+
+\textit{Introduction (Section 1):} We now state explicitly: ``Our empirical claims apply to LeWM with Euclidean terminal latent costs under CEM-style optimization, evaluated on PushT and OGBench-Cube. The evaluation principle is broader, but it should be applied with the same instrumentation.''
+
+\textit{Limitations (Section 9):} Three explicit scope boundaries are now listed: (1) single model, two environments; (2) CEM as primary optimizer with partial MPPI cross-check; (3) privileged physical cost required for full evaluation.
+
+\textit{Cross-model feasibility:} We investigated PLDM (Sobal et al., 2025) as a cross-model validation target. The public repository exists but no ready-to-use PushT checkpoint was available at revision time. We leave cross-model validation as future work, noting that the diagnostic protocol ($\Rendpoint$, $\Rpool$, $\DeltaCEM$) is model-agnostic and directly applicable to any latent world model that exposes its candidate pool.
+
+\paragraph{Location in revised paper.}
+Abstract (page 1), Section 1 (page 2, lines 88--97), Section 9 (page 12).
+
+\section*{W2: Diagnostic power of $\DeltaCEM$ -- attribution of $\Rpool \approx 0$}
+
+\paragraph{Reviewer concern.}
+$\Rpool \approx 0$ could reflect multiple mechanisms: (a) CEM convergence compresses candidates into a physically narrow neighborhood where any cost fails to discriminate, (b) the encoder genuinely loses local order preservation, or (c) predictor bias. The paper does not experimentally distinguish these.
+
+\paragraph{Our response.}
+We conducted a new Rpool(V1) attribution experiment on all 100 PushT default CEM final pools. For each pair, we computed the Spearman correlation of the V1 oracle hinge cost (a privileged physical cost) against $\Creal$ within the same 300-candidate pool, and compared it with the learned Euclidean cost.
+
+\textit{Key results:}
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Subset & $n$ & $\Rpool(\Cmodel)$ & $\Rpool(\CVone)$ \\
+\midrule
+Overall & 100 & 0.084 & 0.666 \\
+Invisible quadrant & 16 & 0.022 & 0.775 \\
+Sign reversal & 21 & $-0.040$ & 0.925 \\
+Latent-favorable & 12 & 0.197 & 0.417 \\
+Ordinary & 47 & 0.146 & 0.581 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The V1 oracle retains strong pool-level ranking ($\Rpool(\CVone) = 0.666$) where the learned cost fails ($\Rpool(\Cmodel) = 0.084$). This rules out pure CEM convergence compression as the dominant explanation: if the pool were compressed into a physically indistinguishable neighborhood, V1 would also fail. Instead, the data clearly indicates \textbf{local representation failure}: the learned Euclidean cost loses order-preservation in the CEM-converged region while the privileged oracle cost does not.
+
+The effect is strongest in the invisible quadrant (16 pairs where endpoint metrics look healthy but planning fails): $\Rpool(\CVone) = 0.775$ while $\Rpool(\Cmodel) = 0.022$, with pool success mass of only 1.4\%. The CEM pool contains successful candidates, but the learned cost cannot identify them.
+
+\paragraph{Location in revised paper.}
+New Section 4.4, ``Mechanism attribution: convergence compression versus local representation failure'' (page 8).
+
+\section*{W3: Weak Cube evidence}
+
+\paragraph{Reviewer concern.}
+Cube full projected CEM uses only 25 pairs $\times$ 1 seed (vs. 100 pairs $\times$ 3 seeds for re-rank-only). The inverted-U pattern received MIXED status. This asymmetry weakens cross-environment claims.
+
+\paragraph{Our response.}
+We extended the Cube full projected CEM experiment from 25 pairs $\times$ 1 seed to \textbf{50 pairs $\times$ 3 projection seeds} across all five projection dimensions ($m \in \{1, 8, 32, 64, 192\}$), totaling 750 CEM rollouts with full 300-candidate simulator scoring ($\sim$10 hours on Apple Silicon MPS).
+
+\textit{Updated results:}
+
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$m$ & Full-CEM success (50p, 3s) & Re-rank success (100p, 3s) & Gap \\
+\midrule
+1 & $32.7\% \pm 8.1\%$ & $42.7\% \pm 3.2\%$ & $-10.0$ pp \\
+8 & $52.7\% \pm 4.2\%$ & $43.3\% \pm 1.5\%$ & $+9.3$ pp \\
+32 & $61.3\% \pm 1.2\%$ & $46.3\% \pm 2.5\%$ & $+15.0$ pp \\
+64 & $56.0\% \pm 5.3\%$ & $49.7\% \pm 2.5\%$ & $+6.3$ pp \\
+192 & $62.0\% \pm 6.0\%$ & $47.7\% \pm 1.2\%$ & $+14.3$ pp \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$\Rpool(\Cmodel)$ across all dimensions ranges from $-0.001$ to 0.023, consistently near zero, confirming endpoint-planning decoupling in Cube at scale.
+
+The original inverted-U success pattern (peak at $m=32$, decline at $m=192$) \textbf{does not persist} at 50-pair, 3-seed scale. Success plateaus from $m=32$ onward, indicating the original pattern was small-sample noise. This simplifies the cross-environment comparison: both PushT and Cube show rising $\Rendpoint$ with dimension while $\Rpool$ remains near zero.
+
+Table 2 in the revised paper now uses the extended 50-pair $\times$ 3-seed Cube data.
+
+\paragraph{Location in revised paper.}
+Table 2 (page 7), Section 4.2 discussion (page 7, lines 368--377), Section 9 Limitations (page 12).
+
+\section*{W4: No alternative optimizer comparison}
+
+\paragraph{Reviewer concern.}
+The paper does not test whether endpoint-planning decoupling is CEM-specific (due to hard elite truncation) or generalizes to other iterative optimizers like MPPI.
+
+\paragraph{Our response.}
+We implemented an MPPI planner that replaces CEM's hard elite selection with softmax-weighted averaging over all 300 candidates, keeping all other parameters identical (same model, action parameterization, horizon, 30 iterations, 300 candidates). After a temperature sweep ($\tau \in \{0.01, 0.1, 1.0, 10.0\}$), we selected $\tau^* = 1.0$ and ran the experiment on 30 PushT pairs $\times$ 3 seeds (90 scored pools).
+
+\textit{Comparison:}
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Metric & CEM default & MPPI ($\tau=1.0$) \\
+\midrule
+Planning success & 53.3\% & 38.9\% \\
+$\Rpool(\Cmodel)$ & 0.115 & 0.194 \\
+$\Rpool(\CVone)$ & 0.537 & 0.707 \\
+Pool $\Creal$ std & 7.947 & 29.478 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+MPPI preserves \textbf{3.7$\times$ more physical diversity} in its final pool than CEM (std 29.478 vs. 7.947), confirming that CEM's hard truncation compresses pool diversity. Correspondingly, $\Rpool(\Cmodel)$ improves from 0.115 to 0.194 under MPPI.
+
+However, MPPI still retains only $\sim$39\% of the endpoint ranking signal ($\Rpool/\Rendpoint = 0.194/0.495$). Using $\Rendpoint = 0.495$ at $m=192$ as the reference, the CEM-to-MPPI improvement accounts for roughly \textbf{22\%} of the endpoint-pool gap. Thus endpoint-planning decoupling is \textbf{partially optimizer-specific} (CEM's hard truncation worsens pool geometry) and \textbf{partially optimizer-general} ($\sim$78\% of the lost ranking signal is representation-driven).
+
+The lower MPPI planning success (38.9\% vs. 53.3\%) is consistent with slower convergence under 30 iterations and does not invalidate the pool-level comparison, which is the relevant diagnostic.
+
+\paragraph{Location in revised paper.}
+New Section 8.3, ``Optimizer dependence: CEM versus MPPI'' (page 12).
+
+\section*{W5: Privileged physical cost requirement limits practical applicability}
+
+\paragraph{Reviewer concern.}
+All pool-level metrics require $\Creal$ (simulator access). How can one detect $\DeltaCEM$ in deployment without a simulator?
+
+\paragraph{Our response.}
+We tested whether privilege-free proxy metrics (computable from the learned cost alone, no simulator needed) correlate with selection regret across the 100 PushT pairs.
+
+\textit{Results:}
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Proxy metric & Corr. with selection regret & $p$-value \\
+\midrule
+\texttt{top30\_Cmodel\_std} & 0.314 & 0.001 \\
+\texttt{pool\_Cmodel\_std} & 0.254 & 0.011 \\
+\texttt{C\_model\_dynamic\_range} & 0.223 & 0.026 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Within the invisible-quadrant subset, the signal is stronger: \texttt{pool\_Cmodel\_std} vs. selection regret has $\rho = 0.588$ ($p = 0.017$). As a cross-check, \texttt{pool\_Cmodel\_std} tracks \texttt{pool\_Creal\_std} at $\rho = 0.482$ ($p < 0.001$), confirming that learned-cost spread partially reflects physical spread.
+
+No single global proxy crosses our pre-specified $\rho > 0.4$ threshold, so these proxies are not full replacements for the privileged audit. However, they demonstrate that \textbf{partial monitoring is feasible without simulator access}: low learned-cost diversity in the CEM final pool can flag candidate-pool compression and elevated selection risk.
+
+\paragraph{Location in revised paper.}
+Section 8.1, paragraph on privilege-free monitoring (page 11, lines 584--593).
+
+\section*{Summary of Changes}
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}@{}}
+\toprule
+Weakness & Experiment & Key finding & Paper location \\
+\midrule
+W1 & Text revision + PLDM feasibility & Scope narrowed; PLDM deferred & Abstract, Sec. 1, Sec. 9 \\
+W2 & Rpool(V1) attribution (100 pairs) & Local representation failure dominant & New Sec. 4.4 \\
+W3 & Cube extended (50p $\times$ 3s, 750 runs) & Decoupling robust at scale; inverted-U gone & Table 2, Sec. 4.2 \\
+W4 & MPPI comparison (30p $\times$ 3s, 90 pools) & $\sim$22\% CEM-specific, $\sim$78\% representation-driven & New Sec. 8.3 \\
+W5 & Privilege-free proxy (100 pairs) & Partial monitoring feasible ($\rho$ up to 0.588) & Sec. 8.1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All supplementary scripts, results, and memos are available in the repository under \path{scripts/revision/}, \path{results/revision/}, and \path{docs/revision/}. The progress document \path{docs/revision/revision_progress.md} provides a complete timeline and artifact inventory.
+
+\end{document}
