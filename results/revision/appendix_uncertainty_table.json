@@ -1,0 +1,349 @@
+{
+  "metadata": {
+    "format": "appendix_uncertainty_table_v1",
+    "created_at": "2026-05-06T01:10:50.663521+00:00",
+    "git_commit": "f6fba4c19e0cf1d3bada734e7ade9d00a26fcfdb",
+    "script_path": "scripts/revision/appendix_uncertainty_table.py",
+    "n_bootstrap": 10000,
+    "seed": 20260506,
+    "alpha": 0.05,
+    "inputs": {
+      "bootstrap": "results/revision/bootstrap_ci.json",
+      "pusht_stage1a": "results/phase2/stage1/stage1a_full.json",
+      "pusht_latents": "results/phase2/p2_0/track_a_latents.pt",
+      "cube_stage1a": "results/phase2/cube/cube_stage1a.json",
+      "cube_rpool": "results/revision/rpool_v1_cube.json",
+      "mppi": "results/revision/mppi_pool_analysis.json",
+      "track_b": "results/phase2/track_b/ranking_comparison.json",
+      "dino_features": "results/phase2/track_b/dinov2_features.pt",
+      "subspace": "results/phase2/subspace_cem/stage_a_pusht.json",
+      "cost_head_split3": "results/phase2/p2_0/split3_planning.json",
+      "cost_head_cem_aware": "results/phase2/p2_0/cem_aware_planning.json",
+      "hybrid_k60": "results/phase2/p2_0/oracle_budget_cem_corrected/split3_k60.json"
+    }
+  },
+  "rows": [
+    {
+      "metric_name": "$R_\\mathrm{endpoint}$ ($m=64$)",
+      "environment": "PushT",
+      "protocol_experiment": "Stage 1A C2 endpoint projection",
+      "n_pairs": "100",
+      "seeds": "10 proj.",
+      "point_estimate": "0.473",
+      "ci_95": "[0.395, 0.543]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.472801758289976,
+        "ci_low": 0.39533727234035076,
+        "ci_high": 0.5434400815484872,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "pair-level bootstrap over rank-transformed endpoint records",
+        "stage1a_point_estimate": 0.472801758289976
+      }
+    },
+    {
+      "metric_name": "$R_\\mathrm{endpoint}$ ($m=192$)",
+      "environment": "PushT",
+      "protocol_experiment": "Stage 1A C2 endpoint projection",
+      "n_pairs": "100",
+      "seeds": "10 proj.",
+      "point_estimate": "0.495",
+      "ci_95": "[0.411, 0.570]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.4950407887773481,
+        "ci_low": 0.41107427771125077,
+        "ci_high": 0.5699657719676486,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "pair-level bootstrap over rank-transformed endpoint records",
+        "stage1a_point_estimate": 0.4950407887773481
+      }
+    },
+    {
+      "metric_name": "$R_\\mathrm{pool}(C_\\mathrm{model})$",
+      "environment": "PushT",
+      "protocol_experiment": "Default CEM final pools",
+      "n_pairs": "100",
+      "seeds": "1",
+      "point_estimate": "0.084",
+      "ci_95": "[0.037, 0.131]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.08418903205718797,
+        "ci_low": 0.03735359633479991,
+        "ci_high": 0.1313464188348581,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "percentile bootstrap over pairs"
+      }
+    },
+    {
+      "metric_name": "$R_\\mathrm{pool}(C_\\mathrm{V3})$",
+      "environment": "PushT",
+      "protocol_experiment": "Actual-terminal encoder ranker",
+      "n_pairs": "100",
+      "seeds": "1",
+      "point_estimate": "0.258",
+      "ci_95": "[0.146, 0.365]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.25794767241974076,
+        "ci_low": 0.1457115537609953,
+        "ci_high": 0.36511747201370864,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "percentile bootstrap over pairs"
+      }
+    },
+    {
+      "metric_name": "$R_\\mathrm{pool}(C_\\mathrm{V1})$",
+      "environment": "PushT",
+      "protocol_experiment": "Physical hinge ranker",
+      "n_pairs": "100",
+      "seeds": "1",
+      "point_estimate": "0.666",
+      "ci_95": "[0.595, 0.735]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.6660450648799646,
+        "ci_low": 0.594785562177419,
+        "ci_high": 0.7347144015750298,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "percentile bootstrap over pairs"
+      }
+    },
+    {
+      "metric_name": "$\\Delta_\\mathrm{CEM}$",
+      "environment": "PushT",
+      "protocol_experiment": "C0 endpoint ref. minus default pool",
+      "n_pairs": "100",
+      "seeds": "1",
+      "point_estimate": "0.422",
+      "ci_95": "[0.374, 0.468]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.4222247226856596,
+        "ci_low": 0.37404208551480983,
+        "ci_high": 0.46842834827898633,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "percentile bootstrap over pairs",
+        "endpoint_reference": 0.5064137547428476
+      }
+    },
+    {
+      "metric_name": "$R_\\mathrm{pool}(C_\\mathrm{model})$",
+      "environment": "Cube",
+      "protocol_experiment": "Full projected CEM, $m=64$",
+      "n_pairs": "50",
+      "seeds": "3 proj.",
+      "point_estimate": "-0.001",
+      "ci_95": "[-0.018, 0.016]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": -0.0008763976414748637,
+        "ci_low": -0.018222845346867144,
+        "ci_high": 0.01595744226217308,
+        "n": 49,
+        "n_bootstrap": 10000,
+        "method": "pair-level bootstrap"
+      }
+    },
+    {
+      "metric_name": "$\\Delta_\\mathrm{CEM}$",
+      "environment": "Cube",
+      "protocol_experiment": "Endpoint $m=64$ minus full CEM pool",
+      "n_pairs": "50",
+      "seeds": "3 proj.",
+      "point_estimate": "0.576",
+      "ci_95": "[0.559, 0.594]",
+      "method": "pair bootstrap",
+      "raw": {
+        "estimate": 0.5759364505547253,
+        "ci_low": 0.5591400747154553,
+        "ci_high": 0.5937288804697951,
+        "n": 49,
+        "n_bootstrap": 10000,
+        "method": "pair-level bootstrap"
+      }
+    },
+    {
+      "metric_name": "$R_\\mathrm{pool}(C_\\mathrm{model})$ diff.",
+      "environment": "PushT",
+      "protocol_experiment": "MPPI minus CEM",
+      "n_pairs": "30",
+      "seeds": "3",
+      "point_estimate": "0.079 (0.115 to 0.194)",
+      "ci_95": "[-0.044, 0.204]",
+      "method": "paired bootstrap",
+      "raw": {
+        "estimate": 0.0788879024809808,
+        "ci_low": -0.0442598742956935,
+        "ci_high": 0.2043977624884658,
+        "n": 30,
+        "n_bootstrap": 10000,
+        "method": "paired percentile bootstrap over matched MPPI/CEM pairs",
+        "baseline_estimate": 0.11505545969603787,
+        "comparison_estimate": 0.19394336217701866
+      }
+    },
+    {
+      "metric_name": "Planning success diff.",
+      "environment": "PushT",
+      "protocol_experiment": "MPPI minus CEM",
+      "n_pairs": "30",
+      "seeds": "3",
+      "point_estimate": "-14.4 pp (53.3\\% to 38.9\\%)",
+      "ci_95": "[-26.7, -2.2] pp",
+      "method": "paired bootstrap",
+      "raw": {
+        "baseline_estimate": 53.333333333333336,
+        "comparison_estimate": 38.88888888888889,
+        "estimate": -14.444444444444446,
+        "ci_low": -26.66666666666667,
+        "ci_high": -2.2222222222222228,
+        "n": 30,
+        "n_bootstrap": 10000,
+        "method": "paired bootstrap over pairs"
+      }
+    },
+    {
+      "metric_name": "Pool $C_\\mathrm{real}$ std diff.",
+      "environment": "PushT",
+      "protocol_experiment": "MPPI minus CEM",
+      "n_pairs": "30",
+      "seeds": "3",
+      "point_estimate": "21.530 (7.947 to 29.478)",
+      "ci_95": "[17.151, 25.854]",
+      "method": "paired bootstrap",
+      "raw": {
+        "baseline_estimate": 7.9473836150636865,
+        "comparison_estimate": 29.47769160115279,
+        "estimate": 21.530307986089113,
+        "ci_low": 17.15082851065922,
+        "ci_high": 25.853791743213925,
+        "n": 30,
+        "n_bootstrap": 10000,
+        "method": "paired bootstrap over pairs"
+      }
+    },
+    {
+      "metric_name": "MPPI attribution fraction",
+      "environment": "PushT",
+      "protocol_experiment": "CEM-to-MPPI gap fraction",
+      "n_pairs": "30",
+      "seeds": "3",
+      "point_estimate": "22.225\\%",
+      "ci_95": "[-15.736, 48.094]\\%",
+      "method": "paired bootstrap",
+      "raw": {
+        "estimate": 0.22225416515330526,
+        "ci_low": -0.15735969043798406,
+        "ci_high": 0.48094113425605345,
+        "n": 30,
+        "n_bootstrap": 10000,
+        "method": "paired percentile bootstrap of (Rpool_MPPI - Rpool_CEM) / (Rendpoint - Rpool_CEM)",
+        "endpoint_reference": 0.47
+      }
+    },
+    {
+      "metric_name": "Cost head Split 3 success",
+      "environment": "PushT",
+      "protocol_experiment": "Learned cost repair",
+      "n_pairs": "16",
+      "seeds": "1",
+      "point_estimate": "0/16 (0.000\\%)",
+      "ci_95": "[0.000, 20.591]\\%",
+      "method": "Clopper-Pearson",
+      "raw": {
+        "successes": 0,
+        "trials": 16,
+        "estimate": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.2059072142078227,
+        "method": "Clopper-Pearson exact binomial interval"
+      }
+    },
+    {
+      "metric_name": "Cost head CEM-aware success",
+      "environment": "PushT",
+      "protocol_experiment": "Learned cost repair",
+      "n_pairs": "16",
+      "seeds": "1",
+      "point_estimate": "1/16 (6.250\\%)",
+      "ci_95": "[0.158, 30.232]\\%",
+      "method": "Clopper-Pearson",
+      "raw": {
+        "successes": 1,
+        "trials": 16,
+        "estimate": 0.0625,
+        "ci_low": 0.0015811117227658871,
+        "ci_high": 0.3023207384345319,
+        "method": "Clopper-Pearson exact binomial interval"
+      }
+    },
+    {
+      "metric_name": "DINOv2 gap vs. LeWM",
+      "environment": "PushT",
+      "protocol_experiment": "Track B endpoint replacement",
+      "n_pairs": "100",
+      "seeds": "1",
+      "point_estimate": "0.242 (0.261 vs. 0.503)",
+      "ci_95": "[0.115, 0.368]",
+      "method": "pair bootstrap",
+      "raw": {
+        "baseline_estimate": 0.5033457363668491,
+        "comparison_estimate": 0.2608842823196501,
+        "estimate": 0.242461454047199,
+        "ci_low": 0.11491934850450677,
+        "ci_high": 0.36833152951328635,
+        "n": 100,
+        "n_bootstrap": 10000,
+        "method": "pair-level bootstrap over rank-transformed endpoint records",
+        "reported_lewm_global": 0.5033457975357095,
+        "reported_dino_mean_global": 0.26088428231965005
+      }
+    },
+    {
+      "metric_name": "Subspace-CEM success delta",
+      "environment": "PushT",
+      "protocol_experiment": "Subspace minus default CEM",
+      "n_pairs": "30",
+      "seeds": "2",
+      "point_estimate": "-8.3 pp (56.7\\% to 48.3\\%)",
+      "ci_95": "[-18.3, 0.0] pp",
+      "method": "paired bootstrap",
+      "raw": {
+        "baseline_estimate": 56.666666666666664,
+        "comparison_estimate": 48.333333333333336,
+        "estimate": -8.333333333333334,
+        "ci_low": -18.333333333333332,
+        "ci_high": 0.0,
+        "n": 30,
+        "n_bootstrap": 10000,
+        "method": "paired bootstrap over pairs"
+      }
+    },
+    {
+      "metric_name": "Hybrid CEM 20\\% threshold",
+      "environment": "PushT",
+      "protocol_experiment": "V1 oracle re-rank, $K=60$",
+      "n_pairs": "16",
+      "seeds": "1",
+      "point_estimate": "7/16 (43.750\\%)",
+      "ci_95": "[19.753, 70.122]\\%",
+      "method": "Clopper-Pearson",
+      "raw": {
+        "successes": 7,
+        "trials": 16,
+        "estimate": 0.4375,
+        "ci_low": 0.19753414053266785,
+        "ci_high": 0.7012231009168222,
+        "method": "Clopper-Pearson exact binomial interval"
+      }
+    }
+  ]
+}
