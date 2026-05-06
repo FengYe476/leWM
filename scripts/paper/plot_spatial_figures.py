@@ -202,6 +202,10 @@ def plot_pool_3d(
     show_special_markers: bool = True,
     view: tuple[float, float] = (28, -55),
     pc3_label_mode: str = "text2d",
+    title_fontsize: float = 10,
+    title_fontweight: str | None = None,
+    axis_label_fontsize: float = 9,
+    tick_labelsize: float = 7,
 ) -> tuple[Any, PCA, mcolors.Normalize]:
     z_pred = as_numpy(pool["z_pred"])
     if pca is None:
@@ -281,10 +285,10 @@ def plot_pool_3d(
         )
 
     ax.view_init(elev=view[0], azim=view[1])
-    ax.set_xlabel("PC1", labelpad=4, fontsize=9)
-    ax.set_ylabel("PC2", labelpad=4, fontsize=9)
+    ax.set_xlabel("PC1", labelpad=4, fontsize=axis_label_fontsize)
+    ax.set_ylabel("PC2", labelpad=4, fontsize=axis_label_fontsize)
     if pc3_label_mode == "axis":
-        ax.set_zlabel("PC3", labelpad=15, fontsize=9)
+        ax.set_zlabel("PC3", labelpad=15, fontsize=axis_label_fontsize)
     else:
         ax.set_zlabel("")
         ax.text2D(
@@ -292,14 +296,14 @@ def plot_pool_3d(
             0.55,
             "PC3",
             transform=ax.transAxes,
-            fontsize=9,
+            fontsize=axis_label_fontsize,
             ha="center",
             va="center",
         )
-    ax.set_title(title, loc="left", fontsize=10)
-    ax.tick_params(axis="x", labelsize=7, pad=3)
-    ax.tick_params(axis="y", labelsize=7, pad=3)
-    ax.tick_params(axis="z", labelsize=7, pad=8 if pc3_label_mode == "axis" else 5)
+    ax.set_title(title, loc="left", fontsize=title_fontsize, fontweight=title_fontweight)
+    ax.tick_params(axis="x", labelsize=tick_labelsize, pad=3)
+    ax.tick_params(axis="y", labelsize=tick_labelsize, pad=3)
+    ax.tick_params(axis="z", labelsize=tick_labelsize, pad=8 if pc3_label_mode == "axis" else 5)
     ax.xaxis.pane.set_alpha(0.04)
     ax.yaxis.pane.set_alpha(0.04)
     ax.zaxis.pane.set_alpha(0.04)
@@ -515,6 +519,12 @@ def plot_goal_panel(
     title: str,
     norm: mcolors.Normalize,
     size_scale: float = 1.0,
+    title_fontsize: float = 10,
+    title_fontweight: str | None = None,
+    axis_label_fontsize: float = 10,
+    tick_labelsize: float = 8,
+    annotation_fontsize: float = 8,
+    show_ticks: bool = False,
 ) -> Any:
     min_size = 30.0
     sizes = size_scale * (min_size + 180 * np.clip(success_masses, 0.0, 1.0))
@@ -531,20 +541,22 @@ def plot_goal_panel(
     )
     ax.axhline(0, color="0.92", linewidth=0.7, zorder=0)
     ax.axvline(0, color="0.92", linewidth=0.7, zorder=0)
-    ax.set_title(title, loc="left", fontsize=10)
-    ax.set_xlabel("t-SNE 1")
-    ax.set_ylabel("t-SNE 2")
-    ax.set_xticks([])
-    ax.set_yticks([])
+    ax.set_title(title, loc="left", fontsize=title_fontsize, fontweight=title_fontweight)
+    ax.set_xlabel("t-SNE 1", fontsize=axis_label_fontsize)
+    ax.set_ylabel("t-SNE 2", fontsize=axis_label_fontsize)
+    if not show_ticks:
+        ax.set_xticks([])
+        ax.set_yticks([])
+    ax.tick_params(labelsize=tick_labelsize)
     for spine in ("top", "right", "left", "bottom"):
         ax.spines[spine].set_visible(False)
     mean_r = float(np.nanmean(rpool_values))
     ax.text(
-        0.02,
-        0.04,
+        0.05,
+        0.05,
         rf"mean $R_{{pool}}$ = {mean_r:.3f}",
         transform=ax.transAxes,
-        fontsize=8,
+        fontsize=annotation_fontsize,
         bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.75, "pad": 1.5},
     )
     return scatter

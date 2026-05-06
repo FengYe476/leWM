@@ -29,15 +29,15 @@ Table~\ref{tab:cem-gap-protocols} shows representative dimensions. Across all fo
 Environment & Protocol & $m$ & $\Rendpoint$ & $\Rpool$ & $\DeltaCEM$ & $M_\mathrm{rank1}$ (\%) \\
 \midrule
 PushT & Full projected CEM & 8 & .379 & .080 & .299 & 20.6 \\
-PushT & Full projected CEM & 64 & .473 & .040 & .432 & 29.6 \\
+PushT & Full projected CEM & 64 & .473 & \textbf{.040} & \textbf{.432} & 29.6 \\
 PushT & Full projected CEM & 192 & .495 & .067 & .428 & 34.4 \\
 PushT & Re-rank-only & 8 & .379 & .073 & .306 & 33.0 \\
 PushT & Re-rank-only & 64 & .473 & .079 & .394 & 35.3 \\
 PushT & Re-rank-only & 192 & .495 & .095 & .400 & 34.0 \\
 \midrule
 Cube & Full projected CEM & 8 & .477 & .001 & .476 & 52.7 \\
-Cube & Full projected CEM & 64 & .575 & -.003 & .578 & 56.0 \\
-Cube & Full projected CEM & 192 & .603 & .010 & .593 & 62.0 \\
+Cube & Full projected CEM & 64 & .575 & \textbf{-.003} & \textbf{.578} & 56.0 \\
+Cube & Full projected CEM & 192 & .603 & .010 & \textbf{.593} & 62.0 \\
 Cube & Re-rank-only & 8 & .477 & .005 & .472 & 43.3 \\
 Cube & Re-rank-only & 64 & .575 & .008 & .567 & 49.7 \\
 Cube & Re-rank-only & 192 & .603 & .006 & .597 & 47.7 \\
@@ -102,9 +102,9 @@ The pool-level collapse could reflect several mechanisms. CEM may contract the f
 \toprule
 Cost ranker & $\Rpool$ mean$\pm$std & 95\% CI & What it tests \\
 \midrule
-$\Cmodel$ (predicted latent) & 0.084$\pm$0.243 & [0.037, 0.131] & End-to-end predictor, encoder, and latent cost shape \\
+$\Cmodel$ (predicted latent) & \textbf{0.084}$\pm$0.243 & [0.037, 0.131] & End-to-end predictor, encoder, and latent cost shape \\
 $C_\mathrm{V3}$ (actual terminal latent) & 0.258$\pm$0.566 & [0.146, 0.365] & Encoder and latent cost shape after removing predictor rollout \\
-$C_\mathrm{V1}$ (physical hinge) & 0.666$\pm$0.357 & [0.595, 0.735] & Physical ground-truth ranker on the same pool \\
+$C_\mathrm{V1}$ (physical hinge) & \textbf{0.666}$\pm$0.357 & [0.595, 0.735] & Physical ground-truth ranker on the same pool \\
 \bottomrule
 \end{tabular}
 }

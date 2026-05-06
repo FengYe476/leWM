@@ -168,8 +168,8 @@ def build_fig6_spatial() -> None:
         vmax=float(max(np.nanmax(pusht_r), np.nanmax(cube_r), 0.55)),
     )
 
-    fig = plt.figure(figsize=(14, 10))
-    gs = gridspec.GridSpec(2, 2, hspace=0.35, wspace=0.25)
+    fig = plt.figure(figsize=(14, 12))
+    gs = gridspec.GridSpec(2, 2, height_ratios=[1, 1], hspace=0.3, wspace=0.3)
     ax_a = fig.add_subplot(gs[0, 0], projection="3d")
     ax_b = fig.add_subplot(gs[0, 1], projection="3d")
     ax_c = fig.add_subplot(gs[1, 0])
@@ -183,6 +183,10 @@ def build_fig6_spatial() -> None:
         show_special_markers=False,
         view=(25, -60),
         pc3_label_mode="axis",
+        title_fontsize=14,
+        title_fontweight="bold",
+        axis_label_fontsize=11,
+        tick_labelsize=9,
     )
     spatial_figs.plot_pool_3d(
         ax_b,
@@ -193,6 +197,10 @@ def build_fig6_spatial() -> None:
         show_special_markers=False,
         view=(25, -60),
         pc3_label_mode="axis",
+        title_fontsize=14,
+        title_fontweight="bold",
+        axis_label_fontsize=11,
+        tick_labelsize=9,
     )
 
     scatter_rpool = spatial_figs.plot_goal_panel(
@@ -202,6 +210,12 @@ def build_fig6_spatial() -> None:
         pusht_success,
         r"(c) PushT: goal latents colored by $R_{\mathrm{pool}}$",
         rpool_norm,
+        title_fontsize=14,
+        title_fontweight="bold",
+        axis_label_fontsize=12,
+        tick_labelsize=10,
+        annotation_fontsize=12,
+        show_ticks=True,
     )
     spatial_figs.plot_goal_panel(
         ax_d,
@@ -211,28 +225,34 @@ def build_fig6_spatial() -> None:
         r"(d) Cube: goal latents colored by $R_{\mathrm{pool}}$",
         rpool_norm,
         size_scale=1.5,
+        title_fontsize=14,
+        title_fontweight="bold",
+        axis_label_fontsize=12,
+        tick_labelsize=10,
+        annotation_fontsize=12,
+        show_ticks=True,
     )
 
     cost_sm = plt.cm.ScalarMappable(cmap="RdYlGn_r", norm=cost_norm)
     cost_sm.set_array(np.concatenate([cem_c, mppi_c]))
-    cost_cax = fig.add_axes([0.91, 0.57, 0.012, 0.29])
+    cost_cax = fig.add_axes([0.92, 0.55, 0.015, 0.35])
     cost_cbar = fig.colorbar(cost_sm, cax=cost_cax)
-    cost_cbar.set_label("C_real_state", fontsize=10, labelpad=10)
-    cost_cbar.ax.tick_params(labelsize=8)
+    cost_cbar.set_label("C_real_state", fontsize=11, labelpad=10)
+    cost_cbar.ax.tick_params(labelsize=10)
 
-    rpool_cax = fig.add_axes([0.91, 0.14, 0.012, 0.29])
+    rpool_cax = fig.add_axes([0.92, 0.08, 0.015, 0.35])
     rpool_cbar = fig.colorbar(scatter_rpool, cax=rpool_cax)
-    rpool_cbar.set_label("R_pool(C_model)", fontsize=10, labelpad=10)
-    rpool_cbar.ax.tick_params(labelsize=8)
+    rpool_cbar.set_label("R_pool(C_model)", fontsize=11, labelpad=10)
+    rpool_cbar.ax.tick_params(labelsize=10)
     fig.text(
         0.5,
         0.035,
         "Bottom-row marker area is proportional to final-pool success mass.",
         ha="center",
-        fontsize=8,
+        fontsize=11,
         color="0.25",
     )
-    fig.subplots_adjust(left=0.05, right=0.88, bottom=0.08, top=0.95)
+    fig.subplots_adjust(left=0.05, right=0.90, bottom=0.08, top=0.95)
 
     FIGURE_DIR.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIG6_SPATIAL, bbox_inches="tight", dpi=300)
