@@ -6,7 +6,7 @@ The evidence has bounded scope. All experiments use a single latent world model,
 % REVISION: addresses W3
 Cube-specific evidence remains narrower than PushT but is strengthened by the extended full projected-CEM run: the full projected-CEM cell uses the first 50 Cube pairs with three projection seeds, while the Cube re-rank-only cell uses all 100 pairs with three seeds. This supports the cross-environment $\DeltaCEM$ claim, but Cube still has fewer full-planning pairs than PushT and should not be interpreted as a complete environment-general validation.
 
-We report seed-level variance but not formal significance tests; the paper relies on locked decision rules, replicated seeds, and cross-protocol consistency rather than confidence intervals or hypothesis tests.
+We report seed-level variance and, for the revised core quantities, bootstrap confidence intervals. These intervals quantify pair-level uncertainty for the main pool-ranking and optimizer-attribution metrics, but the paper still relies primarily on locked decision rules, replicated seeds, and cross-protocol consistency rather than broad hypothesis testing.
 
 % REVISION: addresses W5
 The physical task costs used for pool metrics are privileged evaluation signals: appropriate for diagnosis, but unavailable to a deployed planner. The proposed protocol is an evaluation protocol, not a new planning objective. Our privilege-free proxy analysis suggests that learned-cost spread can partially monitor high-regret cases without simulator access, but this proxy has only been validated on PushT and does not yet replace $\Rpool$ or selection-regret measurement across environments.

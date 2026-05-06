@@ -51,6 +51,13 @@ PUSHT_SUBSETS = (
     "v1_favorable",
     "ordinary",
 )
+DISPLAY_SUBSETS = (
+    "ordinary",
+    "latent_favorable",
+    "v1_favorable",
+    "sign_reversal",
+    "invisible_quadrant",
+)
 
 SUBSET_LABELS = {
     "invisible_quadrant": "Invisible quadrant",
@@ -136,8 +143,15 @@ def rows_by_subset(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {str(row["subset"]): row for row in rows}
 
 
+def darken_hex(hex_color: str, factor: float = 0.62) -> str:
+    hex_color = hex_color.lstrip("#")
+    rgb = [int(hex_color[i : i + 2], 16) for i in (0, 2, 4)]
+    return "#" + "".join(f"{max(0, min(255, int(channel * factor))):02x}" for channel in rgb)
+
+
 def annotate_value(ax, x: float, y: float, value: float, side: str) -> None:
-    offset = 2.4
+    offset = 5.0 if value < 5.0 else 3.0
+    fontweight = "bold" if value > 50.0 else "normal"
     if side == "left":
         ax.text(
             x - offset,
@@ -145,7 +159,8 @@ def annotate_value(ax, x: float, y: float, value: float, side: str) -> None:
             f"{value:.1f}%",
             ha="right",
             va="center",
-            fontsize=8,
+            fontsize=9,
+            fontweight=fontweight,
             color="0.15",
         )
     else:
@@ -155,7 +170,8 @@ def annotate_value(ax, x: float, y: float, value: float, side: str) -> None:
             f"{value:.1f}%",
             ha="left",
             va="center",
-            fontsize=8,
+            fontsize=9,
+            fontweight=fontweight,
             color="0.15",
         )
 
@@ -170,111 +186,95 @@ def plot_butterfly(
     full_by_subset = rows_by_subset(full_rows)
     rerank_by_subset = rows_by_subset(rerank_rows)
 
-    y = np.arange(len(PUSHT_SUBSETS))
+    row_step = 0.8
+    y = np.arange(len(DISPLAY_SUBSETS)) * row_step
     full_values = np.array(
-        [float(full_by_subset[subset]["success"]) * 100.0 for subset in PUSHT_SUBSETS]
+        [float(full_by_subset[subset]["success"]) * 100.0 for subset in DISPLAY_SUBSETS]
     )
     rerank_values = np.array(
-        [float(rerank_by_subset[subset]["success"]) * 100.0 for subset in PUSHT_SUBSETS]
+        [float(rerank_by_subset[subset]["success"]) * 100.0 for subset in DISPLAY_SUBSETS]
     )
-    colors = [SUBSET_COLORS[subset] for subset in PUSHT_SUBSETS]
+    colors = [SUBSET_COLORS[subset] for subset in DISPLAY_SUBSETS]
+    edge_colors = [darken_hex(color) for color in colors]
 
     ax.barh(
         y,
         -full_values,
-        height=0.58,
+        height=0.5,
         color=colors,
-        alpha=0.88,
-        edgecolor="0.25",
-        linewidth=0.35,
+        edgecolor=edge_colors,
+        linewidth=0.8,
         label="Full projected CEM",
     )
     ax.barh(
         y,
         rerank_values,
-        height=0.58,
+        height=0.5,
         color=colors,
-        alpha=0.88,
-        edgecolor="0.25",
-        linewidth=0.35,
+        edgecolor=edge_colors,
+        linewidth=0.8,
         label="Re-rank-only",
     )
 
     full_aggregate_pct = full_aggregate * 100.0
     rerank_aggregate_pct = rerank_aggregate * 100.0
-    ax.axvline(0, color="0.2", linewidth=0.8)
-    ax.axvline(-full_aggregate_pct, color="0.35", linestyle="--", linewidth=1.0)
-    ax.axvline(rerank_aggregate_pct, color="0.35", linestyle="--", linewidth=1.0)
+    aggregate_color = "#666666"
+    ax.axvline(0, color="black", linewidth=0.7)
+    ax.axvline(
+        -full_aggregate_pct,
+        color=aggregate_color,
+        linestyle="--",
+        linewidth=1.1,
+        alpha=0.7,
+    )
+    ax.axvline(
+        rerank_aggregate_pct,
+        color=aggregate_color,
+        linestyle="--",
+        linewidth=1.1,
+        alpha=0.7,
+    )
 
     ax.text(
         -full_aggregate_pct,
-        -0.66,
+        -0.52,
         f"agg. {full_aggregate_pct:.1f}%",
         ha="center",
         va="bottom",
-        fontsize=8,
-        color="0.25",
+        fontsize=8.5,
+        color=aggregate_color,
     )
     ax.text(
         rerank_aggregate_pct,
-        -0.66,
+        -0.52,
         f"agg. {rerank_aggregate_pct:.1f}%",
         ha="center",
         va="bottom",
-        fontsize=8,
-        color="0.25",
+        fontsize=8.5,
+        color=aggregate_color,
     )
 
-    for idx, subset in enumerate(PUSHT_SUBSETS):
-        ax.text(
-            0,
-            y[idx],
-            SUBSET_LABELS[subset],
-            ha="center",
-            va="center",
-            fontsize=8.5,
-            color="0.08",
-            bbox={
-                "facecolor": "white",
-                "edgecolor": "0.86",
-                "boxstyle": "round,pad=0.18",
-                "alpha": 0.96,
-            },
-            zorder=5,
-        )
+    for idx, _subset in enumerate(DISPLAY_SUBSETS):
         annotate_value(ax, -full_values[idx], y[idx], full_values[idx], side="left")
         annotate_value(ax, rerank_values[idx], y[idx], rerank_values[idx], side="right")
 
-    ax.text(
-        -52,
-        -1.02,
-        "Full projected CEM",
-        ha="center",
-        va="bottom",
-        fontsize=9,
-        fontweight="bold",
-        color="0.15",
+    ax.set_title(
+        r"PushT per-subset rank-1 success ($m = 64$)",
+        fontsize=10,
+        fontweight="normal",
+        pad=14,
     )
-    ax.text(
-        52,
-        -1.02,
-        "Re-rank-only",
-        ha="center",
-        va="bottom",
-        fontsize=9,
-        fontweight="bold",
-        color="0.15",
-    )
-    ax.set_title(r"PushT per-subset rank-1 success ($m=64$)", fontsize=11, pad=18)
-    ax.set_xlabel(r"$M_\mathrm{rank1}$ (%)")
+    ax.set_xlabel("← Full projected CEM (%)    |    Re-rank-only (%) →")
     ax.set_xlim(-100, 100)
-    ax.set_ylim(len(PUSHT_SUBSETS) - 0.42, -1.12)
+    ax.set_ylim(y[-1] + 0.48, -0.75)
     ax.set_yticks(y)
-    ax.set_yticklabels([""] * len(PUSHT_SUBSETS))
+    ax.set_yticklabels([SUBSET_LABELS[subset] for subset in DISPLAY_SUBSETS])
+    for tick_label in ax.get_yticklabels():
+        tick_label.set_horizontalalignment("right")
     ticks = [-100, -75, -50, -25, 0, 25, 50, 75, 100]
     ax.set_xticks(ticks)
     ax.set_xticklabels([str(abs(tick)) for tick in ticks])
-    ax.tick_params(axis="y", length=0)
+    ax.tick_params(axis="y", length=0, pad=8)
     ax.grid(axis="x", color="0.9", linewidth=0.8)
     ax.set_axisbelow(True)
     for spine in ("top", "right", "left"):
@@ -315,7 +315,7 @@ def main() -> None:
         }
     )
 
-    fig, ax = plt.subplots(figsize=(7.4, 4.35))
+    fig, ax = plt.subplots(figsize=(10, 4))
     plot_butterfly(
         ax,
         pusht_full_rows,

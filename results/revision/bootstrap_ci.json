@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "format": "revision_bootstrap_ci",
+    "created_at": "2026-05-05T23:53:18.516831+00:00",
+    "git_commit": "c486c0aff60c4f55f7f906c241ee4b292523b490",
+    "script_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/scripts/revision/bootstrap_ci.py",
+    "rpool_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/rpool_v1_pusht.json",
+    "mppi_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/mppi_pool_analysis.json",
+    "v3_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/v3_pool_analysis_pusht.json",
+    "stage1a_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/stage1/stage1a_full.json",
+    "subspace_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/phase2/subspace_cem/stage_a_pusht.json",
+    "output": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/results/revision/bootstrap_ci.json",
+    "memo": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/docs/revision/bootstrap_ci_memo.md",
+    "n_bootstrap": 10000,
+    "seed": 20260505,
+    "alpha": 0.05,
+    "confidence": 0.95,
+    "endpoint_reference": 0.5064137547428476,
+    "endpoint_reference_source": "results/phase2/stage1/stage1a_full.json controls.C0.metrics.global_spearman",
+    "mppi_endpoint_reference": 0.47,
+    "mppi_endpoint_reference_source": "results/revision/mppi_pool_analysis.json decision.endpoint_reference_R",
+    "mppi_pair_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      16,
+      19,
+      25,
+      30,
+      46,
+      60,
+      61,
+      67,
+      70,
+      71,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78
+    ]
+  },
+  "metrics": {
+    "rpool_cmodel_overall": {
+      "estimate": 0.08418903205718797,
+      "ci_low": 0.03735359633479991,
+      "ci_high": 0.1313464188348581,
+      "n": 100,
+      "n_bootstrap": 10000,
+      "method": "percentile bootstrap over pairs"
+    },
+    "rpool_v1_effective_overall": {
+      "estimate": 0.6660450648799646,
+      "ci_low": 0.594785562177419,
+      "ci_high": 0.7347144015750298,
+      "n": 100,
+      "n_bootstrap": 10000,
+      "method": "percentile bootstrap over pairs"
+    },
+    "delta_cem_overall": {
+      "estimate": 0.4222247226856596,
+      "ci_low": 0.37404208551480983,
+      "ci_high": 0.46842834827898633,
+      "n": 100,
+      "n_bootstrap": 10000,
+      "method": "percentile bootstrap over pairs",
+      "endpoint_reference": 0.5064137547428476
+    },
+    "rpool_v3_overall": {
+      "estimate": 0.25794767241974076,
+      "ci_low": 0.1457115537609953,
+      "ci_high": 0.36511747201370864,
+      "n": 100,
+      "n_bootstrap": 10000,
+      "method": "percentile bootstrap over pairs"
+    },
+    "mppi_minus_cem_rpool_cmodel": {
+      "estimate": 0.0788879024809808,
+      "ci_low": -0.0442598742956935,
+      "ci_high": 0.2043977624884658,
+      "n": 30,
+      "n_bootstrap": 10000,
+      "method": "paired percentile bootstrap over matched MPPI/CEM pairs"
+    },
+    "cem_specific_attribution_fraction": {
+      "estimate": 0.22225416515330526,
+      "ci_low": -0.15735969043798406,
+      "ci_high": 0.48094113425605345,
+      "n": 30,
+      "n_bootstrap": 10000,
+      "method": "paired percentile bootstrap of (Rpool_MPPI - Rpool_CEM) / (Rendpoint - Rpool_CEM)",
+      "endpoint_reference": 0.47
+    }
+  },
+  "repair_failures": {
+    "cost_head_0_of_16": {
+      "successes": 0,
+      "trials": 16,
+      "estimate": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.2059072142078227,
+      "method": "Clopper-Pearson exact 95.0% binomial interval",
+      "description": "Cost-head repair successes on 16 hard pairs."
+    },
+    "subspace_cem_regression": {
+      "default_success": 0.5666666666666667,
+      "subspace_success": 0.48333333333333334,
+      "success_delta_subspace_minus_default": -0.08333333333333331,
+      "discordant_regressions_default_success_subspace_failure": 6,
+      "discordant_improvements_default_failure_subspace_success": 1,
+      "discordant_total": 7,
+      "exact_conditional_regression_ci": {
+        "successes": 6,
+        "trials": 7,
+        "estimate": 0.8571428571428571,
+        "ci_low": 0.4212768029568048,
+        "ci_high": 0.9963897031380994,
+        "method": "Clopper-Pearson exact 95.0% binomial interval"
+      },
+      "exact_mcnemar_p_two_sided": 0.125,
+      "all_seed_pair_regression_rate_ci": {
+        "successes": 6,
+        "trials": 60,
+        "estimate": 0.1,
+        "ci_low": 0.037591269108566035,
+        "ci_high": 0.20505773670806393,
+        "method": "Clopper-Pearson exact 95.0% binomial interval"
+      },
+      "method_note": "Seed-level paired comparison repeats each default CEM outcome for the two subspace projection seeds; b is default-success/subspace-failure and c is default-failure/subspace-success."
+    }
+  }
+}

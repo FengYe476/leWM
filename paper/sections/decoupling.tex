@@ -19,7 +19,7 @@ where $\mathcal{P}$ is the final CEM pool. These metrics separate representation
 
 This subsection applies the gap metric under matched planning protocols. We evaluated a $2\times2$ grid: PushT and OGBench-Cube, crossed with full projected CEM and re-rank-only. Full projected CEM uses projected cost during elite and rank-1 selection; re-rank-only runs default CEM first, then re-ranks the final pool, separating optimization effects from final selection effects.
 
-Table~\ref{tab:cem-gap-protocols} shows representative dimensions. Across all four protocol cells, $\Rendpoint$ increases with projection dimension while $\Rpool$ stays close to zero; at $m=64$, the PushT gaps are 0.432 and 0.394, and Cube gaps are 0.569 and 0.567. Endpoint costs that appear well-structured on fixed records become weak rankers inside final CEM pools.
+Table~\ref{tab:cem-gap-protocols} shows representative dimensions. Across all four protocol cells, $\Rendpoint$ increases with projection dimension while $\Rpool$ stays close to zero; at $m=64$, the PushT gaps are 0.432 and 0.394, and Cube gaps are 0.569 and 0.567. Endpoint costs that appear well-structured on fixed records become weak rankers inside final CEM pools. Using the full LeWM endpoint reference $\Rendpoint=0.506$ and the 100 PushT default CEM pools, the same-pool gap is $\DeltaCEM=0.422$ with a 95\% bootstrap interval $[0.374,0.468]$.
 
 \begin{table}[t]
 \centering
@@ -58,6 +58,8 @@ Figure~\ref{fig:hero} visualizes the same endpoint-pool split across projection 
 
 The success curves show why endpoint ranking alone is insufficient. PushT full projected CEM has a dimension elbow, from 11.1\% at $m=1$ to 34.4\% at $m=192$, while re-rank-only changes by only 2.7 percentage points. In the extended Cube full projected-CEM run, success rises from 32.7\% at $m=1$ to 61.3\% at $m=32$ and remains high at $m=64$ and $m=192$ (56.0\% and 62.0\%). Thus the original Cube inverted-U success pattern does not persist at 50-pair, three-seed scale, but the endpoint-pool ranking gap remains. Endpoint curves rise, pool curves remain low, and success can move without pool-ranking recovery.
 
+Panels~\ref{fig:spatial_evidence}c,d confirm that near-zero $\Rpool$ values are spatially distributed across both environments rather than isolated to a single cluster of goal latents.
+
 % REVISION: addresses W3
 The Cube full projected-CEM cell now uses 50 pairs and three projection seeds, compared with 100 pairs and three seeds for Cube re-rank-only. We therefore use Cube as strengthened cross-environment evidence for the endpoint-pool diagnostic, while treating detailed Cube success-curve shape as secondary.
 
@@ -85,30 +87,33 @@ E & medium & near-zero & medium & high & Rank-insensitive success in a locally s
 \end{table}
 
 Under strict thresholding, Case A appears in 18 subset-level cells, mainly ordinary and latent-favorable PushT cells at medium to high dimensions, but no aggregate protocol cell has Case A structure. Case B covers Cube projected protocols, Case C covers PushT invisible-quadrant failures, Case E covers rank-insensitive PushT ordinary success, and Case D is absent.
+In Cube, the near-zero $\Rpool$ coexists with relatively high planning success, consistent with Case B: the pool contains sufficient success mass that ranking is less critical for action selection. Cube therefore provides cross-environment evidence for the endpoint-pool ranking gap, not for cost-driven planning failure.
 
 % REVISION: addresses W2
 \subsection{Mechanism attribution: convergence compression versus local representation failure}
 
-The pool-level collapse could reflect two different mechanisms. One possibility is convergence compression: CEM may contract the final pool into a physically narrow neighborhood where any endpoint cost has little residual order to recover. A second possibility is local representation failure: a privileged ranker may still order candidates inside the same pool, while the learned Euclidean cost $\Cmodel$ loses local order preservation. To separate these mechanisms, we recomputed $\Rpool$ on the same PushT default CEM pools using a privileged V1 hinge oracle cost, denoted $C_\mathrm{V1}$, and compared it with $\Rpool(\Cmodel)$.
+The pool-level collapse could reflect several mechanisms. CEM may contract the final pool into a physically narrow neighborhood where any endpoint cost has little residual order to recover. The learned predictor may also roll candidates into inaccurate terminal latents. Finally, the encoder's terminal-latent geometry and Euclidean cost shape may fail locally even if the actual terminal image is encoded directly. We therefore evaluated three rankers on the same 100 PushT final pools: predicted-latent $\Cmodel=\|\hat z_H-z_g\|_2^2$, actual-terminal $C_\mathrm{V3}=\|z_\mathrm{terminal}-z_g\|_2^2$, and physical hinge $C_\mathrm{V1}$.
 
-Across the 100 PushT pairs, the learned Euclidean cost gives $\Rpool(\Cmodel)=0.084$, while the V1 oracle gives $\Rpool(C_\mathrm{V1})=0.666$. The same pattern holds in the hard subsets. In the 16 invisible-quadrant pairs, where the final pools contain little success mass ($M_\mathrm{pool\_success}=1.4\%$), $\Rpool(C_\mathrm{V1})=0.775$ while $\Rpool(\Cmodel)=0.022$. In the 21 sign-reversal pairs, $\Rpool(C_\mathrm{V1})=0.925$ while $\Rpool(\Cmodel)=-0.040$. Even in the latent-favorable subset, where the learned cost performs comparatively better, V1 remains stronger: $\Rpool(C_\mathrm{V1})=0.417$ versus $\Rpool(\Cmodel)=0.197$.
-
-These numbers rule out pure CEM convergence compression as the dominant explanation and clearly exceed the pre-registered ``mixed'' zone. The mixed rule was designed for cases where the privileged ranker itself had only weak final-pool signal, e.g., $\Rpool(C_\mathrm{V1}) \in [0.05,0.15]$. Here $\Rpool(C_\mathrm{V1})=0.666 \gg 0.15$ while $\Rpool(\Cmodel)=0.084 \approx 0$, so the overall 100-pair result fits the local-representation-failure pattern: V1 retains substantial ranking power inside the CEM final pool, whereas the learned Euclidean cost does not. Per subset, the invisible-quadrant and sign-reversal groups show the strongest representation failure; ordinary and latent-favorable pairs retain partial learned-cost signal alongside stronger V1 signal. Figure~\ref{fig:v1_attribution} shows the same attribution at pair level.
-
-\begin{figure}[t]
+\begin{table}[t]
 \centering
-\includegraphics[width=0.72\textwidth]{figures/fig_new_a_attribution.pdf}
-\caption{V1 attribution on the 100 PushT final CEM pools. Each point is one pair, with $x=\Rpool(\Cmodel)$ and $y=\Rpool(C_\mathrm{V1})$; undefined V1 Spearman values from constant oracle costs are plotted with the effective value 0. The diagonal marks equal learned and privileged rank signal. Most points lie above the diagonal, especially invisible-quadrant and sign-reversal pairs, supporting local representation failure rather than pure CEM convergence compression. Overlapping anchor definitions are assigned to a single primary subset in the legend to keep one point per pair.}
-\label{fig:v1_attribution}
-\end{figure}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccL{0.42\linewidth}}
+\toprule
+Cost ranker & $\Rpool$ mean$\pm$std & 95\% CI & What it tests \\
+\midrule
+$\Cmodel$ (predicted latent) & 0.084$\pm$0.243 & [0.037, 0.131] & End-to-end predictor, encoder, and latent cost shape \\
+$C_\mathrm{V3}$ (actual terminal latent) & 0.258$\pm$0.566 & [0.146, 0.365] & Encoder and latent cost shape after removing predictor rollout \\
+$C_\mathrm{V1}$ (physical hinge) & 0.666$\pm$0.357 & [0.595, 0.735] & Physical ground-truth ranker on the same pool \\
+\bottomrule
+\end{tabular}
+}
+\caption{Same-pool mechanism attribution on 100 PushT default CEM final pools. Intervals are 10{,}000-sample percentile bootstraps over pairs; flat V1 pools are counted as zero correlation, matching the Phase B convention.}
+\label{tab:v3-decomposition}
+\end{table}
+
+Table~\ref{tab:v3-decomposition} rules out pure CEM convergence compression: $C_\mathrm{V1}$ retains substantial order inside the same pools. It also shows that V1 alone was not the whole story. $C_\mathrm{V3}$ improves over $\Cmodel$, so predictor rollout error contributes to the collapse, but $C_\mathrm{V3}$ remains far below $C_\mathrm{V1}$, so actual-terminal encoder geometry and Euclidean cost shape remain limiting. The same pattern holds in the hard subsets. In the 16 invisible-quadrant pairs, $\Rpool(\Cmodel)=0.022$, $\Rpool(C_\mathrm{V3})=0.348$, and $\Rpool(C_\mathrm{V1})=0.775$. In the 21 sign-reversal pairs, $C_\mathrm{V3}$ does not recover ranking ($-0.125$) while $C_\mathrm{V1}$ remains high (0.925). Thus the mechanism is mixed: predictor rollout worsens local ranking, but learned terminal-latent geometry still fails on the same pool. Panels~\ref{fig:decoupling_evidence}a--c show the endpoint-planning decoupling on a representative pair, while panel~\ref{fig:decoupling_evidence}d extends the V1 attribution to all 100 pairs.
 
 \subsection{Per-subset structure in PushT}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig4_butterfly.pdf}
-\caption{Per-subset rank-1 planning success ($M_\mathrm{rank1}$) at projection dimension $m=64$ under two PushT protocols, shown as a butterfly chart. Leftward bars show full projected CEM and rightward bars show re-rank-only, with colors denoting subset membership. Dashed vertical lines mark aggregate success on each side. Ordinary pairs reach 86.7\% under full projected CEM, while latent-favorable pairs rise to 75.0\% under re-rank-only; the aggregate masks sharply different subset behavior under both protocols.}
-\label{fig:per_subset}
-\end{figure}
-
-Figure~\ref{fig:per_subset} shows why aggregate PushT rows are insufficient: invisible-quadrant pairs lack success mass, ordinary pairs can succeed despite weak pool ranking, latent-favorable pairs produce strict Case A cells, and V1-favorable pairs expose where simulator-derived hinge cost helps more than learned latent cost.
+Appendix Figure~\ref{fig:butterfly_appendix} shows why aggregate PushT rows are insufficient: invisible-quadrant pairs lack success mass, ordinary pairs can succeed despite weak pool ranking, latent-favorable pairs produce strict Case A cells, and V1-favorable pairs expose where simulator-derived hinge cost helps more than learned latent cost.

@@ -78,31 +78,30 @@ little over default selection.
 
 \begin{table}[h]
 \centering
-\caption{Cube full projected CEM across representative dimensions.  This
-main sweep uses 25 pairs and projection seed~0; the anomaly sanity check
-repeated the $m=32$ versus $m=192$ comparison across three seeds.}
+\caption{Cube full projected CEM across representative dimensions.  The
+final sweep uses 50 pairs and three projection seeds; all reported success
+and pool-success values are percentages.}
 \label{tab:g-cube-full}
 \small
 \begin{tabular}{cccccc}
 \toprule
 $m$ & $\Rendpoint$ & $\Rpool$ & $\DeltaCEM$ & $M_{\text{rank1}}$ (\%) & Pool success (\%) \\
 \midrule
-1 & 0.238 & 0.003 & 0.235 & 44.0 & -- \\
-8 & 0.477 & 0.030 & 0.447 & 64.0 & -- \\
-32 & 0.570 & 0.011 & 0.559 & 76.0 & -- \\
-64 & 0.575 & 0.006 & 0.569 & 72.0 & 78.4 \\
-192 & 0.603 & 0.008 & 0.595 & 60.0 & -- \\
+1 & 0.238 & 0.008 & 0.230 & 32.7 & 33.5 \\
+8 & 0.477 & 0.001 & 0.476 & 52.7 & 50.3 \\
+32 & 0.570 & -0.001 & 0.571 & 61.3 & 56.2 \\
+64 & 0.575 & -0.003 & 0.578 & 56.0 & 54.3 \\
+192 & 0.603 & 0.010 & 0.593 & 62.0 & 57.2 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Cube full projected CEM shows an inverted-U success pattern, peaking at
-$m=32$ (76.0\%) and then declining to 60.0\% at $m=192$.  This
-non-monotonicity contrasts with PushT's monotonic rise and was classified
-as MIXED in the closeout because the main sweep uses only 25 pairs and
-seed~0.  The Cube anomaly sanity check found that the $m=32$ versus
-$m=192$ gap remains positive at +5.33 percentage points across three seeds,
-while $\Rpool$ stays near zero throughout.
+The extended Cube full projected-CEM sweep does not preserve the original
+25-pair inverted-U success pattern.  Success rises from $m=1$ to $m=32$ and
+then remains high at $m=64$ and $m=192$ (56.0\% and 62.0\%).  The
+endpoint-pool diagnostic remains stable: $\Rendpoint$ is high under the
+fixed endpoint artifact, while $\Rpool$ stays near zero in the final CEM
+pool throughout.
 
 \subsection{Cube Re-rank-only}
 \label{app:stage1b_cube_rerank}
@@ -157,6 +156,13 @@ Ordinary & Re-rank & 0.499 & 0.154 & 0.344 & 55.3 & 50.3 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig4_butterfly.pdf}
+\caption{Per-subset rank-1 planning success at $m = 64$ under two PushT protocols, displayed as a butterfly chart. Left bars show full projected CEM; right bars show re-rank-only. Dashed lines indicate aggregate success. Invisible-quadrant and sign-reversal pairs fail under both protocols, while ordinary and latent-favorable pairs show protocol-dependent differences.}
+\label{fig:butterfly_appendix}
+\end{figure}
 
 Invisible-quadrant and sign-reversal pairs fail under both protocols.
 Ordinary pairs reach 86.7\% under full projected CEM but only 55.3\% under

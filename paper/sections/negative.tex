@@ -3,7 +3,7 @@
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig5_unified.pdf}
-\caption{Four failed repairs under locked criteria, using a unified color scheme for default Euclidean costs, learned alternatives, oracle/V1 signals, DINOv2 replacements, and Subspace-CEM. \textbf{(a)}~Learned cost head $C_\psi$ compresses elite cost std by ${\sim}240\times$, removing local discrimination (0/16 hard-pair success). \textbf{(b)}~DINOv2 encoder replacement underperforms trained LeWM on endpoint ranking (0.261 vs.\ 0.506 Spearman). \textbf{(c)}~Hybrid CEM requires ${\geq}20\%$ oracle budget to recover any hard-pair successes. \textbf{(d)}~Subspace-CEM regresses across all subsets ($-8.3$\,pp overall).}
+\caption{Four failed repairs under locked criteria, using a unified color scheme for default Euclidean costs, learned alternatives, oracle/V1 signals, DINOv2 replacements, and Subspace-CEM. \textbf{(a)}~Learned cost head $C_\psi$ compresses elite cost std by ${\sim}240\times$, removing local discrimination (0/16 hard-pair success; exact 95\% CI upper bound 20.6\%). \textbf{(b)}~DINOv2 encoder replacement underperforms trained LeWM on endpoint ranking (0.261 vs.\ 0.506 Spearman). \textbf{(c)}~Hybrid CEM requires ${\geq}20\%$ oracle budget to recover any hard-pair successes. \textbf{(d)}~Subspace-CEM regresses across all subsets ($-8.3$\,pp overall).}
 \label{fig:negative_results}
 \end{figure}
 
@@ -11,7 +11,7 @@ Sections~4 and~5 establish that LeWM learns task-relevant endpoint geometry that
 
 \subsection{Learned cost heads}
 
-The first repair replaced Euclidean latent distance with MLP cost heads $C_\psi(z,\zgoal)$ trained on V1 hinge labels over frozen LeWM latents. The large MLP improved held-out endpoint ranking (Spearman $0.479$ vs.\ $0.269$), but Figure~\ref{fig:negative_results} shows that elite costs collapsed and planning still failed.
+The first repair replaced Euclidean latent distance with MLP cost heads $C_\psi(z,\zgoal)$ trained on V1 hinge labels over frozen LeWM latents. The large MLP improved held-out endpoint ranking (Spearman $0.479$ vs.\ $0.269$), but Figure~\ref{fig:negative_results} shows that elite costs collapsed and planning still failed. The hard-pair success count was 0/16, whose exact 95\% Clopper--Pearson interval is $[0,20.6]\%$.
 
 \subsection{Encoder replacement}
 
@@ -23,7 +23,7 @@ The third repair re-ranked the top $K$ CEM candidates per iteration using the V1
 
 \subsection{Subspace-CEM}
 
-The fourth repair targeted the search-selection split found in Section~4: Subspace-CEM searched with an $m=64$ projected cost, then selected by full 192-dimensional LeWM cost. Under the locked Stage A criterion, this approach failed (Figure~\ref{fig:negative_results}), showing that projected-cost search can move the final pool into a region that full-dimensional re-ranking cannot repair.
+The fourth repair targeted the search-selection split found in Section~4: Subspace-CEM searched with an $m=64$ projected cost, then selected by full 192-dimensional LeWM cost. Under the locked Stage A criterion, this approach failed (Figure~\ref{fig:negative_results}), showing that projected-cost search can move the final pool into a region that full-dimensional re-ranking cannot repair. In seed-level paired comparisons, six default successes regressed under Subspace-CEM while one default failure improved (exact McNemar/binomial $p=0.125$).
 
 \subsection{What the failures share}
 
