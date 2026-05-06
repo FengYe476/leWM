@@ -182,4 +182,4 @@ This is the top-conference push path. The story is now joint:
 - Stage 1A: learned LeWM endpoint geometry is distributed enough to survive random projection.
 - Stage 1B-Smoke: projected latent costs preserve planning success at m=64 within the decision threshold, even though endpoint ranking on CEM's final clustered candidate pool is weak.
 
-The paper framing should therefore move from "endpoint rank preservation" to "planning-compatible geometry under dimensional constraint." Endpoint metrics remain useful diagnostics, but the decisive object is the CEM cost landscape induced by projected predictor latents.
+The paper framing should therefore move from "endpoint rank preservation" to "endpoint ranking does not imply planning under dimensional constraint." Endpoint metrics remain useful diagnostics, but the decisive object is the CEM cost landscape induced by projected predictor latents.

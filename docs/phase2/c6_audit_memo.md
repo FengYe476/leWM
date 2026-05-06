@@ -205,4 +205,4 @@ For Stage 2, the useful bridge is:
 - C0 vs C2/C3: once the learned latent space exists, much of its endpoint-ranking signal is distributed and robust to random projections.
 - C0 vs S4/S5/S6: the learned representation is not merely copying raw pixel distance; it converts a positive but shallow visual signal into a stronger task-specific latent geometry.
 
-This supports the Stage 2 paper theme: planning-compatible geometry should be evaluated both at the representation-starting-point level and at the planning-cost-landscape level. Endpoint ranking alone is not enough, but the C6 audit clarifies that LeWM training creates real representational structure rather than inheriting a benign random visual geometry.
+This supports the Stage 2 paper theme: endpoint ranking must be evaluated together with planner-local cost geometry. Endpoint ranking alone is not enough, but the C6 audit clarifies that LeWM training creates real representational structure rather than inheriting a benign random visual geometry.
