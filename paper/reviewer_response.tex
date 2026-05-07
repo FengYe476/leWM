@@ -23,7 +23,7 @@
 
 \section*{Response to Second-Round Reviewer Comments}
 
-We thank the reviewer for the detailed and constructive second-round feedback (6/10). Below we address each of the five new concerns.
+We thank the reviewer for the detailed and constructive second-round feedback (6/10). Below we address each of the six new concerns.
 
 \subsection*{New W1: Generalization scope still too broad}
 
@@ -98,10 +98,27 @@ Section 4.2, after Table 2 discussion.
 Abstract Cube number conflicts with Table 2; Section 7 is missing.
 
 \paragraph{Response.}
-Fixed. The abstract now reports 56.0\% matching the extended 50-pair Table 2 data. The section numbering gap has been removed (now flows Section 6 $\rightarrow$ Section 7 Discussion $\rightarrow$ Section 8 Limitations). The 72.0\% figure from the original 25-pair single-seed run remains only in the appendix seed-level sanity table, clearly labeled as preliminary.
+Fixed. The abstract now reports 56.0\% matching the extended 50-pair Table 2 data. The section numbering gap has been removed (now flows Section 6 $\rightarrow$ Section 7 calibration experiment $\rightarrow$ Section 8 Discussion $\rightarrow$ Section 9 Limitations). The 72.0\% figure from the original 25-pair single-seed run remains only in the appendix seed-level sanity table, clearly labeled as preliminary.
 
 \paragraph{Location.}
 Abstract, section headers throughout.
+
+\subsection*{New W6: Warp Ensemble Selection is not a strict held-out evaluation}
+
+\paragraph{Concern.}
+In the original Warp Ensemble Selection experiment, each test pool contributed labels to 9 of the 10 ensemble members through the 10-fold setup. The reported gain could therefore reflect training exposure rather than genuine generalization.
+
+\paragraph{Response.}
+We agree. We ran a strict held-out evaluation that separates calibration capacity from generalization. Pairs 0--69 are used for training only. Within those 70 pairs, we train ten warps by ten-fold cross-validation. Pairs 70--99 are then evaluated as a completely held-out test set that is never seen by any warp during training.
+
+This strict split changes the conclusion of Section~7. On seen pools, the calibration still learns strong corrective structure: mean $\Rpool$ rises from 0.086 under Euclidean ranking to 0.441 when each training pool is evaluated by the nine warps that saw it during training. Thus pool-level ranking labels do contain strong local corrective signal.
+
+However, the learned calibration does not transfer to unseen pairs. On the 30 strictly held-out pools, Euclidean selection and warp-ensemble rank averaging both achieve 13.3\% success; the exact paired McNemar test gives $p=1.0$. Mean regret is slightly worse for the warp ensemble (37.67 versus 36.96). We also repeated the matched planning setting with default CEM search plus post-hoc warp reranking on the same held-out 30 pairs with three seeds. Default CEM succeeds on 20.0\% of runs, while warp reranking reaches 18.9\%; McNemar again gives $p=1.0$.
+
+We therefore rewrote Section~7 as a diagnostic validation experiment rather than a method contribution. The revised section now emphasizes the scientific conclusion: pool-level calibration works on seen pools but fails to generalize, implying that the local geometry distortion is pair-specific and that training-time representation intervention is likely necessary.
+
+\paragraph{Location.}
+Rewritten Section 7, new held-out tables and interpretation.
 
 \clearpage
 
@@ -121,12 +138,12 @@ We agree that the empirical evidence is bounded to one model and two environment
 
 \textit{Introduction (Section 1):} We now state explicitly: ``Our empirical claims apply to LeWM with Euclidean terminal latent costs under CEM-style optimization, evaluated on PushT and OGBench-Cube. The evaluation principle is broader, but it should be applied with the same instrumentation.''
 
-\textit{Limitations (Section 8):} Three explicit scope boundaries are now listed: (1) single model, two environments; (2) CEM as primary optimizer with partial MPPI cross-check; (3) privileged physical cost required for full evaluation.
+\textit{Limitations (Section 9):} Three explicit scope boundaries are now listed: (1) single model, two environments; (2) CEM as primary optimizer with partial MPPI cross-check; (3) privileged physical cost required for full evaluation.
 
 \textit{Cross-model feasibility:} We investigated PLDM (Sobal et al., 2025) as a cross-model validation target. The public repository exists but no ready-to-use PushT checkpoint was available at revision time. We leave cross-model validation as future work, noting that the diagnostic protocol ($\Rendpoint$, $\Rpool$, $\DeltaCEM$) is model-agnostic and directly applicable to any latent world model that exposes its candidate pool.
 
 \paragraph{Location in revised paper.}
-Abstract (page 1), Section 1 (page 2, lines 88--97), Section 8 (page 12).
+Abstract (page 1), Section 1 (page 2, lines 88--97), Section 9 (Limitations).
 
 \section*{W2: Diagnostic power of $\DeltaCEM$ -- attribution of $\Rpool \approx 0$}
 
@@ -222,7 +239,7 @@ However, MPPI still retains only $\sim$39\% of the endpoint ranking signal ($\Rp
 The lower MPPI planning success (38.9\% vs. 53.3\%) is consistent with slower convergence under 30 iterations and does not invalidate the pool-level comparison, which is the relevant diagnostic.
 
 \paragraph{Location in revised paper.}
-New Section 7.3, ``Optimizer dependence: CEM versus MPPI'' (page 12).
+Section 8.3, ``Optimizer dependence: CEM versus MPPI.''
 
 \section*{W5: Privileged physical cost requirement limits practical applicability}
 
@@ -251,7 +268,7 @@ Within the invisible-quadrant subset, the signal is stronger: \texttt{pool\_Cmod
 No single global proxy crosses our pre-specified $\rho > 0.4$ threshold, so these proxies are not full replacements for the privileged audit. However, they demonstrate that \textbf{partial monitoring is feasible without simulator access}: low learned-cost diversity in the CEM final pool can flag candidate-pool compression and elevated selection risk.
 
 \paragraph{Location in revised paper.}
-Section 7.1, paragraph on privilege-free monitoring (page 11, lines 584--593).
+Section 8.1, paragraph on privilege-free monitoring.
 
 \section*{Summary of Changes}
 
@@ -264,8 +281,9 @@ Weakness & Experiment & Key finding & Paper location \\
 W1 & Text revision + PLDM feasibility & Scope narrowed; PLDM deferred & Abstract, Sec. 1, Sec. 8 \\
 W2 & Rpool(V1) attribution (100 pairs) & Local representation failure dominant & New Sec. 4.4 \\
 W3 & Cube extended (50p $\times$ 3s, 750 runs) & Decoupling robust at scale; inverted-U gone & Table 2, Sec. 4.2 \\
-W4 & MPPI comparison (30p $\times$ 3s, 90 pools) & Soft weighting improves but does not close the gap; attribution CI is wide & New Sec. 7.3 \\
-W5 & Privilege-free proxy (100 pairs) & Partial monitoring feasible ($\rho$ up to 0.588) & Sec. 7.1 \\
+W4 & MPPI comparison (30p $\times$ 3s, 90 pools) & Soft weighting improves but does not close the gap; attribution CI is wide & Sec. 8.3 \\
+W5 & Privilege-free proxy (100 pairs) & Partial monitoring feasible ($\rho$ up to 0.588) & Sec. 8.1 \\
+W6 & Strict held-out WES evaluation & Seen-pool calibration is strong, but held-out generalization fails & Rewritten Sec. 7 \\
 \bottomrule
 \end{tabular}
 \end{center}

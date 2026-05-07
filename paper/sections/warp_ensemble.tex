@@ -1,82 +1,67 @@
-\section{Warp Ensemble Selection}
+\section{Can Pool-Level Calibration Close the Gap?}
 \label{sec:warp_ensemble}
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_method_warp.png}
-\caption{Overview of Warp Ensemble Selection. \textbf{Left:} Ten lightweight residual warps are trained offline via 10-fold cross-validation on existing CEM pool data, using pairwise ranking loss over the top-50 candidates per pool. Each warp learns a local calibration of the latent distance: $\text{warp}(z) = z + 0.05 \cdot \text{MLP}_\theta(z)$, initialized as identity. \textbf{Right:} At inference, default CEM search runs unchanged with Euclidean cost. Only the final rank-1 selection is modified: all 10 warps independently compute warped costs, their candidate rankings are averaged, and the candidate with the lowest average rank is selected. This post-hoc re-ranking improves planning success by 3.3 percentage points and reduces selection regret by 14.6\% without modifying the CEM search process.}
+\caption{Overview of the pool-level calibration experiment. \textbf{Left:} Ten lightweight residual warps are trained offline on existing CEM pool data with pairwise ranking loss over the top-50 candidates per pool. Each warp learns a local perturbation of latent geometry, $\mathrm{warp}(z)=z+0.05\cdot \mathrm{MLP}_{\theta}(z)$, initialized at identity. \textbf{Right:} At inference, default CEM search remains unchanged and uses the original Euclidean terminal latent cost. Only the final selector is replaced by an ensemble over warped Euclidean rankings. On seen pools, this calibration sharply improves local rank preservation, but under a strict held-out split it does not improve over Euclidean selection, indicating that the geometry distortion is pair-specific rather than globally correctable by a single inference-time warp family.}
 \label{fig:method_warp}
 \end{figure*}
 
 \subsection{Motivation}
 
-The V3 decomposition in Section~4.4 identifies encoder Euclidean geometry as the primary bottleneck inside CEM pools. Replacing predicted terminal latents with actual terminal-image encodings improves $\Rpool$, showing that rollout error contributes, but the resulting V3 ranker remains far below the physical V1 oracle on the same candidates. In the aggregate, the V3 step explains about 30\% of the gap between $\Cmodel$ and $C_\mathrm{V1}$, while the remaining 70\% is tied to terminal encoder geometry and Euclidean cost shape. Thus the pool contains rankable physical structure that Euclidean distance in the learned latent space does not expose.
+Section~4.4 identifies terminal encoder geometry as the dominant bottleneck inside CEM pools. Replacing predicted terminal latents with actual terminal encodings improves $\Rpool$, so rollout error contributes, but the actual-terminal latent cost still remains far below the V1 physical oracle on the same candidates. Section~6 then shows that simple inference-time repairs do not close the gap. This raises a natural follow-up question: if the final pool already contains physically rankable structure, can a lightweight learned calibration of the local latent distance recover the lost ordering?
 
-Section~6 then shows that four simple repairs fail under locked criteria, and additional revision-time inference interventions targeting search or selection do not simultaneously improve pool ranking, rank-1 success, and selection regret. The negative pattern motivates a calibrated selector trained directly on the object that fails: ranked candidates inside CEM-produced pools. The key signal is unavailable under standard endpoint evaluation. Pool-level ranking labels reveal how the learned Euclidean geometry behaves after CEM has converged, which is precisely the local decision region from which the executed action is selected.
+This question matters because standard endpoint evaluation never exposes the failing object. The corrective signal lives in pool-local rankings after CEM has converged, not in global endpoint pairs. A calibration experiment therefore tests the most optimistic inference-time version of the diagnostic: if simulator-scored pool labels are sufficient to repair selection, then the gap may be mostly local and post hoc. If not, the failure likely reflects pair-specific geometry that must be addressed during representation learning itself.
 
 \subsection{Method}
 
-Warp Ensemble Selection learns a small residual transformation of the 192-dimensional LeWM latent and then retains the Euclidean form of the terminal cost in the transformed space. Each local warp is
+We train a small residual warp on LeWM's 192-dimensional terminal latent:
 \begin{equation}
-\mathrm{warp}(z) = z + \alpha \cdot \mathrm{MLP}_{\theta}(z),
-\qquad \alpha = 0.05 .
+\mathrm{warp}(z)=z+\alpha\cdot \mathrm{MLP}_{\theta}(z), \qquad \alpha=0.05.
 \label{eq:warp}
 \end{equation}
-The MLP has one hidden layer with 32 units, ReLU activation, dropout 0.1, and a zero-initialized final layer, so training starts from the identity map. This residual parameterization keeps the calibration local rather than replacing the planner's objective with an unconstrained scalar cost.
+The MLP has one hidden layer with 32 units, ReLU activation, dropout 0.1, and an identity-biased initialization. Training uses pairwise ranking supervision from simulator-scored pool labels, sampled from the top-50 candidates under $\Cmodel$, plus an identity regularizer that discourages large latent distortions.
 
-We train ten warps using ten-fold splits over the 100 PushT CEM pools. For each fold, the warp is trained on the other 90 pools for 300 epochs using pairwise ranking supervision from simulator-scored $C_\mathrm{real\_state}$ labels. The ranking loss samples hard pairs from the top-50 candidates under $\Cmodel$, focusing training on the region where final action selection is decided. An identity regularizer with weight $3\times10^{-2}$ penalizes large deviations from the original latent geometry.
+To evaluate whether this calibration generalizes, we use a strict split. Pairs 0--69 are the training set. Ten warps are trained by ten-fold cross-validation \emph{within} those 70 pairs only. Pairs 70--99 form a completely held-out test set that is never seen by any warp during training. At inference, CEM search remains unchanged; only the final selector is modified. For each candidate, every warp computes a warped Euclidean cost, the candidates are ranked within each warp, and the ensemble either averages those ranks or votes over each warp's top candidates. Figure~\ref{fig:method_warp} summarizes the pipeline.
 
-At inference time, CEM search is unchanged: proposal updates and the final 300-candidate pool are produced by the default Euclidean $\Cmodel$. Only the final rank-1 selection changes. For each candidate $i$ and warp $k$, we compute the warped Euclidean cost
-\[
-C_{k,i} = \lVert \mathrm{warp}_k(\hat z_{H,i}) - \mathrm{warp}_k(z_g) \rVert_2^2 .
-\]
-The candidates are ranked within each warp, and the selected action is the candidate with the lowest average rank across the ten warps:
-\[
-i^\star = \arg\min_i \frac{1}{10}\sum_{k=1}^{10} \mathrm{rank}_k(i).
-\]
-Thus the method changes only the final selector, not the search distribution or simulator budget.
+\subsection{Training-Set Results}
 
-\subsection{Results}
+On the 70 seen training pairs, pool-level calibration clearly finds corrective signal. Using the nine warps that were trained on each pool, mean $\Rpool$ rises from 0.086 under Euclidean selection to 0.441 under rank-averaged warped selection. This is a large local improvement: the warped selector learns that many pools contain recoverable physical ordering that the original Euclidean metric suppresses.
 
-Figure~\ref{fig:method_warp} summarizes the training and inference pipeline. Table~\ref{tab:warp-selection-main} compares default CEM, Warp Ensemble Selection, and the MPPI sanity-check baseline on the same 30 PushT pairs with three seeds. The MPPI column connects this method result to the optimizer-dependence check in Section~\ref{sec:mppi}. The Warp Ensemble uses the default CEM pools, but selects rank-1 actions by the rank-averaged warped cost. It improves planning success by 3.3 percentage points, reduces mean selection regret by 14.6\%, and increases the pool-ranking correlation of the active selector by 0.161 (95\% paired-bootstrap CI $[0.109,0.222]$). The regret reduction is $-2.79$ in absolute cost units with 95\% CI $[-5.67,-0.60]$.
+That seen-pool gain is scientifically useful even though it is not the quantity of interest for generalization. It establishes that pool-level ranking labels are informative and that the residual warp family has enough capacity to exploit them. The remaining question is whether that calibration transfers to unseen start-goal configurations.
 
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{lccc}
-\toprule
-Metric & Default CEM & Warp Ensemble & MPPI \\
-\midrule
-Planning success (30p, 3s) & 56.7\% & \textbf{60.0\%} & 38.9\% \\
-Selection regret & 19.17 & \textbf{16.37} & 31.46 \\
-$\Rpool(\mathrm{selector})$ & 0.085 & \textbf{0.246} & 0.194 \\
-\bottomrule
-\end{tabular}
-\caption{Matched PushT comparison for Warp Ensemble Selection. Default CEM and Warp Ensemble use identical CEM search; they differ only in final rank-1 selection. $\Rpool(\mathrm{selector})$ is computed from the score used by the final selector. MPPI is included as an optimizer-dependence sanity check.}
-\label{tab:warp-selection-main}
-\end{table}
+\subsection{Held-Out Evaluation}
 
-Table~\ref{tab:warp-selection-subsets} breaks the same 30-pair evaluation down by subset. The selector does not regress on any subset. Gains are largest for V1-favorable pairs, where success rises from 26.7\% to 46.7\% and regret drops from 34.4 to 27.2. Invisible-quadrant pairs show lower regret but unchanged success, matching the earlier diagnosis that these pools often contain little or no success mass.
+Table~\ref{tab:warp-selection-holdout} reports the strict held-out comparison on pairs 70--99, where no warp has seen any test pool. The main comparison is Euclidean selection versus warp-ensemble rank averaging. The result is negative: Warp Ensemble Selection does not outperform Euclidean selection on held-out pairs. Success remains 13.3\% for both methods, and the exact paired McNemar test yields $p=1.0$. Mean regret is slightly worse for the warp ensemble (37.67 versus 36.96), with paired-bootstrap difference $+0.71$ and 95\% CI $[-0.19, 2.24]$.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \small
 \begin{tabular}{lcccc}
 \toprule
-Subset & Default Success & Warp Success & Default Regret & Warp Regret \\
+Strategy & Success (30p) & 95\% CI & Regret & $\Rpool$ \\
 \midrule
-Invisible quadrant & 8.3\% & 8.3\% & 29.1 & \textbf{24.4} \\
-Ordinary & 83.3\% & 83.3\% & 12.8 & \textbf{11.9} \\
-Latent favorable & 100.0\% & 100.0\% & \textbf{3.4} & 3.5 \\
-V1 favorable & 26.7\% & \textbf{46.7\%} & 34.4 & \textbf{27.2} \\
+Euclidean & 13.3\% & [3.8, 30.7] & 36.96 & 0.080 \\
+WES rank avg & 13.3\% & [3.8, 30.7] & 37.67 & 0.093 \\
+WES vote top-10 & 20.0\% & [7.7, 38.6] & 29.82 & 0.086 \\
+Mahalanobis & 20.0\% & [7.7, 38.6] & 30.99 & 0.035 \\
+Random top-30 & 20.0\% & [7.7, 38.6] & 29.68 & -0.004 \\
+V1 oracle & 43.3\% & [25.5, 62.6] & 4.97 & 0.800 \\
 \bottomrule
 \end{tabular}
-\caption{Per-subset results for default CEM and Warp Ensemble Selection. Each row averages three seeds per pair before averaging over pairs in the subset.}
-\label{tab:warp-selection-subsets}
-\end{table}
+\caption{Strict held-out evaluation on pairs 70--99. None of the learned warps sees any held-out pool during training. Warp-ensemble rank averaging does not outperform Euclidean selection (McNemar $p=1.0$). Simple baselines such as Mahalanobis distance and random selection within the Euclidean top-30 are competitive with the learned calibrator, while the V1 oracle shows that strong physical ranking signal remains present in the same held-out pools.}
+\label{tab:warp-selection-holdout}
+\end{table*}
 
-\subsection{Discussion}
+The auxiliary baselines sharpen the interpretation. A simple Mahalanobis reweighting reaches the same 20.0\% success as top-10 warp voting. Random selection from the Euclidean top-30 matches that success as well and slightly improves regret. The held-out best single warp also fails to beat Euclidean. In other words, the learned calibration is not uniquely extracting transferable structure; several crude selectors perform comparably once the evaluation is truly unseen.
 
-Warp Ensemble Selection validates the diagnostic interpretation of the audit. Pool-level ranking labels can calibrate the local geometry that default Euclidean costs fail to exploit, while preserving the default CEM search trajectory. The method therefore occupies a different point in the repair space from learned endpoint cost heads: it trains on pool-local rankings, keeps the cost Euclidean after a residual latent transformation, and applies only at final selection. The V1 oracle result in Section~4.4 remains the upper bound: the learned selector recovers part of the lost pool ranking, but it does not reach the physical ranker's same-pool $\Rpool$.
+We also tested the matched planning setting that mirrors the earlier method claim: default CEM search on the held-out 30 pairs with three seeds, followed by either Euclidean rank-1 selection or warp-ensemble post-hoc re-ranking from the same final pool. This held-out CEM comparison is likewise negative. Default CEM succeeds on 20.0\% of runs, while post-hoc warp reranking reaches 18.9\%; the paired success difference is $-1.1$ percentage points with 95\% bootstrap CI $[-3.3, 0.0]$, and McNemar again gives $p=1.0$. Mean regret also shifts in the wrong direction, from 31.01 to 32.11.
 
-The method has two important limitations. First, it requires offline pools with simulator-scored $C_\mathrm{real\_state}$ labels, so it is a calibration method for audited tasks rather than a privilege-free deployment monitor. Second, it does not improve CEM search itself. If the final pool contains no successful candidate, final selection can reduce regret but cannot create success mass. This explains the invisible-quadrant pattern in Table~\ref{tab:warp-selection-subsets}. Finally, the residual structure preserves global endpoint behavior: the endpoint-ranking check changes by only $+0.020$, indicating that the gain comes from local calibration rather than a large trade-off against endpoint geometry.
+\subsection{Interpretation}
+
+The combination of strong seen-pool calibration and failed held-out transfer reveals something important about the geometry failure itself. The distortion between Euclidean latent distance and physical ordering is not governed by a single global correction that can be learned once and reused everywhere. Instead, the direction and magnitude of the misalignment vary across start-goal configurations. A universal learned warp can overfit the local distortions present in seen pools while failing to predict the distortions that arise on new ones.
+
+This result reinforces the central diagnostic rather than weakening it. Pool-level ranking labels clearly contain corrective signal, and the V1 oracle in Table~\ref{tab:warp-selection-holdout} confirms that held-out pools still contain exploitable physical structure. What fails is the hope that an inference-time calibration layer can generalize across those local distortions. The implication is that the endpoint-planning gap is a structural property of the learned representation that likely requires training-time intervention, such as CEM-aware encoder regularization, local isometry objectives, or pool-conditioned representation learning.
+
+The V1 oracle therefore remains the relevant upper bound. On the same held-out pools where Euclidean and learned calibrators remain near 13--20\% success, V1 reaches 43.3\% success with regret 4.97 and $\Rpool=0.800$. The physical signal is present; the learned geometry still fails to expose it in a transferable way.

@@ -15,6 +15,8 @@ The three-level reporting protocol uses $C_\mathrm{real\_state}$ to compute $\Rp
 
 The diagnostic framework also points to low-overhead future work. One direction is pool-aware termination, which would stop CEM when candidate diversity or elite-cost spread stagnates. Cost regularization could maintain elite spread during proposal updates. Adaptive projection scheduling could use simpler costs early and full-dimensional precision later. These directions treat the CEM pool as an object to monitor and shape, not as an invisible byproduct of endpoint geometry.
 
+Section~\ref{sec:warp_ensemble} sharpens this point. Pool-level ranking labels provide strong corrective signal on seen pools, but the learned calibration does not transfer across held-out start-goal configurations. Future work should therefore move upstream to training-time approaches that enforce local isometry inside the encoder itself, such as contrastive regularization on simulated CEM pools or adversarial latent-space calibration.
+
 % REVISION: addresses W4
 \subsection{Optimizer dependence: CEM versus MPPI}
 \label{sec:mppi}
