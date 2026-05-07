@@ -235,12 +235,12 @@ def build_fig6_spatial() -> None:
 
     cost_sm = plt.cm.ScalarMappable(cmap="RdYlGn_r", norm=cost_norm)
     cost_sm.set_array(np.concatenate([cem_c, mppi_c]))
-    cost_cax = fig.add_axes([0.92, 0.55, 0.015, 0.35])
+    cost_cax = fig.add_axes([0.94, 0.55, 0.015, 0.35])
     cost_cbar = fig.colorbar(cost_sm, cax=cost_cax)
     cost_cbar.set_label("C_real_state", fontsize=11, labelpad=10)
     cost_cbar.ax.tick_params(labelsize=10)
 
-    rpool_cax = fig.add_axes([0.92, 0.08, 0.015, 0.35])
+    rpool_cax = fig.add_axes([0.94, 0.08, 0.015, 0.35])
     rpool_cbar = fig.colorbar(scatter_rpool, cax=rpool_cax)
     rpool_cbar.set_label("R_pool(C_model)", fontsize=11, labelpad=10)
     rpool_cbar.ax.tick_params(labelsize=10)

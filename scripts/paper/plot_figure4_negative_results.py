@@ -183,17 +183,19 @@ def load_panel_d() -> list[dict[str, Any]]:
     return rows
 
 
-def add_panel_label(ax, label: str) -> None:
-    ax.text(
-        0.0,
-        1.04,
-        label,
-        transform=ax.transAxes,
-        ha="left",
-        va="bottom",
-        fontsize=12,
-        fontweight="bold",
-    )
+def add_panel_labels(axes: Any) -> None:
+    for ax, label in zip(axes.flat, ["(a)", "(b)", "(c)", "(d)"], strict=True):
+        ax.text(
+            -0.05,
+            1.05,
+            label,
+            transform=ax.transAxes,
+            fontsize=14,
+            fontweight="bold",
+            va="bottom",
+            ha="right",
+            clip_on=False,
+        )
 
 
 def plot_panel_a(ax, data: dict[str, Any]) -> None:
@@ -201,12 +203,20 @@ def plot_panel_a(ax, data: dict[str, Any]) -> None:
     cpsi = data["cpsi_top30_std"]
     compression = euclidean / cpsi
 
-    add_panel_label(ax, "(a)")
-    ax.set_title("Cost head elite compression", fontsize=11, pad=12)
+    ax.set_title("Cost head elite compression", fontsize=11, pad=10)
+    ax.text(
+        0.5,
+        0.93,
+        f"{data['learned_cost_successes']}/{data['hard_pairs']} hard-pair success",
+        ha="center",
+        fontsize=11,
+        color=COLORS["learned"],
+        fontweight="bold",
+    )
     ax.add_patch(
         plt.Circle(
-            (0.25, 0.5),
-            0.2,
+            (0.25, 0.55),
+            0.13,
             fc=COLORS["default"],
             ec="black",
             lw=1.5,
@@ -215,39 +225,35 @@ def plot_panel_a(ax, data: dict[str, Any]) -> None:
     )
     ax.text(
         0.25,
-        0.5,
+        0.55,
         f"{euclidean:.3f}",
         ha="center",
         va="center",
-        fontsize=11,
+        fontsize=10,
         fontweight="bold",
         color="white",
     )
     ax.add_patch(
-        plt.Circle((0.75, 0.5), 0.012, fc=COLORS["learned"], ec="black", lw=1.5)
+        plt.Circle((0.75, 0.55), 0.015, fc=COLORS["learned"], ec="black", lw=1.5)
     )
-    ax.text(0.75, 0.38, f"{cpsi:.4f}", ha="center", va="top", fontsize=9)
+    ax.text(0.75, 0.42, f"{cpsi:.4f}", ha="center", va="top", fontsize=9)
     ax.annotate(
-        f"{compression:.0f}x\ncompression",
-        xy=(0.735, 0.5),
-        xytext=(0.48, 0.5),
-        fontsize=10,
-        ha="center",
-        va="center",
-        arrowprops={"arrowstyle": "->", "lw": 2, "color": "gray"},
-        color="0.25",
+        "",
+        xy=(0.60, 0.55),
+        xytext=(0.40, 0.55),
+        arrowprops={"arrowstyle": "->", "lw": 1.5, "color": "gray"},
     )
-    ax.text(0.25, 0.15, "Euclidean", ha="center", fontsize=10)
-    ax.text(0.75, 0.15, r"Learned $C_\psi$", ha="center", fontsize=10)
     ax.text(
         0.5,
-        0.85,
-        f"{data['learned_cost_successes']}/{data['hard_pairs']} hard-pair success",
+        0.68,
+        rf"{compression:.0f}$\times$ compression",
         ha="center",
-        fontsize=10,
-        color=COLORS["learned"],
-        fontweight="bold",
+        va="center",
+        fontsize=9,
+        color="0.25",
     )
+    ax.text(0.25, 0.10, "Euclidean", ha="center", fontsize=10)
+    ax.text(0.75, 0.10, r"Learned $C_\psi$", ha="center", fontsize=10)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.set_aspect("equal")
@@ -260,8 +266,7 @@ def plot_panel_b(ax, data: dict[str, float]) -> None:
     colors = [COLORS["dinov2"], COLORS["dinov2"], COLORS["default"]]
     y_pos = list(range(len(models)))
 
-    add_panel_label(ax, "(b)")
-    ax.set_title("Encoder replacement", fontsize=11, pad=12)
+    ax.set_title("Encoder replacement", fontsize=11, pad=10)
     ax.hlines(y=y_pos, xmin=0, xmax=values, colors=colors, linewidth=3, alpha=0.7)
     ax.scatter(
         values,
@@ -289,8 +294,7 @@ def plot_panel_c(ax, rows: list[dict[str, Any]]) -> None:
     budgets = [row["budget_pct"] for row in rows]
     successes = [row["successes"] for row in rows]
 
-    add_panel_label(ax, "(c)")
-    ax.set_title("Hybrid CEM oracle budget", fontsize=11, pad=12)
+    ax.set_title("Hybrid CEM oracle budget", fontsize=11, pad=10)
     ax.fill_between(budgets, successes, alpha=0.3, color=COLORS["oracle"])
     ax.plot(
         budgets,
@@ -337,8 +341,8 @@ def plot_panel_d(ax, rows: list[dict[str, Any]]) -> None:
         "overall": "#666666",
     }
 
-    add_panel_label(ax, "(d)")
-    ax.set_title("Subspace-CEM regression", fontsize=11, pad=12)
+    ax.set_title("Subspace-CEM regression", fontsize=11, pad=10)
+    right_labels = []
     for row in rows:
         default = row["default"] * 100.0
         subspace = row["subspace"] * 100.0
@@ -363,14 +367,23 @@ def plot_panel_d(ax, rows: list[dict[str, Any]]) -> None:
             linewidths=1.5,
             marker="s",
         )
+        right_labels.append((subspace, row["label"], color))
+
+    prev_y = None
+    min_gap = 16.0
+    for actual_y, name, color in sorted(right_labels, reverse=True):
+        label_y = actual_y
+        if prev_y is not None and prev_y - label_y < min_gap:
+            label_y = prev_y - min_gap
         ax.text(
             1.05,
-            subspace,
-            f"{row['label']}: {subspace:.0f}%",
+            label_y,
+            f"{name}: {actual_y:.0f}%",
             va="center",
             fontsize=8,
             color=color,
         )
+        prev_y = label_y
 
     ax.set_xlim(-0.3, 1.8)
     ax.set_xticks([0, 1])
@@ -433,13 +446,19 @@ def main() -> None:
         }
     )
 
-    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+    fig, axes = plt.subplots(
+        2,
+        2,
+        figsize=(12, 9),
+        gridspec_kw={"hspace": 0.4, "wspace": 0.35},
+    )
     plot_panel_a(axes[0, 0], panel_a)
     plot_panel_b(axes[0, 1], panel_b)
     plot_panel_c(axes[1, 0], panel_c)
     plot_panel_d(axes[1, 1], panel_d)
+    add_panel_labels(axes)
 
-    fig.tight_layout(pad=2.0)
+    fig.subplots_adjust(left=0.08, right=0.96, bottom=0.08, top=0.93)
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUTPUT_PATH, dpi=300)
     plt.close(fig)

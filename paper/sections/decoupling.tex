@@ -87,32 +87,21 @@ E & medium & near-zero & medium & high & Rank-insensitive success in a locally s
 \end{table}
 
 Under strict thresholding, Case A appears in 18 subset-level cells, mainly ordinary and latent-favorable PushT cells at medium to high dimensions, but no aggregate protocol cell has Case A structure. Case B covers Cube projected protocols, Case C covers PushT invisible-quadrant failures, Case E covers rank-insensitive PushT ordinary success, and Case D is absent.
-In Cube, the near-zero $\Rpool$ coexists with relatively high planning success, consistent with Case B: the pool contains sufficient success mass that ranking is less critical for action selection. Cube therefore provides cross-environment evidence for the endpoint-pool ranking gap, not for cost-driven planning failure.
+In Cube, near-zero $\Rpool$ coexists with relatively high planning success across most projection dimensions. This aligns with Case~B in the taxonomy (Table~\ref{tab:taxonomy}): the final pool contains sufficient success mass that ranking quality is less critical for action selection. Cube therefore provides cross-environment evidence for the endpoint-pool ranking gap, but not for cost-driven planning failure.
 
 % REVISION: addresses W2
 \subsection{Mechanism attribution: convergence compression versus local representation failure}
 
 The pool-level collapse could reflect several mechanisms. CEM may contract the final pool into a physically narrow neighborhood where any endpoint cost has little residual order to recover. The learned predictor may also roll candidates into inaccurate terminal latents. Finally, the encoder's terminal-latent geometry and Euclidean cost shape may fail locally even if the actual terminal image is encoded directly. We therefore evaluated three rankers on the same 100 PushT final pools: predicted-latent $\Cmodel=\|\hat z_H-z_g\|_2^2$, actual-terminal $C_\mathrm{V3}=\|z_\mathrm{terminal}-z_g\|_2^2$, and physical hinge $C_\mathrm{V1}$.
 
-\begin{table}[t]
+\begin{figure}[t]
 \centering
-\small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lccL{0.42\linewidth}}
-\toprule
-Cost ranker & $\Rpool$ mean$\pm$std & 95\% CI & What it tests \\
-\midrule
-$\Cmodel$ (predicted latent) & \textbf{0.084}$\pm$0.243 & [0.037, 0.131] & End-to-end predictor, encoder, and latent cost shape \\
-$C_\mathrm{V3}$ (actual terminal latent) & 0.258$\pm$0.566 & [0.146, 0.365] & Encoder and latent cost shape after removing predictor rollout \\
-$C_\mathrm{V1}$ (physical hinge) & \textbf{0.666}$\pm$0.357 & [0.595, 0.735] & Physical ground-truth ranker on the same pool \\
-\bottomrule
-\end{tabular}
-}
-\caption{Same-pool mechanism attribution on 100 PushT default CEM final pools. Intervals are 10{,}000-sample percentile bootstraps over pairs; flat V1 pools are counted as zero correlation, matching the Phase B convention.}
-\label{tab:v3-decomposition}
-\end{table}
+\includegraphics[width=0.95\columnwidth]{figures/fig_v3_heatmap.pdf}
+\caption{Pool-level Spearman correlation by cost ranker and pair subset. Each cell shows $\Rpool$ computed within the default CEM final pool. Columns compare the predicted terminal latent cost $\Cmodel$, the actual-terminal encoder latent cost $C_\mathrm{V3}$, and the V1 physical oracle $C_\mathrm{V1}$. The gradient from left to right quantifies the three-level attribution: predictor rollout error ($\Cmodel \to C_\mathrm{V3}$) and encoder geometry ($C_\mathrm{V3} \to C_\mathrm{V1}$). The invisible-quadrant and sign-reversal subsets show the starkest contrast.}
+\label{fig:v3_heatmap}
+\end{figure}
 
-Table~\ref{tab:v3-decomposition} rules out pure CEM convergence compression: $C_\mathrm{V1}$ retains substantial order inside the same pools. It also shows that V1 alone was not the whole story. $C_\mathrm{V3}$ improves over $\Cmodel$, so predictor rollout error contributes to the collapse, but $C_\mathrm{V3}$ remains far below $C_\mathrm{V1}$, so actual-terminal encoder geometry and Euclidean cost shape remain limiting. The same pattern holds in the hard subsets. In the 16 invisible-quadrant pairs, $\Rpool(\Cmodel)=0.022$, $\Rpool(C_\mathrm{V3})=0.348$, and $\Rpool(C_\mathrm{V1})=0.775$. In the 21 sign-reversal pairs, $C_\mathrm{V3}$ does not recover ranking ($-0.125$) while $C_\mathrm{V1}$ remains high (0.925). Thus the mechanism is mixed: predictor rollout worsens local ranking, but learned terminal-latent geometry still fails on the same pool. Panels~\ref{fig:decoupling_evidence}a--c show the endpoint-planning decoupling on a representative pair, while panel~\ref{fig:decoupling_evidence}d extends the V1 attribution to all 100 pairs.
+Figure~\ref{fig:v3_heatmap} visualizes this decomposition across all five pair subsets. Overall, $\Rpool(\Cmodel)=0.084$ with 95\% bootstrap CI $[0.037,0.131]$, $\Rpool(C_\mathrm{V3})=0.258$ with CI $[0.146,0.365]$, and $\Rpool(C_\mathrm{V1})=0.666$ with CI $[0.595,0.735]$. The figure rules out pure CEM convergence compression: $C_\mathrm{V1}$ retains substantial order inside the same pools. It also shows that V1 alone was not the whole story. $C_\mathrm{V3}$ improves over $\Cmodel$, so predictor rollout error contributes to the collapse, but $C_\mathrm{V3}$ remains far below $C_\mathrm{V1}$, so actual-terminal encoder geometry and Euclidean cost shape remain limiting. The same pattern holds in the hard subsets. In the 16 invisible-quadrant pairs, $\Rpool(\Cmodel)=0.022$, $\Rpool(C_\mathrm{V3})=0.348$, and $\Rpool(C_\mathrm{V1})=0.775$. In the 21 sign-reversal pairs, $C_\mathrm{V3}$ does not recover ranking ($-0.125$) while $C_\mathrm{V1}$ remains high (0.925). Thus the mechanism is mixed: predictor rollout worsens local ranking, but learned terminal-latent geometry still fails on the same pool. Panels~\ref{fig:decoupling_evidence}a--c show the endpoint-planning decoupling on a representative pair, while panel~\ref{fig:decoupling_evidence}d extends the V1 attribution to all 100 pairs.
 
 \subsection{Per-subset structure in PushT}
 

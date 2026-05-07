@@ -32,14 +32,14 @@
 % REVISION: addresses W1 -- abstract and introduction scope narrowed.
 % REVISION: addresses W2 -- mechanism-attribution subsection added in Section 4.
 % REVISION: addresses W3 -- Cube full projected-CEM table updated with 50-pair, three-seed Phase E results.
-% REVISION: addresses W4 -- MPPI cross-optimizer discussion added in Section 7.
-% REVISION: addresses W5 -- privilege-free monitoring discussion added in Section 7.
-% REVISION: addresses W1/W3/W4 -- limitations updated in Section 8.
+% REVISION: addresses W4 -- MPPI cross-optimizer discussion added in Section 8.
+% REVISION: addresses W5 -- privilege-free monitoring discussion added in Section 8.
+% REVISION: addresses W1/W3/W4 -- limitations updated in Section 9.
 
 \begin{document}
 
 \begin{abstract}
-Latent world models often plan by minimizing Euclidean distance in a learned latent space, so endpoint ranking is commonly interpreted as evidence that the Cross-Entropy Method (CEM) optimizes a well-aligned objective. We audit this assumption in LeWM, a Joint-Embedding Predictive Architecture (JEPA)-style latent world model for goal-conditioned control from pixels, and find that endpoint ranking and CEM final-pool ranking can decouple. At projection dimension $m=64$, the CEM Compatibility Gap $\DeltaCEM$ reaches 0.43 on PushT and 0.57 on OGBench-Cube, while rank-1 planning success is 29.6\% and 56.0\%, respectively. The audit covers two environments, four protocol settings, and eight random-geometry controls with fixed artifacts, pre-registered decision rules, and documented framing resets. Four repairs fail under their locked criteria. Learned endpoint costs flatten the elite landscape, generic visual features underperform the trained encoder, simulator-assisted hybrid CEM requires at least a 20\% oracle budget to recover successes on hard pairs, and a search-selection split regresses by 8.3 percentage points. These failures localize the problem to the interaction between cost geometry and CEM dynamics. % REVISION: addresses W1
+LeWM-style latent planners that optimize Euclidean terminal latent costs with CEM can pass endpoint ranking while failing pool-level ranking. We audit this assumption in LeWM, a Joint-Embedding Predictive Architecture (JEPA)-style latent world model for goal-conditioned control from pixels, and find that endpoint ranking and CEM final-pool ranking can decouple. At projection dimension $m=64$, the CEM Compatibility Gap $\DeltaCEM$ reaches 0.43 on PushT and 0.57 on OGBench-Cube, while rank-1 planning success is 29.6\% and 56.0\%, respectively. The audit covers two environments, four protocol settings, and eight random-geometry controls with fixed artifacts, pre-registered decision rules, and documented framing resets. Four simple repairs fail under their locked criteria. A pool-trained Warp Ensemble selector leaves default CEM search unchanged but improves the matched 30-pair, three-seed PushT comparison from 56.7\% to 60.0\% success, reduces selection regret by 14.6\%, and raises the selector's pool-ranking correlation from 0.085 to 0.246. These results localize the problem to the interaction between cost geometry and CEM-local candidate pools. % REVISION: addresses W1
 For LeWM-style latent planners that select actions by terminal latent costs under iterative sampling-based optimization, we recommend reporting pool-level and selection-level metrics alongside endpoint metrics.
 \end{abstract}
 
@@ -49,7 +49,7 @@ For LeWM-style latent planners that select actions by terminal latent costs unde
 \input{sections/decoupling}
 \input{sections/nulls}
 \input{sections/negative}
-
+\input{sections/warp_ensemble}
 \input{sections/discussion}
 \input{sections/limitations}
 

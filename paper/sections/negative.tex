@@ -1,4 +1,4 @@
-\section{What Does Not Work}
+\section{Simple Repairs Do Not Close the Gap Under Locked Criteria}
 
 \begin{figure}[t]
 \centering
@@ -11,19 +11,19 @@ Sections~4 and~5 establish that LeWM learns task-relevant endpoint geometry that
 
 \subsection{Learned cost heads}
 
-The first repair replaced Euclidean latent distance with MLP cost heads $C_\psi(z,\zgoal)$ trained on V1 hinge labels over frozen LeWM latents. The large MLP improved held-out endpoint ranking (Spearman $0.479$ vs.\ $0.269$), but Figure~\ref{fig:negative_results} shows that elite costs collapsed and planning still failed. The hard-pair success count was 0/16, whose exact 95\% Clopper--Pearson interval is $[0,20.6]\%$.
+The first repair replaced Euclidean latent distance with MLP cost heads $C_\psi(z,\zgoal)$ trained on V1 hinge labels over frozen LeWM latents. The large MLP improved held-out endpoint ranking (Spearman $0.479$ vs.\ $0.269$), but Figure~\ref{fig:negative_results} shows that elite costs collapsed and planning still failed. The hard-pair success count was 0/16, whose exact 95\% Clopper--Pearson interval is $[0,20.6]\%$. This does not rule out pool-aware cost learning with local ranking supervision; it rules out endpoint-trained cost heads under the locked audit protocol.
 
 \subsection{Encoder replacement}
 
-The second repair swapped in DINOv2 ViT-B/14 (86.6M parameters, 768-dimensional features). Both variants underperformed trained LeWM on the same endpoint artifact (Figure~\ref{fig:negative_results}), so generic visual strength did not fix the cost landscape.
+The second repair swapped in DINOv2 ViT-B/14 (86.6M parameters, 768-dimensional features). Both variants underperformed trained LeWM on the same endpoint artifact (Figure~\ref{fig:negative_results}), so generic visual strength did not fix the cost landscape. This does not rule out task-fine-tuned visual backbones; it rules out frozen generic features as a drop-in replacement.
 
 \subsection{Hybrid CEM}
 
-The third repair re-ranked the top $K$ CEM candidates per iteration using the V1 simulator cost. Hybrid CEM needed a 20\% oracle budget before recovering any hard-pair successes (Figure~\ref{fig:negative_results}); $K=60$ adds $2.7\times$ wall-clock overhead, and $K=150$ requires millions of simulator steps.
+The third repair re-ranked the top $K$ CEM candidates per iteration using the V1 simulator cost. Hybrid CEM needed a 20\% oracle budget before recovering any hard-pair successes (Figure~\ref{fig:negative_results}); $K=60$ adds $2.7\times$ wall-clock overhead, and $K=150$ requires millions of simulator steps. This does not rule out lighter oracle integration; it rules out brute-force per-iteration re-ranking below a 20\% budget.
 
 \subsection{Subspace-CEM}
 
-The fourth repair targeted the search-selection split found in Section~4: Subspace-CEM searched with an $m=64$ projected cost, then selected by full 192-dimensional LeWM cost. Under the locked Stage A criterion, this approach failed (Figure~\ref{fig:negative_results}), showing that projected-cost search can move the final pool into a region that full-dimensional re-ranking cannot repair. In seed-level paired comparisons, six default successes regressed under Subspace-CEM while one default failure improved (exact McNemar/binomial $p=0.125$).
+The fourth repair targeted the search-selection split found in Section~4: Subspace-CEM searched with an $m=64$ projected cost, then selected by full 192-dimensional LeWM cost. Under the locked Stage A criterion, this approach failed (Figure~\ref{fig:negative_results}), showing that projected-cost search can move the final pool into a region that full-dimensional re-ranking cannot repair. In seed-level paired comparisons, six default successes regressed under Subspace-CEM while one default failure improved (exact McNemar/binomial $p=0.125$). This does not rule out adaptive projection schedules; it rules out fixed two-stage search-then-select under the locked criterion.
 
 \subsection{What the failures share}
 
