@@ -30,6 +30,8 @@ This finding emerged from a pre-registered audit, not a single post-hoc analysis
 % REVISION: addresses W1
 Our empirical claims apply to LeWM with Euclidean terminal latent costs under CEM-style optimization, evaluated on PushT and OGBench-Cube. The evaluation principle is broader, but it should be applied with the same instrumentation: endpoint metrics are not wrong; they measure whether a representation carries task information, not whether an iterative planner can use that information during search. Planning evaluation should therefore include the distributions produced by the optimizer itself. We propose a minimal reporting protocol with three views. Report endpoint metrics on a fixed benchmark set. Report pool metrics on the candidates produced by the planner. Report selection metrics for the action that is actually executed. For latent planners with terminal-cost objectives, this audit is directly applicable when final candidate pools can be saved and an evaluation-time physical cost is available. The goal is a planning-compatible test of geometry, not another endpoint-only score.
 
+Beyond diagnosis, the V3 decomposition points to a concrete intervention: Section~\ref{sec:warp_ensemble} shows that a lightweight learned calibration of the local latent geometry, trained on pool-level ranking labels, can partially recover the lost selection quality without modifying the CEM search process.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig2_enhanced.pdf}
@@ -37,4 +39,4 @@ Our empirical claims apply to LeWM with Euclidean terminal latent costs under CE
 \label{fig:motivation}
 \end{figure}
 
-The rest of the paper is organized as follows. Section~2 introduces LeWM and CEM planning. Section~3 presents the audit framework. Sections~4--6 report the main findings. Sections~7--8 discuss implications and limitations. Figure~\ref{fig:decoupling_evidence} previews the central finding.
+The rest of the paper is organized as follows. Section~2 introduces LeWM and CEM planning. Section~3 presents the audit framework. Sections~4--6 report the main diagnostic findings. Section~\ref{sec:warp_ensemble} presents a lightweight calibration method motivated by the mechanism attribution. Sections~8--9 discuss implications and limitations. Figure~\ref{fig:decoupling_evidence} previews the central finding.

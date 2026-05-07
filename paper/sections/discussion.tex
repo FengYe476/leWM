@@ -17,6 +17,7 @@ The diagnostic framework also points to low-overhead future work. One direction 
 
 % REVISION: addresses W4
 \subsection{Optimizer dependence: CEM versus MPPI}
+\label{sec:mppi}
 
 We also tested whether endpoint-planning decoupling is specific to CEM's hard elite truncation. On 30 PushT pairs with three seeds per pair, we replaced the CEM update with an MPPI-style soft weighting update over all 300 candidates, using the same model, action parameterization, horizon, and terminal latent cost. MPPI achieved lower rank-1 planning success than CEM in this fixed-budget comparison (38.9\% versus 53.3\%), consistent with slower convergence under 30 iterations. However, the pool geometry gives the relevant diagnostic. MPPI preserved substantially more physical diversity in its final pools: the mean standard deviation of $C_\mathrm{real\_state}$ was \textbf{29.478} under MPPI versus \textbf{7.947} under CEM, a 3.7$\times$ increase. Correspondingly, $\Rpool(\Cmodel)$ rose from 0.115 under CEM to 0.194 under MPPI, a paired-bootstrap difference of 0.079 with 95\% CI $[-0.044,0.204]$, while $\Rpool(C_\mathrm{V1})$ rose from 0.537 to 0.707.
 
