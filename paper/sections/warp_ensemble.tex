@@ -1,13 +1,6 @@
 \section{Can Pool-Level Calibration Close the Gap?}
 \label{sec:warp_ensemble}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_method_warp.png}
-\caption{Overview of the pool-level calibration experiment. \textbf{Left:} Ten lightweight residual warps are trained offline on existing CEM pool data with pairwise ranking loss over the top-50 candidates per pool. Each warp learns a local perturbation of latent geometry, $\mathrm{warp}(z)=z+0.05\cdot \mathrm{MLP}_{\theta}(z)$, initialized at identity. \textbf{Right:} At inference, default CEM search remains unchanged and uses the original Euclidean terminal latent cost. Only the final selector is replaced by an ensemble over warped Euclidean rankings. On seen pools, this calibration sharply improves local rank preservation, but under a strict held-out split it does not improve over Euclidean selection, indicating that the geometry distortion is pair-specific rather than globally correctable by a single inference-time warp family.}
-\label{fig:method_warp}
-\end{figure*}
-
 \subsection{Motivation}
 
 Section~4.4 identifies terminal encoder geometry as the dominant bottleneck inside CEM pools. Replacing predicted terminal latents with actual terminal encodings improves $\Rpool$, so rollout error contributes, but the actual-terminal latent cost still remains far below the V1 physical oracle on the same candidates. Section~6 then shows that simple inference-time repairs do not close the gap. This raises a natural follow-up question: if the final pool already contains physically rankable structure, can a lightweight learned calibration of the local latent distance recover the lost ordering?
@@ -23,7 +16,7 @@ We train a small residual warp on LeWM's 192-dimensional terminal latent:
 \end{equation}
 The MLP has one hidden layer with 32 units, ReLU activation, dropout 0.1, and an identity-biased initialization. Training uses pairwise ranking supervision from simulator-scored pool labels, sampled from the top-50 candidates under $\Cmodel$, plus an identity regularizer that discourages large latent distortions.
 
-To evaluate whether this calibration generalizes, we use a strict split. Pairs 0--69 are the training set. Ten warps are trained by ten-fold cross-validation \emph{within} those 70 pairs only. Pairs 70--99 form a completely held-out test set that is never seen by any warp during training. At inference, CEM search remains unchanged; only the final selector is modified. For each candidate, every warp computes a warped Euclidean cost, the candidates are ranked within each warp, and the ensemble either averages those ranks or votes over each warp's top candidates. Figure~\ref{fig:method_warp} summarizes the pipeline.
+To evaluate whether this calibration generalizes, we use a strict split. Pairs 0--69 are the training set. Ten warps are trained by ten-fold cross-validation \emph{within} those 70 pairs only. Pairs 70--99 form a completely held-out test set that is never seen by any warp during training. At inference, CEM search remains unchanged; only the final selector is modified. For each candidate, every warp computes a warped Euclidean cost, the candidates are ranked within each warp, and the ensemble either averages those ranks or votes over each warp's top candidates.
 
 \subsection{Training-Set Results}
 
