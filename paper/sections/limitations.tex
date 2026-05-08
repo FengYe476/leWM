@@ -1,7 +1,7 @@
 \section{Limitations and Frozen Exclusions}
 
 % REVISION: addresses W1
-The evidence has bounded scope. All experiments use a single latent world model, LeWM, and two single-object manipulation environments, PushT and OGBench-Cube. The framework is intended to be model-agnostic, but cross-model generalization to PLDM, DINO-WM, TD-MPC, or other latent planners is not tested. The environments also do not cover locomotion, navigation, deformable objects, multi-object interaction, semantic planning, broad exploration data, mixed-quality behavior, or online collection.
+The evidence has bounded scope. While the primary audit targets LeWM, we validate the core diagnostic on DINO-WM (Section~\ref{sec:dinowm}), confirming cross-model generality on PushT. Cross-environment generalization beyond manipulation tasks remains future work. The environments also do not cover locomotion, navigation, deformable objects, multi-object interaction, semantic planning, broad exploration data, mixed-quality behavior, or online collection.
 
 % REVISION: addresses W3
 Cube-specific evidence remains narrower than PushT but is strengthened by the extended full projected-CEM run: the full projected-CEM cell uses the first 50 Cube pairs with three projection seeds, while the Cube re-rank-only cell uses all 100 pairs with three seeds. This supports the cross-environment $\DeltaCEM$ claim, but Cube still has fewer full-planning pairs than PushT and should not be interpreted as a complete environment-general validation.

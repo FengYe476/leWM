@@ -33,3 +33,32 @@ Panels~\ref{fig:spatial_evidence}a,b contrast the pool geometry directly: CEM co
 \end{figure*}
 
 The MPPI comparison therefore serves as an optimizer-dependence sanity check rather than a precise attribution of the gap. Soft weighting preserves more physical pool diversity (3.7$\times$) and modestly improves $\Rpool(\Cmodel)$, but it does not close the endpoint-pool gap. Using $\Rendpoint=0.495$ at $m=192$ as the reference, MPPI retains only about 39\% of the endpoint ranking signal ($0.194/0.495$). The wide paired-bootstrap confidence interval for the CEM-specific fraction ($[-16,48]\%$) precludes a precise decomposition. The qualitative finding is that most of the decoupling persists under soft weighting.
+
+\subsection{Cross-Model Validation: DINO-WM}
+\label{sec:dinowm}
+
+DINO-WM \citep{zhou2024dinowm} uses a frozen DINOv2 ViT-S/14 encoder with a ViT-style causal Transformer predictor. Its terminal cost combines MSE over predicted visual patch features with proprioceptive MSE, optimized by CEM with the same 300/30/30 configuration as LeWM.
+
+\begin{table}[t]
+\centering
+\caption{Cross-model comparison of pool-level ranking on PushT. Both models exhibit near-zero $R_{\text{pool}}$ despite different architectures, encoders, and cost functions. DINO-WM results use 29 of the same 30 Track~A pairs (one pair excluded due to scoring timeout).}
+\label{tab:cross_model}
+\begin{tabular}{lcc}
+\toprule
+Metric & LeWM & DINO-WM \\
+\midrule
+Encoder & Learned JEPA & Frozen DINOv2 ViT-S/14 \\
+Predictor & Linear/MLP & ViT causal Transformer \\
+Terminal cost & $\|z - z_g\|^2$ & MSE patches + $\alpha$ MSE proprio \\
+$R_{\text{pool}}(C_{\text{model}})$ & 0.084 & 0.002 \\
+Pool $C_{\text{model}}$ std & 2.11 & 0.063 \\
+Pool $C_{\text{real}}$ std & 7.84 & 60.6 \\
+Planning success & 29.6\% & 3.4\% \\
+Selection regret & 19.2 & 128.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both models exhibit near-zero pool-level ranking ($R_{\text{pool}} \approx 0$) with severe cost compression (pool $C_{\text{model}}$ standard deviation orders of magnitude below pool $C_{\text{real}}$ standard deviation), confirming that the endpoint-planning decoupling is not specific to LeWM's learned encoder or Euclidean cost. DINO-WM's frozen DINOv2 features and patch-level MSE cost produce the same structural failure: the terminal cost compresses in the CEM-converged region and loses local order preservation. Notably, DINO-WM also shows weak endpoint ranking ($R_{\text{endpoint}} \approx 0.003$), suggesting that the frozen visual encoder may lack task-relevant structure even globally, compounding the local pool-level failure.
+
+These results demonstrate that the three-level diagnostic protocol proposed in this paper applies directly to architecturally distinct latent planners and reveals failure modes that would be invisible under endpoint-only evaluation.

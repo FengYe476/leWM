@@ -1,0 +1,1728 @@
+{
+  "metadata": {
+    "format": "dino_wm_pusht_pool_audit_v1",
+    "created_at": "2026-05-08T03:32:09.236183+00:00",
+    "git_commit": "09f83547a26a390df59148c09b39e7490e1f3ff0",
+    "dino_wm_git_commit": "0a9492fa12044b852ae9e001cc74604b79c8bb0c",
+    "script_path": "/workspace/lewm-failure-audit/scripts/revision/dino_wm_pool_audit.py",
+    "dino_repo": "/workspace/dino_wm",
+    "ckpt_base_path": "/workspace/dino_wm_checkpoints",
+    "model_name": "pusht",
+    "model_epoch": "latest",
+    "pairs_path": "/workspace/lewm-failure-audit/results/phase1/track_a_pairs.json",
+    "rerank_path": "/workspace/lewm-failure-audit/results/phase2/protocol_match/pusht_rerank_only.json",
+    "pool_dir": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools",
+    "output": "/workspace/lewm-failure-audit/results/revision/dino_wm_pool_audit.json",
+    "dataset_path": "/Users/fengye/Desktop/Project/leWM/lewm-failure-audit/stablewm_cache/pusht_expert_train.h5",
+    "seeds": [
+      0
+    ],
+    "planner_config": {
+      "num_samples": 300,
+      "topk": 30,
+      "opt_steps": 30,
+      "horizon": 5,
+      "var_scale": 1.0,
+      "candidate_0_forced_to_search_mean": true
+    },
+    "objective": {
+      "alpha": 1.0,
+      "base": 2.0,
+      "mode": "last",
+      "definition": "MSE(DINO terminal visual patches, goal patches) + alpha*MSE(proprio embedding, goal proprio embedding)"
+    },
+    "endpoint_source": "first_iter_real_z",
+    "render_goal_mode": "dino_default",
+    "selected_pairs": [
+      {
+        "pair_id": 25,
+        "cell": "D1xR0",
+        "episode_id": 2388,
+        "start_row": 283639,
+        "goal_row": 283689,
+        "block_displacement_px": 49.52825297061485,
+        "required_rotation_rad": 0.12560594081878662,
+        "physical_pose_distance": 49.65385891143364,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant",
+          "latent_favorable"
+        ]
+      },
+      {
+        "pair_id": 46,
+        "cell": "D1xR3",
+        "episode_id": 3363,
+        "start_row": 410963,
+        "goal_row": 411013,
+        "block_displacement_px": 48.91955625431162,
+        "required_rotation_rad": 1.4734302798854273,
+        "physical_pose_distance": 50.39298653419705,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 60,
+        "cell": "D2xR2",
+        "episode_id": 3789,
+        "start_row": 465802,
+        "goal_row": 465852,
+        "block_displacement_px": 118.42808973780626,
+        "required_rotation_rad": 1.2369219104396265,
+        "physical_pose_distance": 119.6650116482459,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 61,
+        "cell": "D2xR2",
+        "episode_id": 7711,
+        "start_row": 956737,
+        "goal_row": 956787,
+        "block_displacement_px": 99.0090460733217,
+        "required_rotation_rad": 0.9892401734935206,
+        "physical_pose_distance": 99.99828624681521,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 67,
+        "cell": "D2xR3",
+        "episode_id": 14179,
+        "start_row": 1785862,
+        "goal_row": 1785912,
+        "block_displacement_px": 109.24559102435867,
+        "required_rotation_rad": 1.5290961265563965,
+        "physical_pose_distance": 110.77468715091507,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 70,
+        "cell": "D2xR3",
+        "episode_id": 15152,
+        "start_row": 1902386,
+        "goal_row": 1902436,
+        "block_displacement_px": 92.60942420851366,
+        "required_rotation_rad": 1.7597513834582728,
+        "physical_pose_distance": 94.36917559197192,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 71,
+        "cell": "D2xR3",
+        "episode_id": 6461,
+        "start_row": 803551,
+        "goal_row": 803601,
+        "block_displacement_px": 60.45243075127753,
+        "required_rotation_rad": 1.2953581809997559,
+        "physical_pose_distance": 61.74778893227729,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 73,
+        "cell": "D2xR3",
+        "episode_id": 4709,
+        "start_row": 579221,
+        "goal_row": 579271,
+        "block_displacement_px": 90.2028644961713,
+        "required_rotation_rad": 1.365168809890747,
+        "physical_pose_distance": 91.56803330606205,
+        "primary_subset": "invisible_quadrant",
+        "subset_memberships": [
+          "invisible_quadrant"
+        ]
+      },
+      {
+        "pair_id": 0,
+        "cell": "D0xR0",
+        "episode_id": 8937,
+        "start_row": 1107775,
+        "goal_row": 1107825,
+        "block_displacement_px": 8.418522815050164,
+        "required_rotation_rad": 0.21731191873550415,
+        "physical_pose_distance": 8.635834733785668,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 1,
+        "cell": "D0xR0",
+        "episode_id": 14024,
+        "start_row": 1766493,
+        "goal_row": 1766543,
+        "block_displacement_px": 7.426446652728417,
+        "required_rotation_rad": 0.11280632019042969,
+        "physical_pose_distance": 7.539252972918847,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 2,
+        "cell": "D0xR0",
+        "episode_id": 5140,
+        "start_row": 648659,
+        "goal_row": 648709,
+        "block_displacement_px": 7.141174071093965,
+        "required_rotation_rad": 0.02048945426940918,
+        "physical_pose_distance": 7.161663525363374,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 3,
+        "cell": "D0xR0",
+        "episode_id": 4685,
+        "start_row": 575482,
+        "goal_row": 575532,
+        "block_displacement_px": 6.35136013931897,
+        "required_rotation_rad": 0.06914907693862915,
+        "physical_pose_distance": 6.420509216257599,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 4,
+        "cell": "D0xR0",
+        "episode_id": 9266,
+        "start_row": 1141830,
+        "goal_row": 1141880,
+        "block_displacement_px": 0.793314089297295,
+        "required_rotation_rad": 0.010967075824737549,
+        "physical_pose_distance": 0.8042811651220325,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 5,
+        "cell": "D0xR0",
+        "episode_id": 3906,
+        "start_row": 484063,
+        "goal_row": 484113,
+        "block_displacement_px": 2.118436003697447,
+        "required_rotation_rad": 0.01885402202606201,
+        "physical_pose_distance": 2.137290025723509,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 12,
+        "cell": "D0xR2",
+        "episode_id": 5742,
+        "start_row": 717403,
+        "goal_row": 717453,
+        "block_displacement_px": 7.032311527087624,
+        "required_rotation_rad": 1.0440117756472986,
+        "physical_pose_distance": 8.076323302734924,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 13,
+        "cell": "D0xR2",
+        "episode_id": 797,
+        "start_row": 93216,
+        "goal_row": 93266,
+        "block_displacement_px": 4.345991414639155,
+        "required_rotation_rad": 0.8527621030807495,
+        "physical_pose_distance": 5.198753517719904,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 14,
+        "cell": "D0xR2",
+        "episode_id": 17299,
+        "start_row": 2170941,
+        "goal_row": 2170991,
+        "block_displacement_px": 6.013953449441867,
+        "required_rotation_rad": 0.9360334316836756,
+        "physical_pose_distance": 6.949986881125542,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 16,
+        "cell": "D0xR2",
+        "episode_id": 17277,
+        "start_row": 2166455,
+        "goal_row": 2166505,
+        "block_displacement_px": 7.962336006599946,
+        "required_rotation_rad": 0.8522479573832911,
+        "physical_pose_distance": 8.814583963983237,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 19,
+        "cell": "D0xR3",
+        "episode_id": 9607,
+        "start_row": 1177059,
+        "goal_row": 1177109,
+        "block_displacement_px": 5.004609859745937,
+        "required_rotation_rad": 1.330240849648611,
+        "physical_pose_distance": 6.334850709394548,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 30,
+        "cell": "D1xR1",
+        "episode_id": 13194,
+        "start_row": 1657299,
+        "goal_row": 1657349,
+        "block_displacement_px": 31.94148351542871,
+        "required_rotation_rad": 0.34236985445022583,
+        "physical_pose_distance": 32.28385336987894,
+        "primary_subset": "ordinary",
+        "subset_memberships": [
+          "ordinary"
+        ]
+      },
+      {
+        "pair_id": 6,
+        "cell": "D0xR1",
+        "episode_id": 17233,
+        "start_row": 2160401,
+        "goal_row": 2160451,
+        "block_displacement_px": 9.945330537259844,
+        "required_rotation_rad": 0.3823297619819641,
+        "physical_pose_distance": 10.327660299241808,
+        "primary_subset": "latent_favorable",
+        "subset_memberships": [
+          "latent_favorable"
+        ]
+      },
+      {
+        "pair_id": 7,
+        "cell": "D0xR1",
+        "episode_id": 3815,
+        "start_row": 469368,
+        "goal_row": 469418,
+        "block_displacement_px": 7.933740106112779,
+        "required_rotation_rad": 0.25972986221313477,
+        "physical_pose_distance": 8.193469968325914,
+        "primary_subset": "latent_favorable",
+        "subset_memberships": [
+          "latent_favorable"
+        ]
+      },
+      {
+        "pair_id": 8,
+        "cell": "D0xR1",
+        "episode_id": 16509,
+        "start_row": 2080847,
+        "goal_row": 2080897,
+        "block_displacement_px": 9.096943988840671,
+        "required_rotation_rad": 0.6798173785209656,
+        "physical_pose_distance": 9.776761367361637,
+        "primary_subset": "latent_favorable",
+        "subset_memberships": [
+          "latent_favorable"
+        ]
+      },
+      {
+        "pair_id": 9,
+        "cell": "D0xR1",
+        "episode_id": 12259,
+        "start_row": 1535296,
+        "goal_row": 1535346,
+        "block_displacement_px": 0.5019553969291005,
+        "required_rotation_rad": 0.6247312168227594,
+        "physical_pose_distance": 1.1266866137518599,
+        "primary_subset": "latent_favorable",
+        "subset_memberships": [
+          "latent_favorable"
+        ]
+      },
+      {
+        "pair_id": 10,
+        "cell": "D0xR1",
+        "episode_id": 3570,
+        "start_row": 435589,
+        "goal_row": 435639,
+        "block_displacement_px": 2.178617784749906,
+        "required_rotation_rad": 0.35264307260513306,
+        "physical_pose_distance": 2.531260857355039,
+        "primary_subset": "latent_favorable",
+        "subset_memberships": [
+          "latent_favorable"
+        ]
+      },
+      {
+        "pair_id": 74,
+        "cell": "D3xR0",
+        "episode_id": 14619,
+        "start_row": 1845170,
+        "goal_row": 1845220,
+        "block_displacement_px": 137.88136106227728,
+        "required_rotation_rad": 0.022077083587646484,
+        "physical_pose_distance": 137.90343814586492,
+        "primary_subset": "v1_favorable",
+        "subset_memberships": [
+          "v1_favorable"
+        ]
+      },
+      {
+        "pair_id": 75,
+        "cell": "D3xR0",
+        "episode_id": 16591,
+        "start_row": 2089453,
+        "goal_row": 2089503,
+        "block_displacement_px": 127.84598116017133,
+        "required_rotation_rad": 0.12970030307769775,
+        "physical_pose_distance": 127.97568146324903,
+        "primary_subset": "v1_favorable",
+        "subset_memberships": [
+          "v1_favorable"
+        ]
+      },
+      {
+        "pair_id": 76,
+        "cell": "D3xR0",
+        "episode_id": 1022,
+        "start_row": 126986,
+        "goal_row": 127036,
+        "block_displacement_px": 120.3514929375067,
+        "required_rotation_rad": 0.2322314977645874,
+        "physical_pose_distance": 120.5837244352713,
+        "primary_subset": "v1_favorable",
+        "subset_memberships": [
+          "v1_favorable"
+        ]
+      },
+      {
+        "pair_id": 77,
+        "cell": "D3xR0",
+        "episode_id": 10904,
+        "start_row": 1350425,
+        "goal_row": 1350475,
+        "block_displacement_px": 191.38028949180654,
+        "required_rotation_rad": 0.17332029342651367,
+        "physical_pose_distance": 191.55360978523305,
+        "primary_subset": "v1_favorable",
+        "subset_memberships": [
+          "v1_favorable"
+        ]
+      },
+      {
+        "pair_id": 78,
+        "cell": "D3xR0",
+        "episode_id": 10116,
+        "start_row": 1236973,
+        "goal_row": 1237023,
+        "block_displacement_px": 178.77245626627067,
+        "required_rotation_rad": 0.014551162719726562,
+        "physical_pose_distance": 178.7870074289904,
+        "primary_subset": "v1_favorable",
+        "subset_memberships": [
+          "invisible_quadrant",
+          "v1_favorable"
+        ]
+      }
+    ],
+    "anchor_definitions": {
+      "invisible_quadrant": {
+        "description": "all_fail + strong_rho pairs",
+        "pair_ids": [
+          25,
+          46,
+          60,
+          61,
+          67,
+          70,
+          71,
+          73,
+          78,
+          86,
+          87,
+          93,
+          94,
+          96,
+          97,
+          99
+        ],
+        "n_pairs": 16
+      },
+      "sign_reversal": {
+        "description": "negative C_real_z vs C_real_state per-pair Spearman pairs",
+        "pair_ids": [
+          15,
+          17,
+          18,
+          20,
+          21,
+          22,
+          23,
+          29,
+          33,
+          37,
+          40,
+          42,
+          44,
+          45,
+          47,
+          49,
+          53,
+          62,
+          66,
+          69,
+          98
+        ],
+        "n_pairs": 21
+      },
+      "latent_favorable": {
+        "description": "Track A cells D0xR1 and D1xR0",
+        "cells": [
+          "D0xR1",
+          "D1xR0"
+        ],
+        "pair_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "n_pairs": 12
+      },
+      "v1_favorable": {
+        "description": "Track A cells D3xR0 and D3xR3",
+        "cells": [
+          "D3xR0",
+          "D3xR3"
+        ],
+        "pair_ids": [
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99
+        ],
+        "n_pairs": 13
+      },
+      "ordinary": {
+        "description": "Complement of invisible_quadrant, sign_reversal, latent_favorable, and v1_favorable",
+        "excluded_anchors": [
+          "invisible_quadrant",
+          "sign_reversal",
+          "latent_favorable",
+          "v1_favorable"
+        ],
+        "pair_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          12,
+          13,
+          14,
+          16,
+          19,
+          30,
+          31,
+          32,
+          34,
+          35,
+          36,
+          38,
+          39,
+          41,
+          43,
+          48,
+          50,
+          51,
+          52,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          63,
+          64,
+          65,
+          68,
+          72,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          88,
+          89,
+          90,
+          91,
+          92
+        ],
+        "n_pairs": 47
+      }
+    },
+    "candidate_pool_scored_n": 300,
+    "runtime": {
+      "wallclock_seconds": 3636.7457904815674,
+      "wallclock_minutes": 60.6124298731486
+    }
+  },
+  "records": [
+    {
+      "pair_id": 0,
+      "cell": "D0xR0",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_000_seed_0.pt",
+      "rank1_candidate_index": 5,
+      "oracle_best_candidate_index": 218,
+      "rank1_success": false,
+      "rank1_c_real_state": 116.01406121654196,
+      "oracle_best_c_real_state": 12.386894371690987,
+      "selection_regret_pool_rank1": 103.62716684485098,
+      "rank1_C_model": 0.2951134741306305,
+      "pool_Cmodel_std": 0.1099834248777862,
+      "top30_Cmodel_std": 0.007957941277124379,
+      "pool_Creal_std": 68.47046552772042,
+      "pool_Creal_range": 302.36427576511284,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": -0.05087300970010778,
+      "Rpool_Creal_z_final": -0.07120301336681518,
+      "Rendpoint": 0.0058738430427004735,
+      "Delta_CEM": 0.05674685274280825,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 58.10836560922815,
+        "angle_dist": 1.4482511281967163,
+        "c_real_state": 59.55661673742487,
+        "v1_hinge_cost": 101.08704292995992,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 1,
+      "cell": "D0xR0",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_001_seed_0.pt",
+      "rank1_candidate_index": 64,
+      "oracle_best_candidate_index": 36,
+      "rank1_success": false,
+      "rank1_c_real_state": 225.55631720707308,
+      "oracle_best_c_real_state": 15.906520363486145,
+      "selection_regret_pool_rank1": 209.64979684358693,
+      "rank1_C_model": 0.6761077642440796,
+      "pool_Cmodel_std": 0.1734767040491076,
+      "top30_Cmodel_std": 0.010688799687902126,
+      "pool_Creal_std": 83.38262954453735,
+      "pool_Creal_range": 416.6478068107394,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.007620084667607417,
+      "Rpool_Creal_z_final": 0.1181870909676774,
+      "Rendpoint": 0.06912254580606451,
+      "Delta_CEM": 0.061502461138457094,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 443.35899336634424,
+        "angle_dist": 2.2696014642715454,
+        "c_real_state": 445.6285948306158,
+        "v1_hinge_cost": 533.3975784458155,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 2,
+      "cell": "D0xR0",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_002_seed_0.pt",
+      "rank1_candidate_index": 139,
+      "oracle_best_candidate_index": 231,
+      "rank1_success": false,
+      "rank1_c_real_state": 201.04895309643922,
+      "oracle_best_c_real_state": 8.83567567903464,
+      "selection_regret_pool_rank1": 192.21327741740458,
+      "rank1_C_model": 0.7764362096786499,
+      "pool_Cmodel_std": 0.0756383845416766,
+      "top30_Cmodel_std": 0.012412838492736562,
+      "pool_Creal_std": 64.05772596652587,
+      "pool_Creal_range": 277.60478770234613,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.04058756208402315,
+      "Rpool_Creal_z_final": -0.00887343192702141,
+      "Rendpoint": -0.07776264180713119,
+      "Delta_CEM": -0.03717507972310804,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 76.84679869642864,
+        "angle_dist": 1.9458456079112452,
+        "c_real_state": 78.79264430433989,
+        "v1_hinge_cost": 148.33553961381097,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 3,
+      "cell": "D0xR0",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_003_seed_0.pt",
+      "rank1_candidate_index": 0,
+      "oracle_best_candidate_index": 46,
+      "rank1_success": false,
+      "rank1_c_real_state": 104.95502125341537,
+      "oracle_best_c_real_state": 19.63938308016807,
+      "selection_regret_pool_rank1": 85.3156381732473,
+      "rank1_C_model": 1.223359227180481,
+      "pool_Cmodel_std": 0.05374580265798623,
+      "top30_Cmodel_std": 0.0032515973150804645,
+      "pool_Creal_std": 49.943543207511574,
+      "pool_Creal_range": 353.23312680591,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.007479638662651807,
+      "Rpool_Creal_z_final": -0.04763386259847332,
+      "Rendpoint": 0.009457438415982398,
+      "Delta_CEM": 0.001977799753330591,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 107.86483320010196,
+        "angle_dist": 3.052397310733795,
+        "c_real_state": 110.91723051083575,
+        "v1_hinge_cost": 242.7543165022309,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 4,
+      "cell": "D0xR0",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_004_seed_0.pt",
+      "rank1_candidate_index": 69,
+      "oracle_best_candidate_index": 294,
+      "rank1_success": false,
+      "rank1_c_real_state": 198.78465618660277,
+      "oracle_best_c_real_state": 5.1121730877324545,
+      "selection_regret_pool_rank1": 193.67248309887032,
+      "rank1_C_model": 1.2958390712738037,
+      "pool_Cmodel_std": 0.05258815396784681,
+      "top30_Cmodel_std": 0.003256935816147191,
+      "pool_Creal_std": 54.153034110081165,
+      "pool_Creal_range": 310.7908483576734,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.060654007266747405,
+      "Rpool_Creal_z_final": -0.12330225891398792,
+      "Rendpoint": -0.02960966232958144,
+      "Delta_CEM": 0.031044344937165964,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 104.82373353461304,
+        "angle_dist": 2.0177579522132874,
+        "c_real_state": 106.84149148682633,
+        "v1_hinge_cost": 180.43274827539403,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 5,
+      "cell": "D0xR0",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_005_seed_0.pt",
+      "rank1_candidate_index": 14,
+      "oracle_best_candidate_index": 112,
+      "rank1_success": false,
+      "rank1_c_real_state": 56.153225646935844,
+      "oracle_best_c_real_state": 7.712779720378134,
+      "selection_regret_pool_rank1": 48.44044592655771,
+      "rank1_C_model": 0.3935079574584961,
+      "pool_Cmodel_std": 0.06160034499863654,
+      "top30_Cmodel_std": 0.0047366228281383775,
+      "pool_Creal_std": 46.862334006278246,
+      "pool_Creal_range": 265.84666864178047,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.08535294836609295,
+      "Rpool_Creal_z_final": -0.09589395437727086,
+      "Rendpoint": 0.09273436371515238,
+      "Delta_CEM": 0.007381415349059436,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 111.83921822548244,
+        "angle_dist": 2.3592438141452234,
+        "c_real_state": 114.19846203962766,
+        "v1_hinge_cost": 207.0139316183505,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 6,
+      "cell": "D0xR1",
+      "seed": 0,
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_006_seed_0.pt",
+      "rank1_candidate_index": 0,
+      "oracle_best_candidate_index": 15,
+      "rank1_success": false,
+      "rank1_c_real_state": 173.26136900627702,
+      "oracle_best_c_real_state": 10.426396910755626,
+      "selection_regret_pool_rank1": 162.8349720955214,
+      "rank1_C_model": 0.9339187145233154,
+      "pool_Cmodel_std": 0.10535438479646046,
+      "top30_Cmodel_std": 0.008801316243865594,
+      "pool_Creal_std": 57.89780235280174,
+      "pool_Creal_range": 267.95458218697297,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.052987699863331815,
+      "Rpool_Creal_z_final": -0.19848620540228226,
+      "Rendpoint": -0.12431560350670562,
+      "Delta_CEM": -0.0713279036433738,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 64.75962803534486,
+        "angle_dist": 2.490359604358673,
+        "c_real_state": 67.24998763970353,
+        "v1_hinge_cost": 167.44672283496632,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 7,
+      "cell": "D0xR1",
+      "seed": 0,
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_007_seed_0.pt",
+      "rank1_candidate_index": 277,
+      "oracle_best_candidate_index": 230,
+      "rank1_success": false,
+      "rank1_c_real_state": 157.4476924012979,
+      "oracle_best_c_real_state": 23.762967650778197,
+      "selection_regret_pool_rank1": 133.6847247505197,
+      "rank1_C_model": 0.8112900853157043,
+      "pool_Cmodel_std": 0.03801501324337904,
+      "top30_Cmodel_std": 0.002487194669529436,
+      "pool_Creal_std": 86.83750851232375,
+      "pool_Creal_range": 387.59190730259763,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.15902576695296614,
+      "Rpool_Creal_z_final": -0.01707352303914488,
+      "Rendpoint": -0.019328659207324524,
+      "Delta_CEM": -0.17835442616029065,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 174.57785715439516,
+        "angle_dist": 0.09193181991577148,
+        "c_real_state": 174.66978897431093,
+        "v1_hinge_cost": 154.57785715439516,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 8,
+      "cell": "D0xR1",
+      "seed": 0,
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_008_seed_0.pt",
+      "rank1_candidate_index": 134,
+      "oracle_best_candidate_index": 76,
+      "rank1_success": false,
+      "rank1_c_real_state": 180.5440934156442,
+      "oracle_best_c_real_state": 7.637352352982643,
+      "selection_regret_pool_rank1": 172.90674106266155,
+      "rank1_C_model": 1.0341945886611938,
+      "pool_Cmodel_std": 0.12956740750962076,
+      "top30_Cmodel_std": 0.007245649725608531,
+      "pool_Creal_std": 54.72304960231124,
+      "pool_Creal_range": 268.99316126292587,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.029299436660407335,
+      "Rpool_Creal_z_final": 0.03839287103190035,
+      "Rendpoint": 0.10475894176601962,
+      "Delta_CEM": 0.07545950510561228,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 46.98605621561099,
+        "angle_dist": 0.6379005312919617,
+        "c_real_state": 47.623956746902955,
+        "v1_hinge_cost": 43.5350644077933,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 9,
+      "cell": "D0xR1",
+      "seed": 0,
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_009_seed_0.pt",
+      "rank1_candidate_index": 141,
+      "oracle_best_candidate_index": 58,
+      "rank1_success": false,
+      "rank1_c_real_state": 66.16089743583873,
+      "oracle_best_c_real_state": 9.101402079335795,
+      "selection_regret_pool_rank1": 57.059495356502936,
+      "rank1_C_model": 0.9997286796569824,
+      "pool_Cmodel_std": 0.023535707219757236,
+      "top30_Cmodel_std": 0.0015938255362265299,
+      "pool_Creal_std": 66.19365637840824,
+      "pool_Creal_range": 340.14359055195223,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.02902654473938599,
+      "Rpool_Creal_z_final": -0.2995179946443849,
+      "Rendpoint": -0.17583795375504171,
+      "Delta_CEM": -0.2048644984944277,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 156.04861684157868,
+        "angle_dist": 0.9951469043837946,
+        "c_real_state": 157.04376374596248,
+        "v1_hinge_cost": 173.066334458279,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 10,
+      "cell": "D0xR1",
+      "seed": 0,
+      "primary_subset": "latent_favorable",
+      "subset_memberships": [
+        "latent_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_010_seed_0.pt",
+      "rank1_candidate_index": 108,
+      "oracle_best_candidate_index": 95,
+      "rank1_success": false,
+      "rank1_c_real_state": 171.07424932144735,
+      "oracle_best_c_real_state": 8.808158130134766,
+      "selection_regret_pool_rank1": 162.2660911913126,
+      "rank1_C_model": 0.561332643032074,
+      "pool_Cmodel_std": 0.13312163434412252,
+      "top30_Cmodel_std": 0.007177605393430233,
+      "pool_Creal_std": 47.686461878902506,
+      "pool_Creal_range": 253.7725507906103,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.028963877376415294,
+      "Rpool_Creal_z_final": 0.2760568450760564,
+      "Rendpoint": 0.05633707041189346,
+      "Delta_CEM": 0.08530094778830875,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 127.1966034389839,
+        "angle_dist": 1.0861021876335144,
+        "c_real_state": 128.28270562661743,
+        "v1_hinge_cost": 149.4256749103101,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 12,
+      "cell": "D0xR2",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_012_seed_0.pt",
+      "rank1_candidate_index": 254,
+      "oracle_best_candidate_index": 141,
+      "rank1_success": false,
+      "rank1_c_real_state": 56.74428767322349,
+      "oracle_best_c_real_state": 14.070932709765952,
+      "selection_regret_pool_rank1": 42.67335496345754,
+      "rank1_C_model": 1.4002488851547241,
+      "pool_Cmodel_std": 0.0328629520692076,
+      "top30_Cmodel_std": 0.0024358519615333665,
+      "pool_Creal_std": 60.59683986973438,
+      "pool_Creal_range": 269.8315213426701,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.000784897609973444,
+      "Rpool_Creal_z_final": -0.022832253691707684,
+      "Rendpoint": -0.07344348270536338,
+      "Delta_CEM": -0.07422838031533682,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 177.33431503767576,
+        "angle_dist": 0.02407783269882202,
+        "c_real_state": 177.3583928703746,
+        "v1_hinge_cost": 157.33431503767576,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 13,
+      "cell": "D0xR2",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_013_seed_0.pt",
+      "rank1_candidate_index": 125,
+      "oracle_best_candidate_index": 31,
+      "rank1_success": false,
+      "rank1_c_real_state": 123.85307676468243,
+      "oracle_best_c_real_state": 4.200073108059113,
+      "selection_regret_pool_rank1": 119.65300365662331,
+      "rank1_C_model": 1.132561445236206,
+      "pool_Cmodel_std": 0.03951467654903199,
+      "top30_Cmodel_std": 0.0030259589407546014,
+      "pool_Creal_std": 71.9181381673336,
+      "pool_Creal_range": 397.0599995104601,
+      "pool_success_mass": 0.006666666666666667,
+      "Rpool_Cmodel": -0.018236647073856374,
+      "Rpool_Creal_z_final": 0.05412993477705307,
+      "Rendpoint": 0.04390537672640807,
+      "Delta_CEM": 0.06214202380026444,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 180.5936184283798,
+        "angle_dist": 0.15914809703826904,
+        "c_real_state": 180.75276652541808,
+        "v1_hinge_cost": 160.5936184283798,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 14,
+      "cell": "D0xR2",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_014_seed_0.pt",
+      "rank1_candidate_index": 266,
+      "oracle_best_candidate_index": 113,
+      "rank1_success": false,
+      "rank1_c_real_state": 216.83836509944697,
+      "oracle_best_c_real_state": 24.576898890624143,
+      "selection_regret_pool_rank1": 192.26146620882284,
+      "rank1_C_model": 0.7825669646263123,
+      "pool_Cmodel_std": 0.0635782440232845,
+      "top30_Cmodel_std": 0.008827098617161798,
+      "pool_Creal_std": 75.4634635431742,
+      "pool_Creal_range": 351.7586417512738,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.01878420871343015,
+      "Rpool_Creal_z_final": 0.1016415737952644,
+      "Rendpoint": 0.04042844920499117,
+      "Delta_CEM": 0.02164424049156102,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 108.42291937238299,
+        "angle_dist": 1.016724944114685,
+        "c_real_state": 109.43964431649768,
+        "v1_hinge_cost": 126.67696759582893,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 16,
+      "cell": "D0xR2",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_016_seed_0.pt",
+      "rank1_candidate_index": 61,
+      "oracle_best_candidate_index": 26,
+      "rank1_success": false,
+      "rank1_c_real_state": 300.9091997036787,
+      "oracle_best_c_real_state": 11.546963691767434,
+      "selection_regret_pool_rank1": 289.3622360119113,
+      "rank1_C_model": 1.3429700136184692,
+      "pool_Cmodel_std": 0.022036670581045463,
+      "top30_Cmodel_std": 0.0016013033798561028,
+      "pool_Creal_std": 74.50421436216678,
+      "pool_Creal_range": 317.14148474301385,
+      "pool_success_mass": 0.006666666666666667,
+      "Rpool_Cmodel": 0.005984510939010433,
+      "Rpool_Creal_z_final": 0.3177390859898443,
+      "Rendpoint": 0.19680974233047033,
+      "Delta_CEM": 0.1908252313914599,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 34.34523059060902,
+        "angle_dist": 0.795358423386709,
+        "c_real_state": 35.14058901399573,
+        "v1_hinge_cost": 39.91591145084668,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 19,
+      "cell": "D0xR3",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_019_seed_0.pt",
+      "rank1_candidate_index": 103,
+      "oracle_best_candidate_index": 258,
+      "rank1_success": false,
+      "rank1_c_real_state": 170.0681552152156,
+      "oracle_best_c_real_state": 8.227570692134705,
+      "selection_regret_pool_rank1": 161.8405845230809,
+      "rank1_C_model": 1.0104880332946777,
+      "pool_Cmodel_std": 0.03599791176727042,
+      "top30_Cmodel_std": 0.0023144160082434195,
+      "pool_Creal_std": 57.73141515242532,
+      "pool_Creal_range": 281.37125327653274,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.08564584050933899,
+      "Rpool_Creal_z_final": -0.07305947843864931,
+      "Rendpoint": 0.024447827198079978,
+      "Delta_CEM": 0.11009366770741896,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 47.355968503387196,
+        "angle_dist": 2.4737042784690857,
+        "c_real_state": 49.82967278185628,
+        "v1_hinge_cost": 149.08878342312033,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 25,
+      "cell": "D1xR0",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "latent_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_025_seed_0.pt",
+      "rank1_candidate_index": 103,
+      "oracle_best_candidate_index": 98,
+      "rank1_success": false,
+      "rank1_c_real_state": 40.84770910856684,
+      "oracle_best_c_real_state": 19.399174915495866,
+      "selection_regret_pool_rank1": 21.448534193070973,
+      "rank1_C_model": 1.0493865013122559,
+      "pool_Cmodel_std": 0.03436933957236559,
+      "top30_Cmodel_std": 0.0016230320487860541,
+      "pool_Creal_std": 56.49271229403615,
+      "pool_Creal_range": 285.4051287500486,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.06646740519339103,
+      "Rpool_Creal_z_final": 0.018049533883709817,
+      "Rendpoint": 0.115240836009289,
+      "Delta_CEM": 0.04877343081589797,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 176.01767628887674,
+        "angle_dist": 1.4608312845230103,
+        "c_real_state": 177.47850757339975,
+        "v1_hinge_cost": 219.71714347271995,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 30,
+      "cell": "D1xR1",
+      "seed": 0,
+      "primary_subset": "ordinary",
+      "subset_memberships": [
+        "ordinary"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_030_seed_0.pt",
+      "rank1_candidate_index": 0,
+      "oracle_best_candidate_index": 285,
+      "rank1_success": false,
+      "rank1_c_real_state": 108.8185311231293,
+      "oracle_best_c_real_state": 13.857233361855295,
+      "selection_regret_pool_rank1": 94.96129776127401,
+      "rank1_C_model": 1.6406519412994385,
+      "pool_Cmodel_std": 0.03247351438133837,
+      "top30_Cmodel_std": 0.0027916442219676433,
+      "pool_Creal_std": 51.66560904347205,
+      "pool_Creal_range": 278.79703370256277,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.016275291947688307,
+      "Rpool_Creal_z_final": 0.09134901498905543,
+      "Rendpoint": 0.058465982955366175,
+      "Delta_CEM": 0.04219069100767787,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 116.8329862132349,
+        "angle_dist": 1.9651323596583765,
+        "c_real_state": 118.79811857289329,
+        "v1_hinge_cost": 189.42677660624443,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 46,
+      "cell": "D1xR3",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_046_seed_0.pt",
+      "rank1_candidate_index": 30,
+      "oracle_best_candidate_index": 112,
+      "rank1_success": false,
+      "rank1_c_real_state": 189.13379676611578,
+      "oracle_best_c_real_state": 16.89096282823593,
+      "selection_regret_pool_rank1": 172.24283393787985,
+      "rank1_C_model": 0.19932396709918976,
+      "pool_Cmodel_std": 0.10049570158686703,
+      "top30_Cmodel_std": 0.006887228511615072,
+      "pool_Creal_std": 72.39625538198312,
+      "pool_Creal_range": 332.0460315861833,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": -0.05208280092001021,
+      "Rpool_Creal_z_final": -0.2502325581395349,
+      "Rendpoint": -0.252042356026178,
+      "Delta_CEM": -0.1999595551061678,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 99.9845740482137,
+        "angle_dist": 0.8190576434135437,
+        "c_real_state": 100.80363169162725,
+        "v1_hinge_cost": 106.91312019374091,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 60,
+      "cell": "D2xR2",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_060_seed_0.pt",
+      "rank1_candidate_index": 293,
+      "oracle_best_candidate_index": 121,
+      "rank1_success": false,
+      "rank1_c_real_state": 126.90973360990348,
+      "oracle_best_c_real_state": 8.58578294444586,
+      "selection_regret_pool_rank1": 118.32395066545763,
+      "rank1_C_model": 1.219003677368164,
+      "pool_Cmodel_std": 0.027422241811051403,
+      "top30_Cmodel_std": 0.0018817129906574155,
+      "pool_Creal_std": 43.82752669651169,
+      "pool_Creal_range": 272.7424689675415,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.019670885232058132,
+      "Rpool_Creal_z_final": -0.015530839231547017,
+      "Rendpoint": 0.1006784519827998,
+      "Delta_CEM": 0.12034933721485794,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 36.48038593977657,
+        "angle_dist": 1.2522067427635193,
+        "c_real_state": 37.73259268254009,
+        "v1_hinge_cost": 68.22654737795017,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 61,
+      "cell": "D2xR2",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_061_seed_0.pt",
+      "rank1_candidate_index": 86,
+      "oracle_best_candidate_index": 194,
+      "rank1_success": true,
+      "rank1_c_real_state": 18.95618760172588,
+      "oracle_best_c_real_state": 13.610822999091608,
+      "selection_regret_pool_rank1": 5.345364602634271,
+      "rank1_C_model": 1.8536019325256348,
+      "pool_Cmodel_std": 0.020896560463351775,
+      "top30_Cmodel_std": 0.0016472561015450653,
+      "pool_Creal_std": 51.250878161216804,
+      "pool_Creal_range": 303.06047374213824,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.03493016589073211,
+      "Rpool_Creal_z_final": -0.06047000522228024,
+      "Rendpoint": -0.10156512850142779,
+      "Delta_CEM": -0.1364952943921599,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 146.3240946382311,
+        "angle_dist": 2.3698814511299133,
+        "c_real_state": 148.693976089361,
+        "v1_hinge_cost": 242.1082997343142,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 67,
+      "cell": "D2xR3",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_067_seed_0.pt",
+      "rank1_candidate_index": 15,
+      "oracle_best_candidate_index": 143,
+      "rank1_success": false,
+      "rank1_c_real_state": 102.47175585454261,
+      "oracle_best_c_real_state": 16.601594987654586,
+      "selection_regret_pool_rank1": 85.87016086688803,
+      "rank1_C_model": 1.436812400817871,
+      "pool_Cmodel_std": 0.033542462079285656,
+      "top30_Cmodel_std": 0.0016344933105392693,
+      "pool_Creal_std": 43.372442162467685,
+      "pool_Creal_range": 209.59561733029395,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.06278114201268901,
+      "Rpool_Creal_z_final": 0.033785708730097,
+      "Rendpoint": -0.04466227402526695,
+      "Delta_CEM": -0.10744341603795596,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 154.89510511428568,
+        "angle_dist": 2.924295488988058,
+        "c_real_state": 157.81940060327375,
+        "v1_hinge_cost": 282.4448946824467,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 70,
+      "cell": "D2xR3",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_070_seed_0.pt",
+      "rank1_candidate_index": 0,
+      "oracle_best_candidate_index": 50,
+      "rank1_success": false,
+      "rank1_c_real_state": 127.25611403592953,
+      "oracle_best_c_real_state": 7.161537885706309,
+      "selection_regret_pool_rank1": 120.09457615022322,
+      "rank1_C_model": 1.3358343839645386,
+      "pool_Cmodel_std": 0.05556223019032137,
+      "top30_Cmodel_std": 0.0039369293339035615,
+      "pool_Creal_std": 59.05548103805678,
+      "pool_Creal_range": 296.0271532925493,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": 0.029411437904865605,
+      "Rpool_Creal_z_final": -0.059337992644362715,
+      "Rendpoint": 0.05257436193735485,
+      "Delta_CEM": 0.02316292403248925,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 112.0893050228034,
+        "angle_dist": 2.47377872467041,
+        "c_real_state": 114.56308374747381,
+        "v1_hinge_cost": 213.82638539567319,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 71,
+      "cell": "D2xR3",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_071_seed_0.pt",
+      "rank1_candidate_index": 221,
+      "oracle_best_candidate_index": 164,
+      "rank1_success": false,
+      "rank1_c_real_state": 120.70433889804303,
+      "oracle_best_c_real_state": 7.506556156034777,
+      "selection_regret_pool_rank1": 113.19778274200826,
+      "rank1_C_model": 1.0837856531143188,
+      "pool_Cmodel_std": 0.04396220787673369,
+      "top30_Cmodel_std": 0.0031178839431985324,
+      "pool_Creal_std": 67.76063369431681,
+      "pool_Creal_range": 419.53692611200796,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": -0.08985566506294514,
+      "Rpool_Creal_z_final": -0.1149608328981433,
+      "Rendpoint": -0.006501850020555784,
+      "Delta_CEM": 0.08335381504238935,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 133.83234940717676,
+        "angle_dist": 0.16626262664794922,
+        "c_real_state": 133.9986120338247,
+        "v1_hinge_cost": 113.83234940717676,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 73,
+      "cell": "D2xR3",
+      "seed": 0,
+      "primary_subset": "invisible_quadrant",
+      "subset_memberships": [
+        "invisible_quadrant"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_073_seed_0.pt",
+      "rank1_candidate_index": 0,
+      "oracle_best_candidate_index": 113,
+      "rank1_success": false,
+      "rank1_c_real_state": 140.23402067887835,
+      "oracle_best_c_real_state": 12.441121438231699,
+      "selection_regret_pool_rank1": 127.79289924064665,
+      "rank1_C_model": 0.464766263961792,
+      "pool_Cmodel_std": 0.19613202798025176,
+      "top30_Cmodel_std": 0.007715976799219658,
+      "pool_Creal_std": 53.97638829210417,
+      "pool_Creal_range": 329.3079273190216,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.021688685429838112,
+      "Rpool_Creal_z_final": -0.21293081034233716,
+      "Rendpoint": -0.04238802653362815,
+      "Delta_CEM": -0.02069934110379004,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 82.171419496965,
+        "angle_dist": 0.61749267578125,
+        "c_real_state": 82.78891217274625,
+        "v1_hinge_cost": 77.55114369947073,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 74,
+      "cell": "D3xR0",
+      "seed": 0,
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_074_seed_0.pt",
+      "rank1_candidate_index": 147,
+      "oracle_best_candidate_index": 209,
+      "rank1_success": false,
+      "rank1_c_real_state": 181.17443153795244,
+      "oracle_best_c_real_state": 17.411362719834948,
+      "selection_regret_pool_rank1": 163.7630688181175,
+      "rank1_C_model": 1.3263955116271973,
+      "pool_Cmodel_std": 0.0193732869833045,
+      "top30_Cmodel_std": 0.002180294400757844,
+      "pool_Creal_std": 43.46970894020563,
+      "pool_Creal_range": 240.76072163771025,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.0440691612205873,
+      "Rpool_Creal_z_final": 0.08620095778841987,
+      "Rendpoint": -0.016824186935410393,
+      "Delta_CEM": -0.060893348155997694,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 148.47231274642115,
+        "angle_dist": 1.3789175748825073,
+        "c_real_state": 149.85123032130366,
+        "v1_hinge_cost": 187.47847008360347,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 75,
+      "cell": "D3xR0",
+      "seed": 0,
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_075_seed_0.pt",
+      "rank1_candidate_index": 80,
+      "oracle_best_candidate_index": 75,
+      "rank1_success": false,
+      "rank1_c_real_state": 77.43890656389013,
+      "oracle_best_c_real_state": 8.790390368781939,
+      "selection_regret_pool_rank1": 68.64851619510819,
+      "rank1_C_model": 1.4159759283065796,
+      "pool_Cmodel_std": 0.023540198344518655,
+      "top30_Cmodel_std": 0.0018300257890340903,
+      "pool_Creal_std": 60.45945613578952,
+      "pool_Creal_range": 297.2590977340979,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.020502450027222525,
+      "Rpool_Creal_z_final": 0.14014911276791964,
+      "Rendpoint": -0.012640140446004955,
+      "Delta_CEM": -0.03314259047322748,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 83.2473949650295,
+        "angle_dist": 0.05373203754425049,
+        "c_real_state": 83.30112700257375,
+        "v1_hinge_cost": 63.2473949650295,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 76,
+      "cell": "D3xR0",
+      "seed": 0,
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_076_seed_0.pt",
+      "rank1_candidate_index": 113,
+      "oracle_best_candidate_index": 288,
+      "rank1_success": false,
+      "rank1_c_real_state": 121.75293104198845,
+      "oracle_best_c_real_state": 14.746275539245532,
+      "selection_regret_pool_rank1": 107.00665550274292,
+      "rank1_C_model": 1.70521080493927,
+      "pool_Cmodel_std": 0.05287712129288832,
+      "top30_Cmodel_std": 0.006655087290087409,
+      "pool_Creal_std": 46.85058597971525,
+      "pool_Creal_range": 216.6868778751845,
+      "pool_success_mass": 0.0033333333333333335,
+      "Rpool_Cmodel": -0.03200835564839609,
+      "Rpool_Creal_z_final": 0.05279258658429538,
+      "Rendpoint": 0.013916599073323037,
+      "Delta_CEM": 0.045924954721719126,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 115.55335456779882,
+        "angle_dist": 0.5508860945701599,
+        "c_real_state": 116.10424066236898,
+        "v1_hinge_cost": 107.11680277911373,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 77,
+      "cell": "D3xR0",
+      "seed": 0,
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "v1_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_077_seed_0.pt",
+      "rank1_candidate_index": 100,
+      "oracle_best_candidate_index": 103,
+      "rank1_success": false,
+      "rank1_c_real_state": 277.4736725631576,
+      "oracle_best_c_real_state": 73.88052159537526,
+      "selection_regret_pool_rank1": 203.59315096778235,
+      "rank1_C_model": 0.9810724258422852,
+      "pool_Cmodel_std": 0.03422917759730207,
+      "top30_Cmodel_std": 0.0055017722823428455,
+      "pool_Creal_std": 86.73644687896395,
+      "pool_Creal_range": 423.64307893736634,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": 0.006787186524294713,
+      "Rpool_Creal_z_final": 0.006813853487260969,
+      "Rendpoint": 0.09293436593739929,
+      "Delta_CEM": 0.08614717941310457,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 379.1902853854263,
+        "angle_dist": 0.0849142074584961,
+        "c_real_state": 379.2751995928848,
+        "v1_hinge_cost": 359.1902853854263,
+        "success": false
+      }
+    },
+    {
+      "pair_id": 78,
+      "cell": "D3xR0",
+      "seed": 0,
+      "primary_subset": "v1_favorable",
+      "subset_memberships": [
+        "invisible_quadrant",
+        "v1_favorable"
+      ],
+      "pool_path": "/workspace/lewm-failure-audit/results/revision/dino_wm_pusht_pools/pair_078_seed_0.pt",
+      "rank1_candidate_index": 268,
+      "oracle_best_candidate_index": 285,
+      "rank1_success": false,
+      "rank1_c_real_state": 95.45639630337357,
+      "oracle_best_c_real_state": 26.80550969772116,
+      "selection_regret_pool_rank1": 68.6508866056524,
+      "rank1_C_model": 0.802092969417572,
+      "pool_Cmodel_std": 0.17538923464778633,
+      "top30_Cmodel_std": 0.00949082380145717,
+      "pool_Creal_std": 56.76757694853494,
+      "pool_Creal_range": 246.99112493038467,
+      "pool_success_mass": 0.0,
+      "Rpool_Cmodel": -0.031655907287858755,
+      "Rpool_Creal_z_final": -0.08894765497394415,
+      "Rendpoint": -0.08739608217869087,
+      "Delta_CEM": -0.05574017489083211,
+      "endpoint_source": "first_iter_real_z",
+      "planned_mean_after_final_update": {
+        "block_pos_dist": 22.766432645874126,
+        "angle_dist": 0.7210583686828613,
+        "c_real_state": 23.487491014556987,
+        "v1_hinge_cost": 24.080033953990174,
+        "success": false
+      }
+    }
+  ],
+  "summary": {
+    "n_records": 30,
+    "rank1_success": {
+      "mean": 0.03333333333333333,
+      "std": 0.18257418583505533,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 30,
+      "ddof": 1
+    },
+    "planned_mean_success": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n": 30,
+      "ddof": 1
+    },
+    "selection_regret_pool_rank1": {
+      "mean": 126.61337187914728,
+      "std": 63.788004993311745,
+      "min": 5.345364602634271,
+      "max": 289.3622360119113,
+      "n": 30,
+      "ddof": 1
+    },
+    "Rendpoint": {
+      "mean": 0.0004456049511661249,
+      "std": 0.09354831248130498,
+      "min": -0.252042356026178,
+      "max": 0.19680974233047033,
+      "n": 30,
+      "ddof": 1
+    },
+    "Rpool_Cmodel": {
+      "mean": 0.0013223778192689687,
+      "std": 0.052766047292656805,
+      "min": -0.08985566506294514,
+      "max": 0.15902576695296614,
+      "n": 30,
+      "ddof": 1
+    },
+    "Rpool_Creal_z_final": {
+      "mean": -0.014166616666111107,
+      "std": 0.1368542024447032,
+      "min": -0.2995179946443849,
+      "max": 0.3177390859898443,
+      "n": 30,
+      "ddof": 1
+    },
+    "Delta_CEM": {
+      "mean": -0.0008767728681028412,
+      "std": 0.09715876004762286,
+      "min": -0.2048644984944277,
+      "max": 0.1908252313914599,
+      "n": 30,
+      "ddof": 1
+    },
+    "pool_success_mass": {
+      "mean": 0.0016666666666666668,
+      "std": 0.0020990784330746754,
+      "min": 0.0,
+      "max": 0.006666666666666667,
+      "n": 30,
+      "ddof": 1
+    },
+    "pool_Creal_std": {
+      "mean": 60.4834661276537,
+      "std": 12.58689050679483,
+      "min": 43.372442162467685,
+      "max": 86.83750851232375,
+      "n": 30,
+      "ddof": 1
+    },
+    "pool_Cmodel_std": {
+      "mean": 0.06669609073345288,
+      "std": 0.05043845433024214,
+      "min": 0.0193732869833045,
+      "max": 0.19613202798025176,
+      "n": 30,
+      "ddof": 1
+    }
+  }
+}
