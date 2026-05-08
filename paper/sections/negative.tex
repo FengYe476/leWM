@@ -1,17 +1,17 @@
-\section{Simple Repairs Do Not Close the Gap Under Locked Criteria}
+\section{Simple Repairs Do Not Close the Gap}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig5_unified.pdf}
-\caption{Four failed repairs under locked criteria, using a unified color scheme for default Euclidean costs, learned alternatives, oracle/V1 signals, DINOv2 replacements, and Subspace-CEM. \textbf{(a)}~Learned cost head $C_\psi$ compresses elite cost std by ${\sim}240\times$, removing local discrimination (0/16 hard-pair success; exact 95\% CI upper bound 20.6\%). \textbf{(b)}~DINOv2 encoder replacement underperforms trained LeWM on endpoint ranking (0.261 vs.\ 0.506 Spearman). \textbf{(c)}~Hybrid CEM requires ${\geq}20\%$ oracle budget to recover any hard-pair successes. \textbf{(d)}~Subspace-CEM regresses across all subsets ($-8.3$\,pp overall).}
+\caption{Four failed repairs under pre-specified criteria, using a unified color scheme for default Euclidean costs, learned alternatives, oracle/V1 signals, DINOv2 replacements, and Subspace-CEM. \textbf{(a)}~Learned cost head $C_\psi$ compresses elite cost std by ${\sim}240\times$, removing local discrimination (0/16 hard-pair success; exact 95\% CI upper bound 20.6\%). \textbf{(b)}~DINOv2 encoder replacement underperforms trained LeWM on endpoint ranking (0.261 vs.\ 0.506 Spearman). \textbf{(c)}~Hybrid CEM requires ${\geq}20\%$ oracle budget to recover any hard-pair successes. \textbf{(d)}~Subspace-CEM regresses across all subsets ($-8.3$\,pp overall).}
 \label{fig:negative_results}
 \end{figure}
 
-Sections~4 and~5 establish that LeWM learns task-relevant endpoint geometry that can decouple from CEM-local planning behavior. We then tested four component-level repairs; each failed under its locked criterion.
+Sections~4 and~5 establish that LeWM learns task-relevant endpoint geometry that can decouple from CEM-local planning behavior. We then tested four component-level repairs; each failed under its pre-specified criterion.
 
 \subsection{Learned cost heads}
 
-The first repair replaced Euclidean latent distance with MLP cost heads $C_\psi(z,\zgoal)$ trained on V1 hinge labels over frozen LeWM latents. The large MLP improved held-out endpoint ranking (Spearman $0.479$ vs.\ $0.269$), but Figure~\ref{fig:negative_results} shows that elite costs collapsed and planning still failed. The hard-pair success count was 0/16, whose exact 95\% Clopper--Pearson interval is $[0,20.6]\%$. This does not rule out pool-aware cost learning with local ranking supervision; it rules out endpoint-trained cost heads under the locked audit protocol.
+The first repair replaced Euclidean latent distance with MLP cost heads $C_\psi(z,\zgoal)$ trained on V1 hinge labels over frozen LeWM latents. The large MLP improved held-out endpoint ranking (Spearman $0.479$ vs.\ $0.269$), but Figure~\ref{fig:negative_results} shows that elite costs collapsed and planning still failed. The hard-pair success count was 0/16, whose exact 95\% Clopper--Pearson interval is $[0,20.6]\%$. This does not rule out pool-aware cost learning with local ranking supervision; it rules out endpoint-trained cost heads under this audit protocol.
 
 \subsection{Encoder replacement}
 
@@ -23,8 +23,8 @@ The third repair re-ranked the top $K$ CEM candidates per iteration using the V1
 
 \subsection{Subspace-CEM}
 
-The fourth repair targeted the search-selection split found in Section~4: Subspace-CEM searched with an $m=64$ projected cost, then selected by full 192-dimensional LeWM cost. Under the locked Stage A criterion, this approach failed (Figure~\ref{fig:negative_results}), showing that projected-cost search can move the final pool into a region that full-dimensional re-ranking cannot repair. In seed-level paired comparisons, six default successes regressed under Subspace-CEM while one default failure improved (exact McNemar/binomial $p=0.125$). This does not rule out adaptive projection schedules; it rules out fixed two-stage search-then-select under the locked criterion.
+The fourth repair targeted the search-selection split found in Section~4: Subspace-CEM searched with an $m=64$ projected cost, then selected by full 192-dimensional LeWM cost. Under the Stage A criterion, this approach failed (Figure~\ref{fig:negative_results}), showing that projected-cost search can move the final pool into a region that full-dimensional re-ranking cannot repair. In seed-level paired comparisons, six default successes regressed under Subspace-CEM while one default failure improved (exact McNemar/binomial $p=0.125$). This does not rule out adaptive projection schedules; it rules out fixed two-stage search-then-select under the pre-specified criterion.
 
 \subsection{What the failures share}
 
-Together, these locked failures point away from single-component repairs and toward the interaction between cost geometry and CEM dynamics---the object that endpoint-only metrics leave untested. These failures confirm that the endpoint-planning gap cannot be closed by single-component inference-time repairs. Section~\ref{sec:warp_ensemble} further tests whether learned pool-level calibration can address the diagnosed geometry bottleneck.
+Together, these failures point away from single-component repairs and toward the interaction between cost geometry and CEM dynamics---the object that endpoint-only metrics leave untested. They suggest that the endpoint-planning gap is unlikely to be closed by simple inference-time repairs alone. Section~\ref{sec:warp_ensemble} further tests whether learned pool-level calibration can address the diagnosed geometry bottleneck.

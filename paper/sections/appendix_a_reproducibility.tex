@@ -83,10 +83,15 @@ local machines and by the equivalent checkpoint step in
 \texttt{scripts/setup\_runpod.sh} on RunPod. Both scripts use the Hugging Face
 CLI, with repository type \texttt{model}, to download the official public LeWM
 checkpoint repositories. The root README links the LeWM Hugging Face collection
-at \url{https://huggingface.co/collections/quentinll/lewm}. The exact Hugging
-Face snapshot revision was not pinned at the time of the audit. All numerical
-results are reproducible from the frozen JSON artifacts listed in
-Table~\ref{tab:appendix-commits}.
+at \url{https://huggingface.co/collections/quentinll/lewm}. All numerical
+results in this paper are reproducible from the frozen JSON artifacts listed in
+Table~\ref{tab:appendix-commits}. The LeWM PushT checkpoint was downloaded from
+\texttt{huggingface.co/quentinll/lewm-pusht} (file \texttt{weights.pt}); the
+DINO-WM PushT checkpoint was downloaded from OSF (archive
+\texttt{outputs.zip}, file
+\texttt{outputs/pusht/checkpoints/model\_latest.pth}, DINO-WM commit
+\texttt{0a9492f}). Exact HuggingFace snapshot revisions were not pinned at
+download time; we recommend future audits pin the revision hash.
 
 \begin{table}[h]
 \centering

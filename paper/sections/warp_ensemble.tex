@@ -1,15 +1,15 @@
-\section{Can Pool-Level Calibration Close the Gap?}
+\section{Does Post-hoc Pool Calibration Generalize?}
 \label{sec:warp_ensemble}
 
 \subsection{Motivation}
 
-Section~4.4 identifies terminal encoder geometry as the dominant bottleneck inside CEM pools. Replacing predicted terminal latents with actual terminal encodings improves $\Rpool$, so rollout error contributes, but the actual-terminal latent cost still remains far below the V1 physical oracle on the same candidates. Section~6 then shows that simple inference-time repairs do not close the gap. This raises a natural follow-up question: if the final pool already contains physically rankable structure, can a lightweight learned calibration of the local latent distance recover the lost ordering?
+Section~4.4 identifies terminal encoder geometry as a major bottleneck inside CEM pools. Replacing predicted terminal latents with actual terminal encodings improves $\Rpool$, so rollout error contributes, but the actual-terminal latent cost still remains far below the V1 physical oracle on the same candidates. Section~6 then shows that simple inference-time repairs do not close the gap. This raises a diagnostic follow-up question: if the final pool already contains physically rankable structure, can a lightweight learned calibration of the local latent distance recover the lost ordering, and does that calibration transfer?
 
-This question matters because standard endpoint evaluation never exposes the failing object. The corrective signal lives in pool-local rankings after CEM has converged, not in global endpoint pairs. A calibration experiment therefore tests the most optimistic inference-time version of the diagnostic: if simulator-scored pool labels are sufficient to repair selection, then the gap may be mostly local and post hoc. If not, the failure likely reflects pair-specific geometry that must be addressed during representation learning itself.
+This question matters because standard endpoint evaluation never exposes the failing object. The corrective signal lives in pool-local rankings after CEM has converged, not in global endpoint pairs. This calibration experiment therefore tests the most optimistic inference-time version of the diagnostic: if simulator-scored pool labels are sufficient to repair selection, then the gap may be mostly local and post hoc. If not, the mismatch is unlikely to be resolved by global post-hoc calibration alone; training-time or pool-conditioned approaches become a plausible direction.
 
-\subsection{Method}
+\subsection{Diagnostic Setup}
 
-We train a small residual warp on LeWM's 192-dimensional terminal latent:
+For this diagnostic, we train a small residual warp on LeWM's 192-dimensional terminal latent:
 \begin{equation}
 \mathrm{warp}(z)=z+\alpha\cdot \mathrm{MLP}_{\theta}(z), \qquad \alpha=0.05.
 \label{eq:warp}
@@ -26,7 +26,7 @@ That seen-pool gain is scientifically useful even though it is not the quantity 
 
 \subsection{Held-Out Evaluation}
 
-Table~\ref{tab:warp-selection-holdout} reports the strict held-out comparison on pairs 70--99, where no warp has seen any test pool. The main comparison is Euclidean selection versus warp-ensemble rank averaging. The result is negative: Warp Ensemble Selection does not outperform Euclidean selection on held-out pairs. Success remains 13.3\% for both methods, and the exact paired McNemar test yields $p=1.0$. Mean regret is slightly worse for the warp ensemble (37.67 versus 36.96), with paired-bootstrap difference $+0.71$ and 95\% CI $[-0.19, 2.24]$.
+Table~\ref{tab:warp-selection-holdout} reports the strict held-out comparison on pairs 70--99, where no warp has seen any test pool. The main comparison is Euclidean selection versus warp-ensemble rank averaging. The result is negative: rank averaging does not outperform Euclidean selection on held-out pairs. Success remains 13.3\% for both methods, and the exact paired McNemar test yields $p=1.0$. Mean regret is slightly worse for the warp ensemble (37.67 versus 36.96), with paired-bootstrap difference $+0.71$ and 95\% CI $[-0.19, 2.24]$.
 
 \begin{table*}[t]
 \centering
@@ -43,18 +43,18 @@ Random top-30 & 20.0\% & [7.7, 38.6] & 29.68 & -0.004 \\
 V1 oracle & 43.3\% & [25.5, 62.6] & 4.97 & 0.800 \\
 \bottomrule
 \end{tabular}
-\caption{Strict held-out evaluation on pairs 70--99. None of the learned warps sees any held-out pool during training. Warp-ensemble rank averaging does not outperform Euclidean selection (McNemar $p=1.0$). Simple baselines such as Mahalanobis distance and random selection within the Euclidean top-30 are competitive with the learned calibrator, while the V1 oracle shows that strong physical ranking signal remains present in the same held-out pools.}
+\caption{Strict held-out evaluation on pairs 70--99 (30 pairs $\times$ 1 seed). None of the learned warps sees any held-out pool during training. Warp-ensemble rank averaging does not outperform Euclidean selection (McNemar $p=1.0$). Simple baselines such as Mahalanobis distance and random selection within the Euclidean top-30 are competitive with the learned calibrator, while the V1 oracle shows that strong physical ranking signal remains present in the same held-out pools.}
 \label{tab:warp-selection-holdout}
 \end{table*}
 
 The auxiliary baselines sharpen the interpretation. A simple Mahalanobis reweighting reaches the same 20.0\% success as top-10 warp voting. Random selection from the Euclidean top-30 matches that success as well and slightly improves regret. The held-out best single warp also fails to beat Euclidean. In other words, the learned calibration is not uniquely extracting transferable structure; several crude selectors perform comparably once the evaluation is truly unseen.
 
-We also tested the matched planning setting that mirrors the earlier method claim: default CEM search on the held-out 30 pairs with three seeds, followed by either Euclidean rank-1 selection or warp-ensemble post-hoc re-ranking from the same final pool. This held-out CEM comparison is likewise negative. Default CEM succeeds on 20.0\% of runs, while post-hoc warp reranking reaches 18.9\%; the paired success difference is $-1.1$ percentage points with 95\% bootstrap CI $[-3.3, 0.0]$, and McNemar again gives $p=1.0$. Mean regret also shifts in the wrong direction, from 31.01 to 32.11.
+We also tested the matched planning setting: default CEM search on the held-out 30 pairs with three seeds, followed by either Euclidean rank-1 selection or warp-ensemble post-hoc re-ranking from the same final pool. This held-out CEM comparison is likewise negative. Default CEM succeeds on 20.0\% of runs, while post-hoc warp reranking reaches 18.9\%; the paired success difference is $-1.1$ percentage points with 95\% bootstrap CI $[-3.3, 0.0]$, and McNemar again gives $p=1.0$. Mean regret also shifts in the wrong direction, from 31.01 to 32.11.
 
 \subsection{Interpretation}
 
 The combination of strong seen-pool calibration and failed held-out transfer reveals something important about the geometry failure itself. The distortion between Euclidean latent distance and physical ordering is not governed by a single global correction that can be learned once and reused everywhere. Instead, the direction and magnitude of the misalignment vary across start-goal configurations. A universal learned warp can overfit the local distortions present in seen pools while failing to predict the distortions that arise on new ones.
 
-This result reinforces the central diagnostic rather than weakening it. Pool-level ranking labels clearly contain corrective signal, and the V1 oracle in Table~\ref{tab:warp-selection-holdout} confirms that held-out pools still contain exploitable physical structure. What fails is the hope that an inference-time calibration layer can generalize across those local distortions. The implication is that the endpoint-planning gap is a structural property of the learned representation that likely requires training-time intervention, such as CEM-aware encoder regularization, local isometry objectives, or pool-conditioned representation learning.
+This result reinforces the central diagnostic rather than weakening it. First, pool-level ranking labels contain strong local corrective signal: on seen pools, mean $\Rpool$ rises from 0.086 to 0.441. Second, a global residual warp does not transfer to held-out pairs, so the distortion is unlikely to be resolved by global post-hoc calibration alone. Third, the V1 oracle in Table~\ref{tab:warp-selection-holdout} shows that physical rankability persists in the held-out pools. Together, these observations make training-time or pool-conditioned approaches a promising direction, including CEM-aware encoder regularization, local isometry objectives, or pool-conditioned representation learning.
 
 The V1 oracle therefore remains the relevant upper bound. On the same held-out pools where Euclidean and learned calibrators remain near 13--20\% success, V1 reaches 43.3\% success with regret 4.97 and $\Rpool=0.800$. The physical signal is present; the learned geometry still fails to expose it in a transferable way.
