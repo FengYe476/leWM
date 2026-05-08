@@ -1,46 +1,15 @@
-\section{Pre-registered Audit Framework}
+\section{Three-Level Diagnostic Framework}
 
-Section~2 defines the metrics that expose the endpoint-pool gap. This section explains how the audit used those metrics without changing hypotheses after observing results. The goal was not to optimize a single benchmark score, but to localize failure modes while limiting analyst freedom after each result. Three design principles governed the audit: binding decision trees, fixed evaluation artifacts, and documented framing resets.\footnote{All audit artifacts, decision memos, and scripts are released with the supplementary materials.}
+Endpoint metrics ask whether a latent representation contains task-relevant geometry; they do not test the distribution from which the planner actually selects actions. We therefore audit LeWM at three levels: fixed endpoint rankings, planner-produced candidate-pool rankings, and the selected rank-1 action.
 
-\subsection{Audit design principles}
+\textbf{Endpoint ranking.} $\Rendpoint$ is the Spearman correlation between a terminal latent cost and the physical task cost on a fixed set of terminal-state/goal pairs. It measures whether the representation orders completed outcomes correctly, independent of CEM sampling and elite updates.
 
-Pre-registration ensured that framing resets were documented and auditable rather than post-hoc.
+\textbf{Pool ranking.} $\Rpool$ is the same rank correlation, but computed inside the final 300-candidate pool produced by CEM for a start-goal pair. This is the ranking CEM actually uses at selection time. The CEM Compatibility Gap is
+\[
+\DeltaCEM = \Rendpoint - \Rpool.
+\]
+A large positive gap means endpoint geometry survives on a fixed benchmark but fails on the optimizer-local distribution.
 
-\textbf{Binding decision trees.} Before each phase, we recorded possible outcomes and downstream actions, including the final 30-pair Subspace-CEM success rule.
+\textbf{Selection metrics.} $M_\mathrm{rank1}$ records whether the lowest-cost candidate in the final pool succeeds when executed. We also report pool success mass and selection regret when available, because a pool can contain many successful actions even when rank ordering is weak.
 
-\textbf{Fixed evaluation artifacts.} The main PushT artifact was generated once---100 stratified start-goal pairs and 80 candidate actions per pair---and reused across Phase 0 attribution, Phase 1 oracle ablations, Stage 1A/B controls, and protocol matching where applicable.
-
-\textbf{Documented framing resets.} A reset was allowed only after a contradictory result and had to be written before the next phase; resets are part of the method, not excluded material.
-
-\subsection{Audit trajectory}
-
-Full experimental details are in the supplementary materials. Phase 0 reproduced the LeWM PushT baseline and evaluated longer goals: success fell from 96\% at offset 25 to 58\%, 16\%, and 10\% at offsets 50, 75, and 100. At offset 50, $\mathrm{corr}(\Cmodel,C_\mathrm{real\_z})=0.864$, but encoder-physics alignment varied by pair.
-
-Phase 1 established the Track A artifact: 100 stratified PushT pairs and 80 candidate actions per pair. The largest-displacement row had the strongest encoder-physics alignment, with D3 Pearson correlation 0.630, falsifying large-displacement encoder collapse and moving the audit toward cost-landscape mismatch.
-
-Phase 2 rejected an architecture-only account when C6 reached Spearman $-0.200$, while same-dimensional Gaussian projections preserved much of the trained LeWM ranking signal. Protocol matching then separated search from selection: PushT re-rank-only stayed flat from 33.0\% at $m=8$ to 34.0\% at $m=192$, while full projected CEM rose from 20.6\% to 34.4\%. The remaining diagnostic was $\DeltaCEM=\Rendpoint-\Rpool$, the gap between fixed endpoint geometry and CEM-local pool geometry.
-
-\subsection{Decision trace}
-
-Table~\ref{tab:decision-trace} records the binding decisions that governed the audit. The table is part of the method. Each row names the active hypothesis, the data verdict, and the action taken before the next phase.
-
-\begin{table*}[t]
-\centering
-\small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{L{0.15\linewidth} L{0.30\linewidth} L{0.31\linewidth} L{0.18\linewidth}}
-\toprule
-Phase & Hypothesis & Data verdict & Action taken \\
-\midrule
-Phase 0 & Encoder collapse under large displacement & Case B/E hybrid & Proceed to Track A \\
-Phase 1 Track A & Large-displacement encoder is worst & FALSIFIED: D3 best-aligned & Revise to cost-landscape mismatch \\
-Cost-head experiment & Learned cost head fixes CEM & FAILED: 0/16 Split 3 & Drop cost-head approach \\
-Encoder replacement & DINOv2 encoder fixes ranking & FAILED: 0.286 vs 0.506 & Drop encoder replacement \\
-Random-geometry controls & Random architecture-matched geometry explains LeWM endpoint ranking & REJECTED: C6 = -0.200 & Proceed to Plan A evaluation paper \\
-Protocol matching & Re-rank flat + CEM has elbow & CONFIRMED: Row 1 & Launch Subspace-CEM smoke \\
-Subspace-CEM test & Subspace-CEM beats default by $\geq 3$pp & FAILED: -8.3pp & Drop Subspace-CEM \\
-\bottomrule
-\end{tabular}}
-\caption{Pre-registered decision trace for the audit. Each row lists the active hypothesis, the data verdict, and the action taken before the next phase; each transition was determined by a pre-specified gate rather than by a post-hoc choice of framing.}
-\label{tab:decision-trace}
-\end{table*}
+The audit used fixed artifacts and pre-registered continuation gates to limit researcher freedom, but the process record is appendix material rather than the main argument; Appendix~\ref{app:preregistration} lists the decision trace, locked criteria, and git-anchored timeline.

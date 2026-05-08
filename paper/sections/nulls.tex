@@ -1,23 +1,7 @@
 \section{Architecture-Matched Nulls}
 
-\subsection{The C6 random-init control}
+Section~4 shows that endpoint ranking and CEM-pool ranking can decouple. We next ask whether the endpoint signal itself is an artifact of random high-dimensional geometry rather than learned LeWM structure.
 
-Section~4 shows that endpoint ranking and CEM-pool ranking can decouple. This section asks whether the endpoint signal itself could be explained without the learned geometry of LeWM. The strongest random-geometry control is C6: the same ViT-tiny encoder architecture as LeWM, but randomly initialized and untrained. Inputs, action records, endpoint task cost, evaluation protocol, and latent-distance scoring are unchanged; only learned encoder weights are removed.
+It is not. The trained PushT LeWM encoder reaches $\Rendpoint=0.506$ on the Track~A endpoint artifact. Uninformative nulls stay near zero: Gaussian features reach $-0.006$ and shuffled latents reach $0.004$. The architecture-matched C6 control, a randomly initialized ViT-tiny with the same endpoint protocol, does not reproduce the learned pattern; on PushT it is actively anti-correlated ($-0.200$ for seed~0; $-0.156 \pm 0.086$ across 10 seeds). Details of C6 seeds, projector checks, eval/train mode, raw-pixel baselines, and cross-architecture controls are in Appendix~\ref{app:c6_audit}.
 
-On PushT, this control is not neutral. C6 reaches a Spearman correlation of $-0.200$; across 10 random seeds, the aggregate is $-0.156 \pm 0.086$, with 8/10 seeds negative. Gaussian C4 ($-0.006$) and shuffled C5 ($0.004$) behave like uninformative baselines, while C6 behaves like an actively misleading representation.
-
-The trained LeWM encoder gives a different result. C0 reaches Spearman $0.506$ on the same Track A endpoint artifact, moving from a worse-than-random randomly initialized baseline to task-positive geometry. This rejects the hypothesis that random architecture-matched geometry explains the endpoint ranking of LeWM.
-
-\subsection{Mechanism: eval-mode normalization}
-
-S3, S4, and S6 point to eval-mode normalization. The same randomly initialized ViT gives $-0.200$ in evaluation mode but $+0.025$ in training mode, despite a raw-pixel $\ell_2$ baseline of $0.697$ on PushT. The effect is architecture-specific: a small random CNN with BatchNorm also inverts the signal ($-0.182$), while a random ResNet18 reaches $+0.304$.
-
-\subsection{Cross-environment: Cube C6}
-
-The next check asks whether the PushT inversion generalizes to the second environment. Cube does not reproduce it: the 10-seed C6 aggregate is $+0.115 \pm 0.016$, with 0/10 seeds negative, while Cube raw pixel $\ell_2$ reaches $+0.069$.
-
-The trained Cube LeWM encoder reaches $+0.604$ from this near-zero raw pixel baseline, creating substantial endpoint geometry where raw pixels and random features are weak.
-
-\subsection{Implication}
-
-Together, the nulls preserve the Section~4 decoupling result while ruling out a simpler source for the endpoint signal. Randomly initialized encoders are not neutral baselines. For LeWM, the learned representation creates task-relevant endpoint geometry that is not inherited from the ViT-tiny architecture, random high-dimensional distances, or raw pixel statistics alone. Sections~4 and~6 then show that this endpoint geometry is not sufficient for CEM planning.
+The cross-environment check reaches the same conclusion without the PushT inversion. Cube C6 is weakly positive ($+0.115 \pm 0.016$), while trained Cube LeWM reaches $+0.604$ from a near-zero raw-pixel baseline. Thus random projections and random architecture-matched encoders do not produce the observed endpoint geometry; the learned representation is essential. Sections~4 and~6 then show that this learned endpoint geometry is still insufficient for CEM-local planning.

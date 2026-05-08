@@ -2,13 +2,59 @@
 \label{app:preregistration}
 
 The audit used binding decision trees, fixed evaluation artifacts, and
-documented framing resets (Section~3.1).  Each phase recorded its
+documented framing resets (Section~3).  Each phase recorded its
 hypothesis, continuation criteria, and possible outcomes before data
 inspection.  This appendix catalogs the decision memos released with the
 supplementary materials and lists the git timestamps that anchor each
 pre-registered decision.  Table~\ref{tab:appendix-commits} in
 Appendix~\ref{app:reproducibility} provides the commit hashes for the main
 experimental artifacts.
+Pre-registration follows the broader practice of recording planned hypotheses,
+inclusion rules, and analyses before data inspection \citep{hofman2023preregistration}.
+
+\subsection{Audit Trajectory}
+
+Phase 0 reproduced the LeWM PushT baseline and evaluated longer goals:
+success fell from 96\% at offset 25 to 58\%, 16\%, and 10\% at offsets 50,
+75, and 100.  At offset 50,
+$\mathrm{corr}(\Cmodel,C_\mathrm{real\_z})=0.864$, but
+encoder-physics alignment varied by pair.
+
+Phase 1 established the Track A artifact: 100 stratified PushT pairs and 80
+candidate actions per pair.  The largest-displacement row had the strongest
+encoder-physics alignment, with D3 Pearson correlation 0.630, falsifying
+large-displacement encoder collapse and moving the audit toward
+cost-landscape mismatch.
+
+Phase 2 rejected an architecture-only account when C6 reached Spearman
+$-0.200$, while same-dimensional Gaussian projections preserved much of the
+trained LeWM ranking signal.  Protocol matching then separated search from
+selection: PushT re-rank-only stayed flat from 33.0\% at $m=8$ to 34.0\%
+at $m=192$, while full projected CEM rose from 20.6\% to 34.4\%.  The
+remaining diagnostic was $\DeltaCEM=\Rendpoint-\Rpool$, the gap between
+fixed endpoint geometry and CEM-local pool geometry.
+
+\begin{table*}[h]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{L{0.15\linewidth} L{0.30\linewidth} L{0.31\linewidth} L{0.18\linewidth}}
+\toprule
+Phase & Hypothesis & Data verdict & Action taken \\
+\midrule
+Phase 0 & Encoder collapse under large displacement & Case B/E hybrid & Proceed to Track A \\
+Phase 1 Track A & Large-displacement encoder is worst & FALSIFIED: D3 best-aligned & Revise to cost-landscape mismatch \\
+Cost-head experiment & Learned cost head fixes CEM & FAILED: 0/16 Split 3 & Drop cost-head approach \\
+Encoder replacement & DINOv2 encoder fixes ranking & FAILED: 0.286 vs 0.506 & Drop encoder replacement \\
+Random-geometry controls & Random architecture-matched geometry explains LeWM endpoint ranking & REJECTED: C6 = -0.200 & Proceed to Plan A evaluation paper \\
+Protocol matching & Re-rank flat + CEM has elbow & CONFIRMED: Row 1 & Launch Subspace-CEM smoke \\
+Subspace-CEM test & Subspace-CEM beats default by $\geq 3$pp & FAILED: -8.3pp & Drop Subspace-CEM \\
+\bottomrule
+\end{tabular}}
+\caption{Pre-registered decision trace for the audit. Each transition was
+determined by a pre-specified gate before the next phase.}
+\label{tab:decision-trace}
+\end{table*}
 
 \subsection{Decision Memo Index}
 
@@ -89,7 +135,7 @@ subsequent phase.}
 
 \subsection{Framing Resets}
 
-The audit underwent three documented framing resets (Section~3.2).  The
+The audit underwent three documented framing resets.  The
 first reset moved from encoder-collapse to cost-landscape mismatch after
 Phase 1 falsified the large-displacement hypothesis.  The second narrowed
 cost-landscape mismatch to endpoint-planning decoupling after C6 rejected
