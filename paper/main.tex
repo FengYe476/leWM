@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{iclr2025_conference}
+\usepackage[preprint]{tmlr}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -21,6 +21,16 @@
 
 \title{Endpoint Ranking Does Not Imply Planning: Auditing Cost Geometry in LeWM}
 
+\author{
+  Feng Ye \\
+  \texttt{email@example.com}
+}
+
+% TMLR metadata
+\def\month{05}
+\def\year{2026}
+\def\openreview{XXXX}
+
 \newcommand{\zgoal}{z_g}
 \newcommand{\zhatH}{\hat{z}_H}
 \newcommand{\Cmodel}{C_\text{model}}
@@ -38,6 +48,8 @@
 
 \begin{document}
 
+\maketitle
+
 \begin{abstract}
 LeWM-style latent planners that optimize Euclidean terminal latent costs with CEM can pass endpoint ranking while failing pool-level ranking. We audit this assumption in LeWM, a Joint-Embedding Predictive Architecture (JEPA)-style latent world model for goal-conditioned control from pixels, and find that endpoint ranking and CEM final-pool ranking can decouple. At projection dimension $m=64$, the CEM Compatibility Gap $\DeltaCEM$ reaches 0.43 on PushT and 0.57 on OGBench-Cube, while rank-1 planning success is 29.6\% and 56.0\%, respectively. The audit covers two environments, four protocol settings, and eight random-geometry controls with fixed artifacts and pre-registered decision rules. Four simple repairs fail under their pre-specified thresholds. A learned post-hoc calibration experiment shows that pool-level ranking labels carry strong corrective signal on seen pools, but the local geometry distortion is pair-specific and does not transfer to held-out configurations, pointing to training-time or pool-conditioned approaches as a plausible path forward. These results localize the problem to the interaction between cost geometry and CEM-local candidate pools. A cross-architecture check on DINO-WM reveals analogous pool-level cost collapse, though DINO-WM's near-zero endpoint ranking prevents it from serving as a clean replication of the endpoint-pool decoupling pattern. % REVISION: addresses W1
 For LeWM-style latent planners that select actions by terminal latent costs under iterative sampling-based optimization, we recommend reporting pool-level and selection-level metrics alongside endpoint metrics.
@@ -53,7 +65,13 @@ For LeWM-style latent planners that select actions by terminal latent costs unde
 \input{sections/discussion}
 \input{sections/limitations}
 
-\bibliographystyle{iclr2025_conference}
+\section*{Ethics Statement}
+This work audits an existing publicly released model and does not involve human subjects, private data, or deployment of autonomous systems.
+
+\section*{Reproducibility Statement}
+All experiments use publicly available model checkpoints and datasets. The three-level diagnostic protocol requires only saving CEM final candidate pools and scoring them with an evaluation-time physical cost. Code, frozen JSON artifacts, and pool data will be released upon publication. Appendix~\ref{app:reproducibility} details the computational environment, artifact inventory, and checkpoint provenance.
+
+\bibliographystyle{tmlr}
 \bibliography{references}
 
 \newpage
